@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     public void testearen(){
         //knape är vacker
     }
+    
+    public void fyrrenTestar(){
+        //linser
+    }
 
     public void knapee (){
         int knape = 0;
