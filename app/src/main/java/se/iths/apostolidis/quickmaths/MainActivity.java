@@ -21,5 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void knapee (){
         int knape = 0;
+        int knapeIntellect = 0;
     }
 }
