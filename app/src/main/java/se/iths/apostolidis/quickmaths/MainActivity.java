@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
     public void testearen(){
         //knape är vacker
     }
-    
+
     public void fyrrenTestar(){
-        //linser
+        //testing testing...
     }
 
     public void knapee (){
