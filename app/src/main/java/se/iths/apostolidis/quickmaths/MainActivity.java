@@ -27,4 +27,8 @@ public class MainActivity extends AppCompatActivity {
         int knape = 0;
         int knapeIntellect = 0;
     }
+
+    public void robintestar(){
+        //testar yttligare
+    }
 }
