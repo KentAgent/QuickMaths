@@ -20,7 +20,9 @@
         <activity android:name=".SettingsActivty" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MultiplayerActivity" />
-        <activity android:name=".AddQuestionActivity"></activity>
+        <activity android:name=".AddQuestionActivity" />
+        <activity android:name=".SinglePlayerActivity" />
+        <activity android:name=".FriendsActivity"></activity>
     </application>
 
 </manifest>

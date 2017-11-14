@@ -1,7 +1,9 @@
 package se.iths.apostolidis.quickmaths;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,26 +11,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
-    public void testMethod() {
-        //Tjena boys
+    public void onClickSinglePlayer(View view) {
+        Intent intent = new Intent(this, SinglePlayerActivity.class);
+        startActivity(intent);
     }
 
-    public void testearen(){
-        //knape är vacker
+    public void onClickMultiplayer(View view) {
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        startActivity(intent);
     }
 
-    public void fyrrenTestar(){
-        //testing testing...
+    public void onClickFriends(View view) {
+        Intent intent = new Intent(this, FriendsActivity.class);
+        startActivity(intent);
     }
 
-    public void knapee (){
-        int knape = 0;
-        int knapeIntellect = 0;
+    public void onClickAddQuestion(View view) {
+        Intent intent = new Intent(this, AddQuestionActivity.class);
+        startActivity(intent);
     }
 
-    public void robintestar(){
-        //testar yttligare
+    public void onClickImageButtonSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivty.class);
+        startActivity(intent);
     }
 }
