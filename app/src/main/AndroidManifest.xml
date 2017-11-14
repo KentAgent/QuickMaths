@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingsActivty"></activity>
+        <activity android:name=".SettingsActivty" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MultiplayerActivity" />
+        <activity android:name=".AddQuestionActivity"></activity>
     </application>
 
 </manifest>
