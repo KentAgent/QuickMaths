@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Apostolidis on 2017-11-14.
  */
 
-class SinglePlayerActivity extends AppCompatActivity{
+public class SinglePlayerActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
