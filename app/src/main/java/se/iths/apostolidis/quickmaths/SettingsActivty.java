@@ -11,7 +11,6 @@ public class SettingsActivty extends AppCompatActivity {
         setContentView(R.layout.activity_settings_activty);
     }
 
-    public void test(){
-        //test
-    }
+
+    //TODO:Method for sound.
 }
