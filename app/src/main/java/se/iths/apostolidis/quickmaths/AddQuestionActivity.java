@@ -13,7 +13,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_question);
     }
 
-    public void onSumbitClick(View view){
+    public void onClickSubmit(View view){
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(myIntent);
     }
