@@ -16,13 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingsActivty" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MultiplayerActivity" />
-        <activity android:name=".AddQuestionActivity" />
-        <activity android:name=".SinglePlayerActivity" />
-        <activity android:name=".FriendsActivity"></activity>
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".GameActivity"></activity>
     </application>
 
 </manifest>
