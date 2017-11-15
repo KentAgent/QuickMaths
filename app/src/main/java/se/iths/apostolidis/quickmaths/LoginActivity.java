@@ -13,6 +13,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void test(){
-        //testar
+        //testar hej
     }
 }
