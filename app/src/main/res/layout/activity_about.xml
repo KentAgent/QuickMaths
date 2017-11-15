@@ -32,8 +32,11 @@
         android:id="@+id/testPopUp"
         android:layout_width="191dp"
         android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClickTestQuestion"
         android:text="Button"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="287dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="125dp" />
 </android.support.constraint.ConstraintLayout>
