@@ -6,4 +6,100 @@
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.QuestionActivity">
 
+    <Button
+        android:id="@+id/buttonAnswer1"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickAnswerAlt1"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAnswer3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion"
+        app:layout_constraintVertical_bias="0.985" />
+
+    <Button
+        android:id="@+id/buttonAnswer2"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickAnswerAlt2"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAnswer4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toEndOf="@+id/buttonAnswer1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion"
+        app:layout_constraintVertical_bias="0.985" />
+
+    <Button
+        android:id="@+id/buttonAnswer3"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="148dp"
+        android:layout_marginStart="44dp"
+        android:onClick="onClickAnswerAlt3"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAnswer4"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="148dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onClickAnswerAlt4"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toEndOf="@+id/buttonAnswer3" />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="390dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <Button
+        android:id="@+id/buttonPopUpTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onClickbtnTestPopUp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewIfCorrectAnswer"
+        android:layout_width="248dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

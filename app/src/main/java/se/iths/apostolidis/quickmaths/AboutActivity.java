@@ -1,5 +1,6 @@
 package se.iths.apostolidis.quickmaths;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,11 @@ public class AboutActivity extends AppCompatActivity {
     public void onClickExpandTextView(View v){
         //Hide / show more text
 
+
+    }
+    public void onClickTestQuestion (View v){
+        Intent intent = new Intent(this, QuestionActivity.class);
+        startActivity(intent);
 
     }
 }
