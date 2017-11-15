@@ -10,4 +10,8 @@ public class SettingsActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_activty);
     }
+
+    public void test(){
+        //test
+    }
 }
