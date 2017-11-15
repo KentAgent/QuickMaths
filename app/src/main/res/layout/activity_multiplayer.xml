@@ -7,14 +7,14 @@
     tools:context="se.iths.apostolidis.quickmaths.MultiplayerActivity">
 
     <ImageButton
-        android:id="@+id/imageButtonSettings2"
+        android:id="@+id/imageButtonSettingsMultiplayer"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/circle_background"
         android:elevation="15dp"
-        android:onClick="onClickImageButtonSettings"
+        android:onClick="onClickImageButtonSettingsMultiplayer"
         android:padding="9dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,14 +22,14 @@
         app:srcCompat="@drawable/ic_build_black_24dp" />
 
     <ImageButton
-        android:id="@+id/imageButtonSound2"
+        android:id="@+id/imageButtonSoundMultiplayer"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/circle_background"
         android:elevation="15dp"
-        android:onClick="onClickImageButtonSound"
+        android:onClick="onClickImageButtonSoundMultiplayer"
         android:padding="9dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
-        android:text="@string/CreateLobby"
+        android:text="@string/create_lobby"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="@string/FindLobby"
+        android:text="@string/find_lobby"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
