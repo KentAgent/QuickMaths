@@ -35,19 +35,22 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void onClickAnswerAlt1 (View v){
-
-        questionEngine.onClickAnswer1();
-        textViewCorrectAnswer.setText("You're right, bastard");
-        textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+        rightOrWrongAnswer(questionEngine.onClickAnswer1());
     }
     public void onClickAnswerAlt2 (View v){
-        questionEngine.onClickAnswer2();
+        rightOrWrongAnswer(questionEngine.onClickAnswer2());
     }
     public void onClickAnswerAlt3 (View v){
-        questionEngine.onClickAnswer3();
+        rightOrWrongAnswer(questionEngine.onClickAnswer3());
     }
     public void onClickAnswerAlt4 (View v){
-        questionEngine.onClickAnswer4();
+        rightOrWrongAnswer(questionEngine.onClickAnswer4());
+    }
+    public void rightOrWrongAnswer (Boolean b){
+        if (b){
+            textViewCorrectAnswer.setText("You're right, bastard");
+            textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+        }
     }
 
     public void importViewElemets(){
@@ -62,6 +65,7 @@ public class QuestionActivity extends AppCompatActivity {
         buttonTestPopUp = findViewById(R.id.buttonPopUpTest);
     }
     public void onClickbtnTestPopUp(View v){
+        textViewCorrectAnswer.setVisibility(TextView.INVISIBLE);
 
     }
 }
