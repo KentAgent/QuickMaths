@@ -27,6 +27,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
     public void setQuestion (){
+        questionEngine.setQuestion();
         textViewQuestion.setText(questionEngine.getQuestion());
         btnAnswer1.setText(questionEngine.getAnswerChoise1());
         btnAnswer2.setText(questionEngine.getAnswerChoise2());
