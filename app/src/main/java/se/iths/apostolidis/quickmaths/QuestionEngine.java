@@ -19,7 +19,7 @@ public class QuestionEngine {
     private String answerChoise3 = "Mamma";
     private String answerChoise4 = "1";
     private String correctAnswer = "1";
-    private String questionText = "Hao mäny teslevs do have de little gumma in litteleteskedagumma the movie?";
+    private String questionText = "Hao mäny teslevs do de little gumma have in de littele teskedagumma the movie?";
 
     public QuestionEngine (){
 
