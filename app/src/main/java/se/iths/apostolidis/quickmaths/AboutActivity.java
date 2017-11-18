@@ -1,12 +1,10 @@
 package se.iths.apostolidis.quickmaths;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class AboutActivity extends AppCompatActivity {
     private TextView textView;
@@ -26,8 +24,13 @@ public class AboutActivity extends AppCompatActivity {
 
     }
     public void onClickTestQuestion (View v){
-        Intent intent = new Intent(this, QuestionActivity.class);
+        Intent intent = new Intent(this, CopyDbActivity.class);
         startActivity(intent);
 
+    }
+
+    public void testDatabase(View view){
+        Intent intent = new Intent(getApplicationContext(), CopyDbActivity.class);
+        startActivity(intent);
     }
 }

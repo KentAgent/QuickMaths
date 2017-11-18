@@ -5,8 +5,16 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+
+import java.util.List;
+
+import se.iths.apostolidis.quickmaths.containers.Quiz;
+import se.iths.apostolidis.quickmaths.service.database.DBHelper;
+import se.iths.apostolidis.quickmaths.service.network.FetchCallback;
+import se.iths.apostolidis.quickmaths.service.network.RemoteDataManager;
 
 import static android.media.AudioManager.ADJUST_MUTE;
 import static android.media.AudioManager.ADJUST_UNMUTE;
@@ -15,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton muteBtn;
     private AudioManager am;
     private Boolean isMuted = true;
-
-
+    private DBHelper database;
+    private RemoteDataManager remoteDataManager;
 
 
     @Override
@@ -25,6 +33,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         muteBtn =findViewById(R.id.imageButtonSound);
+        database = DBHelper.getInstance(this);
+
+        remoteDataManager = RemoteDataManager.getInstance();
+
+        remoteDataManager.getQuizzes(new FetchCallback() {
+            @Override
+            public void didReceiveData(List<Quiz> quizzesFromServer) {
+                database.removeoldQuizzes(quizzesFromServer, database.getAllQuizzes());
+                database.updateQuizzes(quizzesFromServer);
+                database.insertQuizzes(quizzesFromServer, database.getAllQuizzes());
+                List<Quiz> quizzes = database.getAllQuizzes();
+                for(int i = 0, len = quizzes.size(); i < len; i++) {
+                    Log.d("test1", String.valueOf(quizzes.get(i)));
+                }
+
+                //Log.d("test1", String.valueOf(database.getAllQuizzes()));
+            }
+
+            @Override
+            public void didReceiveError() {
+
+            }
+        });
 
     }
 
@@ -73,6 +104,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 }
