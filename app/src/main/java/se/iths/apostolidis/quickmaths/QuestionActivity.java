@@ -1,5 +1,4 @@
 package se.iths.apostolidis.quickmaths;
-/*<<<<<<< HEAD
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,47 +6,59 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
+import se.iths.apostolidis.quickmaths.service.database.DBHelper;
+
 public class QuestionActivity extends AppCompatActivity {
 
 
-    private Button buttonTestPopUp;
     private Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
     private TextView textViewQuestion;
     private TextView textViewCorrectAnswer;
-    private QuestionEngine questionEngine = new QuestionEngine();
+    private DBHelper database;
+    private String correctAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        database = DBHelper.getInstance(this);
         importViewElemets();
         setQuestion();
 
 
     }
     public void setQuestion (){
-        questionEngine.setQuestion();
-        textViewQuestion.setText(questionEngine.getQuestion());
-        btnAnswer1.setText(questionEngine.getAnswerChoise1());
-        btnAnswer2.setText(questionEngine.getAnswerChoise2());
-        btnAnswer3.setText(questionEngine.getAnswerChoise3());
-        btnAnswer4.setText(questionEngine.getAnswerChoise4());
+        Random random = new Random();
+        int index = random.nextInt(database.getAllQuizzes().size());
+        textViewQuestion.setText(database.getAllQuizzes().get(index).getQuestion());
+        btnAnswer1.setText(database.getAllQuizzes().get(index).getAnswer1());
+        btnAnswer2.setText(database.getAllQuizzes().get(index).getAnswer2());
+        btnAnswer3.setText(database.getAllQuizzes().get(index).getAnswer3());
+        btnAnswer4.setText(database.getAllQuizzes().get(index).getAnswer4());
+        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
     }
 
     public void onClickAnswerAlt1 (View v){
-        rightOrWrongAnswer(questionEngine.onClickAnswer1());
+        rightOrWrongAnswer(btnAnswer1.getText().toString());
+        //rightOrWrongAnswer(questionEngine.onClickAnswer1());
     }
     public void onClickAnswerAlt2 (View v){
-        rightOrWrongAnswer(questionEngine.onClickAnswer2());
+        rightOrWrongAnswer(btnAnswer2.getText().toString());
+        //rightOrWrongAnswer(questionEngine.onClickAnswer2());
     }
     public void onClickAnswerAlt3 (View v){
-        rightOrWrongAnswer(questionEngine.onClickAnswer3());
+        rightOrWrongAnswer(btnAnswer3.getText().toString());
+        //rightOrWrongAnswer(questionEngine.onClickAnswer3());
     }
     public void onClickAnswerAlt4 (View v){
-        rightOrWrongAnswer(questionEngine.onClickAnswer4());
+        rightOrWrongAnswer(btnAnswer4.getText().toString());
+        //rightOrWrongAnswer(questionEngine.onClickAnswer4());
     }
-    public void rightOrWrongAnswer (Boolean b){
-        if (b){
+
+    public void rightOrWrongAnswer (String guess){
+        if (guess.equals(correctAnswer)){
             textViewCorrectAnswer.setText("You're right, bastard");
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
         }
@@ -60,16 +71,12 @@ public class QuestionActivity extends AppCompatActivity {
         btnAnswer3 = findViewById(R.id.buttonAnswer3);
         btnAnswer4 = findViewById(R.id.buttonAnswer4);
         textViewCorrectAnswer = findViewById(R.id.textViewIfCorrectAnswer);
-
-
-        buttonTestPopUp = findViewById(R.id.buttonPopUpTest);
     }
     public void onClickbtnTestPopUp(View v){
         textViewCorrectAnswer.setVisibility(TextView.INVISIBLE);
 
     }
 }
-=======
 //
 //import android.content.Context;
 //import android.os.Bundle;
@@ -173,4 +180,3 @@ public class QuestionActivity extends AppCompatActivity {
 //        textViewQuestion.setText(dbHelper.getQuestion().getAnswerChoise3());
 //    }
 //}
->>>>>>> robkam_setup_database*/
