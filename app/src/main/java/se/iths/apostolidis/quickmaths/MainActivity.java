@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
                 List<Quiz> quizzes = database.getAllQuizzes();
                 for(int i = 0, len = quizzes.size(); i < len; i++) {
                     Log.d("test1", String.valueOf(quizzes.get(i)));
+                    /*Log.e("", "");
+                    Log.w("", "");
+                    Log.i("", "");
+                    Log.wtf("", "");
+                    Log.v("", "");*/
                 }
 
                 //Log.d("test1", String.valueOf(database.getAllQuizzes()));
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        textViewtester.setText(database.getAllQuizzes().get(44).getQuestion());
+        textViewtester.setText(database.getAllQuizzes().get(22).getQuestion());
     }
 
     public void onClickSinglePlayer(View view) {

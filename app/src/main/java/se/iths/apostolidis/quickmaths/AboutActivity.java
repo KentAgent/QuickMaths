@@ -19,8 +19,9 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         textView = findViewById(R.id.textView);
+        database = DBHelper.getInstance(this);
 
-        textView.setText(database.getAllQuizzes().get(33).getQuestion());
+       textView.setText(database.getAllQuizzes().get(33).getQuestion());
     }
 
     public void onClickExpandTextView(View v){
