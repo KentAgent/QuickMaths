@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean isMuted = true;
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
+    private TextView textViewtester;
 
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         muteBtn =findViewById(R.id.imageButtonSound);
         database = DBHelper.getInstance(this);
+        textViewtester = findViewById(R.id.textViewtest);
 
         remoteDataManager = RemoteDataManager.getInstance();
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        textViewtester.setText(database.getAllQuizzes().get(44).getQuestion());
     }
 
     public void onClickSinglePlayer(View view) {

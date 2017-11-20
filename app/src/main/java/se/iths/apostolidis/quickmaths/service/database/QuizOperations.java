@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths.service.database;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +60,7 @@ class QuizOperations {
         if(cursor != null){
             if(cursor.moveToFirst()){
                 quizzes = new ArrayList<>();
-
+                Log.d("test2", "getAllQuizzes: ");
                 do{
                     quizzes.add(fromCursorToQuiz(cursor));
                 } while (cursor.moveToNext());
@@ -83,6 +84,7 @@ class QuizOperations {
 
     void insertQuiz(Quiz quiz) {
         writableDatabase.insert(TABLE_QUIZ, null, contentValuesOfQuiz(quiz));
+
     }
 
     private ContentValues contentValuesOfQuiz(Quiz quiz) {
@@ -104,5 +106,6 @@ class QuizOperations {
 
     public boolean updateQuiz(Quiz quiz) {
         return writableDatabase.update(TABLE_QUIZ, contentValuesOfQuiz(quiz), QUIZ_ID + " = ?", new String[]{ quiz.getId() }) > 0;
+
     }
 }

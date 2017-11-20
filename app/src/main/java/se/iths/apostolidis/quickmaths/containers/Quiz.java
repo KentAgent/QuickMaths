@@ -110,7 +110,6 @@ public class Quiz {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return quiz;
     }
 }

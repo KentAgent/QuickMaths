@@ -19,7 +19,6 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String ID = "id";
     private static final String DATABASE_NAME = "quiz_database";
     private static final int DATABASE_VERSION = 1;
-
     private final QuizOperations quizOperations;
 
     public static DBHelper getInstance(Context context){
@@ -52,12 +51,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<Quiz> getAllQuizzes() {
         List<Quiz> quizzes = quizOperations.getAllQuizzes();
         return quizzes != null ? quizzes : new ArrayList<Quiz>(); // shorthand -if
+
     }
 
     public void removeoldQuizzes(List<Quiz> quizzesFromServer, List<Quiz> QuizzesFromDatabase) {
         for (int x = 0, xLen = QuizzesFromDatabase.size(); x < xLen;  x++) {
             for (int y = 0, yLen = quizzesFromServer.size(); y < yLen; y++) {
                 if (QuizzesFromDatabase.get(x).getId().equals(quizzesFromServer.get(y).getId())){
+
                     break;
                 }
                 if(y == yLen - 1){
