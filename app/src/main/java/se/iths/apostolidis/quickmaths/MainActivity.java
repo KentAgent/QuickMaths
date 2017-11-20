@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         background = findViewById(R.id.imageViewBackground);
         aboutUs = findViewById(R.id.textViewAboutUs);
 
-        dbHelper = new DBHelper(this);
 
         background.setScaleType(ImageView.ScaleType.FIT_XY);
 
