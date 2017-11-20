@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import static android.media.AudioManager.ADJUST_MUTE;
 import static android.media.AudioManager.ADJUST_UNMUTE;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton muteBtn;
+    private ImageButton infoButton;
     private AudioManager am;
     private Boolean isMuted = true;
     private ImageView background;
+    private TextView aboutUs;
 
     private DBHelper dbHelper;
 
@@ -27,11 +30,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         muteBtn =findViewById(R.id.imageButtonSound);
+        infoButton = findViewById(R.id.imageButtonAbout);
         background = findViewById(R.id.imageViewBackground);
+        aboutUs = findViewById(R.id.textViewAboutUs);
 
         dbHelper = new DBHelper(this);
 
         background.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        aboutUs.setText("CODED BY:\n\nKentAgent\nKakashi\nTantMutti\nFyrren\nSchwimpy\nMikael");
 
     }
 
@@ -56,13 +63,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickImageButtonSettings(View view) {
-        Intent intent = new Intent(this, SettingsActivty.class);
-        startActivity(intent);
+        if (muteBtn.getVisibility() == View.INVISIBLE) {
+            muteBtn.setVisibility(View.VISIBLE);
+            infoButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            muteBtn.setVisibility(View.INVISIBLE);
+            infoButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void onClickAbout(View view) {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
+    }
+
+    public void onClickImageButtonAbout(View view) {
+        if (aboutUs.getVisibility() == View.INVISIBLE)
+            aboutUs.setVisibility(View.VISIBLE);
+        else
+            aboutUs.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickImageViewBackground(View view) {
+        if (aboutUs.getVisibility() == View.VISIBLE || muteBtn.getVisibility() == View.VISIBLE) {
+            aboutUs.setVisibility(View.INVISIBLE);
+            muteBtn.setVisibility(View.INVISIBLE);
+            infoButton.setVisibility(View.INVISIBLE);
+        }
     }
 
 
