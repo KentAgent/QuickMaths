@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import static android.media.AudioManager.ADJUST_MUTE;
 import static android.media.AudioManager.ADJUST_UNMUTE;
@@ -15,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton muteBtn;
     private AudioManager am;
     private Boolean isMuted = true;
+    private ImageView background;
 
-
+    private DBHelper dbHelper;
 
 
     @Override
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         muteBtn =findViewById(R.id.imageButtonSound);
+        background = findViewById(R.id.imageViewBackground);
+
+        dbHelper = new DBHelper(this);
+
+        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
     }
 
