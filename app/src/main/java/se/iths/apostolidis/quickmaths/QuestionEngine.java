@@ -1,14 +1,14 @@
 package se.iths.apostolidis.quickmaths;
 
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 /**
  * Created by mrx on 2017-11-15.
  */
 
 public class QuestionEngine {
+
+    public QuestionEngine(){
+
+    }
 
     private RandomHelper randomHelper = new RandomHelper();
 
@@ -19,10 +19,15 @@ public class QuestionEngine {
     private String answerChoise3 = "Mamma";
     private String answerChoise4 = "1";
     private String correctAnswer = "1";
-    private String questionText = "Hao mäny teslevs do have de little gumma in litteleteskedagumma the movie?";
+    private String questionText = "Hao mäny teslevs do de little gumma have in de littele teskedagumma the movie?";
 
-    public QuestionEngine (){
-
+    public QuestionEngine(String answerChoise1, String answerChoise2, String answerChoise3, String answerChoise4, String correctAnswer, String questionText) {
+        this.answerChoise1 = answerChoise1;
+        this.answerChoise2 = answerChoise2;
+        this.answerChoise3 = answerChoise3;
+        this.answerChoise4 = answerChoise4;
+        this.correctAnswer = correctAnswer;
+        this.questionText = questionText;
     }
 
     public String getQuestion (){
