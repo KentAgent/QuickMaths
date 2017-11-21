@@ -9,4 +9,10 @@
     <string name="test">test</string>
     <string name="user_name_busy">Username busy</string>
     <string name="players_current_name">Players current name</string>
+    <string name="write_question">Write question</string>
+    <string name="first_answer">1st answer</string>
+    <string name="second_answer">2nd answer</string>
+    <string name="third_answer">3rd answer</string>
+    <string name="fourth_answer">4th answer</string>
+    <string name="submit">SUBMIT</string>
 </resources>
