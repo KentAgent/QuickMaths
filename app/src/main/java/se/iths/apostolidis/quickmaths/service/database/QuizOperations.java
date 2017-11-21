@@ -68,6 +68,27 @@ class QuizOperations {
         }
         return quizzes;
     }
+    List<Quiz> getQuizCategory(String category) {
+        List<Quiz> quizzes = null;
+        String selectQuery = "SELECT * FROM " + TABLE_QUIZ;
+
+        Cursor cursor = reableDatabase.rawQuery(selectQuery, null);
+
+        if(cursor != null){
+            if(cursor.moveToFirst()){
+                quizzes = new ArrayList<>();
+                Log.d("categoryTest", "CategoryTest");
+                do{
+                    if(fromCursorToQuiz(cursor).getGenre().equals(category)) {
+                        quizzes.add(fromCursorToQuiz(cursor));
+                    }
+                } while (cursor.moveToNext());
+            }
+        }
+        return quizzes;
+    }
+
+
 
     private Quiz fromCursorToQuiz(Cursor cursor) {
         Quiz quiz = new Quiz();
