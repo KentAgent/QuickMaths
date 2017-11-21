@@ -9,4 +9,21 @@
     <string name="test">test</string>
     <string name="user_name_busy">Username busy</string>
     <string name="players_current_name">Players current name</string>
+    <string name="write_question">Write question</string>
+    <string name="first_answer">1st answer</string>
+    <string name="second_answer">2nd answer</string>
+    <string name="third_answer">3rd answer</string>
+    <string name="fourth_answer">4th answer</string>
+    <string name="submit">SUBMIT</string>
+    <string name="about">About</string>
+    <string name="single_player">Single Player</string>
+    <string name="multi_player">Multiplayer</string>
+    <string name="friends">Friends</string>
+    <string name="add_question">Add Question</string>
+    <string name="credits">Credits:</string>
+    <string name="click_to_continue">Click to continue..</string>
+    <string name="settings">Settings</string>
+    <string name="mute_sound">Mute Sound</string>
+    <string name="account">Account</string>
+    <string name="background">Background</string>
 </resources>

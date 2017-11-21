@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton account;
     private ImageButton settings;
 
+
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
 
