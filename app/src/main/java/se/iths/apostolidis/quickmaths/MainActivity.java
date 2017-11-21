@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private Boolean isMuted = true;
     private ImageView background;
     private TextView aboutUs;
+    private Button singlePlayerButton;
+    private Button multiplayerButton;
+    private Button friendsButton;
+    private Button addQuestionButton;
+    private Button aboutButton;
+    private TextView start;
+    private ImageButton account;
+    private ImageButton settings;
 
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
@@ -42,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
         infoButton = findViewById(R.id.imageButtonAbout);
         background = findViewById(R.id.imageViewBackground);
         aboutUs = findViewById(R.id.textViewAboutUs);
+        singlePlayerButton = findViewById(R.id.buttonSinglePlayer);
+        multiplayerButton = findViewById(R.id.buttonMultiplayer);
+        friendsButton = findViewById(R.id.buttonFriends);
+        addQuestionButton = findViewById(R.id.buttonAddQuestion);
+        aboutButton = findViewById(R.id.buttonAbout);
+        start = findViewById(R.id.textViewStart);
+        account = findViewById(R.id.imageButtonAccount);
+        settings = findViewById(R.id.imageButtonSettings);
 
 
         background.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -129,6 +146,21 @@ public class MainActivity extends AppCompatActivity {
             muteBtn.setVisibility(View.INVISIBLE);
             infoButton.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public void onClickStart(View view) {
+        if (singlePlayerButton.getVisibility() == View.INVISIBLE) {
+            singlePlayerButton.setVisibility(View.VISIBLE);
+            multiplayerButton.setVisibility(View.VISIBLE);
+            friendsButton.setVisibility(View.VISIBLE);
+            addQuestionButton.setVisibility(View.VISIBLE);
+            aboutButton.setVisibility(View.VISIBLE);
+            account.setVisibility(View.VISIBLE);
+            settings.setVisibility(View.VISIBLE);
+            start.setVisibility(View.INVISIBLE);
+
+        }
+
     }
 
 
