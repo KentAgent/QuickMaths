@@ -38,12 +38,13 @@ public class AboutActivity extends AppCompatActivity {
         //      Intent intent = new Intent(this, QuestionActivity.class);
         //      startActivity(intent);
 
-
-
         Random random = new Random();
-        int index = random.nextInt(database.getAllQuizzes().size());
 
-        textView.setText(database.getAllQuizzes().get(index).getQuestion());
+        //int index = random.nextInt(database.getAllQuizzes().size());
+        //textView.setText(database.getAllQuizzes().get(index).getQuestion());
+
+        int index = random.nextInt(database.getQuizCategory("Humor").size());
+        textView.setText(database.getQuizCategory("Humor").get(index).getGenre());
     }
 
     public void testDatabase(View view){

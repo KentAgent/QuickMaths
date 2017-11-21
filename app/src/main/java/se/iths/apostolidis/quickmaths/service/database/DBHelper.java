@@ -54,6 +54,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<Quiz> getQuizCategory(String category){
+        /**
+         * Improved quiz getter based on category
+         */
+        List<Quiz> quizCategory = quizOperations.getQuizCategory(category);
+        return quizCategory != null ? quizCategory : new ArrayList<Quiz>(); // shorthand -if
+
+        /**
+         * Old way. Not very efficient
+         */
+        //List<Quiz> allQuizzes = quizOperations.getAllQuizzes();
+//        ArrayList<Quiz> quizCategory = new ArrayList<>();
+//        for (int i = 0; i < allQuizzes.size(); i++){
+//            if (allQuizzes.get(i).getGenre().equals(category)){
+//                quizCategory.add(allQuizzes.get(i));
+//            }
+//        }
+//        return quizCategory;
+    }
+
     public void removeoldQuizzes(List<Quiz> quizzesFromServer, List<Quiz> QuizzesFromDatabase) {
         for (int x = 0, xLen = QuizzesFromDatabase.size(); x < xLen;  x++) {
             for (int y = 0, yLen = quizzesFromServer.size(); y < yLen; y++) {
