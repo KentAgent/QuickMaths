@@ -36,7 +36,7 @@ public class SettingsActivty extends AppCompatActivity {
     changeNameOk = findViewById(R.id.buttonChangeNameOk);
     writeName = findViewById(R.id.editTextChangeName);
     textViewTest = findViewById(R.id.textViewTest);
-    textViewTest.setText("Player1");
+
     writeName.setHint(textViewTest.getText());
     nameIsBusy = findViewById(R.id.textViewNameNotAvaliable);
 
@@ -52,6 +52,7 @@ public class SettingsActivty extends AppCompatActivity {
             writeName.setVisibility(View.VISIBLE);
             changeNameOk.setVisibility(View.VISIBLE);
             textViewTest.setText(writeName.getText());
+
         }
         else{
             writeName.setVisibility(View.INVISIBLE);

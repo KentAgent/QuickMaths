@@ -5,4 +5,8 @@
     <string name="connect_to_facebook">CONNECT TO FACEBOOK</string>
     <string name="sound">SOUND</string>
     <string name="music">MUSIC</string>
+    <string name="ok">CHANGE</string>
+    <string name="test">test</string>
+    <string name="user_name_busy">Username busy</string>
+    <string name="players_current_name">Players current name</string>
 </resources>

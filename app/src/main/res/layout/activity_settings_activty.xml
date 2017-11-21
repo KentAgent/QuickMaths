@@ -59,7 +59,7 @@
         android:background="@drawable/text_view_background"
         android:elevation="20dp"
         android:fontFamily="@font/indie_flower"
-        android:hint="Players current name"
+        android:hint="@string/players_current_name"
         android:padding="15dp"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -94,7 +94,7 @@
         android:layout_height="104dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:hint="Test"
+        android:hint="@string/test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="188dp"
         android:layout_marginEnd="24dp"
-        android:text="Username Busy"
+        android:text="@string/user_name_busy"
         android:background="@color/colorAccent"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
