@@ -1,5 +1,7 @@
 package se.iths.apostolidis.quickmaths;
 
+import se.iths.apostolidis.quickmaths.service.database.DBHelper;
+
 /**
  * Created by mrx on 2017-11-15.
  */
@@ -12,14 +14,13 @@ public class QuestionEngine {
 
     private RandomHelper randomHelper = new RandomHelper();
 
-    private boolean rightGuess;
     private String playerGuess;
-    private String answerChoise1 = "Hej";
-    private String answerChoise2 = "Då";
-    private String answerChoise3 = "Mamma";
-    private String answerChoise4 = "1";
-    private String correctAnswer = "1";
-    private String questionText = "Hao mäny teslevs do de little gumma have in de littele teskedagumma the movie?";
+    private String answerChoise1;
+    private String answerChoise2;
+    private String answerChoise3;
+    private String answerChoise4;
+    private String correctAnswer;
+    private String questionText;
 
     public QuestionEngine(String answerChoise1, String answerChoise2, String answerChoise3, String answerChoise4, String correctAnswer, String questionText) {
         this.answerChoise1 = answerChoise1;

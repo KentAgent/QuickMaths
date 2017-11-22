@@ -12,24 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".SettingsActivty" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- <activity android:name=".QuestionActivity" /> -->
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingsActivty" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".MultiplayerActivity" />
         <activity android:name=".AddQuestionActivity" />
         <activity android:name=".SinglePlayerActivity" />
         <activity android:name=".FriendsActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".CopyDbActivity" />
-        <activity android:name=".OfflineModeSetupActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AvatarActivity"></activity>
     </application>
 
 </manifest>
