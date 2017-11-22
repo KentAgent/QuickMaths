@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Kakashidota";
 
     //creating a GoogleSignInClient object
-    GoogleSignInAccount mGoogleSignInClient;
+    GoogleSignInClient mGoogleSignInClient;
 
     //And also a Firebase Auth object
     FirebaseAuth mAuth;
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Then we will get the GoogleSignInClient object from GoogleSignIn class
         //mGoogleSignInClient =  GoogleSignIn.getClient(this, gso);
-        mGoogleSignInClient = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
         //Now we will attach a click listener to the sign_in_button
         //and inside onClick() method we are calling the signIn() method that will open
@@ -73,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         //if the user is already signed in
         //we will close this activity
         //and take the user to profile activity
@@ -106,11 +106,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        Log.w(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         Log.e(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getDisplayName());
-        Log.w(TAG, "firebaseAuthWithGoogle:" + acct.getDisplayName());
         Log.e(TAG, "firebaseAuthWithGoogle:" + acct.getDisplayName());
 
         //getting the auth credential
@@ -125,7 +121,10 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Toast.makeText(LoginActivity.this, "User Signed In", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity. this, "User Signed In", Toast.LENGTH_SHORT).show();
+                           // signIn();
+                            Intent myIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+                            startActivity(myIntent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -142,11 +141,15 @@ public class LoginActivity extends AppCompatActivity {
 
     //this method is called on click
     private void signIn() {
-     //   startActivityForResult(, 100);
+
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+
+        //   startActivityForResult(, 100);
         //getting the google signin intent
        // Intent signInIntent
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(this, MainActivity.class);
+      //  startActivity(i);
 
         //starting the activity for result
         //startActivityForResult(signInIntent, RC_SIGN_IN);
