@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="face">
-        <item>@drawable/backgroundmain</item>
-        <item>@drawable/backgroundmainlight</item>
+        <item>@drawable/face1</item>
+        <item>@drawable/face2</item>
+        <item>@drawable/face3</item>
+        <item>@drawable/face4</item>
+    </array>
+
+    <array name="eyes">
+        <item>@drawable/eyes</item>
+        <item>@drawable/eyes2</item>
+    </array>
+
+    <array name="mouth">
+        <item>@drawable/mouth1</item>
+        <item>@drawable/mouth2</item>
+    </array>
+
+    <array name="hair">
+        <item>@drawable/hair1</item>
+        <item>@drawable/hair2</item>
+    </array>
+
+    <array name="scar">
+        <item>@drawable/scar1</item>
+        <item>@drawable/scar2</item>
+    </array>
+
+    <array name="mouthaccesory">
+        <item>@drawable/mouthaccesory1</item>
+        <item>@drawable/mouthaccesory2</item>
     </array>
 </resources>
