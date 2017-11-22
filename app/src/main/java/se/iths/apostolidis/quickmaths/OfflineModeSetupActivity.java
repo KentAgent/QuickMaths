@@ -9,7 +9,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
     private static String[] playerNameArray;
     private static Integer[] avatarArray;
-    private static int numberOfPlayers = 0;
+    private static int numberOfPlayers;
     private static boolean[] booleanCategories = new boolean[8];
     private String [] playerNames;
 
@@ -30,31 +30,23 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_mode_setup);
 
-        String numberOfPlayersTemp = "";
-
 /**
  * Gets information from intent; Number of players and choice of question categories
  * puts boolean values of checkboxes in a boolean array.
- * Converts string value number of players to int.
  */
 
         Bundle extras = getIntent().getExtras();
 
-        if(extras != null){
+        booleanCategories[0] = extras.getBoolean("Humor");
+        booleanCategories[1] = extras.getBoolean("Sport");
+        booleanCategories[2] = extras.getBoolean("Film");
+        booleanCategories[3] = extras.getBoolean("Musik");
+        booleanCategories[4] = extras.getBoolean("Historia");
+        booleanCategories[5] = extras.getBoolean("Geografi");
+        booleanCategories[6] = extras.getBoolean("Random");
+        booleanCategories[8] = extras.getBoolean("Sport");
 
-            booleanCategories[0] = extras.getBoolean("Humor");
-            booleanCategories[1] = extras.getBoolean("Sport");
-            booleanCategories[2] = extras.getBoolean("Film");
-            booleanCategories[3] = extras.getBoolean("Musik");
-            booleanCategories[4] = extras.getBoolean("Historia");
-            booleanCategories[5] = extras.getBoolean("Geografi");
-            booleanCategories[6] = extras.getBoolean("Random");
-            booleanCategories[8] = extras.getBoolean("Sport");
-
-            numberOfPlayersTemp = extras.getString("numberOfPlayers");
-            numberOfPlayers = Integer.parseInt(numberOfPlayersTemp);
-
-        }
+        numberOfPlayers = extras.getInt("numberOfPlayers");
 
         player1Name = findViewById(R.id.editTextPlayer1Name);
         player2Name = findViewById(R.id.editTextPlayer2Name);
@@ -76,7 +68,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTexts[7] = player1Name;
 
 /**
- * Hides edit texts (player name entries) that goes beyond the number of players choosen
+ * Hides edit texts (player name entries) that goes beyond the value of number of players
  *
   */
         int numberOfEditTextsToHide = 8 - numberOfPlayers;
