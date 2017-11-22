@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "897674764545",
+    "firebase_url": "https://quickmaths-88869.firebaseio.com",
+    "project_id": "quickmaths-88869",
+    "storage_bucket": "quickmaths-88869.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897674764545:android:faa00ab63f704c91",
+        "android_client_info": {
+          "package_name": "se.iths.apostolidis.quickmaths"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897674764545-an67gfrmvjb70ekisn8hvbpabm4jp0il.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "se.iths.apostolidis.quickmaths",
+            "certificate_hash": "1d3f0439d7bbec8dd8d76b0395594c2e5b66d598"
+          }
+        },
+        {
+          "client_id": "897674764545-d8oujilfci8fgrbfkk82froq1mml5old.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP7za6cbW8hyl4H2Zbkvd7sYo3uMwJN8s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897674764545-d8oujilfci8fgrbfkk82froq1mml5old.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
