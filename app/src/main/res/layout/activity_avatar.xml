@@ -8,15 +8,87 @@
 
 
     <ImageView
-        android:id="@+id/imageViewGubbe"
-        android:layout_width="198dp"
-        android:layout_height="283dp"
+        android:id="@+id/imageViewFace"
+        android:layout_width="350dp"
+        android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.493"
-        app:srcCompat="@drawable/backgroundmain" />
+        app:srcCompat="@drawable/face1" />
+
+    <ImageView
+        android:id="@+id/imageViewEyes"
+        android:layout_width="299dp"
+        android:layout_height="170dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="110dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewFace"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFace"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFace"
+        app:srcCompat="@drawable/eyes" />
+
+    <ImageView
+        android:id="@+id/imageViewMouth"
+        android:layout_width="194dp"
+        android:layout_height="169dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFace"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewFace"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFace"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEyes"
+        app:srcCompat="@drawable/mouth1" />
+
+    <Button
+        android:id="@+id/buttonAboutActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="aboutButton"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewHair"
+        android:layout_width="283dp"
+        android:layout_height="182dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFace"
+        app:srcCompat="@drawable/hair2" />
+
+    <ImageView
+        android:id="@+id/imageViewMouthAccesory"
+        android:layout_width="111dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewMouth"
+        app:layout_constraintStart_toStartOf="@+id/imageViewMouth"
+        app:srcCompat="@drawable/mouthaccesory1" />
+
+    <ImageView
+        android:id="@+id/imageViewScar"
+        android:layout_width="39dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="248dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewFace"
+        app:layout_constraintTop_toTopOf="@+id/imageViewHair"
+        app:srcCompat="@drawable/scar2" />
 
 </android.support.constraint.ConstraintLayout>
