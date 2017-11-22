@@ -25,8 +25,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
 
 
-
-
     //a constant for detecting the login intent result
     private static final int RC_SIGN_IN = 234;
 
@@ -70,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -138,20 +135,10 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-
-    //this method is called on click
     private void signIn() {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
-        //   startActivityForResult(, 100);
-        //getting the google signin intent
-       // Intent signInIntent
-        //Intent i = new Intent(this, MainActivity.class);
-      //  startActivity(i);
-
-        //starting the activity for result
-        //startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 }
