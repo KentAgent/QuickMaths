@@ -101,7 +101,7 @@ public class AvatarActivity extends AppCompatActivity {
         });
 
         scarPictures = getResources().obtainTypedArray(R.array.scar);
-        scar = findViewById(R.id.imageViewScar);
+        scar = findViewById(R.id.imageViewNose);
         scar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
