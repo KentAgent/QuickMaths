@@ -15,7 +15,9 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         map = findViewById(R.id.photo_view);
-      map.setImageResource(R.mipmap.gamemap);
+        map.setImageResource(R.mipmap.gamemap);
+
+        
 
     }
 }

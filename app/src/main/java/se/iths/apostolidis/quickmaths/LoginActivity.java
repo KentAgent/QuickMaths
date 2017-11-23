@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
+
+    ImageView backgroundLogin;
 
 
     //a constant for detecting the login intent result
@@ -42,6 +45,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        backgroundLogin = findViewById(R.id.imageViewBackgroundLogin);
+
+        //Scale background to fit X & Y Axis
+        backgroundLogin.setScaleType(ImageView.ScaleType.FIT_XY);
 
         //first we intialized the FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
@@ -68,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -135,10 +144,20 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+
+    //this method is called on click
     private void signIn() {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
+        //   startActivityForResult(, 100);
+        //getting the google signin intent
+       // Intent signInIntent
+        //Intent i = new Intent(this, MainActivity.class);
+      //  startActivity(i);
+
+        //starting the activity for result
+        //startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 }
