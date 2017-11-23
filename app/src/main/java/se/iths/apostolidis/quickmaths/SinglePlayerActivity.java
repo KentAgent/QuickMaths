@@ -25,21 +25,14 @@ public class SinglePlayerActivity extends AppCompatActivity{
     private CheckBox cEsport;
     private CheckBox cMatte;
     private Button continueButton;
-    private int numberOfPlayers = 1;
+    private int numberOfPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
-        spinnerNumberOfPlayers = (Spinner) findViewById(R.id.spinnerNumberOfPlayers);
-
-        /**
-         * Grabs value of number of players from spinner
-         */
-
-        numberOfPlayers = (int) spinnerNumberOfPlayers.getSelectedItem();
-
+        spinnerNumberOfPlayers = findViewById(R.id.spinnerNumberOfPlayers);
 
         /**
          * Creates an Integer-array, and then fills the spinner with the the array with help of the adapter
@@ -50,13 +43,20 @@ public class SinglePlayerActivity extends AppCompatActivity{
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
         spinnerNumberOfPlayers.setAdapter(adapter);
 
+        /**
+         * Grabs value from of number of players from spinner and casts it to an int
+         */
+        numberOfPlayers = (int) spinnerNumberOfPlayers.getSelectedItem();
+
+
         cHumor = findViewById(R.id.checkBoxHumor);
         cSport = findViewById(R.id.checkBoxSport);
         cFilm = findViewById(R.id.checkBoxFilm);
         cMusik = findViewById(R.id.checkBoxMusik);
         cHistoria = findViewById(R.id.checkBoxHistoria);
         cGeografi = findViewById(R.id.checkBoxGeografi);
-        cRandom = findViewById(R.id.checkBoxEsport);
+        cEsport = findViewById(R.id.checkBoxEsport);
+        cRandom = findViewById(R.id.checkBoxRandom);
         cMatte = findViewById(R.id.checkBoxMatte);
         continueButton = findViewById(R.id.buttonOfflineModeContinue);
 
@@ -71,7 +71,7 @@ public class SinglePlayerActivity extends AppCompatActivity{
 
     public void onClickOfflineModeContinue(){
         Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-        intent.putExtra("numberOfPlayers", spinnerNumberOfPlayers.getSelectedItem().toString());
+        intent.putExtra("numberOfPlayers", numberOfPlayers);
         intent.putExtra("Humor", cHumor.isEnabled());
         intent.putExtra("Sport", cSport.isEnabled());
         intent.putExtra("Film", cFilm.isEnabled());
