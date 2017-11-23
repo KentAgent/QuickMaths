@@ -2,13 +2,10 @@
 <resources>
     <array name="face">
         <item>@drawable/face1</item>
-        <item>@drawable/face2</item>
-        <item>@drawable/face3</item>
-        <item>@drawable/face4</item>
     </array>
 
     <array name="eyes">
-        <item>@drawable/eyes</item>
+        <item>@drawable/eyes1</item>
         <item>@drawable/eyes2</item>
     </array>
 
