@@ -7,6 +7,7 @@
     <array name="eyes">
         <item>@drawable/eyes1</item>
         <item>@drawable/eyes2</item>
+        <item>@drawable/eyes3</item>
     </array>
 
     <array name="mouth">
