@@ -26,4 +26,12 @@
     <string name="mute_sound">Mute Sound</string>
     <string name="account">Account</string>
     <string name="background">Background</string>
+    <string name="done">Done</string>
+    <string name="face">Face</string>
+    <string name="eye">Eye</string>
+    <string name="mouth">Mouth</string>
+    <string name="nose">Nose</string>
+    <string name="hair">Hair</string>
+    <string name="preview">Preview</string>
+    <string name="back">Back</string>
 </resources>

@@ -29,9 +29,9 @@ public class AvatarActivity extends AppCompatActivity {
     private TypedArray mouthAccesoryPictures;
     private int mouthAccesoryCount = 0;
 
-    private ImageView scar;
-    private TypedArray scarPictures;
-    private int scarCount = 0;
+    private ImageView nose;
+    private TypedArray nosePictures;
+    private int noseCount = 0;
 
 
     @Override
@@ -42,80 +42,77 @@ public class AvatarActivity extends AppCompatActivity {
 
         facePictures = getResources().obtainTypedArray(R.array.face);
         face = findViewById(R.id.imageViewFace);
-        face.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                faceCount++;
-                if( faceCount > facePictures.length()-1)
-                    faceCount = 0;
-                face.setImageResource(facePictures.getResourceId(faceCount, 0));
-            }
-        });
 
         eyesPictures = getResources().obtainTypedArray(R.array.eyes);
         eyes = findViewById(R.id.imageViewEyes);
-        eyes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                eyesCount++;
-                if( eyesCount > eyesPictures.length()-1)
-                    eyesCount = 0;
-                eyes.setImageResource(eyesPictures.getResourceId(eyesCount, 0));
-            }
-        });
 
         mouthPictures = getResources().obtainTypedArray(R.array.mouth);
         mouth = findViewById(R.id.imageViewMouth);
-        mouth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mouthCount++;
-                if( mouthCount > mouthPictures.length()-1)
-                    mouthCount = 0;
-                mouth.setImageResource(mouthPictures.getResourceId(mouthCount, 0));
-            }
-        });
 
         hairPictures = getResources().obtainTypedArray(R.array.hair);
         hair = findViewById(R.id.imageViewHair);
-        hair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hairCount++;
-                if( hairCount > hairPictures.length()-1)
-                    hairCount = 0;
-                hair.setImageResource(hairPictures.getResourceId(hairCount, 0));
-            }
-        });
 
         mouthAccesoryPictures = getResources().obtainTypedArray(R.array.mouthaccesory);
         mouthAccesory = findViewById(R.id.imageViewMouthAccesory);
-        mouthAccesory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mouthAccesoryCount++;
-                if( mouthAccesoryCount > mouthAccesoryPictures.length()-1)
-                    mouthAccesoryCount = 0;
-                mouthAccesory.setImageResource(mouthAccesoryPictures.getResourceId(mouthAccesoryCount, 0));
-            }
-        });
 
-        scarPictures = getResources().obtainTypedArray(R.array.scar);
-        scar = findViewById(R.id.imageViewNose);
-        scar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                scarCount++;
-                if( scarCount > scarPictures.length()-1)
-                    scarCount = 0;
-                scar.setImageResource(scarPictures.getResourceId(scarCount, 0));
-            }
-        });
+        nosePictures = getResources().obtainTypedArray(R.array.scar);
+        nose = findViewById(R.id.imageViewNose);
     }
 
-    public void aboutButton (View view) {
+    public void faceButton (View view) {
+        faceCount++;
+        if (faceCount > facePictures.length() - 1)
+            faceCount = 0;
+        face.setImageResource(facePictures.getResourceId(faceCount, 0));
+            }
+
+
+
+    public void mouthButton (View view) {
+        mouthCount++;
+        if( mouthCount > mouthPictures.length()-1)
+            mouthCount = 0;
+        mouth.setImageResource(mouthPictures.getResourceId(mouthCount, 0));
+        }
+
+
+    public void eyeRighthButton (View view) {
+        eyesCount++;
+        if (eyesCount > eyesPictures.length() - 1)
+            eyesCount = 0;
+        eyes.setImageResource(eyesPictures.getResourceId(eyesCount, 0));
+            }
+
+    public void eyeLeftButton (View view) {
+        mouthAccesoryCount++;
+        if( mouthAccesoryCount > mouthAccesoryPictures.length()-1)
+            mouthAccesoryCount = 0;
+        mouthAccesory.setImageResource(mouthAccesoryPictures.getResourceId(mouthAccesoryCount, 0));
+            }
+
+    public void hairButton (View view) {
+        hairCount++;
+        if( hairCount > hairPictures.length()-1)
+            hairCount = 0;
+        hair.setImageResource(hairPictures.getResourceId(hairCount, 0));
+            }
+
+    public void noseButton (View view) {
+        noseCount++;
+        if( noseCount > nosePictures.length()-1)
+            noseCount = 0;
+        nose.setImageResource(nosePictures.getResourceId(noseCount, 0));
+            }
+
+    public void backButton (View view) {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
+
+    public void previewButton (View view) {
+
+    }
+
+
 
 }
