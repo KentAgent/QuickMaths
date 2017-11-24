@@ -30,10 +30,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         answer_2 = findViewById(R.id.editTextSecondAnswer);
         answer_3 = findViewById(R.id.editTextThirdAnswer);
         answer_4 = findViewById(R.id.editTextFourthAnswer);
-
         database = DBHelper.getInstance(this);
-
-
 
     }
 
