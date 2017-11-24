@@ -49,17 +49,120 @@
         app:srcCompat="@drawable/mouth1" />
 
     <Button
+        android:id="@+id/buttonEyeLeft"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="eyeLeftButton"
+        android:text="@string/eye"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNose"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEyeRight"
+        app:layout_constraintStart_toEndOf="@+id/buttonFace" />
+
+    <Button
+        android:id="@+id/buttonNose"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="noseButton"
+        android:text="@string/nose"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonHair"
+        app:layout_constraintStart_toEndOf="@+id/buttonMouth" />
+
+    <Button
+        android:id="@+id/buttonFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="faceButton"
+        android:text="@string/face"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMouth"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMouth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="mouthButton"
+        android:text="@string/mouth"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEyeRight"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="eyeRighthButton"
+        android:text="@string/eye"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonHair"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPreview" />
+
+    <Button
+        android:id="@+id/buttonHair"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="hairButton"
+        android:text="@string/hair"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAboutActivity" />
+
+    <Button
+        android:id="@+id/buttonPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="previewButton"
+        android:text="@string/preview"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAboutActivity"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
         android:id="@+id/buttonAboutActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="aboutButton"
-        android:text="Button"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="backButton"
+        android:text="@string/back"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewHair"
@@ -78,7 +181,7 @@
         android:layout_width="111dp"
         android:layout_height="75dp"
         android:layout_marginBottom="36dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewMouth"
         app:layout_constraintStart_toStartOf="@+id/imageViewMouth"
         app:srcCompat="@drawable/mouthaccesory1" />
