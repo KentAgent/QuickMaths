@@ -7,11 +7,12 @@
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.GameActivity">
 
-    <com.github.chrisbanes.photoview.PhotoView
+    <se.iths.apostolidis.quickmaths.MPhotoView
         android:id="@+id/photo_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@mipmap/gamemap" />
+        android:layout_height="match_parent" />
+
+
 </android.support.constraint.ConstraintLayout>
 
 

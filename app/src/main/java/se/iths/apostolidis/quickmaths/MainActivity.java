@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView start;
     private ImageButton account;
     private ImageButton settings;
-
-
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
 
