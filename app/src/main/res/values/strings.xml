@@ -26,4 +26,17 @@
     <string name="mute_sound">Mute Sound</string>
     <string name="account">Account</string>
     <string name="background">Background</string>
+    <string name="choose_categories">Choose categories:</string>
+    <string name="how_many_players">How many players:</string>
+    <string name="start_new_offline_game">Start new offline game</string>
+    <string name="cHumor">Humor</string>
+    <string name="cSport">Sport</string>
+    <string name="cFilm">Film</string>
+    <string name="cMusic">Music</string>
+    <string name="cHistory">History</string>
+    <string name="cGeography">Geography</string>
+    <string name="cRandom">Random</string>
+    <string name="cEsport">E-sport</string>
+    <string name="cMath">Math</string>
+    <string name="editTextPlayerNamesWidth">150dp</string>
 </resources>
