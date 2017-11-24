@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "897674764545-8utsq0ruvl28nguhc22ttpuk9a9tecms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "se.iths.apostolidis.quickmaths",
+            "certificate_hash": "434393bc2306f8ef334774496520fcad346afd71"
+          }
+        },
+        {
+          "client_id": "897674764545-tdpu7l8muu5ccfb2s5uuh4etu83drum1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "se.iths.apostolidis.quickmaths",
+            "certificate_hash": "61390f48cc474ddd17ff715c1dc8fde3e5b9aee4"
+          }
+        },
+        {
           "client_id": "897674764545-an67gfrmvjb70ekisn8hvbpabm4jp0il.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
