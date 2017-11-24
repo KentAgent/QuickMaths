@@ -100,21 +100,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickSinglePlayer(View view) {
         Intent intent = new Intent(this, SinglePlayerActivity.class);
+        muteBtn.setVisibility(View.INVISIBLE);
+        infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 
     public void onClickMultiplayer(View view) {
         Intent intent = new Intent(this, MultiplayerActivity.class);
+        muteBtn.setVisibility(View.INVISIBLE);
+        infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 
     public void onClickFriends(View view) {
         Intent intent = new Intent(this, FriendsActivity.class);
+        muteBtn.setVisibility(View.INVISIBLE);
+        infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 
     public void onClickAddQuestion(View view) {
         Intent intent = new Intent(this, AddQuestionActivity.class);
+        muteBtn.setVisibility(View.INVISIBLE);
+        infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 
@@ -122,23 +130,36 @@ public class MainActivity extends AppCompatActivity {
         if (muteBtn.getVisibility() == View.INVISIBLE) {
             muteBtn.setVisibility(View.VISIBLE);
             infoButton.setVisibility(View.VISIBLE);
+
         }
         else {
             muteBtn.setVisibility(View.INVISIBLE);
             infoButton.setVisibility(View.INVISIBLE);
+
         }
     }
 
     public void onClickAbout(View view) {
         Intent intent = new Intent(this, AboutActivity.class);
+        muteBtn.setVisibility(View.INVISIBLE);
+        infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 
     public void onClickImageButtonAbout(View view) {
-        if (aboutUs.getVisibility() == View.INVISIBLE)
+        if (aboutUs.getVisibility() == View.INVISIBLE) {
             aboutUs.setVisibility(View.VISIBLE);
+            addQuestionButton.setClickable(false);
+            singlePlayerButton.setClickable(false);
+            multiplayerButton.setClickable(false);
+            aboutButton.setClickable(false);
+            friendsButton.setClickable(false);
+
+        }
         else
             aboutUs.setVisibility(View.INVISIBLE);
+
+
     }
 
     public void onClickImageViewBackground(View view) {
@@ -146,6 +167,11 @@ public class MainActivity extends AppCompatActivity {
             aboutUs.setVisibility(View.INVISIBLE);
             muteBtn.setVisibility(View.INVISIBLE);
             infoButton.setVisibility(View.INVISIBLE);
+            addQuestionButton.setClickable(true);
+            singlePlayerButton.setClickable(true);
+            multiplayerButton.setClickable(true);
+            aboutButton.setClickable(true);
+            friendsButton.setClickable(true);
         }
     }
 
