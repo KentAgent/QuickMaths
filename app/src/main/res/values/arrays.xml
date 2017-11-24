@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="face">
-        <item>@drawable/face1</item>
-    </array>
-
-    <array name="eyes">
-        <item>@drawable/eyes1</item>
-        <item>@drawable/eyes2</item>
-        <item>@drawable/eyes3</item>
+        <item>@drawable/face2</item>
     </array>
 
     <array name="mouth">
@@ -20,13 +14,18 @@
         <item>@drawable/hair2</item>
     </array>
 
-    <array name="scar">
-        <item>@drawable/scar1</item>
-        <item>@drawable/scar2</item>
+    <array name="nose">
+        <item>@drawable/nose1</item>
+        <item>@drawable/nose2</item>
     </array>
 
-    <array name="mouthaccesory">
-        <item>@drawable/mouthaccesory1</item>
-        <item>@drawable/mouthaccesory2</item>
+    <array name="lefteye">
+        <item>@drawable/eyeleft1</item>
+        <item>@drawable/eyeleft2</item>
+    </array>
+
+    <array name="righteye">
+        <item>@drawable/eyeright1</item>
+        <item>@drawable/eyeright2</item>
     </array>
 </resources>
