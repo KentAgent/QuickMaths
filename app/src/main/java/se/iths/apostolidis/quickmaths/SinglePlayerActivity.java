@@ -27,6 +27,7 @@ public class SinglePlayerActivity extends AppCompatActivity{
     Button continueButton;
     ScrollableNumberPicker snp;
     int numberOfPlayers;
+    boolean[] booleanArrayCategories = new boolean[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class SinglePlayerActivity extends AppCompatActivity{
         cRandom = findViewById(R.id.checkBoxRandom);
         cMath = findViewById(R.id.checkBoxMath);
 
-        continueButton = findViewById(R.id.buttonOfflineModeContinue);
+        continueButton = (Button) findViewById(R.id.buttonOfflineModeContinue);
         snp = findViewById(R.id.scrollableNumberPickerNumberOfPlayers);
 
     }
@@ -55,7 +56,6 @@ public class SinglePlayerActivity extends AppCompatActivity{
      */
     public void onClickContinueButton(View view){
 
-        boolean[] booleanArrayCategories = new boolean[9];
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
         booleanArrayCategories[2] = cFilm.isChecked();
