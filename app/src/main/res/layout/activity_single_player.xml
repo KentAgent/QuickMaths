@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
@@ -13,7 +13,7 @@
         android:layout_marginBottom="18dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/indie_flower"
-        android:text="Start new offline game"
+        android:text="@string/start_new_offline_game"
         android:textAlignment="center"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -24,147 +24,161 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="14sp"
         android:fontFamily="@font/indie_flower"
-        android:text="How many players:"
+        android:text="@string/how_many_players"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold" />
 
-    <Spinner
-        android:id="@+id/spinnerNumberOfPlayers"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
+    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+        android:id="@+id/scrollableNumberPickerNumberOfPlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8sp">
-    </Spinner>
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/number_picker_bg_color"
+        app:snp_value="1"
+        app:snp_maxValue="8"
+        app:snp_minValue="1"
+        app:snp_stepSize="1"
+        app:snp_buttonTouchScaleFactor="0.8"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:fontFamily="@font/indie_flower"
-        android:text="Choose categories:"
+        android:text="@string/choose_categories"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="18dp"
-        android:layout_marginBottom="18dp">
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal">
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxHumor"
-            android:layout_width="90dp"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Humor" />
+            android:layout_marginBottom="18dp"
+            android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxSport"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Sport" />
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxHumor"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cHumor"
+                app:buttonTint="@color/checkboxColor"/>
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxFilm"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Film" />
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxSport"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cSport"
+                app:buttonTint="@color/checkboxColor" />
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxMusik"
-            android:layout_width="90dp"
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxFilm"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cFilm"
+                app:buttonTint="@color/checkboxColor"/>/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Musik" />
+            android:layout_width="match_parent"
+            android:layout_marginBottom="18dp">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxMusic"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cMusic"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxHistory"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cHistory"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxGeography"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cGeography"
+                app:buttonTint="@color/checkboxColor"/>
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxRandom"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cRandom"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxEsport"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cEsport"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxMath"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cMath"
+                app:buttonTint="@color/checkboxColor"/>
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <Button
+                android:id="@+id/buttonSelectAllCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClickSelectAllCategoriesButton"
+                android:text="Select all categories"
+                android:textAlignment="center"
+                android:textSize="10dp" />
+        </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="18dp"
-        android:layout_marginBottom="18dp">
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxHistoria"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Historia" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxGeografi"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Geografi" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxRandom"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Random" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxEsport"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="E-sport" />
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="18dp">
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkBoxMatte"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Matte" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkboxGeografi"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Geografi" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Film" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/indie_flower"
-            android:text="Musik" />
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="18dp">
+        android:layout_width="match_parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="42sp"
-            android:layout_marginBottom="18dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/indie_flower"
             android:text="Your categories"
             android:textAlignment="center"
@@ -182,9 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="18dp"
-            android:layout_marginTop="26dp"
-            android:onClick="onClick"
+            android:onClick="onClickContinueButton"
             android:text="Continue"
             android:textAlignment="center"
             android:textSize="20sp" />

@@ -3,10 +3,11 @@ package se.iths.apostolidis.quickmaths;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Spinner;
+
+import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
 /**
  * Created by Apostolidis on 2017-11-14.
@@ -14,74 +15,77 @@ import android.widget.Spinner;
 
 public class SinglePlayerActivity extends AppCompatActivity{
 
-    private Spinner spinnerNumberOfPlayers;
-    private CheckBox cHumor;
-    private CheckBox cSport;
-    private CheckBox cFilm;
-    private CheckBox cMusik;
-    private CheckBox cHistoria;
-    private CheckBox cGeografi;
-    private CheckBox cRandom;
-    private CheckBox cEsport;
-    private CheckBox cMatte;
-    private Button continueButton;
-    private int numberOfPlayers;
+    CheckBox cHumor;
+    CheckBox cSport;
+    CheckBox cFilm;
+    CheckBox cMusic;
+    CheckBox cHistory;
+    CheckBox cGeography;
+    CheckBox cRandom;
+    CheckBox cEsport;
+    CheckBox cMath;
+    Button continueButton;
+    ScrollableNumberPicker snp;
+    int numberOfPlayers;
+    boolean[] booleanArrayCategories = new boolean[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
-        spinnerNumberOfPlayers = findViewById(R.id.spinnerNumberOfPlayers);
-
-        /**
-         * Creates an Integer-array, and then fills the spinner with the the array with help of the adapter
-         *
-         */
-
-        Integer[] items = new Integer[]{1,2,3,4,5,6,7,8};
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
-        spinnerNumberOfPlayers.setAdapter(adapter);
-
-        /**
-         * Grabs value from of number of players from spinner and casts it to an int
-         */
-        numberOfPlayers = (int) spinnerNumberOfPlayers.getSelectedItem();
-
-
         cHumor = findViewById(R.id.checkBoxHumor);
         cSport = findViewById(R.id.checkBoxSport);
         cFilm = findViewById(R.id.checkBoxFilm);
-        cMusik = findViewById(R.id.checkBoxMusik);
-        cHistoria = findViewById(R.id.checkBoxHistoria);
-        cGeografi = findViewById(R.id.checkBoxGeografi);
+        cMusic = findViewById(R.id.checkBoxMusic);
+        cHistory = findViewById(R.id.checkBoxHistory);
+        cGeography = findViewById(R.id.checkBoxGeography);
         cEsport = findViewById(R.id.checkBoxEsport);
         cRandom = findViewById(R.id.checkBoxRandom);
-        cMatte = findViewById(R.id.checkBoxMatte);
-        continueButton = findViewById(R.id.buttonOfflineModeContinue);
+        cMath = findViewById(R.id.checkBoxMath);
 
-        //database = DBHelper.getInstance(this);
+        continueButton = (Button) findViewById(R.id.buttonOfflineModeContinue);
+        snp = findViewById(R.id.scrollableNumberPickerNumberOfPlayers);
 
     }
-
     /**
-     * Creates an intent when the continue-button is being clicked. Then sends a boolean value for every checkbox.
-     * Also sends the value the spinner, which is number of players.
+     * When clicking on continue button:
+     * creates intent and puts an array with boolean values of checkbox checked
+     * and value of number of players from scrollable number picker
+     * goes to OfflineModeSetupActivity where players chooses names and avatars
      */
+    public void onClickContinueButton(View view){
 
-    public void onClickOfflineModeContinue(){
+        booleanArrayCategories[0] = cHumor.isChecked();
+        booleanArrayCategories[1] = cSport.isChecked();
+        booleanArrayCategories[2] = cFilm.isChecked();
+        booleanArrayCategories[3] = cMusic.isChecked();
+        booleanArrayCategories[4] = cHistory.isChecked();
+        booleanArrayCategories[5] = cGeography.isChecked();
+        booleanArrayCategories[6] = cEsport.isChecked();
+        booleanArrayCategories[7] = cRandom.isChecked();
+        booleanArrayCategories[8] = cMath.isChecked();
+
+        numberOfPlayers = snp.getValue();
+
         Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+        intent.putExtra("booleanArrayCategories", booleanArrayCategories);
         intent.putExtra("numberOfPlayers", numberOfPlayers);
-        intent.putExtra("Humor", cHumor.isEnabled());
-        intent.putExtra("Sport", cSport.isEnabled());
-        intent.putExtra("Film", cFilm.isEnabled());
-        intent.putExtra("Musik", cMusik.isEnabled());
-        intent.putExtra("Historia", cHistoria.isEnabled());
-        intent.putExtra("Geografi", cGeografi.isEnabled());
-        intent.putExtra("Random", cGeografi.isEnabled());
-        intent.putExtra("Matte", cMatte.isEnabled());
         startActivity(intent);
     }
 
+    public void onClickSelectAllCategoriesButton(View view) {
 
+        cHumor.setChecked(true);
+        cSport.setChecked(true);
+        cFilm.setChecked(true);
+        cMusic.setChecked(true);
+        cHistory.setChecked(true);
+        cGeography.setChecked(true);
+        cEsport.setChecked(true);
+        cRandom.setChecked(true);
+        cMath.setChecked(true);
+    }
+
+    //database = DBHelper.getInstance(this)
 }
