@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
+import android.widget.ImageView;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -26,7 +27,8 @@ public class MPhotoView extends PhotoView {
     private Point[] coordinatesX = new Point[gridSize];
     private int maxX;
     private int maxY;
-    private Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.eyes);
+    private Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
+    private Bitmap startSquare = BitmapFactory.decodeResource(getResources(), R.drawable.arrowright);
     Paint paint = new Paint(Color.BLACK);
 
 
@@ -67,11 +69,14 @@ public class MPhotoView extends PhotoView {
         Log.d("Wille", String.valueOf(canvas.getHeight()));
 
         canvas.save();
+
+
         super.onDraw(canvas);
         canvas.restore();
 
         drawPoint(canvas);
 
+        //canvas.setMatrix(this.getAttacher().getImageMatrix());
         //gridCoordinates(canvas);
         canvas.setMatrix(this.getAttacher().getImageMatrix());
         bror(canvas);
@@ -79,6 +84,16 @@ public class MPhotoView extends PhotoView {
     }
 
     public void drawPoint (Canvas canvas){
+        paint.setStrokeWidth(30);
+        canvas.save();
+        canvas.drawLine(0,0, 200, 200, paint);
+        canvas.restore();
+
+        canvas.save();
+        canvas.setMatrix(this.getAttacher().getImageMatrix());
+        Bitmap bm = startSquare.createScaledBitmap(startSquare, 100, 100, false);
+        canvas.drawBitmap(bm, 170, 1530, null);
+        canvas.restore();
 
         canvas.save();
         canvas.setMatrix(this.getAttacher().getImageMatrix());
@@ -141,7 +156,7 @@ public class MPhotoView extends PhotoView {
         for (int j = 0; j < gridSize; j++) {
             canvas.save();
             //canvas.drawRect(new Rect(coordinatesX[i].x, (coordinatesX[i].x + 20), 50, 100), new Paint(Color.BLACK));
-            canvas.drawCircle(0, incrementY, 10, new Paint(Color.BLACK));
+            canvas.drawCircle(50,  incrementY, 10, new Paint(Color.BLACK));
             canvas.restore();
             incrementY += spaceY;
             incrementX = 0;

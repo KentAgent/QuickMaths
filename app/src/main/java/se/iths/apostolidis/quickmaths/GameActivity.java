@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
     private Point[] coordinatesY = new Point[gridSize];
     private int maxX;
     private int maxY;
-   // private View view = new View(this);
+    // private View view = new View(this);
     //private Bitmap bitmap = Bitmap.createBitmap(maxX, maxY, Bitmap.Config.ARGB_8888);
 
 
@@ -54,7 +54,6 @@ public class GameActivity extends AppCompatActivity {
     private Paint paint;
     private GameEngine engine;
     private ImageView drawView;
-    private CoordinateGrid grid;
     private Bitmap bitmap;
 
     //private CoordinateGrid grid = new CoordinateGrid(this);
@@ -64,12 +63,13 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         map = findViewById(R.id.photo_view);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.eyes);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point displaySize = new Point();
         display.getSize(displaySize);
         Log.d("Wille", displaySize.toString());
+
         maxY = displaySize.y;
         maxX = displaySize.x;
 
@@ -95,7 +95,9 @@ public class GameActivity extends AppCompatActivity {
         }
         map.setCoordinatesX(coordinatesX);
         map.setCoordinatesY(coordinatesY);
+        map.setScaleType(PhotoView.ScaleType.FIT_XY);
         map.setImageResource(R.mipmap.gamemap);
+
 
     }
 
