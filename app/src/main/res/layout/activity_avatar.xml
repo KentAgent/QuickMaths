@@ -16,8 +16,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497"
-        app:srcCompat="@drawable/face1" />
+        app:layout_constraintVertical_bias="0.414"
+        app:srcCompat="@drawable/face2" />
 
     <ImageView
         android:id="@+id/imageViewLeftEye"
@@ -266,16 +266,16 @@
         android:layout_height="179dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hair2" />
+        app:srcCompat="@drawable/hair1" />
 
     <ImageView
         android:id="@+id/imageViewNose"
         android:layout_width="63dp"
-        android:layout_height="79dp"
+        android:layout_height="74dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
@@ -283,6 +283,6 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewLeftEye"
-        app:srcCompat="@drawable/nose2" />
+        app:srcCompat="@drawable/nose1" />
 
 </android.support.constraint.ConstraintLayout>

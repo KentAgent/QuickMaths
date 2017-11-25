@@ -7,6 +7,9 @@
     <array name="mouth">
         <item>@drawable/mouth1</item>
         <item>@drawable/mouth2</item>
+        <item>@drawable/mouth3</item>
+        <item>@drawable/mouth4</item>
+        <item>@drawable/mouth5</item>
     </array>
 
     <array name="hair">
@@ -22,10 +25,16 @@
     <array name="eyeleft">
         <item>@drawable/eyeleft1</item>
         <item>@drawable/eyeleft2</item>
+        <item>@drawable/eyeleft3</item>
+        <item>@drawable/eyeleft4</item>
+        <item>@drawable/eyeleft5</item>
     </array>
 
     <array name="eyeright">
         <item>@drawable/eyeright1</item>
         <item>@drawable/eyeright2</item>
+        <item>@drawable/eyeright3</item>
+        <item>@drawable/eyeright4</item>
+        <item>@drawable/eyeright5</item>
     </array>
 </resources>
