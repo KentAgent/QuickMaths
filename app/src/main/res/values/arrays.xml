@@ -19,12 +19,12 @@
         <item>@drawable/nose2</item>
     </array>
 
-    <array name="lefteye">
+    <array name="eyeleft">
         <item>@drawable/eyeleft1</item>
         <item>@drawable/eyeleft2</item>
     </array>
 
-    <array name="righteye">
+    <array name="eyeright">
         <item>@drawable/eyeright1</item>
         <item>@drawable/eyeright2</item>
     </array>
