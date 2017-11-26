@@ -35,7 +35,7 @@ public class AvatarActivity extends AppCompatActivity {
     private TypedArray nosePictures;
     private int noseCount = 0;
 
-    Random random;
+    private final Random random = new Random();
 
 
     @Override
@@ -43,25 +43,8 @@ public class AvatarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar);
 
-        hairPictures = getResources().obtainTypedArray(R.array.hair);
-        hair = findViewById(R.id.imageViewHair);
+        startAvatar();
 
-        facePictures = getResources().obtainTypedArray(R.array.face);
-        face = findViewById(R.id.imageViewFace);
-
-        eyeLeftPictures = getResources().obtainTypedArray(R.array.eyeleft);
-        eyeLeft = findViewById(R.id.imageViewLeftEye);
-
-        eyeRightPictures = getResources().obtainTypedArray(R.array.eyeright);
-        eyeRight = findViewById(R.id.imageViewRightEye);
-
-        nosePictures = getResources().obtainTypedArray(R.array.nose);
-        nose = findViewById(R.id.imageViewNose);
-
-        mouthPictures = getResources().obtainTypedArray(R.array.mouth);
-        mouth = findViewById(R.id.imageViewMouth);
-
-        random = new Random();
     }
 
     public void onClickFaceRight(View view) {
@@ -155,6 +138,37 @@ public class AvatarActivity extends AppCompatActivity {
 
     public void onClickPreview(View view) {
 
+    }
+
+    public void startAvatar () {
+        hairPictures = getResources().obtainTypedArray(R.array.hair);
+        hair = findViewById(R.id.imageViewHair);
+        hairCount = random.nextInt(hairPictures.length());
+        hair.setImageResource(hairPictures.getResourceId(hairCount, 0));
+
+        facePictures = getResources().obtainTypedArray(R.array.face);
+        face = findViewById(R.id.imageViewFace);
+        faceCount = random.nextInt(facePictures.length());
+        face.setImageResource(facePictures.getResourceId(faceCount, 0));
+
+        eyeLeftPictures = getResources().obtainTypedArray(R.array.eyeleft);
+        eyeLeft = findViewById(R.id.imageViewLeftEye);
+        eyeLeftCount = random.nextInt(eyeLeftPictures.length());
+        eyeLeft.setImageResource(eyeLeftPictures.getResourceId(eyeLeftCount, 0));
+
+        eyeRightPictures = getResources().obtainTypedArray(R.array.eyeright);
+        eyeRight = findViewById(R.id.imageViewRightEye);
+        eyeRight.setImageResource(eyeRightPictures.getResourceId(eyeLeftCount, 0));
+
+        nosePictures = getResources().obtainTypedArray(R.array.nose);
+        nose = findViewById(R.id.imageViewNose);
+        noseCount = random.nextInt(nosePictures.length());
+        nose.setImageResource(nosePictures.getResourceId(noseCount, 0));
+
+        mouthPictures = getResources().obtainTypedArray(R.array.mouth);
+        mouth = findViewById(R.id.imageViewMouth);
+        mouthCount = random.nextInt(mouthPictures.length());
+        mouth.setImageResource(mouthPictures.getResourceId(mouthCount, 0));
     }
 
     public void onClickRandom(View view) {

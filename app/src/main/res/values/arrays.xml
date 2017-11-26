@@ -2,6 +2,10 @@
 <resources>
     <array name="face">
         <item>@drawable/face1</item>
+        <item>@drawable/face2</item>
+        <item>@drawable/face3</item>
+        <item>@drawable/face4</item>
+        <item>@drawable/face5</item>
     </array>
 
     <array name="mouth">
@@ -16,6 +20,8 @@
         <item>@drawable/hair1</item>
         <item>@drawable/hair2</item>
         <item>@drawable/hair3</item>
+        <item>@drawable/hair4</item>
+        <item>@drawable/hair5</item>
     </array>
 
     <array name="nose">
