@@ -33,10 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //Tag for the logs optional
     private static final String TAG = "Kakashidota";
-
     //creating a GoogleSignInClient object
     GoogleSignInClient mGoogleSignInClient;
-
     //And also a Firebase Auth object
     FirebaseAuth mAuth;
     private GoogleSignInOptions gso;

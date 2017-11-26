@@ -9,13 +9,13 @@ public class GameActivity extends AppCompatActivity {
 
     PhotoView map;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         map = findViewById(R.id.photo_view);
         map.setImageResource(R.mipmap.gamemap);
-
 
     }
 }
