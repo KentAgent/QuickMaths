@@ -10,49 +10,44 @@
 
     <ImageView
         android:id="@+id/imageViewFace"
-        android:layout_width="270dp"
-        android:layout_height="374dp"
+        android:layout_width="343dp"
+        android:layout_height="509dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414"
-        app:srcCompat="@drawable/face2" />
+        app:layout_constraintVertical_bias="0.089999974"
+        app:srcCompat="@drawable/face1" />
 
     <ImageView
         android:id="@+id/imageViewLeftEye"
-        android:layout_width="85dp"
-        android:layout_height="104dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginLeft="100dp"
+        android:layout_width="111dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="206dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/eyeleft1" />
 
     <ImageView
         android:id="@+id/imageViewRightEye"
-        android:layout_width="85dp"
-        android:layout_height="104dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="200dp"
+        android:layout_width="110dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="85dp"
         android:layout_marginTop="206dp"
         android:adjustViewBounds="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/eyeright1" />
 
     <ImageView
         android:id="@+id/imageViewMouth"
-        android:layout_width="131dp"
-        android:layout_height="82dp"
+        android:layout_width="224dp"
+        android:layout_height="178dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewNose"
         app:srcCompat="@drawable/mouth1" />
@@ -262,25 +257,24 @@
 
     <ImageView
         android:id="@+id/imageViewHair"
-        android:layout_width="286dp"
-        android:layout_height="179dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="377dp"
+        android:layout_height="514dp"
+        android:layout_marginEnd="11dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hair1" />
 
     <ImageView
         android:id="@+id/imageViewNose"
-        android:layout_width="63dp"
-        android:layout_height="74dp"
+        android:layout_width="80dp"
+        android:layout_height="117dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewLeftEye"
         app:srcCompat="@drawable/nose1" />
