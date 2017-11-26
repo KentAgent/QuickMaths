@@ -57,6 +57,11 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 
+    public void avatarButton(View view) {
+        Intent intent = new Intent(getApplicationContext(), AvatarActivity.class);
+        startActivity(intent);
+    }
+
     public void onClickGameActivity(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);

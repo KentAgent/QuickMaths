@@ -3,7 +3,7 @@
     package="se.iths.apostolidis.quickmaths">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,16 +19,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".QuestionActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".SettingsActivty" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MultiplayerActivity" />
         <activity android:name=".AddQuestionActivity" />
         <activity android:name=".SinglePlayerActivity" />
         <activity android:name=".FriendsActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".CopyDbActivity"></activity>
+        <activity android:name=".CopyDbActivity" />
+        <activity android:name=".OfflineModeSetupActivity"/>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AvatarActivity"></activity>
     </application>
 
 </manifest>

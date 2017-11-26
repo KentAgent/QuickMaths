@@ -1,6 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/start_new_offline_game"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14sp"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/how_many_players"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+        android:id="@+id/scrollableNumberPickerNumberOfPlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/number_picker_bg_color"
+        app:snp_value="1"
+        app:snp_maxValue="8"
+        app:snp_minValue="1"
+        app:snp_stepSize="1"
+        app:snp_buttonTouchScaleFactor="0.8"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/choose_categories"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxHumor"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cHumor"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxSport"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cSport"
+                app:buttonTint="@color/checkboxColor" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxFilm"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cFilm"
+                app:buttonTint="@color/checkboxColor"/>/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="18dp">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxMusic"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cMusic"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxHistory"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cHistory"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxGeography"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cGeography"
+                app:buttonTint="@color/checkboxColor"/>
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxRandom"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cRandom"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxEsport"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cEsport"
+                app:buttonTint="@color/checkboxColor"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxMath"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/indie_flower"
+                android:text="@string/cMath"
+                app:buttonTint="@color/checkboxColor"/>
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <Button
+                android:id="@+id/buttonSelectAllCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClickSelectAllCategoriesButton"
+                android:text="Select all categories"
+                android:textAlignment="center"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42sp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/indie_flower"
+            android:text="Your categories"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/buttonOfflineModeContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClickContinueButton"
+            android:text="Continue"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>
