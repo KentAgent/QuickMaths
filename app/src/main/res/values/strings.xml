@@ -39,4 +39,13 @@
     <string name="cEsport">E-sport</string>
     <string name="cMath">Math</string>
     <string name="editTextPlayerNamesWidth">150dp</string>
+    <string name="done">Done</string>
+    <string name="face">Face</string>
+    <string name="eye">Eye</string>
+    <string name="mouth">Mouth</string>
+    <string name="nose">Nose</string>
+    <string name="hair">Hair</string>
+    <string name="preview">Preview</string>
+    <string name="back">Back</string>
+    <string name="random">Random</string>
 </resources>

@@ -4,96 +4,279 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.AvatarActivity">
+    tools:context="se.iths.apostolidis.quickmaths.AvatarActivity"
+    android:background="@drawable/backgroundmainlight">
 
 
     <ImageView
         android:id="@+id/imageViewFace"
-        android:layout_width="350dp"
-        android:layout_height="475dp"
+        android:layout_width="343dp"
+        android:layout_height="509dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493"
+        app:layout_constraintVertical_bias="0.089999974"
         app:srcCompat="@drawable/face1" />
 
     <ImageView
-        android:id="@+id/imageViewEyes"
-        android:layout_width="252dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="148dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewFace"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="@+id/imageViewFace"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFace"
-        app:srcCompat="@drawable/eyes1" />
+        android:id="@+id/imageViewLeftEye"
+        android:layout_width="111dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="206dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/eyeleft1" />
+
+    <ImageView
+        android:id="@+id/imageViewRightEye"
+        android:layout_width="110dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginTop="206dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/eyeright1" />
 
     <ImageView
         android:id="@+id/imageViewMouth"
-        android:layout_width="194dp"
-        android:layout_height="169dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="224dp"
+        android:layout_height="178dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFace"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewFace"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/imageViewFace"
-        app:layout_constraintTop_toTopOf="@+id/imageViewEyes"
-        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewNose"
         app:srcCompat="@drawable/mouth1" />
+
+    <Button
+        android:id="@+id/buttonEyeLeftLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickLeftEyeLeft"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFaceLeft" />
+
+    <Button
+        android:id="@+id/buttonEyeLeftRight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickLeftEyeRight"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFaceRight" />
+
+    <Button
+        android:id="@+id/buttonNoseLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickNoseLeft"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEyeRightLeft" />
+
+    <Button
+        android:id="@+id/buttonNoseRight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickNoseRight"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEyeRightLeft2" />
+
+    <Button
+        android:id="@+id/buttonHairRight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickHairRight"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonFaceLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickFaceLeft"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHairLeft" />
+
+    <Button
+        android:id="@+id/buttonFaceRight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickFaceRight"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHairRight" />
+
+    <Button
+        android:id="@+id/buttonMouthLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickMouthLeft"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNoseLeft" />
+
+    <Button
+        android:id="@+id/buttonMouthLeft2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickMouthRight"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNoseRight" />
+
+    <Button
+        android:id="@+id/buttonEyeRightLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickRightEyeLeft"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEyeLeftLeft" />
+
+    <Button
+        android:id="@+id/buttonEyeRightLeft2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrowright"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickRightEyeRight"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEyeLeftRight" />
+
+    <Button
+        android:id="@+id/buttonHairLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/arrowleft"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickHairLeft"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickPreview"
+        android:text="@string/preview"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonRandom" />
 
     <Button
         android:id="@+id/buttonAboutActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="aboutButton"
-        android:text="Button"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickAboutActivity"
+        android:text="@string/back"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRandom"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickRandom"
+        android:text="@string/random"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPreview"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonAboutActivity" />
 
     <ImageView
         android:id="@+id/imageViewHair"
-        android:layout_width="362dp"
-        android:layout_height="249dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="377dp"
+        android:layout_height="514dp"
+        android:layout_marginEnd="11dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hair2" />
-
-    <ImageView
-        android:id="@+id/imageViewMouthAccesory"
-        android:layout_width="111dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="36dp"
-        android:layout_marginStart="80dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewMouth"
-        app:layout_constraintStart_toStartOf="@+id/imageViewMouth"
-        app:srcCompat="@drawable/mouthaccesory1" />
+        app:srcCompat="@drawable/hair1" />
 
     <ImageView
         android:id="@+id/imageViewNose"
-        android:layout_width="39dp"
-        android:layout_height="46dp"
+        android:layout_width="80dp"
+        android:layout_height="117dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewEyes"
-        app:srcCompat="@drawable/scar2" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewLeftEye"
+        app:srcCompat="@drawable/nose1" />
 
 </android.support.constraint.ConstraintLayout>
