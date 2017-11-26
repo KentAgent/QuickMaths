@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="face">
-        <item>@drawable/face2</item>
+        <item>@drawable/face1</item>
     </array>
 
     <array name="mouth">
@@ -15,11 +15,11 @@
     <array name="hair">
         <item>@drawable/hair1</item>
         <item>@drawable/hair2</item>
+        <item>@drawable/hair3</item>
     </array>
 
     <array name="nose">
         <item>@drawable/nose1</item>
-        <item>@drawable/nose2</item>
     </array>
 
     <array name="eyeleft">
