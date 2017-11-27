@@ -4,6 +4,7 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.Random;
@@ -38,6 +39,21 @@ public class AvatarActivity extends AppCompatActivity {
 
     private ImageView background;
 
+    private Button hairLeft;
+    private Button hairRight;
+    private Button faceLeft;
+    private Button faceRight;
+    private Button leftEyeLeft;
+    private Button leftEyeRight;
+    private Button rightEyeLeft;
+    private Button rightEyeRight;
+    private Button noseLeft;
+    private Button noseRight;
+    private Button mouthLeft;
+    private Button mouthRight;
+    private Button back;
+    private Button rand;
+    private Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,13 +151,47 @@ public class AvatarActivity extends AppCompatActivity {
         nose.setImageResource(nosePictures.getResourceId(noseCount, 0));
     }
 
-    public void onClickAboutActivity(View view) {
+    public void onClickBack(View view) {
         finish();
     }
 
     public void onClickPreview(View view) {
+        if (hairLeft.getVisibility() == View.VISIBLE) {
+            hairLeft.setVisibility(View.INVISIBLE);
+            hairRight.setVisibility(View.INVISIBLE);
+            faceLeft.setVisibility(View.INVISIBLE);
+            faceRight.setVisibility(View.INVISIBLE);
+            leftEyeLeft.setVisibility(View.INVISIBLE);
+            leftEyeRight.setVisibility(View.INVISIBLE);
+            rightEyeLeft.setVisibility(View.INVISIBLE);
+            rightEyeRight.setVisibility(View.INVISIBLE);
+            noseLeft.setVisibility(View.INVISIBLE);
+            noseRight.setVisibility(View.INVISIBLE);
+            mouthLeft.setVisibility(View.INVISIBLE);
+            mouthRight.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.INVISIBLE);
+            rand.setVisibility(View.INVISIBLE);
+            save.setVisibility(View.VISIBLE);
+        } else {
+            hairLeft.setVisibility(View.VISIBLE);
+            hairRight.setVisibility(View.VISIBLE);
+            faceLeft.setVisibility(View.VISIBLE);
+            faceRight.setVisibility(View.VISIBLE);
+            leftEyeLeft.setVisibility(View.VISIBLE);
+            leftEyeRight.setVisibility(View.VISIBLE);
+            rightEyeLeft.setVisibility(View.VISIBLE);
+            rightEyeRight.setVisibility(View.VISIBLE);
+            noseLeft.setVisibility(View.VISIBLE);
+            noseRight.setVisibility(View.VISIBLE);
+            mouthLeft.setVisibility(View.VISIBLE);
+            mouthRight.setVisibility(View.VISIBLE);
+            back.setVisibility(View.VISIBLE);
+            rand.setVisibility(View.VISIBLE);
+            save.setVisibility(View.INVISIBLE);
+        }
 
     }
+
 
     public void startAvatar () {
         hairPictures = getResources().obtainTypedArray(R.array.hair);
@@ -172,6 +222,25 @@ public class AvatarActivity extends AppCompatActivity {
         mouth = findViewById(R.id.imageViewMouth);
         mouthCount = random.nextInt(mouthPictures.length());
         mouth.setImageResource(mouthPictures.getResourceId(mouthCount, 0));
+
+        hairLeft = findViewById(R.id.buttonHairLeft);
+        hairRight = findViewById(R.id.buttonHairRight);
+        faceLeft = findViewById(R.id.buttonFaceLeft);
+        faceRight = findViewById(R.id.buttonFaceRight);
+        leftEyeLeft = findViewById(R.id.buttonEyeLeftLeft);
+        leftEyeRight = findViewById(R.id.buttonEyeLeftRight);
+        rightEyeLeft = findViewById(R.id.buttonEyeRightLeft);
+        rightEyeRight = findViewById(R.id.buttonEyeRightRight);
+        noseLeft = findViewById(R.id.buttonNoseLeft);
+        noseRight = findViewById(R.id.buttonNoseRight);
+        mouthLeft = findViewById(R.id.buttonMouthLeft);
+        mouthRight = findViewById(R.id.buttonMouthRight);
+        back = findViewById(R.id.buttonBack);
+        rand = findViewById(R.id.buttonRandom);
+        save = findViewById(R.id.buttonSave);
+        save.setVisibility(View.INVISIBLE);
+
+
     }
 
     public void onClickRandom(View view) {
