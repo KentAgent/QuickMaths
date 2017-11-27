@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.games.Games;
-import com.google.android.gms.games.TurnBasedMultiplayerClient;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,7 +20,10 @@ public class MultiplayerActivity extends AppCompatActivity {
     FirebaseUser bror;
     Context context;
     Button startMatch;
+    GoogleApiClient googleApiClient;
     private GoogleSignInAccount user;
+    private FirebaseAnalytics mFirebaseAnalytics;
+
 
 
     @Override
@@ -33,17 +36,26 @@ public class MultiplayerActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         bror = mAuth.getCurrentUser();
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         user = GoogleSignIn.getLastSignedInAccount(this);
 
-        TurnBasedMultiplayerClient turnBasedMultiplayerClient = Games.getTurnBasedMultiplayerClient(this, user);
+        Bundle bundle = new Bundle();
+
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
 
 
-        testUsername.setText(user.getEmail());
 
 
 
     }
 
+    public void test(){
+      //  Intent myintent = new Intent(getApplicationContext(), LoginActivity2.class);
+        //startActivity(myintent);
+
+    }
+
 }
+
 
 
