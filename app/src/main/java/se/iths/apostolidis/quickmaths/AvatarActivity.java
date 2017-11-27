@@ -36,11 +36,16 @@ public class AvatarActivity extends AppCompatActivity {
 
     private final Random random = new Random();
 
+    private ImageView background;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar);
+
+        background = findViewById(R.id.imageViewBackgroundAvatar);
+        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
         startAvatar();
 
