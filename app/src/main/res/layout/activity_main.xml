@@ -175,6 +175,7 @@
         android:background="@drawable/circle_background"
         android:contentDescription="@string/account"
         android:elevation="15dp"
+        android:onClick="onClickAccountButton"
         android:scaleType="fitCenter"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,5 @@
 package se.iths.apostolidis.quickmaths;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -132,8 +131,7 @@ public class AvatarActivity extends AppCompatActivity {
     }
 
     public void onClickAboutActivity(View view) {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void onClickPreview(View view) {
