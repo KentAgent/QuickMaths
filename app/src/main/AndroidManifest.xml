@@ -33,6 +33,10 @@
         <activity android:name=".OfflineModeSetupActivity"/>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AvatarActivity"></activity>
+
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id"
+            />
     </application>
 
 </manifest>
