@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.AvatarActivity"
-    android:background="@drawable/backgroundmainlight">
-
+    tools:context="se.iths.apostolidis.quickmaths.AvatarActivity">
 
     <ImageView
         android:id="@+id/imageViewFace"
@@ -102,7 +100,7 @@
         android:onClick="onClickNoseRight"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEyeRightLeft2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEyeRightRight" />
 
     <Button
         android:id="@+id/buttonHairRight"
@@ -157,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonNoseLeft" />
 
     <Button
-        android:id="@+id/buttonMouthLeft2"
+        android:id="@+id/buttonMouthRight"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
@@ -183,7 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonEyeLeftLeft" />
 
     <Button
-        android:id="@+id/buttonEyeRightLeft2"
+        android:id="@+id/buttonEyeRightRight"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginRight="8dp"
@@ -232,7 +230,7 @@
         android:layout_marginLeft="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
-        android:onClick="onClickAboutActivity"
+        android:onClick="onClickBack"
         android:text="@string/back"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -257,12 +255,13 @@
 
     <ImageView
         android:id="@+id/imageViewHair"
-        android:layout_width="377dp"
+        android:layout_width="382dp"
         android:layout_height="514dp"
         android:layout_marginEnd="11dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hair1" />
