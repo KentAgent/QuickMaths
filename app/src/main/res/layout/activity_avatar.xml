@@ -223,7 +223,7 @@
         app:layout_constraintStart_toEndOf="@+id/buttonRandom" />
 
     <Button
-        android:id="@+id/buttonAboutActivity"
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -251,7 +251,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonPreview"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonAboutActivity" />
+        app:layout_constraintStart_toEndOf="@+id/buttonBack" />
 
     <ImageView
         android:id="@+id/imageViewHair"
@@ -288,5 +288,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/backgroundsky" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/save"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

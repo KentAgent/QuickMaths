@@ -51,6 +51,9 @@ public class AvatarActivity extends AppCompatActivity {
     private Button noseRight;
     private Button mouthLeft;
     private Button mouthRight;
+    private Button back;
+    private Button rand;
+    private Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,6 +169,9 @@ public class AvatarActivity extends AppCompatActivity {
             noseRight.setVisibility(View.INVISIBLE);
             mouthLeft.setVisibility(View.INVISIBLE);
             mouthRight.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.INVISIBLE);
+            rand.setVisibility(View.INVISIBLE);
+            save.setVisibility(View.VISIBLE);
         } else {
             hairLeft.setVisibility(View.VISIBLE);
             hairRight.setVisibility(View.VISIBLE);
@@ -179,6 +185,9 @@ public class AvatarActivity extends AppCompatActivity {
             noseRight.setVisibility(View.VISIBLE);
             mouthLeft.setVisibility(View.VISIBLE);
             mouthRight.setVisibility(View.VISIBLE);
+            back.setVisibility(View.VISIBLE);
+            rand.setVisibility(View.VISIBLE);
+            save.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -226,6 +235,10 @@ public class AvatarActivity extends AppCompatActivity {
         noseRight = findViewById(R.id.buttonNoseRight);
         mouthLeft = findViewById(R.id.buttonMouthLeft);
         mouthRight = findViewById(R.id.buttonMouthRight);
+        back = findViewById(R.id.buttonBack);
+        rand = findViewById(R.id.buttonRandom);
+        save = findViewById(R.id.buttonSave);
+        save.setVisibility(View.INVISIBLE);
 
 
     }
