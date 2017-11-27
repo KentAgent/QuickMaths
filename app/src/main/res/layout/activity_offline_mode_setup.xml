@@ -33,9 +33,6 @@
             android:id="@+id/editTextPlayer1Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
 
     <LinearLayout
@@ -56,9 +53,6 @@
             android:id="@+id/editTextPlayer2Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
 
     <LinearLayout
@@ -79,9 +73,6 @@
             android:id="@+id/editTextPlayer3Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -101,10 +92,6 @@
             android:id="@+id/editTextPlayer4Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -124,9 +111,6 @@
             android:id="@+id/editTextPlayer5Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -146,9 +130,6 @@
             android:id="@+id/editTextPlayer6Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -168,10 +149,6 @@
             android:id="@+id/editTextPlayer7Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -191,9 +168,6 @@
             android:id="@+id/editTextPlayer8Name"
             android:layout_width="@string/editTextPlayerNamesWidth"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="50dp"></Spinner>
     </LinearLayout>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

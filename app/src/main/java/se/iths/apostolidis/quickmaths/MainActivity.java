@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settings;
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
+    private ImageButton accountButton;
+
+    //Boolean to check if first click has been used to set visibility
+    private boolean firstClick = false;
 
 
     @Override
@@ -58,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.textViewStart);
         account = findViewById(R.id.imageButtonAccount);
         settings = findViewById(R.id.imageButtonSettings);
+        accountButton = findViewById(R.id.imageButtonAccount);
 
 
         background.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        aboutUs.setText("CODED BY:\n\nKentAgent\nKakashi\nTantMutti\nFyrren\nSchwimpy\nMikael");
+        aboutUs.setText("CODED BY:\n\nKentAgent\nKakashi\nTantMutti\nFyrren\nSchwimpy\nMik3nox");
         database = DBHelper.getInstance(this);
 
         remoteDataManager = RemoteDataManager.getInstance();
@@ -161,7 +166,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickImageViewBackground(View view) {
-        if (aboutUs.getVisibility() == View.VISIBLE || muteBtn.getVisibility() == View.VISIBLE) {
+        if (!firstClick) {
+            firstClick = true;
+            setVisibleStartup();
+        }
+        if (aboutUs.getVisibility() == View.VISIBLE || muteBtn.getVisibility() == View.VISIBLE && firstClick) {
             aboutUs.setVisibility(View.INVISIBLE);
             muteBtn.setVisibility(View.INVISIBLE);
             infoButton.setVisibility(View.INVISIBLE);
@@ -175,17 +184,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStart(View view) {
         if (singlePlayerButton.getVisibility() == View.INVISIBLE) {
-            singlePlayerButton.setVisibility(View.VISIBLE);
-            multiplayerButton.setVisibility(View.VISIBLE);
-            friendsButton.setVisibility(View.VISIBLE);
-            addQuestionButton.setVisibility(View.VISIBLE);
-            aboutButton.setVisibility(View.VISIBLE);
-            account.setVisibility(View.VISIBLE);
-            settings.setVisibility(View.VISIBLE);
-            start.setVisibility(View.INVISIBLE);
-
+            setVisibleStartup();
         }
 
+    }
+
+    public void onClickAccountButton(View view) {
+        Intent intent = new Intent(this, SettingsActivty.class);
+        startActivity(intent);
+    }
+
+    public void setVisibleStartup() {
+        singlePlayerButton.setVisibility(View.VISIBLE);
+        multiplayerButton.setVisibility(View.VISIBLE);
+        friendsButton.setVisibility(View.VISIBLE);
+        addQuestionButton.setVisibility(View.VISIBLE);
+        aboutButton.setVisibility(View.VISIBLE);
+        account.setVisibility(View.VISIBLE);
+        settings.setVisibility(View.VISIBLE);
+        start.setVisibility(View.INVISIBLE);
+        firstClick = true;
     }
 
 

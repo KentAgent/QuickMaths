@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
+
+import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 
 /**
  * Created by Apostolidis on 2017-11-14.
@@ -26,8 +29,10 @@ public class SinglePlayerActivity extends AppCompatActivity{
     CheckBox cMath;
     Button continueButton;
     ScrollableNumberPicker snp;
-    int numberOfPlayers;
+    int numberOfPlayers = 0;
     boolean[] booleanArrayCategories = new boolean[9];
+    int count = 0;
+    DBHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +49,19 @@ public class SinglePlayerActivity extends AppCompatActivity{
         cRandom = findViewById(R.id.checkBoxRandom);
         cMath = findViewById(R.id.checkBoxMath);
 
-        continueButton = (Button) findViewById(R.id.buttonOfflineModeContinue);
+        continueButton = findViewById(R.id.buttonOfflineModeContinue);
         snp = findViewById(R.id.scrollableNumberPickerNumberOfPlayers);
 
+        database = DBHelper.getInstance(this);
+    }
+
+    /**
+     * shows an error message if no categories are checked
+     * @param message
+     */
+    public void ErrorMessageBoxNoCategories(String message)
+    {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
     /**
      * When clicking on continue button:
@@ -54,7 +69,7 @@ public class SinglePlayerActivity extends AppCompatActivity{
      * and value of number of players from scrollable number picker
      * goes to OfflineModeSetupActivity where players chooses names and avatars
      */
-    public void onClickContinueButton(View view){
+    public void onClickContinueButton(View view) {
 
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
@@ -67,13 +82,32 @@ public class SinglePlayerActivity extends AppCompatActivity{
         booleanArrayCategories[8] = cMath.isChecked();
 
         numberOfPlayers = snp.getValue();
+/**
+ * checks how many categories that are checked
+ *
+ */
 
-        Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-        intent.putExtra("booleanArrayCategories", booleanArrayCategories);
-        intent.putExtra("numberOfPlayers", numberOfPlayers);
-        startActivity(intent);
+        for (int i = 0; i < booleanArrayCategories.length; i++) {
+            if (booleanArrayCategories[i]) {
+                count++;
+            }
+        }
+
+        if (count != 0) {
+
+            Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+            intent.putExtra("booleanArrayCategories", booleanArrayCategories);
+            intent.putExtra("numberOfPlayers", numberOfPlayers);
+            startActivity(intent);
+        } else if (count == 0) {
+            ErrorMessageBoxNoCategories("Choose at least one category");
+        }
     }
 
+    /**
+     * Checks all category checkboxes
+     *
+     */
     public void onClickSelectAllCategoriesButton(View view) {
 
         cHumor.setChecked(true);
@@ -87,5 +121,20 @@ public class SinglePlayerActivity extends AppCompatActivity{
         cMath.setChecked(true);
     }
 
-    //database = DBHelper.getInstance(this)
+    /**
+     *  Unchecks all category boxes
+     *
+     */
+    public void onClickDeSelectAllCategoriesButton(View view) {
+
+        cHumor.setChecked(false);
+        cSport.setChecked(false);
+        cFilm.setChecked(false);
+        cMusic.setChecked(false);
+        cHistory.setChecked(false);
+        cGeography.setChecked(false);
+        cEsport.setChecked(false);
+        cRandom.setChecked(false);
+        cMath.setChecked(false);
+    }
 }
