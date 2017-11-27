@@ -30,7 +30,7 @@ public class RemoteDataManager {
         return instance;
     }
 
-    public void getQuizzes(final FetchCallback callback){
+    public void getQuizzes(final QuizCallback callback){
         new HttpRequestTask(
                 new HttpRequest("https://quizapp-5e35c.firebaseio.com/.json"),
                 new HttpRequest.Handler() {
@@ -42,6 +42,7 @@ public class RemoteDataManager {
                             try {
                                 jsonArray = new JSONArray(response.body);
                             } catch (JSONException e) {
+                                callback.didReceiveError(e.getMessage());
                                 e.printStackTrace();
                             }
                             quizzes = new ArrayList<>();
@@ -50,11 +51,26 @@ public class RemoteDataManager {
                                     quizzes.add(Quiz.fromJSON(((JSONObject)jsonArray.get(i))));
 
                                 } catch (JSONException e) {
+                                    callback.didReceiveError(e.getMessage());
                                     e.printStackTrace();
                                 }
                             }
 
-                            callback.didReceiveData(quizzes);
+                            callback.didReceiveQuizzes(quizzes);
+
+                        }
+                    }
+                }).execute();
+    }
+
+    public void getGames(final GameCallback callback){
+        new HttpRequestTask(
+                new HttpRequest("https://quickmaths-88869.firebaseio.com/.json"),
+                new HttpRequest.Handler() {
+                    @Override
+                    public void response(HttpResponse response) {
+                        if (response.code == 200) {
+                            callback.didReceiveGames(response.body);
 
                         }
                     }
