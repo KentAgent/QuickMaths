@@ -1,11 +1,13 @@
 package se.iths.apostolidis.quickmaths;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,27 +25,33 @@ public class SettingsActivty extends AppCompatActivity {
     private TextView nameIsBusy;
     private ArrayList<String> names = new ArrayList<>();
     private DBHelper database;
+    private ImageButton back;
+    private ImageView background;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_activty);
+        setContentView(R.layout.activity_settings);
 
-    changeName = findViewById(R.id.buttonChangeName);
-    changeAvatar = findViewById(R.id.buttonChangeAvatar);
-    connectToFacebook = findViewById(R.id.buttonConnectToFacebook);
-    changeNameOk = findViewById(R.id.buttonChangeNameOk);
-    writeName = findViewById(R.id.editTextChangeName);
-    textViewTest = findViewById(R.id.textViewTest);
+        changeName = findViewById(R.id.buttonChangeName);
+        changeAvatar = findViewById(R.id.buttonChangeAvatar);
+        connectToFacebook = findViewById(R.id.buttonConnectToFacebook);
+        changeNameOk = findViewById(R.id.buttonChangeNameOk);
+        writeName = findViewById(R.id.editTextChangeName);
+        textViewTest = findViewById(R.id.textViewTest);
+        back = findViewById(R.id.imageButtonBack);
+        background = findViewById(R.id.imageViewBackgroundSettings);
 
-    writeName.setHint(textViewTest.getText());
-    nameIsBusy = findViewById(R.id.textViewNameNotAvaliable);
+        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
-    database = DBHelper.getInstance(this);
-    names.add("Benny");
-    names.add("Karl");
-    names.add("Lisa");
+        writeName.setHint(textViewTest.getText());
+        nameIsBusy = findViewById(R.id.textViewNameNotAvaliable);
+
+        database = DBHelper.getInstance(this);
+        names.add("Benny");
+        names.add("Karl");
+        names.add("Lisa");
 
     }
 
@@ -79,7 +87,15 @@ public class SettingsActivty extends AppCompatActivity {
         }
     }
 
-    public void onClickChangeAvatar(View view){}
+    //TODO:Change intent to startActivityForResult and get avatar info instead of startActivity();
+    public void onClickChangeAvatar(View view){
+        Intent intent = new Intent(this, AvatarActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickBack(View view) {
+        finish();
+    }
 
 
 

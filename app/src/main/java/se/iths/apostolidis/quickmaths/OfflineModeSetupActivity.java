@@ -8,11 +8,13 @@ import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
-    int numberOfPlayers;
-    String[] playerNames;
-    boolean[] booleanCategories;
+    int numberOfPlayers = 0;
+    boolean[] tempArray;
+    boolean[] booleanArrayCategories = new boolean[9];
+    int emptyPlayers = 0;
+    int hide = 0;
 
-    EditText [] editTextsPN = new EditText[9];
+    EditText[] editTextsPN = new EditText[8];
     EditText etP1Name;
     EditText etP2Name;
     EditText etP3Name;
@@ -22,7 +24,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     EditText etP7Name;
     EditText etP8Name;
 
-    TextView [] textViewsPN = new EditText[9];
+    TextView[] textViewsPN = new EditText[8];
     TextView tvP1Name;
     TextView tvP2Name;
     TextView tvP3Name;
@@ -79,53 +81,30 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
          */
 
         Bundle extras = getIntent().getExtras();
-
-        booleanCategories = extras.getBooleanArray("booleanArrayCategories");
+        booleanArrayCategories = extras.getBooleanArray("booleanArrayCategories");
         numberOfPlayers = extras.getInt("numberOfPlayers");
 
         /**
          * Hides edit texts (player name entries) that goes beyond the value of number of players
          *
          */
-        int emptyPlayers = 8 - numberOfPlayers;
+        emptyPlayers = 8 - numberOfPlayers;
 
         for (int i = 0; i < emptyPlayers; i++) {
-            int h = numberOfPlayers + i;
-            editTextsPN[h].setVisibility(View.INVISIBLE);
-            textViewsPN[h].setVisibility(View.INVISIBLE);
+            hide = numberOfPlayers + i;
+            editTextsPN[hide].setVisibility(View.INVISIBLE);
+            textViewsPN[hide].setVisibility(View.INVISIBLE);
         }
     }
 }
-/*
-
-    }
-
-}
-
-    /*public void onClickStartNewGame(){
-        Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-        intent.putExtra("numberOfPlayers", spinnerNumberOfPlayers.getSelectedItem().toString());
-        intent.putExtra("Humor", cHumor.isEnabled());
-        intent.putExtra("Sport", cSport.isEnabled());
-        intent.putExtra("Film", cFilm.isEnabled());
-        intent.putExtra("Musik", cMusik.isEnabled());
-        intent.putExtra("Historia", cHistoria.isEnabled());
-        intent.putExtra("Geografi", cGeografi.isEnabled());
-        intent.putExtra("Random", cGeografi.isEnabled());
-        intent.putExtra("Matte", cMatte.isEnabled());
-        startActivity(intent);
-
-   }
-
 
 
         /**
          * stores the avatar shortcuts in array
          */
 
-        //avatarArray = { R.drawable.avatar1, R.drawable.avatar2, R.drawable.cube,
-          //      R.drawable.fresh, R.drawable.guitar, R.drawable.orange, R.drawable.teapot };
-    //ANVÄND i nästa offline_game_activity, kanske
+//avatarArray = { R.drawable.avatar1, R.drawable.avatar2, R.drawable.cube,
+//      R.drawable.fresh, R.drawable.guitar, R.drawable.orange, R.drawable.teapot };
     /*
     private void initializeImageList() {
         // TODO Auto-generated method stub

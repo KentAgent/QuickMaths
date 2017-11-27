@@ -2,7 +2,6 @@ package se.iths.apostolidis.quickmaths;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-import se.iths.apostolidis.quickmaths.containers.Quiz;
 import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 
 public class QuestionActivity extends AppCompatActivity {
@@ -141,5 +139,9 @@ public class QuestionActivity extends AppCompatActivity {
         setQuestion();
         textViewCorrectAnswer.setVisibility(TextView.INVISIBLE);
 
+    }
+
+    public void onClickBack(View view) {
+        finish();
     }
 }

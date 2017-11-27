@@ -1,6 +1,5 @@
 package se.iths.apostolidis.quickmaths;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -37,11 +36,16 @@ public class AvatarActivity extends AppCompatActivity {
 
     private final Random random = new Random();
 
+    private ImageView background;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar);
+
+        background = findViewById(R.id.imageViewBackgroundAvatar);
+        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
         startAvatar();
 
@@ -132,8 +136,7 @@ public class AvatarActivity extends AppCompatActivity {
     }
 
     public void onClickAboutActivity(View view) {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void onClickPreview(View view) {

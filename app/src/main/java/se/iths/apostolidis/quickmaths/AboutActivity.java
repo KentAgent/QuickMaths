@@ -31,8 +31,6 @@ public class AboutActivity extends AppCompatActivity {
     public void onClickExpandTextView(View v){
         Intent intent = new Intent(this, QuestionActivity.class);
         startActivity(intent);
-
-
     }
     public void onClickTestQuestion (View v){
         //      Intent intent = new Intent(this, QuestionActivity.class);
@@ -65,6 +63,10 @@ public class AboutActivity extends AppCompatActivity {
     public void onClickGameActivity(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+    }
+
+    public void onClickBack(View view) {
+        finish();
     }
 
 }
