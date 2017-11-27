@@ -15,6 +15,7 @@ import android.view.SurfaceView;
  */
 
 public class GameEngine extends SurfaceView implements Runnable {
+
     private Context context;
 
     private int maxX;
@@ -30,7 +31,6 @@ public class GameEngine extends SurfaceView implements Runnable {
         this.maxX = maxX;
         this.maxY = maxY;
         surfaceHolder = getHolder();
-
     }
 
     @Override
@@ -38,9 +38,8 @@ public class GameEngine extends SurfaceView implements Runnable {
         draw();
 
     }
-    public void onDraw(Canvas canvas){
 
-    }
+
 
     public void draw() {
     }

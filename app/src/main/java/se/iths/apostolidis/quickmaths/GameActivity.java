@@ -65,7 +65,12 @@ GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         map = findViewById(R.id.photo_view);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
+        map.setScaleType(PhotoView.ScaleType.FIT_XY);
+        map.setImageResource(R.mipmap.gamemap);
+    }
 
+
+    public void getCoordinateGrid (){
         Display display = getWindowManager().getDefaultDisplay();
         Point displaySize = new Point();
         display.getSize(displaySize);
@@ -94,11 +99,8 @@ GameActivity extends AppCompatActivity {
             coordinatesX[i] = point;
             Log.d("Wille", "X: " + coordinatesX[i].toString());
         }
-        map.setCoordinatesX(coordinatesX);
-        map.setCoordinatesY(coordinatesY);
-        map.setScaleType(PhotoView.ScaleType.FIT_XY);
-        map.setImageResource(R.mipmap.gamemap);
-
+        //map.setCoordinatesX(coordinatesX);
+        //map.setCoordinatesY(coordinatesY);
 
     }
 
