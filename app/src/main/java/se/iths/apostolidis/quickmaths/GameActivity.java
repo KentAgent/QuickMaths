@@ -31,7 +31,8 @@ import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.Console;
 
-public class GameActivity extends AppCompatActivity {
+public class
+GameActivity extends AppCompatActivity {
 
     MPhotoView map;
     private Point point = new Point();
