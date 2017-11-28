@@ -8,7 +8,7 @@ import se.iths.apostolidis.quickmaths.containers.Quiz;
  * Created by Kakashi on 18/11/17.
  */
 
-public interface FetchCallback {
-    void didReceiveData(List<Quiz> quizzes);
-    void didReceiveError();
+public interface QuizCallback {
+    void didReceiveQuizzes(List<Quiz> quizzes);
+    void didReceiveError(String message);
 }

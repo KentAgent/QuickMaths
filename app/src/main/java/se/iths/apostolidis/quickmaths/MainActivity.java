@@ -16,7 +16,7 @@ import java.util.List;
 
 import se.iths.apostolidis.quickmaths.containers.Quiz;
 import se.iths.apostolidis.quickmaths.service.database.DBHelper;
-import se.iths.apostolidis.quickmaths.service.network.FetchCallback;
+import se.iths.apostolidis.quickmaths.service.network.QuizCallback;
 import se.iths.apostolidis.quickmaths.service.network.RemoteDataManager;
 
 import static android.media.AudioManager.ADJUST_MUTE;
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
         remoteDataManager = RemoteDataManager.getInstance();
 
-        remoteDataManager.getQuizzes(new FetchCallback() {
+        remoteDataManager.getQuizzes(new QuizCallback() {
             @Override
-            public void didReceiveData(List<Quiz> quizzesFromServer) {
+            public void didReceiveQuizzes(List<Quiz> quizzesFromServer) {
                 database.removeoldQuizzes(quizzesFromServer, database.getAllQuizzes());
                 database.updateQuizzes(quizzesFromServer);
                 database.insertQuizzes(quizzesFromServer, database.getAllQuizzes());
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void didReceiveError() {
+            public void didReceiveError(String message) {
 
             }
         });
