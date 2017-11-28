@@ -1,6 +1,7 @@
 package se.iths.apostolidis.quickmaths;
 
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,8 +10,11 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
+import se.iths.apostolidis.quickmaths.containers.Screenshot;
+
 public class AvatarActivity extends AppCompatActivity {
 
+//--------------AvatarImages-------------------
     private ImageView face;
     private TypedArray facePictures;
     private int faceCount = 0;
@@ -34,11 +38,13 @@ public class AvatarActivity extends AppCompatActivity {
     private ImageView nose;
     private TypedArray nosePictures;
     private int noseCount = 0;
+//------------------------------------------
 
     private final Random random = new Random();
 
     private ImageView background;
 
+//--------------Buttons---------------------
     private Button hairLeft;
     private Button hairRight;
     private Button faceLeft;
@@ -53,8 +59,13 @@ public class AvatarActivity extends AppCompatActivity {
     private Button mouthRight;
     private Button back;
     private Button rand;
-    private Button save;
+    private Button saveTheAvatar;
+//------------------------------------------
 
+//--------------saveAvatar------------------
+//    Bitmap mbitmap;
+    private ImageView saveAvatar;
+//------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +75,50 @@ public class AvatarActivity extends AppCompatActivity {
         background.setScaleType(ImageView.ScaleType.FIT_XY);
 
         startAvatar();
+        startButtons();
+
 
     }
+//----------------------------screenCaptureCode-----------------------
+
+public void onClickSaveAvatar(View view) {
+    Bitmap b = Screenshot.takeScreenShotOfRootView(saveAvatar);
+    saveAvatar.setImageBitmap(b);
+
+}
+
+
+
+//
+//    public void onClickSaveAvatar (View view){
+//        mbitmap = getBitmapOfRootView(saveTheAvatar);
+//        saveAvatar.setImageBitmap(mbitmap);
+//        createImage(mbitmap);
+//    }
+//
+//    public Bitmap getBitmapOfRootView(View v){
+//        View rootview = v.getRootView();
+//        rootview.setDrawingCacheEnabled(true);
+//        Bitmap bitmap1 = rootview.getDrawingCache();
+//        return bitmap1;
+//    }
+//
+//    public void createImage (Bitmap bmp){
+//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//        bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+//        File file = new File(Environment.getExternalStorageDirectory()+"/capturedscreenandroid.jpg");
+//
+//        try {
+//            file.createNewFile();
+//            FileOutputStream outputStream = new FileOutputStream(file);
+//            outputStream.write(bytes.toByteArray());
+//            outputStream.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//---------------------------------------------------------------------
 
     public void onClickFaceRight(View view) {
         faceCount++;
@@ -171,7 +224,7 @@ public class AvatarActivity extends AppCompatActivity {
             mouthRight.setVisibility(View.INVISIBLE);
             back.setVisibility(View.INVISIBLE);
             rand.setVisibility(View.INVISIBLE);
-            save.setVisibility(View.VISIBLE);
+            saveTheAvatar.setVisibility(View.VISIBLE);
         } else {
             hairLeft.setVisibility(View.VISIBLE);
             hairRight.setVisibility(View.VISIBLE);
@@ -187,7 +240,7 @@ public class AvatarActivity extends AppCompatActivity {
             mouthRight.setVisibility(View.VISIBLE);
             back.setVisibility(View.VISIBLE);
             rand.setVisibility(View.VISIBLE);
-            save.setVisibility(View.INVISIBLE);
+            saveTheAvatar.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -223,6 +276,10 @@ public class AvatarActivity extends AppCompatActivity {
         mouthCount = random.nextInt(mouthPictures.length());
         mouth.setImageResource(mouthPictures.getResourceId(mouthCount, 0));
 
+        saveAvatar = findViewById(R.id.imageViewSavedAvatar);
+
+    }
+    public void startButtons(){
         hairLeft = findViewById(R.id.buttonHairLeft);
         hairRight = findViewById(R.id.buttonHairRight);
         faceLeft = findViewById(R.id.buttonFaceLeft);
@@ -237,10 +294,8 @@ public class AvatarActivity extends AppCompatActivity {
         mouthRight = findViewById(R.id.buttonMouthRight);
         back = findViewById(R.id.buttonBack);
         rand = findViewById(R.id.buttonRandom);
-        save = findViewById(R.id.buttonSave);
-        save.setVisibility(View.INVISIBLE);
-
-
+        saveTheAvatar = findViewById(R.id.buttonSaveAvatar);
+        saveTheAvatar.setVisibility(View.INVISIBLE);
     }
 
     public void onClickRandom(View view) {
