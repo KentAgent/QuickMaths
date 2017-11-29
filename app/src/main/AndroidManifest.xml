@@ -11,6 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -21,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".QuestionActivity"
             android:screenOrientation="portrait" />
@@ -33,7 +36,7 @@
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
+
             android:name=".MultiplayerActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -57,6 +60,7 @@
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".AvatarActivity"
             android:screenOrientation="portrait" />

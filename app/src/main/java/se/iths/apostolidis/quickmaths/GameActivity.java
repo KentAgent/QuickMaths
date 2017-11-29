@@ -6,15 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.icu.text.AlphabeticIndex;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.MutableBoolean;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.ImageView;
@@ -22,7 +18,6 @@ import android.widget.ImageView;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class
@@ -182,7 +177,7 @@ GameActivity extends AppCompatActivity {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 200, false);
         Player player = new Player();
-        player.setId(i);
+      //  player.setId(i);
         player.setCoordinateIndex(0);
         player.setName("Nisse");
         player.setPos(assetCoordinates[0].x, assetCoordinates[0].y);
