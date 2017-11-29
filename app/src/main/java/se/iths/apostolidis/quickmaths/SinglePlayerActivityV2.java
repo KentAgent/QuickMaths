@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-public class SinglePlayerActivity extends AppCompatActivity {
+public class SinglePlayerActivityV2 extends AppCompatActivity {
 
     CheckBox cHumor;
     CheckBox cSport;
@@ -30,7 +30,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_player);
+        setContentView(R.layout.activity_single_player_v2);
 
         booleanArrayCategories = new boolean[9];
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
@@ -72,6 +72,14 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cMath.setChecked(false);
     }
     /**
+     * shows an error message if no categories are checked
+     * @param message
+     */
+    public void ErrorMessageBoxNoCategories(String message)
+    {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+    /**
      * When clicking on continue button:
      * creates intent and puts an array with boolean values of checkbox checked
      * and value of number of players from scrollable number picker
@@ -104,11 +112,11 @@ public class SinglePlayerActivity extends AppCompatActivity {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
             intent.putExtra("booleanArrayCategories", booleanArrayCategories);
             startActivity(intent);
-        } else {
-            Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
+        } else if (count == 0) {
+            ErrorMessageBoxNoCategories("Choose at least one category");
         }
     }
-    public void onClickGoBack(View view){
+    public void onClickGoBack(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -2,12 +2,10 @@ package se.iths.apostolidis.quickmaths;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
+  /*
     int numberOfPlayers = 0;
     boolean[] tempArray;
     boolean[] booleanArrayCategories = new boolean[9];
@@ -33,13 +31,13 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP6Name;
     TextView tvP7Name;
     TextView tvP8Name;
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_mode_setup);
 
-        etP1Name = findViewById(R.id.editTextPlayer1Name);
+        /*etP1Name = findViewById(R.id.editTextPlayer1Name);
         etP2Name = findViewById(R.id.editTextPlayer2Name);
         etP3Name = findViewById(R.id.editTextPlayer3Name);
         etP4Name = findViewById(R.id.editTextPlayer4Name);
@@ -74,50 +72,21 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[5] = etP6Name;
         editTextsPN[6] = etP7Name;
         editTextsPN[7] = etP8Name;
+*/
 
-        /**
-         * Gets information from intent; Number of players and choice of question categories
-         * puts boolean values of checkboxes in a boolean array.
-         */
-
+/*
         Bundle extras = getIntent().getExtras();
         booleanArrayCategories = extras.getBooleanArray("booleanArrayCategories");
         numberOfPlayers = extras.getInt("numberOfPlayers");
+*/
 
-        /**
-         * Hides edit texts (player name entries) that goes beyond the value of number of players
-         *
-         */
-        emptyPlayers = 8 - numberOfPlayers;
+  /*      emptyPlayers = 8 - numberOfPlayers;
 
         for (int i = 0; i < emptyPlayers; i++) {
             hide = numberOfPlayers + i;
             editTextsPN[hide].setVisibility(View.INVISIBLE);
             textViewsPN[hide].setVisibility(View.INVISIBLE);
         }
+*/
     }
 }
-
-
-        /**
-         * stores the avatar shortcuts in array
-         */
-
-//avatarArray = { R.drawable.avatar1, R.drawable.avatar2, R.drawable.cube,
-//      R.drawable.fresh, R.drawable.guitar, R.drawable.orange, R.drawable.teapot };
-    /*
-    private void initializeImageList() {
-        // TODO Auto-generated method stub
-        for (int i = 0; i < avatarArray.length; i++) {
-            map = new HashMap<Integer, Object>();
-
-            map.put("Name", playerNameArray[i]);
-            map.put("Avatar", avatarArray[i]);
-            spinnerList.add(map);
-        }
-        ImageView imageView = new ImageView(this);
-        imageView.setBackgroundResource((spinnerList.get(0).get("Icon"));
-        spinnerList.get(0).get("Name");
-
-    }
-    */
