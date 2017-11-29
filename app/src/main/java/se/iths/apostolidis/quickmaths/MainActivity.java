@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settings;
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
-    private ImageButton accountButton;
+
 
     //Boolean to check if first click has been used to set visibility
     private boolean firstClick = false;
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.textViewStart);
         account = findViewById(R.id.imageButtonAccount);
         settings = findViewById(R.id.imageButtonSettings);
-        accountButton = findViewById(R.id.imageButtonAccount);
 
 
         background.setScaleType(ImageView.ScaleType.FIT_XY);
