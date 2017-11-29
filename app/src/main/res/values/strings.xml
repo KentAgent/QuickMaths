@@ -29,16 +29,15 @@
     <string name="choose_categories">Choose categories:</string>
     <string name="how_many_players">How many players</string>
     <string name="start_new_offline_game">Start new offline game</string>
-    <string name="cHumor">Humor</string>
-    <string name="cSport">Sport</string>
-    <string name="cFilm">Film</string>
-    <string name="cMusic">Music</string>
-    <string name="cHistory">History</string>
-    <string name="cGeography">Geography</string>
-    <string name="cRandom">Random</string>
-    <string name="cEsport">E-sport</string>
-    <string name="cMath">Math</string>
-    <string name="editTextPlayerNamesWidth">150dp</string>
+    <string name="c_humor">Humor</string>
+    <string name="c_sport">Sport</string>
+    <string name="c_film">Film</string>
+    <string name="c_music">Music</string>
+    <string name="c_history">History</string>
+    <string name="c_geography">Geography</string>
+    <string name="c_random">Random</string>
+    <string name="c_esport">E-sport</string>
+    <string name="c_math">Math</string>
     <string name="done">Done</string>
     <string name="face">Face</string>
     <string name="eye">Eye</string>
@@ -49,4 +48,9 @@
     <string name="back">Back</string>
     <string name="random">Random</string>
     <string name="save">Save</string>
+    <string name="text_view_player_name">Player name</string>
+    <string name="button_select_all">Select all</string>
+    <string name="button_select_none">Select none</string>
+    <string name="button_go_back">Go back</string>
+    <string name="button_proceed">Proceed</string>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="16dp"
-        android:text="History"
+        android:text="@string/c_history"
         app:layout_constraintEnd_toStartOf="@+id/cGeography"
         app:layout_constraintTop_toBottomOf="@+id/cSport" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:text="Geography"
+        android:text="@string/c_geography"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cFilm" />
 
@@ -34,7 +34,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="E-sport"
+        android:text="@string/cEsport"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cRandom"
         app:layout_constraintHorizontal_bias="0.666"
@@ -49,7 +49,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Player Name"
+        android:text="@string/text_view_player_name"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="16dp"
-        android:text="Random"
+        android:text="@string/c_random"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cMath"
         app:layout_constraintTop_toBottomOf="@+id/cHistory"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="224dp"
-        android:text="Sport"
+        android:text="@string/c_sport"
         app:layout_constraintEnd_toStartOf="@+id/cFilm"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="224dp"
-        android:text="Film"
+        android:text="@string/c_film"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,7 +108,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="224dp"
-        android:text="Humor"
+        android:text="@string/c_humor"
         app:layout_constraintEnd_toStartOf="@+id/cSport"
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +121,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:text="Math"
+        android:text="@string/c_math"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cGeography"
@@ -134,7 +134,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Music"
+        android:text="@string/c_music"
         app:layout_constraintEnd_toStartOf="@+id/cHistory"
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +147,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:text="proceed"
+        android:text="@string/button_proceed"
         android:onClick="onClickProceed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:onClick="onClickGoBack"
-        android:text="go back"
+        android:text="@string/button_go_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonProceed"
         app:layout_constraintHorizontal_bias="0.083"
@@ -173,7 +173,7 @@
         android:layout_marginBottom="76dp"
         android:layout_marginTop="8dp"
         android:onClick="onClickSelectAll"
-        android:text="select all"
+        android:text="@string/button_select_all"
         app:layout_constraintBottom_toTopOf="@+id/buttonGoBack"
         app:layout_constraintEnd_toStartOf="@+id/buttonSelectNone"
         app:layout_constraintHorizontal_bias="0.105"
@@ -188,7 +188,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="376dp"
         android:onClick="onClickSelectNone"
-        android:text="select none"
+        android:text="@string/button_select_all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,13 +200,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Quickmaths"
+        android:text="@string/single_player"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.548" />
 
 </android.support.constraint.ConstraintLayout>
