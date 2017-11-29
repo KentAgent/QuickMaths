@@ -12,6 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <se.iths.apostolidis.quickmaths.MPhotoView
+        android:id="@+id/photo_viewGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </android.support.constraint.ConstraintLayout>
 
