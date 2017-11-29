@@ -1,238 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    tools:context="se.iths.apostolidis.quickmaths.SinglePlayerActivity">
+
+    <CheckBox
+        android:id="@+id/cHistory"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_history"
+        app:layout_constraintEnd_toStartOf="@+id/cGeography"
+        app:layout_constraintTop_toBottomOf="@+id/cSport"
+        android:layout_marginRight="24dp" />
+
+    <CheckBox
+        android:id="@+id/cGeography"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_geography"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cFilm"
+        android:layout_marginRight="16dp" />
+
+    <CheckBox
+        android:id="@+id/cEsport"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_esport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cRandom"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cMusic"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="8dp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="18dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/indie_flower"
-        android:text="@string/start_new_offline_game"
-        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/text_view_player_name"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="206dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="392dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cRandom"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_random"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cMath"
+        app:layout_constraintTop_toBottomOf="@+id/cHistory"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="24dp" />
+
+    <CheckBox
+        android:id="@+id/cSport"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="224dp"
+        android:text="@string/c_sport"
+        app:layout_constraintEnd_toStartOf="@+id/cFilm"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="24dp" />
+
+    <CheckBox
+        android:id="@+id/cFilm"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="224dp"
+        android:text="@string/c_film"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <CheckBox
+        android:id="@+id/cHumor"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="224dp"
+        android:text="@string/c_humor"
+        app:layout_constraintEnd_toStartOf="@+id/cSport"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cMath"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_math"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cGeography"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="16dp" />
+
+    <CheckBox
+        android:id="@+id/cMusic"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_music"
+        app:layout_constraintEnd_toStartOf="@+id/cHistory"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cHumor" />
+
+    <Button
+        android:id="@+id/buttonProceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/button_proceed"
+        android:onClick="onClickProceed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectNone"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginRight="16dp" />
+
+    <Button
+        android:id="@+id/buttonGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickGoBack"
+        android:text="@string/button_go_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonProceed"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSelectAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickSelectAll"
+        android:text="@string/button_select_all"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGoBack"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSelectNone"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+    <Button
+        android:id="@+id/buttonSelectNone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="376dp"
+        android:onClick="onClickSelectNone"
+        android:text="@string/button_select_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_view_single_player"
         android:textSize="28sp"
-        android:textStyle="bold" />
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14sp"
-            android:fontFamily="@font/indie_flower"
-            android:text="@string/how_many_players"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginRight="10dp"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-            <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
-            android:id="@+id/scrollableNumberPickerNumberOfPlayers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/number_picker_bg_color"
-            app:snp_value="1"
-            app:snp_maxValue="8"
-            app:snp_minValue="1"
-            app:snp_stepSize="1"
-            app:snp_buttonTouchScaleFactor="0.8"/>
-        </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:fontFamily="@font/indie_flower"
-        android:text="@string/choose_categories"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal">
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxHumor"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cHumor"
-                app:buttonTint="@color/checkboxColor"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxSport"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cSport"
-                app:buttonTint="@color/checkboxColor" />
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxFilm"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cFilm"
-                app:buttonTint="@color/checkboxColor"/>/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="18dp">
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxMusic"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cMusic"
-                app:buttonTint="@color/checkboxColor"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxHistory"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cHistory"
-                app:buttonTint="@color/checkboxColor"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxGeography"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cGeography"
-                app:buttonTint="@color/checkboxColor"/>
-        </LinearLayout>
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxRandom"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cRandom"
-                app:buttonTint="@color/checkboxColor"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxEsport"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cEsport"
-                app:buttonTint="@color/checkboxColor"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxMath"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/indie_flower"
-                android:text="@string/cMath"
-                app:buttonTint="@color/checkboxColor"/>
-        </LinearLayout>
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
-            <Button
-                android:id="@+id/buttonSelectAllCategories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:onClick="onClickSelectAllCategoriesButton"
-                android:text="Select all categories"
-                android:textAlignment="center"
-                android:textSize="10dp" />
-            <Button
-                android:id="@+id/buttonDeSelectAllCategories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:onClick="onClickDeSelectAllCategoriesButton"
-                android:text="De-select all categories"
-                android:textAlignment="center"
-                android:textSize="10dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42sp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/indie_flower"
-            android:text="Your categories"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <TextView
-            android:id="@+id/textViewError1"
-            android:layout_width="match_parent"
-            android:layout_height="42sp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/indie_flower"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/buttonOfflineModeContinue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:onClick="onClickContinueButton"
-            android:text="Continue"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-    </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

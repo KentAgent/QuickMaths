@@ -48,6 +48,7 @@
     <string name="back">Back</string>
     <string name="random">Random</string>
     <string name="save">Save</string>
+    <string name="text_view_single_player">Single player</string>
     <string name="text_view_player_name">Player name</string>
     <string name="button_select_all">Select all</string>
     <string name="button_select_none">Select none</string>
