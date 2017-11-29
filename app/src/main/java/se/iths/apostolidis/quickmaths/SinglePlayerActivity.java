@@ -37,6 +37,16 @@ public class SinglePlayerActivity extends AppCompatActivity {
         buttonSelectNone = findViewById(R.id.buttonSelectNone);
         buttonGoBack = findViewById(R.id.buttonGoBack);
         buttonProceed = findViewById(R.id.buttonRandom);
+
+        cHumor = findViewById(R.id.checkboxHumor);
+        cSport = findViewById(R.id.checkboxSport);
+        cFilm = findViewById(R.id.checkboxFilm);
+        cMusic = findViewById(R.id.checkboxMusic);
+        cHistory = findViewById(R.id.checkboxHistory);
+        cGeography = findViewById(R.id.checkboxGeography);
+        cRandom = findViewById(R.id.checkboxRandom);
+        cEsport = findViewById(R.id.checkboxEsport);
+        cMath = findViewById(R.id.checkboxMath);
     }
 
     /**
@@ -88,14 +98,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[6] = cEsport.isChecked();
         booleanArrayCategories[7] = cRandom.isChecked();
         booleanArrayCategories[8] = cMath.isChecked();
-/**
- * checks how many categories that are checked
- *
- */
+
+
         int count = 0;
 
-        for (int i = 0; i < booleanArrayCategories.length; i++) {
-            if (booleanArrayCategories[i]) {
+        for (boolean booleanArrayCategory : booleanArrayCategories) {
+            if (booleanArrayCategory) {
                 count++;
             }
         }
