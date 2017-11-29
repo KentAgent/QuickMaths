@@ -61,4 +61,19 @@ public class RemoteDataManager {
                 }).execute();
     }
 
+    public void getGames(final GameCallback callback){
+        new HttpRequestTask(
+                new HttpRequest("https://quizapp-5e35c-727f6.firebaseio.com/.json"),
+                new HttpRequest.Handler() {
+                    @Override
+                    public void response(HttpResponse response) {
+                        if (response.code == 200) {
+                            callback.didReceiveGames(response.body);
+
+                        }
+                    }
+                }).execute();
+    }
+
+
 }
