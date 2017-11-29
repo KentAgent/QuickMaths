@@ -88,17 +88,23 @@ GameActivity extends AppCompatActivity {
         gridMPhotoView.setImageBitmap(createGrid(setMap(assetCoordinates)));
         gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-
+        clearMap();
         canvas = new Canvas(gridBitmap);
-        gameSetUp(gridMPhotoView, canvas);
+        gameSetUp(gridMPhotoView);
+    }
+
+    private void clearMap() {
+        gridMPhotoView.setImageBitmap(createGrid(setMap(assetCoordinates)));
+        gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
 
-    public void upDate(Player player){
+    public void upDate(ArrayList <Player> players ){
         draw(players);
     }
     public void draw(ArrayList<Player> players){
-        gridMPhotoView.setImageBitmap(createGrid(setMap(assetCoordinates)));
+        clearMap();
+        canvas = new Canvas(gridBitmap);
 
         for (int i = 0; i < players.size(); i++){
             canvas.save();
@@ -108,7 +114,7 @@ GameActivity extends AppCompatActivity {
 
     }
 
-    public void gameSetUp (MPhotoView view, Canvas canvas){
+    public void gameSetUp (MPhotoView view){
 
 
         for (int i = 0; i < numberOfPlayer; i++){
@@ -167,7 +173,8 @@ GameActivity extends AppCompatActivity {
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
         }
-        upDate(player);
+
+        upDate(players);
     }
 
     @NonNull
@@ -249,6 +256,7 @@ GameActivity extends AppCompatActivity {
     }
 
     public void setAssetPosList (Point[] posList){
+
         posList[0] = (new Point(170, 1530));
         posList[1] = (new Point(310, 1530));
         posList[2] = (new Point(330, 1430));
