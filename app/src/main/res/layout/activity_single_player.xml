@@ -7,216 +7,197 @@
     tools:context="se.iths.apostolidis.quickmaths.SinglePlayerActivity">
 
     <CheckBox
-        android:id="@+id/cHistory"
+        android:id="@+id/checkboxHistory"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_history"
-        app:layout_constraintEnd_toStartOf="@+id/cGeography"
-        app:layout_constraintTop_toBottomOf="@+id/cSport"
-        android:layout_marginRight="24dp" />
+        app:layout_constraintEnd_toStartOf="@+id/checkboxGeography"
+        app:layout_constraintStart_toEndOf="@+id/checkboxMusic"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxSport" />
 
     <CheckBox
-        android:id="@+id/cGeography"
+        android:id="@+id/checkboxGeography"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_geography"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cFilm"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxFilm" />
 
     <CheckBox
-        android:id="@+id/cEsport"
+        android:id="@+id/checkboxEsport"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_esport"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cRandom"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cMusic"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxMusic" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/text_view_player_name"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPlayerName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSinglePlayer"
+        app:layout_constraintVertical_bias="0.684" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="206dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="392dp"
+        android:id="@+id/editTextPlayerName"
+        android:layout_width="156dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/checkboxSport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/cRandom"
+        android:id="@+id/checkboxRandom"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_random"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cMath"
-        app:layout_constraintTop_toBottomOf="@+id/cHistory"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginRight="24dp" />
+        app:layout_constraintEnd_toStartOf="@+id/checkboxMath"
+        app:layout_constraintStart_toEndOf="@+id/checkboxEsport"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxHistory" />
 
     <CheckBox
-        android:id="@+id/cSport"
+        android:id="@+id/checkboxSport"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="192dp"
         android:text="@string/c_sport"
-        app:layout_constraintEnd_toStartOf="@+id/cFilm"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="24dp" />
+        app:layout_constraintEnd_toStartOf="@+id/checkboxFilm"
+        app:layout_constraintStart_toEndOf="@+id/checkboxHumor"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/cFilm"
+        android:id="@+id/checkboxFilm"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="192dp"
         android:text="@string/c_film"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/cHumor"
+        android:id="@+id/checkboxHumor"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="192dp"
         android:text="@string/c_humor"
-        app:layout_constraintEnd_toStartOf="@+id/cSport"
-        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/cMath"
+        android:id="@+id/checkboxMath"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_math"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cGeography"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxGeography" />
 
     <CheckBox
-        android:id="@+id/cMusic"
+        android:id="@+id/checkboxMusic"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:text="@string/c_music"
-        app:layout_constraintEnd_toStartOf="@+id/cHistory"
-        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cHumor" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxHumor" />
 
     <Button
         android:id="@+id/buttonProceed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="8dp"
-        android:text="@string/button_proceed"
         android:onClick="onClickProceed"
+        android:text="@string/button_proceed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSelectNone"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClickGoBack"
         android:text="@string/button_go_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonProceed"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectAll"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonSelectAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
         android:onClick="onClickSelectAll"
         android:text="@string/button_select_all"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGoBack"
         app:layout_constraintEnd_toStartOf="@+id/buttonSelectNone"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxEsport" />
 
     <Button
         android:id="@+id/buttonSelectNone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
         android:onClick="onClickSelectNone"
-        android:text="@string/button_select_all"
+        android:text="@string/button_select_none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxMath" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewSinglePlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:text="@string/text_view_single_player"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.548" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
