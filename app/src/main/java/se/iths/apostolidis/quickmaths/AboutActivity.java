@@ -25,7 +25,7 @@ public class AboutActivity extends AppCompatActivity {
         questionButton = findViewById(R.id.button123);
         textView = findViewById(R.id.textView);
         database = DBHelper.getInstance(this);
-       textView.setText(database.getAllQuizzes().get(10).getQuestion());
+      // textView.setText(database.getAllQuizzes().get(10).getQuestion());
     }
 
     public void onClickExpandTextView(View v){

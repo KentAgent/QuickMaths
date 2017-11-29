@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         remoteDataManager.getQuizzes(new FetchCallback() {
             @Override
             public void didReceiveData(List<Quiz> quizzesFromServer) {
+
                 database.removeoldQuizzes(quizzesFromServer, database.getAllQuizzes());
                 database.updateQuizzes(quizzesFromServer);
                 database.insertQuizzes(quizzesFromServer, database.getAllQuizzes());
