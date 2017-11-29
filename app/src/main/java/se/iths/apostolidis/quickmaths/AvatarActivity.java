@@ -2,7 +2,10 @@ package se.iths.apostolidis.quickmaths;
 
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +66,7 @@ public class AvatarActivity extends AppCompatActivity {
 //------------------------------------------
 
 //--------------saveAvatar------------------
-//    Bitmap mbitmap;
+//
     private ImageView saveAvatar;
 //------------------------------------------
     @Override
@@ -82,41 +85,19 @@ public class AvatarActivity extends AppCompatActivity {
 //----------------------------screenCaptureCode-----------------------
 
 public void onClickSaveAvatar(View view) {
-    Bitmap b = Screenshot.takeScreenShotOfRootView(saveAvatar);
-    saveAvatar.setImageBitmap(b);
+    Bitmap avatarImage = Screenshot.takeScreenShotOfRootView(saveAvatar);
+    int dimension = getSquareCropDimensionForBitmap(avatarImage);
+    avatarImage = ThumbnailUtils.extractThumbnail(avatarImage, dimension, dimension);
+    RoundedBitmapDrawable roundAvatarImage = RoundedBitmapDrawableFactory.create(getResources(), avatarImage);
+    roundAvatarImage.setCircular(true);
+    saveAvatar.setImageDrawable(roundAvatarImage);
+
 
 }
 
-
-
-//
-//    public void onClickSaveAvatar (View view){
-//        mbitmap = getBitmapOfRootView(saveTheAvatar);
-//        saveAvatar.setImageBitmap(mbitmap);
-//        createImage(mbitmap);
-//    }
-//
-//    public Bitmap getBitmapOfRootView(View v){
-//        View rootview = v.getRootView();
-//        rootview.setDrawingCacheEnabled(true);
-//        Bitmap bitmap1 = rootview.getDrawingCache();
-//        return bitmap1;
-//    }
-//
-//    public void createImage (Bitmap bmp){
-//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//        bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-//        File file = new File(Environment.getExternalStorageDirectory()+"/capturedscreenandroid.jpg");
-//
-//        try {
-//            file.createNewFile();
-//            FileOutputStream outputStream = new FileOutputStream(file);
-//            outputStream.write(bytes.toByteArray());
-//            outputStream.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+public int getSquareCropDimensionForBitmap(Bitmap bitmap){
+    return Math.min(bitmap.getWidth(), bitmap.getHeight());
+}
 
 //---------------------------------------------------------------------
 
