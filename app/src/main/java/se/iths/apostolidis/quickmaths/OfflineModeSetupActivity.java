@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
     int numberOfPlayers = 0;
-    int emptyPlayers = 3;
+    int emptyPlayers = 7;
     int hide = 7;
 
     EditText[] editTextsPN = new EditText[8];
@@ -84,13 +84,18 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[7] = etP8Name;
 
 
-        for (int i = 0; i < emptyPlayers; i++) {
-            editTextsPN[hide].setVisibility(View.INVISIBLE);
-            textViewsPN[hide].setVisibility(View.INVISIBLE);
-            hide--;
+        makeAllInvisable();
+
+        Bundle extras = getIntent().getExtras();
+
+        numberOfPlayers = extras.getInt("numberOfPlayers");
+        if(numberOfPlayers != 0) {
+            for (int i = 0; i < numberOfPlayers; i++) {
+                editTextsPN[i].setVisibility(View.VISIBLE);
+                textViewsPN[i].setVisibility(View.VISIBLE);
+
+            }
         }
-
-
 
 
 
@@ -131,6 +136,15 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
                 }
 
                 */
+    }
+
+    public void makeAllInvisable(){
+            for (EditText n: editTextsPN){
+                n.setVisibility(View.INVISIBLE);
+            }
+            for (TextView n: textViewsPN){
+                n.setVisibility(View.INVISIBLE);
+            }
     }
 }
 
