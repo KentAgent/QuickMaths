@@ -135,72 +135,20 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     }
 }
 
-            /*
-            switch (xTrue) {
-                case 1:
-                    textView1.setText(choosenCategories[0]);
-                    break;
-                case 2:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    break;
-                case 3:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    break;
-                case 4:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    break;
-                case 5:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    textView5.setText(choosenCategories[4]);
-                    break;
-                case 6:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    textView5.setText(choosenCategories[4]);
-                    textView6.setText(choosenCategories[5]);
-                    break;
-                case 7:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    textView5.setText(choosenCategories[4]);
-                    textView6.setText(choosenCategories[5]);
-                    textView7.setText(choosenCategories[6]);
-                    break;
-                case 8:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    textView5.setText(choosenCategories[4]);
-                    textView6.setText(choosenCategories[5]);
-                    textView7.setText(choosenCategories[6]);
-                    textView8.setText(choosenCategories[7]);
-                    break;
-                case 9:
-                    textView1.setText(choosenCategories[0]);
-                    textView2.setText(choosenCategories[1]);
-                    textView3.setText(choosenCategories[2]);
-                    textView4.setText(choosenCategories[3]);
-                    textView5.setText(choosenCategories[4]);
-                    textView6.setText(choosenCategories[5]);
-                    textView7.setText(choosenCategories[6]);
-                    textView8.setText(choosenCategories[7]);
-                    textView9.setText(choosenCategories[8]);
-                    break;
-                default:
-                    break;
-            }
-            */
+
+
+              /*
+        Skriver ut valda kategorier i textviews
+         */
+              /*
+        if(choosenCategories != null){
+                int index = 0;
+                for (String n: choosenCategories){
+                textViews.get(index).setText(n);
+                index++;
+                }
+
+                }
+
+                */
+            
