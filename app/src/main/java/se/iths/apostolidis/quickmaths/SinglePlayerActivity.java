@@ -31,7 +31,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     int xTrue;
     int count;
-    int goon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,22 +62,23 @@ public class SinglePlayerActivity extends AppCompatActivity {
      */
 
 /*
-    Logic
+
                             _
-    CamelToe = Vulva       < >
-    HumanToe = CamelPenis < _ >
+                           < >
+                         < _ >
                       __<_ - _>___
-    CamelToe.isFemale + (.)(.) = KeyStore.TrustedCertificateEntry
-    HumanToe.isMale--> + {--}
+                        (.)(.)
+                         {--}
                    //----\ /----\\
                         // }}    \\
                        === ===    \\
-    camelToe > HumanToe            \\
-    camelBack != camelToe         \\\\\\
+                                   \\
+                                 \\\\\\
                                     D
-    goOn = go on camelBack style      A
+                                      A
                                         M
-    goon = go on classic style           M
+                                         M
+
 */
 
 
@@ -149,10 +149,14 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         choosenCategories = new String[xTrue];
 
-        for(int i = 0; i < xTrue; i++){
+        count = 0;
+
+        for(int i = 0; i < booleanArrayCategories.length; i++){
             if(booleanArrayCategories[i]){
-                choosenCategories[i] = stringArrayCategories[i];
+                choosenCategories[count] = stringArrayCategories[i];
+                count++;
             }
+
         }
 
         if (xTrue > 0) {

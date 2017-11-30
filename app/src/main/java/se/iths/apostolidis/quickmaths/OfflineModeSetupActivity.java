@@ -2,14 +2,13 @@ package se.iths.apostolidis.quickmaths;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
-  /*
     int numberOfPlayers = 0;
-    boolean[] tempArray;
-    boolean[] booleanArrayCategories = new boolean[9];
     int emptyPlayers = 0;
     int hide = 0;
 
@@ -32,13 +31,12 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP6Name;
     TextView tvP7Name;
     TextView tvP8Name;
-*/
+
     String[] choosenCategories;
     int xTrue;
 
 
-
-    //ArrayList<TextView> textViewArrayList = new ArrayList<TextView>(9);
+/*
     TextView textView1;
     TextView textView2;
     TextView textView3;
@@ -48,14 +46,26 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView textView7;
     TextView textView8;
     TextView textView9;
-
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_mode_setup);
+/*
 
-        /*etP1Name = findViewById(R.id.editTextPlayer1Name);
+        TODO// Skapa edittexts  och textviews i layout. constraint layout duger bra
+
+        såhär: player1name: __________
+               player2name: __________
+
+               namnen på edittexts och textviews finns deklarerade i toppen.
+               du ser dem även få ett värde från resources nedanför
+               kör hårt så gör jag scorllable pick number så länge
+
+               TODO
+
+        etP1Name = findViewById(R.id.editTextPlayer1Name);
         etP2Name = findViewById(R.id.editTextPlayer2Name);
         etP3Name = findViewById(R.id.editTextPlayer3Name);
         etP4Name = findViewById(R.id.editTextPlayer4Name);
@@ -72,7 +82,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         tvP6Name = findViewById(R.id.textViewPlayer6Name);
         tvP7Name = findViewById(R.id.textViewPlayer7Name);
         tvP8Name = findViewById(R.id.textViewPlayer8Name);
-
+/*
         textViewsPN[0] = tvP1Name;
         textViewsPN[1] = tvP2Name;
         textViewsPN[2] = tvP3Name;
@@ -90,9 +100,8 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[5] = etP6Name;
         editTextsPN[6] = etP7Name;
         editTextsPN[7] = etP8Name;
-*/
 
-
+/*
         textView1 = findViewById(R.id.textViewTest1);
         textView2 = findViewById(R.id.textViewTest2);
         textView3 = findViewById(R.id.textViewTest3);
@@ -102,46 +111,44 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         textView7 = findViewById(R.id.textViewTest7);
         textView8 = findViewById(R.id.textViewTest8);
         textView9 = findViewById(R.id.textViewTest9);
-
-/*
-        textViewArrayList.set(0, textView1);
-        textViewArrayList.set(1, textView2);
-        textViewArrayList.set(2, textView3);
-        textViewArrayList.set(3, textView4);
-        textViewArrayList.set(4, textView5);
-        textViewArrayList.set(5, textView6);
-        textViewArrayList.set(6, textView7);
-        textViewArrayList.set(7, textView8);
-        textViewArrayList.set(8, textView9);
 */
 
         Bundle extras = getIntent().getExtras();
 
         xTrue = extras.getInt("xTrue");
 
+        //här instansieras stringarray som sätts till storleken av antalet valda kategorier;
         choosenCategories = new String[xTrue];
 
         choosenCategories = extras.getStringArray("choosenCategories");
 
-        textView1.setText(choosenCategories[0]);
 
+        // gömmer antalet textviews och editexts baserat på antalet spelare
 
-
-        /*
-        for(int i = 0; i < xTrue; i++) {
-            textViewArrayList.get(i).setText(choosenCategories[i]);
-        }
-        */
-
-
-
-  /*      emptyPlayers = 8 - numberOfPlayers;
+        emptyPlayers = 8 - numberOfPlayers;
 
         for (int i = 0; i < emptyPlayers; i++) {
             hide = numberOfPlayers + i;
             editTextsPN[hide].setVisibility(View.INVISIBLE);
             textViewsPN[hide].setVisibility(View.INVISIBLE);
         }
-*/
     }
 }
+
+
+
+              /*
+        Skriver ut valda kategorier i textviews
+         */
+              /*
+        if(choosenCategories != null){
+                int index = 0;
+                for (String n: choosenCategories){
+                textViews.get(index).setText(n);
+                index++;
+                }
+
+                }
+
+                */
+            
