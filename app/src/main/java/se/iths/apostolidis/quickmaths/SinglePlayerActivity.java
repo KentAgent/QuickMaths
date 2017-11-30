@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
@@ -31,6 +32,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
     Button buttonSelectNone;
     Button buttonGoBack;
     Button buttonProceed;
+
+
 
     int xTrue;
     int count;
@@ -62,6 +65,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cRandom = findViewById(R.id.checkboxRandom);
         cEsport = findViewById(R.id.checkboxEsport);
         cMath = findViewById(R.id.checkboxMath);
+
     }
 
 /*
@@ -171,6 +175,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
 
         }
+
 
         if (xTrue > 0) {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
