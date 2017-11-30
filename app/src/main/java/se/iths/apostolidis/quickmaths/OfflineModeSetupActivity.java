@@ -6,36 +6,36 @@ import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
-  /*
-    int numberOfPlayers = 0;
-    boolean[] tempArray;
-    boolean[] booleanArrayCategories = new boolean[9];
-    int emptyPlayers = 0;
-    int hide = 0;
+    /*
+      int numberOfPlayers = 0;
+      boolean[] tempArray;
+      boolean[] booleanArrayCategories = new boolean[9];
+      int emptyPlayers = 0;
+      int hide = 0;
 
-    EditText[] editTextsPN = new EditText[8];
-    EditText etP1Name;
-    EditText etP2Name;
-    EditText etP3Name;
-    EditText etP4Name;
-    EditText etP5Name;
-    EditText etP6Name;
-    EditText etP7Name;
-    EditText etP8Name;
+      EditText[] editTextsPN = new EditText[8];
+      EditText etP1Name;
+      EditText etP2Name;
+      EditText etP3Name;
+      EditText etP4Name;
+      EditText etP5Name;
+      EditText etP6Name;
+      EditText etP7Name;
+      EditText etP8Name;
 
-    TextView[] textViewsPN = new EditText[8];
-    TextView tvP1Name;
-    TextView tvP2Name;
-    TextView tvP3Name;
-    TextView tvP4Name;
-    TextView tvP5Name;
-    TextView tvP6Name;
-    TextView tvP7Name;
-    TextView tvP8Name;
-*/
+      TextView[] textViewsPN = new EditText[8];
+      TextView tvP1Name;
+      TextView tvP2Name;
+      TextView tvP3Name;
+      TextView tvP4Name;
+      TextView tvP5Name;
+      TextView tvP6Name;
+      TextView tvP7Name;
+      TextView tvP8Name;
+  */
     String[] choosenCategories;
     int xTrue;
-
+    int xTruePlusOne;
 
 
     //ArrayList<TextView> textViewArrayList = new ArrayList<TextView>(9);
@@ -119,13 +119,82 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
         xTrue = extras.getInt("xTrue");
 
+        //här instansieras stringarray som sätts till storleken av antalet valda kategorier;
         choosenCategories = new String[xTrue];
 
         choosenCategories = extras.getStringArray("choosenCategories");
 
-        textView1.setText(choosenCategories[0]);
-
-
+        if(choosenCategories != null) {
+            switch (xTrue) {
+                case 1:
+                    textView1.setText(choosenCategories[0]);
+                    break;
+                case 2:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    break;
+                case 3:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    break;
+                case 4:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    break;
+                case 5:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    textView5.setText(choosenCategories[4]);
+                    break;
+                case 6:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    textView5.setText(choosenCategories[4]);
+                    textView6.setText(choosenCategories[5]);
+                    break;
+                case 7:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    textView5.setText(choosenCategories[4]);
+                    textView6.setText(choosenCategories[5]);
+                    textView7.setText(choosenCategories[6]);
+                    break;
+                case 8:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    textView5.setText(choosenCategories[4]);
+                    textView6.setText(choosenCategories[5]);
+                    textView7.setText(choosenCategories[6]);
+                    textView8.setText(choosenCategories[7]);
+                    break;
+                case 9:
+                    textView1.setText(choosenCategories[0]);
+                    textView2.setText(choosenCategories[1]);
+                    textView3.setText(choosenCategories[2]);
+                    textView4.setText(choosenCategories[3]);
+                    textView5.setText(choosenCategories[4]);
+                    textView6.setText(choosenCategories[5]);
+                    textView7.setText(choosenCategories[6]);
+                    textView8.setText(choosenCategories[7]);
+                    textView9.setText(choosenCategories[8]);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
 
         /*
         for(int i = 0; i < xTrue; i++) {
@@ -143,5 +212,3 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
             textViewsPN[hide].setVisibility(View.INVISIBLE);
         }
 */
-    }
-}
