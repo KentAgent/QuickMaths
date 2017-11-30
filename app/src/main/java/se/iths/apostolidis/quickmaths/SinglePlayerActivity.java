@@ -63,22 +63,23 @@ public class SinglePlayerActivity extends AppCompatActivity {
      */
 
 /*
-    Logic
+
                             _
-    CamelToe = Vulva       < >
-    HumanToe = CamelPenis < _ >
+                           < >
+                         < _ >
                       __<_ - _>___
-    CamelToe.isFemale + (.)(.) = KeyStore.TrustedCertificateEntry
-    HumanToe.isMale--> + {--}
+                        (.)(.)
+                         {--}
                    //----\ /----\\
                         // }}    \\
                        === ===    \\
-    camelToe > HumanToe            \\
-    camelBack != camelToe         \\\\\\
+                                   \\
+                                 \\\\\\
                                     D
-    goOn = go on camelBack style      A
+                                      A
                                         M
-    goon = go on classic style           M
+                                         M
+
 */
 
 
