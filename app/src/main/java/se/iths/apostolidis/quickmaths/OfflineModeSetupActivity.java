@@ -9,8 +9,8 @@ import android.widget.TextView;
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
     int numberOfPlayers = 0;
-    int emptyPlayers = 0;
-    int hide = 0;
+    int emptyPlayers = 3;
+    int hide = 7;
 
     EditText[] editTextsPN = new EditText[8];
     EditText etP1Name;
@@ -22,7 +22,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     EditText etP7Name;
     EditText etP8Name;
 
-    TextView[] textViewsPN = new EditText[8];
+    TextView[] textViewsPN = new TextView[8];
     TextView tvP1Name;
     TextView tvP2Name;
     TextView tvP3Name;
@@ -36,43 +36,25 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     int xTrue;
 
 
-/*
-    TextView textView1;
-    TextView textView2;
-    TextView textView3;
-    TextView textView4;
-    TextView textView5;
-    TextView textView6;
-    TextView textView7;
-    TextView textView8;
-    TextView textView9;
-*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_mode_setup);
-/*
 
-        TODO// Skapa edittexts  och textviews i layout. constraint layout duger bra
 
-        såhär: player1name: __________
-               player2name: __________
 
-               namnen på edittexts och textviews finns deklarerade i toppen.
-               du ser dem även få ett värde från resources nedanför
-               kör hårt så gör jag scorllable pick number så länge
 
-               TODO
 
-        etP1Name = findViewById(R.id.editTextPlayer1Name);
-        etP2Name = findViewById(R.id.editTextPlayer2Name);
-        etP3Name = findViewById(R.id.editTextPlayer3Name);
-        etP4Name = findViewById(R.id.editTextPlayer4Name);
-        etP5Name = findViewById(R.id.editTextPlayer5Name);
-        etP6Name = findViewById(R.id.editTextPlayer6Name);
-        etP7Name = findViewById(R.id.editTextPlayer7Name);
-        etP8Name = findViewById(R.id.editTextPlayer8Name);
+        etP1Name = findViewById(R.id.editTextNamePlayer1);
+        etP2Name = findViewById(R.id.editTextNamePlayer2);
+        etP3Name = findViewById(R.id.editTextNamePlayer3);
+        etP4Name = findViewById(R.id.editTextNamePlayer4);
+        etP5Name = findViewById(R.id.editTextNamePlayer5);
+        etP6Name = findViewById(R.id.editTextNamePlayer6);
+        etP7Name = findViewById(R.id.editTextNamePlayer7);
+        etP8Name = findViewById(R.id.editTextNamePlayer8);
 
         tvP1Name = findViewById(R.id.textViewPlayer1Name);
         tvP2Name = findViewById(R.id.textViewPlayer2Name);
@@ -82,7 +64,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         tvP6Name = findViewById(R.id.textViewPlayer6Name);
         tvP7Name = findViewById(R.id.textViewPlayer7Name);
         tvP8Name = findViewById(R.id.textViewPlayer8Name);
-/*
+
         textViewsPN[0] = tvP1Name;
         textViewsPN[1] = tvP2Name;
         textViewsPN[2] = tvP3Name;
@@ -101,18 +83,18 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[6] = etP7Name;
         editTextsPN[7] = etP8Name;
 
-/*
-        textView1 = findViewById(R.id.textViewTest1);
-        textView2 = findViewById(R.id.textViewTest2);
-        textView3 = findViewById(R.id.textViewTest3);
-        textView4 = findViewById(R.id.textViewTest4);
-        textView5 = findViewById(R.id.textViewTest5);
-        textView6 = findViewById(R.id.textViewTest6);
-        textView7 = findViewById(R.id.textViewTest7);
-        textView8 = findViewById(R.id.textViewTest8);
-        textView9 = findViewById(R.id.textViewTest9);
-*/
 
+        for (int i = 0; i < emptyPlayers; i++) {
+            editTextsPN[hide].setVisibility(View.INVISIBLE);
+            textViewsPN[hide].setVisibility(View.INVISIBLE);
+            hide--;
+        }
+
+
+
+
+
+        /* tar fram info från bundle från SinglePlayerActivity
         Bundle extras = getIntent().getExtras();
 
         xTrue = extras.getInt("xTrue");
@@ -123,7 +105,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         choosenCategories = extras.getStringArray("choosenCategories");
 
 
-        // gömmer antalet textviews och editexts baserat på antalet spelare
+         gömmer antalet textviews och editexts baserat på antalet spelare
 
         emptyPlayers = 8 - numberOfPlayers;
 
@@ -131,11 +113,9 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
             hide = numberOfPlayers + i;
             editTextsPN[hide].setVisibility(View.INVISIBLE);
             textViewsPN[hide].setVisibility(View.INVISIBLE);
+
         }
-    }
-}
-
-
+        */
 
               /*
         Skriver ut valda kategorier i textviews
@@ -151,4 +131,9 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
                 }
 
                 */
-            
+    }
+}
+
+
+
+
