@@ -151,11 +151,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         count = 0;
 
-        for(int i = 0; i < xTrue; i++){
+        for(int i = 0; i < booleanArrayCategories.length; i++){
             if(booleanArrayCategories[i]){
                 choosenCategories[count] = stringArrayCategories[i];
+                count++;
             }
-            count++;
+
         }
 
         if (xTrue > 0) {
