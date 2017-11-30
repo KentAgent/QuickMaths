@@ -2,6 +2,7 @@ package se.iths.apostolidis.quickmaths;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
@@ -32,6 +33,23 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP7Name;
     TextView tvP8Name;
 */
+    String[] choosenCategories;
+    int xTrue;
+
+
+
+    //ArrayList<TextView> textViewArrayList = new ArrayList<TextView>(9);
+    TextView textView1;
+    TextView textView2;
+    TextView textView3;
+    TextView textView4;
+    TextView textView5;
+    TextView textView6;
+    TextView textView7;
+    TextView textView8;
+    TextView textView9;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,11 +92,48 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[7] = etP8Name;
 */
 
+
+        textView1 = findViewById(R.id.textViewTest1);
+        textView2 = findViewById(R.id.textViewTest2);
+        textView3 = findViewById(R.id.textViewTest3);
+        textView4 = findViewById(R.id.textViewTest4);
+        textView5 = findViewById(R.id.textViewTest5);
+        textView6 = findViewById(R.id.textViewTest6);
+        textView7 = findViewById(R.id.textViewTest7);
+        textView8 = findViewById(R.id.textViewTest8);
+        textView9 = findViewById(R.id.textViewTest9);
+
 /*
-        Bundle extras = getIntent().getExtras();
-        booleanArrayCategories = extras.getBooleanArray("booleanArrayCategories");
-        numberOfPlayers = extras.getInt("numberOfPlayers");
+        textViewArrayList.set(0, textView1);
+        textViewArrayList.set(1, textView2);
+        textViewArrayList.set(2, textView3);
+        textViewArrayList.set(3, textView4);
+        textViewArrayList.set(4, textView5);
+        textViewArrayList.set(5, textView6);
+        textViewArrayList.set(6, textView7);
+        textViewArrayList.set(7, textView8);
+        textViewArrayList.set(8, textView9);
 */
+
+        Bundle extras = getIntent().getExtras();
+
+        xTrue = extras.getInt("xTrue");
+
+        choosenCategories = new String[xTrue];
+
+        choosenCategories = extras.getStringArray("choosenCategories");
+
+        textView1.setText(choosenCategories[0]);
+
+
+
+        /*
+        for(int i = 0; i < xTrue; i++) {
+            textViewArrayList.get(i).setText(choosenCategories[i]);
+        }
+        */
+
+
 
   /*      emptyPlayers = 8 - numberOfPlayers;
 

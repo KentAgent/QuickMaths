@@ -20,12 +20,18 @@ public class SinglePlayerActivity extends AppCompatActivity {
     CheckBox cEsport;
     CheckBox cMath;
 
-    boolean booleanArrayCategories[];
+    boolean[] booleanArrayCategories;
+    String[] stringArrayCategories;
+    String[] choosenCategories;
 
     Button buttonSelectAll;
     Button buttonSelectNone;
     Button buttonGoBack;
     Button buttonProceed;
+
+    int xTrue;
+    int count;
+    int goon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_player);
 
         booleanArrayCategories = new boolean[9];
+        stringArrayCategories = new String[9];
+
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
         buttonSelectNone = findViewById(R.id.buttonSelectNone);
         buttonGoBack = findViewById(R.id.buttonGoBack);
@@ -53,6 +61,27 @@ public class SinglePlayerActivity extends AppCompatActivity {
      * Checks all category checkboxes
      *
      */
+
+/*
+    Logic
+                            _
+    CamelToe = Vulva       < >
+    HumanToe = CamelPenis < _ >
+                      __<_ - _>___
+    CamelToe.isFemale + (.)(.) = KeyStore.TrustedCertificateEntry
+    HumanToe.isMale--> + {--}
+                   //----\ /----\\
+                        // }}    \\
+                       === ===    \\
+    camelToe > HumanToe            \\
+    camelBack != camelToe         \\\\\\
+                                    D
+    goOn = go on camelBack style      A
+                                        M
+    goon = go on classic style           M
+*/
+
+
     public void onClickSelectAll(View view) {
 
         cHumor.setChecked(true);
@@ -99,23 +128,43 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[7] = cRandom.isChecked();
         booleanArrayCategories[8] = cMath.isChecked();
 
+        stringArrayCategories[0] = "Humor";
+        stringArrayCategories[1] = "Sport";
+        stringArrayCategories[2] = "Film";
+        stringArrayCategories[3] = "Music";
+        stringArrayCategories[4] = "History";
+        stringArrayCategories[5] = "Geography";
+        stringArrayCategories[6] = "E-sport";
+        stringArrayCategories[7] = "Random";
+        stringArrayCategories[8] = "Math";
 
-        int count = 0;
 
-        for (boolean booleanArrayCategory : booleanArrayCategories) {
-            if (booleanArrayCategory) {
-                count++;
+        xTrue = 0;
+
+        for (int i = 0; i < booleanArrayCategories.length; i++) {
+            if (booleanArrayCategories[i]) {
+                xTrue++;
             }
         }
 
-        if (count != 0) {
+        choosenCategories = new String[xTrue];
+
+        for(int i = 0; i < xTrue; i++){
+            if(booleanArrayCategories[i]){
+                choosenCategories[i] = stringArrayCategories[i];
+            }
+        }
+
+        if (xTrue > 0) {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-            intent.putExtra("booleanArrayCategories", booleanArrayCategories);
+            intent.putExtra("xTrue", xTrue);
+            intent.putExtra("choosenCategories", choosenCategories);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
         }
     }
+
     public void onClickGoBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
