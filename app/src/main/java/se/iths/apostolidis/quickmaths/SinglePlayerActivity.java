@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
+import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPickerListener;
+
 public class SinglePlayerActivity extends AppCompatActivity {
 
     CheckBox cHumor;
@@ -31,6 +34,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     int xTrue;
     int count;
+    int numberOfPlayers = 1;
+
+    ScrollableNumberPicker snp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         booleanArrayCategories = new boolean[9];
         stringArrayCategories = new String[9];
+
+        snp = findViewById(R.id.number_picker_horizontal);
 
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
         buttonSelectNone = findViewById(R.id.buttonSelectNone);
@@ -55,11 +63,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cEsport = findViewById(R.id.checkboxEsport);
         cMath = findViewById(R.id.checkboxMath);
     }
-
-    /**
-     * Checks all category checkboxes
-     *
-     */
 
 /*
 
@@ -81,7 +84,10 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
 */
 
-
+    /**
+     * Checks all category checkboxes
+     *
+     */
     public void onClickSelectAll(View view) {
 
         cHumor.setChecked(true);
@@ -111,12 +117,19 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cMath.setChecked(false);
     }
     /**
-     * When clicking on continue button:
-     * creates intent and puts an array with boolean values of checkbox checked
+     * When clicking on proceed button:
+     * value of number of categories choosen, and string[] array with categories choosen,
      * and value of number of players from scrollable number picker
-     * goes to OfflineModeSetupActivity where players chooses names and avatars
+     * is sent with intent to OfflineModeSetupActivity
      */
     public void onClickProceed(View view) {
+
+        snp.setListener(new ScrollableNumberPickerListener() {
+            @Override
+            public void onNumberPicked(int value) {
+                numberOfPlayers = value;
+            }
+        });
 
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
@@ -161,6 +174,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         if (xTrue > 0) {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+            intent.putExtra("numberOfPlayers", numberOfPlayers);
             intent.putExtra("xTrue", xTrue);
             intent.putExtra("choosenCategories", choosenCategories);
             startActivity(intent);
