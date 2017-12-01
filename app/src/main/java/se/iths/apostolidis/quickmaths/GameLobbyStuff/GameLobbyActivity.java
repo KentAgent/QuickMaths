@@ -54,9 +54,8 @@ public class GameLobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_lobby);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
-
 
         mUsername = ANONYMOUS;
 
