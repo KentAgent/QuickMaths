@@ -45,7 +45,7 @@ public class RemoteDataManager {
                                 e.printStackTrace();
                             }
                             quizzes = new ArrayList<>();
-                            for(int i = 0, len = jsonArray.length(); i < len; i++) {
+                            for(int i = 0, len = jsonArray.length() +1; i < len; i++) {
                                 try {
                                     quizzes.add(Quiz.fromJSON(((JSONObject)jsonArray.get(i))));
 
