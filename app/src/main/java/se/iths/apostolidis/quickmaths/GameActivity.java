@@ -1,33 +1,31 @@
 package se.iths.apostolidis.quickmaths;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.icu.text.AlphabeticIndex;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.MutableBoolean;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
-import com.github.chrisbanes.photoview.PhotoView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class
 GameActivity extends AppCompatActivity {
 
+    Button buttonRollDice;
     MPhotoView gridMPhotoView;
     MPhotoView map;
     private static int gridSize = 37;
@@ -53,6 +51,7 @@ GameActivity extends AppCompatActivity {
     ArrayList<Player> players = new ArrayList<>();
 
     private String category = "musik";
+    private boolean someoneWon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +61,7 @@ GameActivity extends AppCompatActivity {
         gridMPhotoView = findViewById(R.id.photo_viewGrid);
         //map.setImageResource(R.mipmap.gamemap);
         //map.setImageBitmap(setMap());
+        buttonRollDice = findViewById(R.id.buttonRollDice);
 
         gridBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
 
@@ -79,22 +79,22 @@ GameActivity extends AppCompatActivity {
         assetCoordinates = new Point[gridSize];
         setAssetPosList(assetCoordinates);
 
-        map.setScaleType(PhotoView.ScaleType.FIT_XY);
-        map.setImageBitmap(setMap(assetCoordinates));
+        //map.setScaleType(PhotoView.ScaleType.FIT_XY);
+        //map.setImageBitmap(setMap(assetCoordinates));
         Log.d("Wille", "Map width size: " + map.getWidth());
         Log.d("Wille", "Map height size: " + map.getHeight());
 
-
-        gridMPhotoView.setImageBitmap(createGrid(setMap(assetCoordinates)));
+        originalMapBitmap = setMap(assetCoordinates);
+        gridMPhotoView.setImageBitmap(originalMapBitmap);
         gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         clearMap();
-        canvas = new Canvas(gridBitmap);
+        canvas = new Canvas(originalMapBitmap);
         gameSetUp(gridMPhotoView);
     }
 
     private void clearMap() {
-        gridMPhotoView.setImageBitmap(createGrid(setMap(assetCoordinates)));
+        gridMPhotoView.setImageBitmap(originalMapBitmap);
         gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
@@ -104,7 +104,7 @@ GameActivity extends AppCompatActivity {
     }
     public void draw(ArrayList<Player> players){
         clearMap();
-        canvas = new Canvas(gridBitmap);
+        canvas = new Canvas(originalMapBitmap);
 
         for (int i = 0; i < players.size(); i++){
             canvas.save();
@@ -115,7 +115,6 @@ GameActivity extends AppCompatActivity {
     }
 
     public void gameSetUp (MPhotoView view){
-
 
         for (int i = 0; i < numberOfPlayer; i++){
             Player player = setPlayer(players, i);
@@ -131,56 +130,54 @@ GameActivity extends AppCompatActivity {
     }
 
     private void startGame(ArrayList<Player> players) {
-        fullTurn(players);
-    }
 
-    private void fullTurn(ArrayList<Player> players) {
-
-        playerTurn(players.get(0));
-
-        for (int i = 0; i < players.size(); i++){
-
-
-        }
+            for (int i = 0; i < players.size(); i++){
+                playerTurn(players.get(i));
+                getQuestion(category);
+            }
     }
 
     private void playerTurn(Player player) {
-        int dieValue = rollDice();
+        buttonRollDice.setVisibility(View.VISIBLE);
+        movePlayer(player, rollDice());
 
-        movePlayer(player, dieValue);
-
-        //getQuestion(category);
     }
 
+    private int onClickRollDice (View view){
+        return engine.rollDice();
+    }
     private int rollDice() {
         return engine.rollDice();
     }
 
     private void getQuestion(String category) {
 
+        Intent intent = new Intent(this, QuestionActivity.class);
+        startActivity(intent);
+
     }
 
     private void movePlayer(Player player, int steps) {
 
         for(int i = 0; i < steps; i ++) {
-            player.setPos(assetCoordinates[player.getCoordinateIndex()].x + 1, assetCoordinates[player.getCoordinateIndex()].y + 1);
 
-            canvas.save();
-            canvas.drawBitmap(player.getAvatar(), player.getPosX(), player.getPosY(), null);
-            canvas.restore();
-
+            player.setPos(assetCoordinates[player.getCoordinateIndex() + 1].x, assetCoordinates[player.getCoordinateIndex() + 1].y);
             player.setCoordinateIndex(player.getCoordinateIndex()+1);
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
+            if (player.getCoordinateIndex() == assetCoordinates.length){
+                player.setCoordinateIndex(0);
+            }
         }
 
         upDate(players);
+
     }
 
     @NonNull
     private Player setPlayer(ArrayList<Player> players, int i) {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
-        Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 200, false);
+        Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 100, 50, false);
         Player player = new Player();
         player.setId(i);
         player.setCoordinateIndex(0);

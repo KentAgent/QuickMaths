@@ -18,7 +18,6 @@ public class GameEngineSinglePlayer {
 
     }
 
-
     public void gameSetUp (ArrayList<Player> players){
         this.players = players;
         Log.d("Wille", "Inside GameEngine");
@@ -26,6 +25,7 @@ public class GameEngineSinglePlayer {
 
     public int rollDice() {
         Log.d("Wille", "Game Engine rollDice : ");
-        return 18;
+        RandomHelper randomHelper = new RandomHelper();
+        return randomHelper.randomBoundedIndex(10);
     }
 }
