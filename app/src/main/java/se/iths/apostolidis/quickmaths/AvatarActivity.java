@@ -45,7 +45,6 @@ public class AvatarActivity extends AppCompatActivity {
 
     private final Random random = new Random();
 
-    private ImageView background;
 
 //--------------Buttons---------------------
     private Button hairLeft;
@@ -74,8 +73,6 @@ public class AvatarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar);
 
-        background = findViewById(R.id.imageViewBackgroundAvatar);
-        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
         startAvatar();
         startButtons();

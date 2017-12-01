@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.ProfileActivity">
+    tools:context="se.iths.apostolidis.quickmaths.ProfileActivity"
+    android:background="@drawable/backgroundmainlight">
 
 
 
@@ -43,21 +44,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
-
-    <ImageView
-        android:id="@+id/imageViewQuestionBackground2"
-        android:layout_width="411dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="false"
-        android:alpha="0.7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/backgroundmainlight" />
 
     <Button
         android:id="@+id/ButtonGoogleLogout"

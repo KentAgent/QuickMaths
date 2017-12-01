@@ -16,7 +16,7 @@
         <item>@drawable/mouth4</item>
         <item>@drawable/mouth5</item>
         <item>@drawable/mouth6</item>
-        <item>@drawable/mouth10</item>
+        <item>@drawable/empty</item>
     </array>
 
     <array name="hair">
@@ -30,7 +30,7 @@
 
     <array name="nose">
         <item>@drawable/nose1</item>
-        <item>@drawable/nose10</item>
+        <item>@drawable/empty</item>
     </array>
 
     <array name="eyeleft">

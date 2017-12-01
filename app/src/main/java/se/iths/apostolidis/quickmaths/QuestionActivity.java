@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ public class QuestionActivity extends AppCompatActivity {
 
 
     private Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
-    private ImageView questionBackground;
     private TextView textViewQuestion;
     private TextView textViewCorrectAnswer;
     private DBHelper database;
@@ -125,8 +123,6 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void importViewElemets(){
-        questionBackground = findViewById(R.id.imageViewQuestionBackground);
-        questionBackground.setScaleType(ImageView.ScaleType.FIT_XY);
         textViewQuestion = findViewById(R.id.textViewQuestion);
         database = DBHelper.getInstance(this);
         btnAnswer1 = findViewById(R.id.buttonAnswer1);
