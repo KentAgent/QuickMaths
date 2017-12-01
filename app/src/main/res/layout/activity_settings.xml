@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.SettingsActivty">
+    tools:context="se.iths.apostolidis.quickmaths.SettingsActivty"
+    android:background="@drawable/backgroundtrees">
 
     <Button
         android:id="@+id/buttonChangeName"
@@ -137,16 +138,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-    <ImageView
-        android:id="@+id/imageViewBackgroundSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backgroundtrees" />
 
 
 </android.support.constraint.ConstraintLayout>
