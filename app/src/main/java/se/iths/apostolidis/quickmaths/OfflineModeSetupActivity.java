@@ -2,15 +2,15 @@ package se.iths.apostolidis.quickmaths;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
-  /*
     int numberOfPlayers = 0;
-    boolean[] tempArray;
-    boolean[] booleanArrayCategories = new boolean[9];
-    int emptyPlayers = 0;
-    int hide = 0;
+    int emptyPlayers = 7;
+    int hide = 7;
 
     EditText[] editTextsPN = new EditText[8];
     EditText etP1Name;
@@ -22,7 +22,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     EditText etP7Name;
     EditText etP8Name;
 
-    TextView[] textViewsPN = new EditText[8];
+    TextView[] textViewsPN = new TextView[8];
     TextView tvP1Name;
     TextView tvP2Name;
     TextView tvP3Name;
@@ -31,20 +31,30 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP6Name;
     TextView tvP7Name;
     TextView tvP8Name;
-*/
+
+    String[] choosenCategories;
+    int xTrue;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_mode_setup);
 
-        /*etP1Name = findViewById(R.id.editTextPlayer1Name);
-        etP2Name = findViewById(R.id.editTextPlayer2Name);
-        etP3Name = findViewById(R.id.editTextPlayer3Name);
-        etP4Name = findViewById(R.id.editTextPlayer4Name);
-        etP5Name = findViewById(R.id.editTextPlayer5Name);
-        etP6Name = findViewById(R.id.editTextPlayer6Name);
-        etP7Name = findViewById(R.id.editTextPlayer7Name);
-        etP8Name = findViewById(R.id.editTextPlayer8Name);
+
+
+
+
+        etP1Name = findViewById(R.id.editTextNamePlayer1);
+        etP2Name = findViewById(R.id.editTextNamePlayer2);
+        etP3Name = findViewById(R.id.editTextNamePlayer3);
+        etP4Name = findViewById(R.id.editTextNamePlayer4);
+        etP5Name = findViewById(R.id.editTextNamePlayer5);
+        etP6Name = findViewById(R.id.editTextNamePlayer6);
+        etP7Name = findViewById(R.id.editTextNamePlayer7);
+        etP8Name = findViewById(R.id.editTextNamePlayer8);
 
         tvP1Name = findViewById(R.id.textViewPlayer1Name);
         tvP2Name = findViewById(R.id.textViewPlayer2Name);
@@ -72,21 +82,72 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[5] = etP6Name;
         editTextsPN[6] = etP7Name;
         editTextsPN[7] = etP8Name;
-*/
 
-/*
+
+        makeAllInvisable();
+
         Bundle extras = getIntent().getExtras();
-        booleanArrayCategories = extras.getBooleanArray("booleanArrayCategories");
-        numberOfPlayers = extras.getInt("numberOfPlayers");
-*/
 
-  /*      emptyPlayers = 8 - numberOfPlayers;
+        numberOfPlayers = extras.getInt("numberOfPlayers");
+        if(numberOfPlayers != 0) {
+            for (int i = 0; i < numberOfPlayers; i++) {
+                editTextsPN[i].setVisibility(View.VISIBLE);
+                textViewsPN[i].setVisibility(View.VISIBLE);
+
+            }
+        }
+
+
+
+        /* tar fram info från bundle från SinglePlayerActivity
+        Bundle extras = getIntent().getExtras();
+
+        xTrue = extras.getInt("xTrue");
+
+        //här instansieras stringarray som sätts till storleken av antalet valda kategorier;
+        choosenCategories = new String[xTrue];
+
+        choosenCategories = extras.getStringArray("choosenCategories");
+
+
+         gömmer antalet textviews och editexts baserat på antalet spelare
+
+        emptyPlayers = 8 - numberOfPlayers;
 
         for (int i = 0; i < emptyPlayers; i++) {
             hide = numberOfPlayers + i;
             editTextsPN[hide].setVisibility(View.INVISIBLE);
             textViewsPN[hide].setVisibility(View.INVISIBLE);
+
         }
-*/
+        */
+
+              /*
+        Skriver ut valda kategorier i textviews
+         */
+              /*
+        if(choosenCategories != null){
+                int index = 0;
+                for (String n: choosenCategories){
+                textViews.get(index).setText(n);
+                index++;
+                }
+
+                }
+
+                */
+    }
+
+    public void makeAllInvisable(){
+            for (EditText n: editTextsPN){
+                n.setVisibility(View.INVISIBLE);
+            }
+            for (TextView n: textViewsPN){
+                n.setVisibility(View.INVISIBLE);
+            }
     }
 }
+
+
+
+
