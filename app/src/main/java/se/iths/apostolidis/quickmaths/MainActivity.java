@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settings;
     private DBHelper database;
     private RemoteDataManager remoteDataManager;
+    private ImageView background;
 
 
     //Boolean to check if first click has been used to set visibility
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.textViewStart);
         account = findViewById(R.id.imageButtonAccount);
         settings = findViewById(R.id.imageButtonSettings);
+        background = findViewById(R.id.imageViewBackground);
+        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
         aboutUs.setText("CODED BY:\n\nKentAgent\nKakashi\nTantMutti\nFyrren\nSchwimpy\nMik3nox");
