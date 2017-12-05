@@ -14,6 +14,7 @@ public class Player {
     private int posX, posY;
     private Bitmap avatar;
 
+
     public int getCoordinateIndex() {
         return coordinateIndex;
     }

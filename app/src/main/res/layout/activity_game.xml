@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.GameActivity">
+    tools:context="se.iths.apostolidis.quickmaths.GameActivity"
+    android:background="@drawable/backgroundsky">
 
     <se.iths.apostolidis.quickmaths.MPhotoView
         android:id="@+id/photo_view"
