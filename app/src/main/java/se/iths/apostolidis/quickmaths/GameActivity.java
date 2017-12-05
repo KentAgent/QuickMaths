@@ -226,7 +226,7 @@ GameActivity extends AppCompatActivity {
 
     @NonNull
     private Player setPlayer(ArrayList<Player> players, int i) {
-        Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
+        Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.player1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 100, false);
         Player player = new Player();
         //player.setId();
