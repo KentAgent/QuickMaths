@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
+import se.iths.apostolidis.quickmaths.containers.Quiz;
 import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 
 public class QuestionActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class QuestionActivity extends AppCompatActivity {
     private ArrayList<String> usedQuestions= new ArrayList<>();
     private String TAG = "questionLogTag";
     private String genre = "Musik";
+    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class QuestionActivity extends AppCompatActivity {
         importViewElemets();
         setQuestion();
 
+        Quiz quiz = new Quiz();
     }
     public void setQuestion (){
 

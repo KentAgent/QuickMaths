@@ -17,6 +17,7 @@ public class AboutActivity extends AppCompatActivity {
     private DBHelper database;
     private Button questionButton;
     private RemoteDataManager remoteDataManager;
+    private Button gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class AboutActivity extends AppCompatActivity {
         questionButton = findViewById(R.id.button123);
         textView = findViewById(R.id.textView);
         database = DBHelper.getInstance(this);
-      // textView.setText(database.getAllQuizzes().get(10).getQuestion());
+       textView.setText(database.getAllQuizzes().get(10).getQuestion());
+       gameView = findViewById(R.id.buttonGameView);
     }
 
     public void onClickExpandTextView(View v){
@@ -62,6 +64,10 @@ public class AboutActivity extends AppCompatActivity {
 
     public void onClickGameActivity(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+    }
+    public void onClickButtonGameView (View view){
+        Intent intent = new Intent(this, GameViewActivity.class);
         startActivity(intent);
     }
 

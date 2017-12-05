@@ -196,6 +196,7 @@ public class GameLobbyActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+
     }
 
     private void onSignedInInitialize(String username){

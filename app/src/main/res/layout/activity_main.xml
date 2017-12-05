@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.MainActivity"
-    android:animateLayoutChanges="true"
-    android:background="@drawable/backgroundmainlight">
+    android:animateLayoutChanges="true">
 
     <Button
         android:id="@+id/buttonAbout"
@@ -208,6 +207,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:onClick="onClickImageViewBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backgroundmainlight" />
 
 
 </android.support.constraint.ConstraintLayout>
