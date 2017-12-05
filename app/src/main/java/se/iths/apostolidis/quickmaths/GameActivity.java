@@ -1,4 +1,5 @@
 package se.iths.apostolidis.quickmaths;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -47,7 +48,7 @@ GameActivity extends AppCompatActivity {
     private Paint paint = new Paint();
     private ImageView drawView;
     GameEngineSinglePlayer engine;
-    private int numberOfPlayer = 1;
+    private int numberOfPlayer = 3;
     Canvas canvas;
     Canvas tempCanvas;
 
@@ -92,15 +93,20 @@ GameActivity extends AppCompatActivity {
         Log.d("Wille", "Map width size: " + map.getWidth());
         Log.d("Wille", "Map height size: " + map.getHeight());
 
-        gridBitmap = setMap(assetCoordinates);
-        originalMapBitmap = setMap(assetCoordinates);
+
 
         clearMap();
         gameSetUp(gridMPhotoView);
     }
 
     private void clearMap() {
+
+//        gridBitmap = originalMapBitmap.copy(originalMapBitmap.getConfig(), true);
+
+
         gridBitmap = setMap(assetCoordinates);
+        originalMapBitmap = gridBitmap.copy(gridBitmap.getConfig(), true);
+
         //gridBitmap.copy(originalMapBitmap.getConfig(), true);
         //gridBitmap = originalMapBitmap.copy(originalMapBitmap.getConfig(), true);
         //gridMPhotoView.setBack
@@ -109,6 +115,13 @@ GameActivity extends AppCompatActivity {
         canvas = new Canvas(gridBitmap);
     }
 
+    private void clearPlayers() {
+        gridBitmap = originalMapBitmap.copy(originalMapBitmap.getConfig(), true);
+        gridMPhotoView.setImageBitmap(gridBitmap);
+        //gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
+        canvas = new Canvas(gridBitmap);
+
+    }
 
     public void upDate(ArrayList <Player> players ){
         playerTurnIndex ++;
@@ -116,7 +129,8 @@ GameActivity extends AppCompatActivity {
 
     }
     public void draw(ArrayList<Player> players){
-        clearMap();
+        //clearMap();
+        clearPlayers();
 
         for (int i = 0; i < players.size(); i++){
             canvas.save();
@@ -145,7 +159,7 @@ GameActivity extends AppCompatActivity {
         movePlayer(player, rollDice());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
-        //getQuestion(category);
+        getQuestion(category);
     }
 
     public void onClickButtonRollDice (View view){
@@ -161,11 +175,27 @@ GameActivity extends AppCompatActivity {
 
     private void getQuestion(String category) {
 
+
         Intent intent = new Intent(this, QuestionActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+
 
         //finish()
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("Wille", "Gold -- ");
+        if (requestCode == 1){
+            Log.d("Wille", "Gold +-");
+            if (requestCode != Activity.RESULT_OK) {
+                //Stå kvar på din plats
+            } else {
+                //Gå tillbaka
+            }
+        }
     }
 
     private void movePlayer(Player player, int steps) {
@@ -177,12 +207,14 @@ GameActivity extends AppCompatActivity {
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
             if (player.getCoordinateIndex() == assetCoordinates.length){
-                player.setCoordinateIndex(0);
+                wonGame();
             }
         }
 
         upDate(players);
+    }
 
+    private void wonGame() {
     }
 
     @NonNull

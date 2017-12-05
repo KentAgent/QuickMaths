@@ -1,5 +1,7 @@
 package se.iths.apostolidis.quickmaths;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,6 +27,7 @@ public class QuestionActivity extends AppCompatActivity {
     private String TAG = "questionLogTag";
     private String genre = "Musik";
     private DBHelper dbHelper;
+    private boolean result = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,6 @@ public class QuestionActivity extends AppCompatActivity {
         Quiz quiz = new Quiz();
     }
     public void setQuestion (){
-
 
         //Importera ett quiz objekt istället för database.getQuiz
 
@@ -101,6 +103,13 @@ public class QuestionActivity extends AppCompatActivity {
 //        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
     }
 
+    public void getQuestionIntent(){
+        Intent intent = new Intent();
+        setResult(Activity.RESULT_OK, intent);
+        intent.putExtra("Result", result);
+        finish();
+    }
+
     public void onClickAnswerAlt1 (View v){
         rightOrWrongAnswer(btnAnswer1.getText().toString());
         //rightOrWrongAnswer(questionEngine.onClickAnswer1());
@@ -122,6 +131,7 @@ public class QuestionActivity extends AppCompatActivity {
         if (guess.equals(correctAnswer)){
             textViewCorrectAnswer.setText("You're right, bastard");
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+            getQuestionIntent();
         }
     }
 
