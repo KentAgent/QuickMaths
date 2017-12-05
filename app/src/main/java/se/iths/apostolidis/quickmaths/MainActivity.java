@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSinglePlayer(View view) {
-        Intent intent = new Intent(this, SinglePlayerActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         muteBtn.setVisibility(View.INVISIBLE);
         infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
