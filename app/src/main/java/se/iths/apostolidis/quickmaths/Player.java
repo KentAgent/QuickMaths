@@ -14,6 +14,20 @@ public class Player {
     private int posX, posY;
     private Bitmap avatar;
 
+    private int score;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore (int points){
+        score += points;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+
     public int getCoordinateIndex() {
         return coordinateIndex;
     }

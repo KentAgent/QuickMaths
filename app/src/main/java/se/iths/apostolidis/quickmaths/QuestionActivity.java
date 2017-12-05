@@ -1,7 +1,10 @@
 package se.iths.apostolidis.quickmaths;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,21 +26,22 @@ public class QuestionActivity extends AppCompatActivity {
     private RandomHelper randomHelper;
     private ArrayList<String> usedQuestions= new ArrayList<>();
     private String TAG = "questionLogTag";
-    private String genre = "Musik";
+    private String genre;
     private DBHelper dbHelper;
+    private boolean result = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
+        genre = getIntent().getExtras().getString("Category");
+        Log.d("Wille", genre);
         importViewElemets();
         setQuestion();
 
         Quiz quiz = new Quiz();
     }
     public void setQuestion (){
-
 
         //Importera ett quiz objekt istället för database.getQuiz
 
@@ -101,6 +105,13 @@ public class QuestionActivity extends AppCompatActivity {
 //        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
     }
 
+    public void getQuestionIntent(){
+        Intent intent = new Intent();
+        setResult(Activity.RESULT_OK, intent);
+        intent.putExtra("Result", result);
+        finish();
+    }
+
     public void onClickAnswerAlt1 (View v){
         rightOrWrongAnswer(btnAnswer1.getText().toString());
         //rightOrWrongAnswer(questionEngine.onClickAnswer1());
@@ -120,8 +131,11 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void rightOrWrongAnswer (String guess){
         if (guess.equals(correctAnswer)){
+            getQuestionIntent();
             textViewCorrectAnswer.setText("You're right, bastard");
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+        } else {
+            finish();
         }
     }
 

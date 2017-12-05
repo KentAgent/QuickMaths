@@ -24,8 +24,9 @@ public class GameEngineSinglePlayer {
     }
 
     public int rollDice() {
-        Log.d("Wille", "Game Engine rollDice : ");
         RandomHelper randomHelper = new RandomHelper();
-        return randomHelper.randomBoundedIndex(6);
+        int random =randomHelper.randomBoundedIndex(5) + 1;
+        Log.d("Wille", "Game Engine rollDice : " + random);
+        return random;
     }
 }

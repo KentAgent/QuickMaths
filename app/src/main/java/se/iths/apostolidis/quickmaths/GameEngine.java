@@ -38,9 +38,6 @@ public class GameEngine extends SurfaceView implements Runnable {
         draw();
 
     }
-
-
-
     public void draw() {
     }
 }

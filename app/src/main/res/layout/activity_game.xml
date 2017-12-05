@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.GameActivity">
+    tools:context="se.iths.apostolidis.quickmaths.GameActivity"
+    android:background="@drawable/backgroundsky">
 
     <se.iths.apostolidis.quickmaths.MPhotoView
         android:id="@+id/photo_view"
@@ -16,6 +17,16 @@
         android:id="@+id/photo_viewGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/textViewScoreBoard"
+        android:layout_width="170dp"
+        android:layout_height="161dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRollDice"
