@@ -204,7 +204,6 @@ GameActivity extends AppCompatActivity {
                 canvas.save();
 
                 canvas.drawCircle(posX + 10, posY + 10, 10, paint);
-
                 Log.d("Wille", "PosX : " + String.valueOf(posX));
                 canvas.restore();
                 posX += spaceX;
