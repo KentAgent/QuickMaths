@@ -53,7 +53,7 @@ GameActivity extends AppCompatActivity {
     private int numberOfPlayer = 3;
     Canvas canvas;
     Canvas tempCanvas;
-
+    Bundle extras;
     List<String> randomCategoryStrings;
     HashMap<String, Bitmap> hashMapAssets;
 
@@ -73,6 +73,7 @@ GameActivity extends AppCompatActivity {
         //map.setImageBitmap(setMap());
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -176,6 +177,9 @@ GameActivity extends AppCompatActivity {
 
     private void getQuestion(String category) {
 
+       // Intent intent = new Intent(this, QuestionActivity.class);
+
+        //startActivityForResult(intent, 1);
         Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra("Category", category);
         startActivityForResult(intent, 1);
@@ -188,20 +192,41 @@ GameActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("Wille", "Gold -- ");
-        if (requestCode == 1){
-            Log.d("Wille", "Gold +-");
-            if (requestCode != Activity.RESULT_OK) {
-                //Stå kvar på din plats
-                players.get(playerTurnIndex).addScore(3);
-                updateScoreBoard();
-
-            } else {
-                //Gå tillbaka
+            if(requestCode == 1 ){
+                if(resultCode == Activity.RESULT_OK){
+                 players.get(playerTurnIndex).addScore(3);
+                }
+                if (resultCode == Activity.RESULT_CANCELED){
+                    players.get(playerTurnIndex).addScore(3);
+                    Log.d("hund", "Fuck off: ");
+                }
             }
-        }
-        playerTurnIndex ++;
+              playerTurnIndex ++;
+
+
     }
+
+
+    //    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == 1) {
+//            if (resultCode == RESULT_OK) {
+//                Boolean b = extras.getBoolean("Result");
+//                Log.d("hund", "ANDRA IFEN!: " + b);
+//                if (b) {
+//                    Log.d("Wille", "VINNER MASSA CASH!!!");
+//                    //Stå kvar på din plats
+//                    players.get(playerTurnIndex).addScore(3);
+//                    updateScoreBoard();
+//                } else {
+//                    //Gå tillbak
+//
+//                }
+//            }
+//        }
+//    }
 
     private void movePlayer(Player player, int steps) {
 
@@ -240,14 +265,13 @@ GameActivity extends AppCompatActivity {
 
 
     public void updateScoreBoard(){
-        // TODO: antal spelare inte hårdkodat
         textViewScoreBoard.setText(scoreBoardSetup());
     }
 
     public String scoreBoardSetup(){
         String scoreBoard = "";
         for (int i = 0; i <players.size() ; i++) {
-            scoreBoard += "Player " + (i+1) + " Score "  + players.get(i).getScore() + "\n";
+            scoreBoard += "Player " + (i+1) + " Score: "  + players.get(i).getScore() + "\n";
         } return scoreBoard;
     }
     public Bitmap setMap (Point[] assetCoordinates){
@@ -295,13 +319,17 @@ GameActivity extends AppCompatActivity {
         hashMapAssets.put("Music", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_culture_music));
         hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
         hashMapAssets.put("Random", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random));
-
-        //hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gam));
+        hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
+        hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
+        hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
         //hashMapAssets.put("Maths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
 
         return hashMapAssets;
+
+        //TODO FIX getting points when wrong answer
+        //TODO SHow whose turn it is
     }
 
 
@@ -311,6 +339,10 @@ GameActivity extends AppCompatActivity {
         stringGenres.add("Music");
         stringGenres.add("Sport");
         stringGenres.add("Random");
+        stringGenres.add("Film");
+        stringGenres.add("Vetenskap");
+        stringGenres.add("Humor");
+
         //stringGenres.add("Humor");
 
         List<String> stringHashmapPairs = new ArrayList<>();

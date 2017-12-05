@@ -17,7 +17,7 @@ import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 
 public class QuestionActivity extends AppCompatActivity {
 
-
+    Intent returnIntent;
     private Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
     private TextView textViewQuestion;
     private TextView textViewCorrectAnswer;
@@ -48,7 +48,7 @@ public class QuestionActivity extends AppCompatActivity {
         /**
          * Sets a random question based on category input
          */
-        int index = 0;
+        int index = 1;
         boolean isUsed;
         Random random = new Random();
 
@@ -105,11 +105,12 @@ public class QuestionActivity extends AppCompatActivity {
 //        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
     }
 
-    public void getQuestionIntent(){
-        Intent intent = new Intent();
-        setResult(Activity.RESULT_OK, intent);
-        intent.putExtra("Result", result);
+    public void getQuestionIntent(Boolean b){
+        returnIntent = new Intent();
+        returnIntent.putExtra("result", b);
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
+
     }
 
     public void onClickAnswerAlt1 (View v){
@@ -131,11 +132,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void rightOrWrongAnswer (String guess){
         if (guess.equals(correctAnswer)){
-            getQuestionIntent();
+            result = true;
+            getQuestionIntent(result);
             textViewCorrectAnswer.setText("You're right, bastard");
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
         } else {
+            setResult(Activity.RESULT_CANCELED, returnIntent);
             finish();
+
         }
     }
 
