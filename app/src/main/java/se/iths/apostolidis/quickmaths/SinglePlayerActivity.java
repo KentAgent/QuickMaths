@@ -3,14 +3,15 @@ package se.iths.apostolidis.quickmaths;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.SoundEffectConstants;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
-import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPickerListener;
 
 public class SinglePlayerActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     CheckBox cRandom;
     CheckBox cEsport;
     CheckBox cMath;
+    Button buttonSport;
 
     boolean[] booleanArrayCategories;
     String[] stringArrayCategories;
@@ -30,8 +32,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     Button buttonSelectAll;
     Button buttonSelectNone;
-    Button buttonGoBack;
-    Button buttonProceed;
+
+    ImageButton buttonGoBack;
+    ImageButton buttonGoForward;
 
 
 
@@ -53,8 +56,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
         buttonSelectNone = findViewById(R.id.buttonSelectNone);
-        buttonGoBack = findViewById(R.id.buttonGoBack);
-        buttonProceed = findViewById(R.id.buttonRandom);
+        buttonGoForward = findViewById(R.id.imageButtonForwardButton);
+        buttonGoBack= findViewById(R.id.imageButtonGoBack);
 
         cHumor = findViewById(R.id.checkboxHumor);
         cSport = findViewById(R.id.checkboxSport);
@@ -65,6 +68,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cRandom = findViewById(R.id.checkboxRandom);
         cEsport = findViewById(R.id.checkboxEsport);
         cMath = findViewById(R.id.checkboxMath);
+
+        buttonSport.setBackgroundResource(R.drawable.circle_button_green);
+
 
     }
 
@@ -103,6 +109,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cEsport.setChecked(true);
         cRandom.setChecked(true);
         cMath.setChecked(true);
+
+
     }
     /**
      *  Unchecks all category boxes
@@ -120,21 +128,24 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cRandom.setChecked(false);
         cMath.setChecked(false);
     }
+
+
     /**
      * When clicking on proceed button:
      * value of number of categories choosen, and string[] array with categories choosen,
      * and value of number of players from scrollable number picker
      * is sent with intent to OfflineModeSetupActivity
      */
-    public void onClickProceed(View view) {
+    public void onClickForward(View view) {
 
+        /*
         snp.setListener(new ScrollableNumberPickerListener() {
             @Override
             public void onNumberPicked(int value) {
                 numberOfPlayers = value;
             }
         });
-
+*/
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
         booleanArrayCategories[2] = cFilm.isChecked();
@@ -144,6 +155,8 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[6] = cEsport.isChecked();
         booleanArrayCategories[7] = cRandom.isChecked();
         booleanArrayCategories[8] = cMath.isChecked();
+
+
 
         stringArrayCategories[0] = "Humor";
         stringArrayCategories[1] = "Sport";
