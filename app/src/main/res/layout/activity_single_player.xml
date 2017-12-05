@@ -4,234 +4,195 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.SinglePlayerActivity">
-
-    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
-        android:id="@+id/number_picker_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/number_picker_bg_color"
-        app:layout_constraintBottom_toTopOf="@+id/checkboxSport"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPlayerName"
-        app:layout_constraintVertical_bias="0.333"
-        app:snp_maxValue="8"
-        app:snp_minValue="1"
-        app:snp_stepSize="1"
-        app:snp_value="1" />
+    android:background="@drawable/backgroundlake"
+    tools:context="se.iths.apostolidis.quickmaths.SinglePlayerActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <CheckBox
         android:id="@+id/checkboxHistory"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_history"
-        app:layout_constraintEnd_toStartOf="@+id/checkboxGeography"
-        app:layout_constraintStart_toEndOf="@+id/checkboxMusic"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxSport" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkboxMusic"
+        app:layout_constraintStart_toEndOf="@+id/checkboxMusic" />
 
     <CheckBox
         android:id="@+id/checkboxGeography"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_geography"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxFilm" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkboxMath"
+        app:layout_constraintStart_toEndOf="@+id/checkboxMath" />
 
     <CheckBox
         android:id="@+id/checkboxEsport"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/c_esport"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxMusic" />
-
-    <TextView
-        android:id="@+id/textViewPlayerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/text_view_player_name"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPlayerName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSinglePlayer"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/editTextPlayerName"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkboxSport"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
+        android:text="@string/c_esport"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/checkboxMusic"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxMusic" />
 
     <CheckBox
         android:id="@+id/checkboxRandom"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_random"
-        app:layout_constraintEnd_toStartOf="@+id/checkboxMath"
-        app:layout_constraintStart_toEndOf="@+id/checkboxEsport"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxHistory" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkboxEsport"
+        app:layout_constraintStart_toEndOf="@+id/checkboxEsport" />
 
     <CheckBox
         android:id="@+id/checkboxSport"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_sport"
-        app:layout_constraintEnd_toStartOf="@+id/checkboxFilm"
-        app:layout_constraintStart_toEndOf="@+id/checkboxHumor"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkboxHumor"
+        app:layout_constraintStart_toEndOf="@+id/checkboxHumor" />
 
     <CheckBox
         android:id="@+id/checkboxFilm"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_film"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/checkboxMath"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxMath" />
 
     <CheckBox
         android:id="@+id/checkboxHumor"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_humor"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/checkboxMath"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_math"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxGeography" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/checkboxEsport"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxEsport" />
 
     <CheckBox
         android:id="@+id/checkboxMusic"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:padding="8dp"
         android:text="@string/c_music"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/checkboxHumor"
         app:layout_constraintTop_toBottomOf="@+id/checkboxHumor" />
 
-    <Button
-        android:id="@+id/buttonProceed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickProceed"
-        android:text="@string/button_proceed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSelectNone"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/buttonGoBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickGoBack"
-        android:text="@string/button_go_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonProceed"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSelectAll"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonSelectAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
         android:onClick="onClickSelectAll"
+        android:padding="8dp"
         android:text="@string/button_select_all"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSelectNone"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxEsport" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/checkboxFilm"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxFilm" />
 
     <Button
         android:id="@+id/buttonSelectNone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="20dp"
-        android:onClick="onClickSelectNone"
-        android:text="@string/button_select_none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxMath" />
-
-    <TextView
-        android:id="@+id/textViewSinglePlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/text_view_single_player"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickSelectNone"
+        android:padding="8dp"
+        android:text="@string/button_select_none"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelectAll"
+        app:layout_constraintStart_toEndOf="@+id/buttonSelectAll" />
 
-    <TextView
-        android:id="@+id/textViewNumberOfPlayers"
+    <ImageButton
+        android:id="@+id/imageButtonForwardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
-        android:text="Number of players:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkboxHumor"
-        app:layout_constraintEnd_toStartOf="@+id/number_picker_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/circle_background"
+        android:onClick="onClickForward"
+        android:padding="15dp"
+        android:rotation="180"
+        android:contentDescription="@string/move_forward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/circle_background"
+        android:onClick="onClickGoBack"
+        android:contentDescription="@string/move_backwards"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPlayerName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
 </android.support.constraint.ConstraintLayout>
