@@ -62,6 +62,7 @@ GameActivity extends AppCompatActivity {
 
     private boolean someoneWon;
     private int playerTurnIndex;
+    private TextView turnTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,7 @@ GameActivity extends AppCompatActivity {
         gridMPhotoView = findViewById(R.id.photo_viewGrid);
         //map.setImageResource(R.mipmap.gamemap);
         //map.setImageBitmap(setMap());
+        turnTracker = findViewById(R.id.textViewTurnTracker);
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
 
@@ -144,7 +146,9 @@ GameActivity extends AppCompatActivity {
     public void gameSetUp (MPhotoView view){
 
         playerTurnIndex = 0;
+        turnTracker.setVisibility(View.GONE);
         for (int i = 0; i < numberOfPlayer; i++){
+
             Player player = setPlayer(players, i);
             //RectF avatarRect = new RectF();
             //avatarRect.set(player.getPosX(), player.getPosY(), 200, 200);
@@ -167,6 +171,7 @@ GameActivity extends AppCompatActivity {
     public void onClickButtonRollDice (View view){
         if (playerTurnIndex == players.size()){
             playerTurnIndex = 0;
+
         }
         playerTurn(players.get(playerTurnIndex));
     }
@@ -196,6 +201,16 @@ GameActivity extends AppCompatActivity {
                 if(resultCode == Activity.RESULT_OK){
                  players.get(playerTurnIndex).addScore(3);
                  updateScoreBoard();
+                    turnTracker.setVisibility(View.VISIBLE);
+
+                    turnTracker.setText("Player " + (playerTurnIndex +2) + " turn to play");
+                    turnTracker.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            turnTracker.setVisibility(View.INVISIBLE);
+
+                        }
+                    },3000);
                 }
                 if (resultCode == Activity.RESULT_CANCELED){
 
