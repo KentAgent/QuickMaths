@@ -3,9 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.SoundEffectConstants;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -69,7 +67,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cEsport = findViewById(R.id.checkboxEsport);
         cMath = findViewById(R.id.checkboxMath);
 
-        buttonSport.setBackgroundResource(R.drawable.circle_button_green);
+        //buttonSport.setBackgroundResource(R.drawable.circle_button_green);
 
 
     }
