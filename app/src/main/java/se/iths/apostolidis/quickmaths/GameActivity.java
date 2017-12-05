@@ -226,8 +226,8 @@ GameActivity extends AppCompatActivity {
 
     @NonNull
     private Player setPlayer(ArrayList<Player> players, int i) {
-        Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
-        Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 100, 50, false);
+        Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.player1);
+        Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 100, false);
         Player player = new Player();
         //player.setId();
         player.setCoordinateIndex(0);
@@ -241,7 +241,14 @@ GameActivity extends AppCompatActivity {
 
     public void updateScoreBoard(){
         // TODO: antal spelare inte hårdkodat
-        textViewScoreBoard.setText("Player 1: " + players.get(0).getScore() + "\nPlayer 1: " + players.get(1).getScore()+ "\nPlayer 1: " + "\nPlayer 1: ");
+        textViewScoreBoard.setText(scoreBoardSetup());
+    }
+
+    public String scoreBoardSetup(){
+        String scoreBoard = "";
+        for (int i = 0; i <players.size() ; i++) {
+            scoreBoard += "Player " + (i+1) + " Score "  + players.get(i).getScore() + "\n";
+        } return scoreBoard;
     }
     public Bitmap setMap (Point[] assetCoordinates){
 
