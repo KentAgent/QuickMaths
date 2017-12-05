@@ -20,22 +20,34 @@
 
     <TextView
         android:id="@+id/textViewScoreBoard"
-        android:layout_width="170dp"
-        android:layout_height="161dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="258dp"
+        android:layout_height="154dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif-monospace"
         android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRollDice"
-        android:layout_width="237dp"
-        android:layout_height="123dp"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClickButtonRollDice"
-        android:text="Roll Dice!!!!!!"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="217dp" />
+        android:text="Take turn"
+        app:layout_constraintBottom_toBottomOf="@+id/photo_viewGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/photo_viewGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885" />
 
 
 </android.support.constraint.ConstraintLayout>
