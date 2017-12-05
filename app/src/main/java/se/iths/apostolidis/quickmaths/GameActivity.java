@@ -195,10 +195,10 @@ GameActivity extends AppCompatActivity {
             if(requestCode == 1 ){
                 if(resultCode == Activity.RESULT_OK){
                  players.get(playerTurnIndex).addScore(3);
+                 updateScoreBoard();
                 }
                 if (resultCode == Activity.RESULT_CANCELED){
-                    players.get(playerTurnIndex).addScore(3);
-                    Log.d("hund", "Fuck off: ");
+
                 }
             }
               playerTurnIndex ++;
