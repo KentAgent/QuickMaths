@@ -1,5 +1,6 @@
 package se.iths.apostolidis.quickmaths.GameLobbyStuff;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -126,45 +127,17 @@ public class GameLobbyActivity extends AppCompatActivity {
                 mMessagesDatabaseRefrence.push().setValue(friendlyMessage);
             }
         });
-        mChildEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
-                mMessageAdapter.add(friendlyMessage);
-            }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-
-        //defines what we are listening to .addChild defies what will happen when the event occurs
-        mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user !=null){
                     //user signed in
-                    Toast.makeText(GameLobbyActivity.this, "You are now logged in bruv", Toast.LENGTH_SHORT).show();
+                    onSignedInInitialize(user.getDisplayName());
                 } else {
                     //user is signed out
+                    onSignedOutCleanUp();
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
@@ -183,6 +156,19 @@ public class GameLobbyActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN){
+            if (requestCode == RESULT_OK){
+                Toast.makeText(this, "Signed in brov!", Toast.LENGTH_SHORT).show();
+            } else if (requestCode == RESULT_CANCELED){
+                Toast.makeText(this, "Signed in canceled!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -197,7 +183,12 @@ public class GameLobbyActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        if(mAuthStateListener != null){
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+
+        }
+        detachDatabaseReadListener();
+        mMessageAdapter.clear();
     }
 
     @Override
@@ -206,4 +197,59 @@ public class GameLobbyActivity extends AppCompatActivity {
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
 
     }
+
+    private void onSignedInInitialize(String username){
+        mUsername = username;
+        attachDatabaseReadListener();
+
+    }
+
+    private void onSignedOutCleanUp(){
+        mUsername = ANONYMOUS;
+        mMessageAdapter.clear();
+
+    }
+    private void attachDatabaseReadListener() {
+        if (mChildEventListener == null) {
+
+            mChildEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+                    mMessageAdapter.add(friendlyMessage);
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            //defines what we are listening to .addChild defies what will happen when the event occurs
+            mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
+
+        }
+    }
+    private void detachDatabaseReadListener(){
+        if(mChildEventListener != null){
+            mMessagesDatabaseRefrence.removeEventListener(mChildEventListener);
+            mChildEventListener = null;
+        }
+    }
+
 }
