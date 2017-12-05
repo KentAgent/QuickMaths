@@ -125,6 +125,7 @@ public class GameLobbyActivity extends AppCompatActivity {
              //   mMessageEditText.setText("");
                 FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(),mUsername,null);
                 mMessagesDatabaseRefrence.push().setValue(friendlyMessage);
+                mMessageEditText.setText((""));
             }
         });
 
