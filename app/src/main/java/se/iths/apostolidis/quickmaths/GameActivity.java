@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class
 GameActivity extends AppCompatActivity {
@@ -236,8 +235,8 @@ GameActivity extends AppCompatActivity {
                 previousImage = mergedCoordinateAssets;
             }
 
-            Bitmap coordinateAsset = randomAssets.get(i).getAsset().copy(randomAssets.get(i).getAsset().getConfig(), true);
-            //Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
+            //Bitmap coordinateAsset = randomAssets.get(i).getAsset().copy(randomAssets.get(i).getAsset().getConfig(), true);
+            Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
 
             //coordinateAsset = randomAssets.get(i).getAsset();
             scaledCoordinateAsset = Bitmap.createScaledBitmap(coordinateAsset, 50, 50, false);
