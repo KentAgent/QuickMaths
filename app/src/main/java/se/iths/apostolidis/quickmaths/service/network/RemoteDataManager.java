@@ -45,7 +45,7 @@ public class RemoteDataManager {
                                 e.printStackTrace();
                             }
                             quizzes = new ArrayList<>();
-                            for(int i = 0, len = jsonArray.length(); i < len; i++) {
+                            for(int i = 0, len = jsonArray.length() +1; i < len; i++) {
                                 try {
                                     quizzes.add(Quiz.fromJSON(((JSONObject)jsonArray.get(i))));
 
@@ -60,5 +60,20 @@ public class RemoteDataManager {
                     }
                 }).execute();
     }
+
+    public void getGames(final GameCallback callback){
+        new HttpRequestTask(
+                new HttpRequest("https://quizapp-5e35c-727f6.firebaseio.com/.json"),
+                new HttpRequest.Handler() {
+                    @Override
+                    public void response(HttpResponse response) {
+                        if (response.code == 200) {
+                            callback.didReceiveGames(response.body);
+
+                        }
+                    }
+                }).execute();
+    }
+
 
 }

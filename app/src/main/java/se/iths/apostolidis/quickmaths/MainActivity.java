@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton infoButton;
     private AudioManager am;
     private Boolean isMuted = true;
-    private ImageView background;
     private TextView aboutUs;
     private Button singlePlayerButton;
     private Button multiplayerButton;
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         muteBtn =findViewById(R.id.imageButtonSound);
         infoButton = findViewById(R.id.imageButtonAbout);
-        background = findViewById(R.id.imageViewBackground);
         aboutUs = findViewById(R.id.textViewAboutUs);
         singlePlayerButton = findViewById(R.id.buttonSinglePlayer);
         multiplayerButton = findViewById(R.id.buttonMultiplayer);
@@ -64,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         settings = findViewById(R.id.imageButtonSettings);
 
 
-        background.setScaleType(ImageView.ScaleType.FIT_XY);
-
         aboutUs.setText("CODED BY:\n\nKentAgent\nKakashi\nTantMutti\nFyrren\nSchwimpy\nMik3nox");
         database = DBHelper.getInstance(this);
 
@@ -74,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         remoteDataManager.getQuizzes(new FetchCallback() {
             @Override
             public void didReceiveData(List<Quiz> quizzesFromServer) {
+
                 database.removeoldQuizzes(quizzesFromServer, database.getAllQuizzes());
                 database.updateQuizzes(quizzesFromServer);
                 database.insertQuizzes(quizzesFromServer, database.getAllQuizzes());

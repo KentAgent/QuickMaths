@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class Player {
 
-    private int id;
+    private String id;
     private String name;
     private int gold;
     private int posX, posY;
@@ -25,11 +25,11 @@ public class Player {
     private int coordinateIndex;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

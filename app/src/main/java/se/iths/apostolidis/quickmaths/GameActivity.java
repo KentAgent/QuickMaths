@@ -179,7 +179,7 @@ GameActivity extends AppCompatActivity {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 100, 50, false);
         Player player = new Player();
-        player.setId(i);
+      //  player.setId(i);
         player.setCoordinateIndex(0);
         player.setName("Nisse");
         player.setPos(assetCoordinates[0].x, assetCoordinates[0].y);

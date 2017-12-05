@@ -1,51 +1,27 @@
 {
   "project_info": {
-    "project_number": "897674764545",
-    "firebase_url": "https://quickmaths-88869.firebaseio.com",
-    "project_id": "quickmaths-88869",
-    "storage_bucket": "quickmaths-88869.appspot.com"
+    "project_number": "32219560964",
+    "firebase_url": "https://quizapp-5e35c-727f6.firebaseio.com",
+    "project_id": "quizapp-5e35c",
+    "storage_bucket": "quizapp-5e35c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:897674764545:android:faa00ab63f704c91",
+        "mobilesdk_app_id": "1:32219560964:android:faa00ab63f704c91",
         "android_client_info": {
           "package_name": "se.iths.apostolidis.quickmaths"
         }
       },
       "oauth_client": [
         {
-          "client_id": "897674764545-8utsq0ruvl28nguhc22ttpuk9a9tecms.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "se.iths.apostolidis.quickmaths",
-            "certificate_hash": "434393bc2306f8ef334774496520fcad346afd71"
-          }
-        },
-        {
-          "client_id": "897674764545-tdpu7l8muu5ccfb2s5uuh4etu83drum1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "se.iths.apostolidis.quickmaths",
-            "certificate_hash": "61390f48cc474ddd17ff715c1dc8fde3e5b9aee4"
-          }
-        },
-        {
-          "client_id": "897674764545-an67gfrmvjb70ekisn8hvbpabm4jp0il.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "se.iths.apostolidis.quickmaths",
-            "certificate_hash": "1d3f0439d7bbec8dd8d76b0395594c2e5b66d598"
-          }
-        },
-        {
-          "client_id": "897674764545-d8oujilfci8fgrbfkk82froq1mml5old.apps.googleusercontent.com",
+          "client_id": "32219560964-4ntskuecv27g13e2k8vtl9ijtam5qc0r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAP7za6cbW8hyl4H2Zbkvd7sYo3uMwJN8s"
+          "current_key": "AIzaSyCSJ781TwSOL2tbK1qRFhQ3s5ShhMoMDng"
         }
       ],
       "services": {
@@ -53,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "897674764545-d8oujilfci8fgrbfkk82froq1mml5old.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

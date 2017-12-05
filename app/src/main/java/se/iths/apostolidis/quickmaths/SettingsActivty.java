@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class SettingsActivty extends AppCompatActivity {
     private ArrayList<String> names = new ArrayList<>();
     private DBHelper database;
     private ImageButton back;
-    private ImageView background;
 
 
     @Override
@@ -41,9 +39,6 @@ public class SettingsActivty extends AppCompatActivity {
         writeName = findViewById(R.id.editTextChangeName);
         textViewTest = findViewById(R.id.textViewTest);
         back = findViewById(R.id.imageButtonBack);
-        background = findViewById(R.id.imageViewBackgroundSettings);
-
-        background.setScaleType(ImageView.ScaleType.FIT_XY);
 
         writeName.setHint(textViewTest.getText());
         nameIsBusy = findViewById(R.id.textViewNameNotAvaliable);

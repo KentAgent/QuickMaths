@@ -60,7 +60,6 @@
         <activity
             android:name=".AvatarActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".GameViewActivity"></activity>
     </application>
 
 </manifest>
