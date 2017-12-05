@@ -276,7 +276,7 @@ GameActivity extends AppCompatActivity {
     }
     public Bitmap setMap (Point[] assetCoordinates){
 
-        Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
+        Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gameboard_transparent);
         Bitmap mergedCoordinateAssets = backgroundImage;
         Bitmap previousImage;
         Bitmap scaledCoordinateAsset = backgroundImage;
