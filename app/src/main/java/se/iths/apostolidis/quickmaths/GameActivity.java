@@ -18,6 +18,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -30,6 +31,7 @@ GameActivity extends AppCompatActivity {
     Button buttonRollDice;
     MPhotoView gridMPhotoView;
     MPhotoView map;
+    TextView textViewScoreBoard;
     private static int numOfCoordinates = 37;
     private int maxX;
     private int maxY;
@@ -70,7 +72,7 @@ GameActivity extends AppCompatActivity {
         //map.setImageResource(R.mipmap.gamemap);
         //map.setImageBitmap(setMap());
         buttonRollDice = findViewById(R.id.buttonRollDice);
-
+        textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -79,7 +81,7 @@ GameActivity extends AppCompatActivity {
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
 
-        randomAssets = setRandomAssets();
+        //randomAssets = setRandomAssets();
 
         engine = new GameEngineSinglePlayer();
 
@@ -94,9 +96,9 @@ GameActivity extends AppCompatActivity {
         Log.d("Wille", "Map height size: " + map.getHeight());
 
 
-
         clearMap();
         gameSetUp(gridMPhotoView);
+        updateScoreBoard();
     }
 
     private void clearMap() {
@@ -124,7 +126,6 @@ GameActivity extends AppCompatActivity {
     }
 
     public void upDate(ArrayList <Player> players ){
-        playerTurnIndex ++;
         draw(players);
 
     }
@@ -175,8 +176,8 @@ GameActivity extends AppCompatActivity {
 
     private void getQuestion(String category) {
 
-
         Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra("Category", category);
         startActivityForResult(intent, 1);
 
 
@@ -192,10 +193,14 @@ GameActivity extends AppCompatActivity {
             Log.d("Wille", "Gold +-");
             if (requestCode != Activity.RESULT_OK) {
                 //Stå kvar på din plats
+                players.get(playerTurnIndex).addScore(3);
+                updateScoreBoard();
+
             } else {
                 //Gå tillbaka
             }
         }
+        playerTurnIndex ++;
     }
 
     private void movePlayer(Player player, int steps) {
@@ -206,8 +211,9 @@ GameActivity extends AppCompatActivity {
             player.setCoordinateIndex(player.getCoordinateIndex()+1);
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
-            if (player.getCoordinateIndex() == assetCoordinates.length){
+            if (player.getCoordinateIndex() >= assetCoordinates.length){
                 wonGame();
+                break;
             }
         }
 
@@ -215,6 +221,7 @@ GameActivity extends AppCompatActivity {
     }
 
     private void wonGame() {
+
     }
 
     @NonNull
@@ -231,36 +238,11 @@ GameActivity extends AppCompatActivity {
         return player;
     }
 
-    public Bitmap createGrid(Bitmap screenSizeBitmap){
-        gridBitmap = screenSizeBitmap;
 
-        int numOfDots = 40;
-        int height = screenSizeBitmap.getHeight();
-        int width = screenSizeBitmap.getWidth();
-        int spaceX = width / numOfDots;
-        int spaceY = height / numOfDots;
-        int posX = 0;
-        int posY = 0;
-        Canvas canvas = new Canvas (gridBitmap);
-
-        for (int i = 0; i < numOfDots; i++){
-            posX = 0;
-            for (int j = 0; j < numOfDots; j++){
-                canvas.save();
-
-                canvas.drawCircle(posX + 10, posY + 10, 10, paint);
-
-                Log.d("Wille", "PosX : " + String.valueOf(posX));
-                canvas.restore();
-                posX += spaceX;
-            }
-            posY += spaceY;
-        }
-
-        return gridBitmap;
-
+    public void updateScoreBoard(){
+        // TODO: antal spelare inte hårdkodat
+        textViewScoreBoard.setText("Player 1: " + players.get(0).getScore() + "\nPlayer 1: " + players.get(1).getScore()+ "\nPlayer 1: " + "\nPlayer 1: ");
     }
-
     public Bitmap setMap (Point[] assetCoordinates){
 
         Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
@@ -334,7 +316,7 @@ GameActivity extends AppCompatActivity {
         return stringHashmapPairs;
     }
 
-    public ArrayList<RandomAssetObject> setRandomAssets(){
+    /*public ArrayList<RandomAssetObject> setRandomAssets(){
         ArrayList<RandomAssetObject> randomAssetList = new ArrayList<>();
         ArrayList<RandomAssetObject> assetGenre = new ArrayList<>();
 
@@ -397,7 +379,7 @@ GameActivity extends AppCompatActivity {
         }
 
         return randomAssetList;
-    }
+    }*/
 
     public void setAssetPosList (Point[] posList){
 
