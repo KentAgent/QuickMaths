@@ -21,10 +21,10 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class
 GameActivity extends AppCompatActivity {
-
     Button buttonRollDice;
     MPhotoView gridMPhotoView;
     MPhotoView map;
@@ -39,6 +39,7 @@ GameActivity extends AppCompatActivity {
     private Bitmap gridBitmap;
     private Bitmap originalMapBitmap;
     private Point[] assetCoordinates = new Point[gridSize];
+    private String[] genreList = new String[gridSize];
     private Drawable d;
     private SurfaceHolder surfaceHolder;
     private Context context;
@@ -47,11 +48,15 @@ GameActivity extends AppCompatActivity {
     GameEngineSinglePlayer engine;
     private int numberOfPlayer = 3;
     Canvas canvas;
+    Canvas tempCanvas;
+
 
     ArrayList<Player> players = new ArrayList<>();
+    ArrayList<RandomAssetObject> randomAssets = new ArrayList<>();
 
-    private String category = "musik";
+
     private boolean someoneWon;
+    private int playerTurnIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +68,13 @@ GameActivity extends AppCompatActivity {
         //map.setImageBitmap(setMap());
         buttonRollDice = findViewById(R.id.buttonRollDice);
 
-        gridBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
 
-        originalMapBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
 
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
 
-
+        randomAssets = setRandomAssets();
 
         engine = new GameEngineSinglePlayer();
 
@@ -79,43 +82,47 @@ GameActivity extends AppCompatActivity {
         assetCoordinates = new Point[gridSize];
         setAssetPosList(assetCoordinates);
 
+
         //map.setScaleType(PhotoView.ScaleType.FIT_XY);
         //map.setImageBitmap(setMap(assetCoordinates));
         Log.d("Wille", "Map width size: " + map.getWidth());
         Log.d("Wille", "Map height size: " + map.getHeight());
 
+        gridBitmap = setMap(assetCoordinates);
         originalMapBitmap = setMap(assetCoordinates);
-        gridMPhotoView.setImageBitmap(originalMapBitmap);
-        gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         clearMap();
-        canvas = new Canvas(originalMapBitmap);
         gameSetUp(gridMPhotoView);
     }
 
     private void clearMap() {
-        gridMPhotoView.setImageBitmap(originalMapBitmap);
+        gridBitmap = setMap(assetCoordinates);
+        //gridBitmap.copy(originalMapBitmap.getConfig(), true);
+        //gridBitmap = originalMapBitmap.copy(originalMapBitmap.getConfig(), true);
+        gridMPhotoView.setImageBitmap(gridBitmap);
         gridMPhotoView.setScaleType(ImageView.ScaleType.FIT_XY);
+        canvas = new Canvas(gridBitmap);
     }
 
 
     public void upDate(ArrayList <Player> players ){
+        playerTurnIndex ++;
         draw(players);
+
     }
     public void draw(ArrayList<Player> players){
         clearMap();
-        canvas = new Canvas(originalMapBitmap);
 
         for (int i = 0; i < players.size(); i++){
             canvas.save();
-            canvas.drawBitmap(players.get(i).getAvatar(), players.get(i).getPosX(), players.get(i).getPosY(), null);
+            canvas.drawBitmap(players.get(i).getAvatar(), players.get(i).getPosX() + (i*50), players.get(i).getPosY(), null);
             canvas.restore();
         }
-
     }
 
     public void gameSetUp (MPhotoView view){
 
+        playerTurnIndex = 0;
         for (int i = 0; i < numberOfPlayer; i++){
             Player player = setPlayer(players, i);
             //RectF avatarRect = new RectF();
@@ -123,29 +130,27 @@ GameActivity extends AppCompatActivity {
             canvas.save();
             canvas.drawBitmap(player.getAvatar(), player.getPosX(), player.getPosY(), null);
             canvas.restore();
-            Log.d("Wille", String.valueOf(player.getId()));
+            Log.d("Wille", "Player id: " + String.valueOf(player.getId()));
         }
 
-        startGame(players);
+        //startGame(players);
     }
 
-    private void startGame(ArrayList<Player> players) {
-
-            for (int i = 0; i < players.size(); i++){
-                playerTurn(players.get(i));
-                getQuestion(category);
-            }
-    }
-
-    private void playerTurn(Player player) {
-        buttonRollDice.setVisibility(View.VISIBLE);
+    public void playerTurn(Player player) {
         movePlayer(player, rollDice());
 
+        String cat = randomAssets.get(player.getCoordinateIndex()).getGenre();
+
+        getQuestion(cat);
     }
 
-    private int onClickRollDice (View view){
-        return engine.rollDice();
+    public void onClickButtonRollDice (View view){
+        if (playerTurnIndex == players.size()){
+            playerTurnIndex = 0;
+        }
+        playerTurn(players.get(playerTurnIndex));
     }
+
     private int rollDice() {
         return engine.rollDice();
     }
@@ -179,7 +184,7 @@ GameActivity extends AppCompatActivity {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.face1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 100, 50, false);
         Player player = new Player();
-      //  player.setId(i);
+        //player.setId();
         player.setCoordinateIndex(0);
         player.setName("Nisse");
         player.setPos(assetCoordinates[0].x, assetCoordinates[0].y);
@@ -221,8 +226,7 @@ GameActivity extends AppCompatActivity {
     public Bitmap setMap (Point[] assetCoordinates){
 
         Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gamemap);
-        Bitmap mergedCoodinateAssets = backgroundImage;
-
+        Bitmap mergedCoordinateAssets = backgroundImage;
         Bitmap previousImage;
         Bitmap scaledCoordinateAsset = backgroundImage;
         for (int i = 0; i < assetCoordinates.length; i++){
@@ -230,18 +234,21 @@ GameActivity extends AppCompatActivity {
             if (i == 0) {
                 previousImage = backgroundImage;
             } else {
-                previousImage = mergedCoodinateAssets;
+                previousImage = mergedCoordinateAssets;
             }
-            Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths);
+
+            Bitmap coordinateAsset = randomAssets.get(i).getAsset().copy(randomAssets.get(i).getAsset().getConfig(), true);
+            //Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
+
+            //coordinateAsset = randomAssets.get(i).getAsset();
             scaledCoordinateAsset = Bitmap.createScaledBitmap(coordinateAsset, 50, 50, false);
             Log.d("Wille", "X value: " + assetCoordinates[i].x);
 
-            mergedCoodinateAssets = mergeImages(previousImage, scaledCoordinateAsset, 0, 0, assetCoordinates[i].x + 20, assetCoordinates[i].y + 20);
+            mergedCoordinateAssets = mergeImages(previousImage, scaledCoordinateAsset, 0, 0, assetCoordinates[i].x + 20, assetCoordinates[i].y + 20);
         }
 
-
-        Log.d("Wille", "Bigmerge height: " + mergedCoodinateAssets.getHeight());
-        return mergedCoodinateAssets;
+        Log.d("Wille", "Bigmerge height: " + mergedCoordinateAssets.getHeight());
+        return mergedCoordinateAssets;
     }
 
     private Bitmap mergeImages(Bitmap firstImage, Bitmap secondImage, int firstImageX, int firstImageY, int secondImageX, int secondImageY){
@@ -250,6 +257,72 @@ GameActivity extends AppCompatActivity {
         canvas.drawBitmap(firstImage, firstImageX, firstImageY, null);
         canvas.drawBitmap(secondImage, secondImageX, secondImageY, null);
         return result;
+    }
+
+    public ArrayList<RandomAssetObject> setRandomAssets(){
+        ArrayList<RandomAssetObject> randomAssetList = new ArrayList<>();
+        ArrayList<RandomAssetObject> assetGenre = new ArrayList<>();
+
+        RandomAssetObject assetMath = new RandomAssetObject();
+        Bitmap bitmapMath = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths);
+        assetMath.setGenre("Math");
+        assetMath.setAsset(bitmapMath);
+        assetGenre.add(assetMath);
+
+
+        RandomAssetObject assetNature = new RandomAssetObject();
+        Bitmap bitmapNature = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature);
+        assetNature.setGenre("Nature");
+        assetNature.setAsset(bitmapNature);
+        assetGenre.add(assetNature);
+
+        RandomAssetObject assetCultureMusic = new RandomAssetObject();
+        Bitmap bitmapCultureMusic= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_culture_music);
+        assetCultureMusic.setGenre("Culture");
+        assetCultureMusic.setAsset(bitmapCultureMusic);
+        assetGenre.add(assetCultureMusic);
+
+        RandomAssetObject assetEsport = new RandomAssetObject();
+        Bitmap bitmapEsport= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_games);
+        assetEsport.setGenre("Esport");
+        assetEsport.setAsset(bitmapEsport);
+        assetGenre.add(assetEsport);
+
+        RandomAssetObject assetGeo = new RandomAssetObject();
+        Bitmap bitmapGeo= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography);
+        assetEsport.setGenre("Geography");
+        assetEsport.setAsset(bitmapGeo);
+        assetGenre.add(assetGeo);
+
+        RandomAssetObject assetRandom = new RandomAssetObject();
+        Bitmap bitmapRandom= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random);
+        assetRandom.setGenre("Random");
+        assetRandom.setAsset(bitmapRandom);
+        assetGenre.add(assetRandom);
+
+        RandomAssetObject assetScience = new RandomAssetObject();
+        Bitmap bitmapScience= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience);
+        assetScience.setGenre("Science");
+        assetScience.setAsset(bitmapScience);
+        assetGenre.add(assetScience);
+
+        RandomAssetObject assetSport = new RandomAssetObject();
+        Bitmap bitmapSport= BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
+        assetSport.setGenre("Sport");
+        assetSport.setAsset(bitmapSport);
+        assetGenre.add(assetSport);
+
+        int randomIndex;
+        for (int i = 0; i < gridSize; i++){
+            randomIndex = randomHelper.randomBoundedIndex(assetGenre.size());
+            randomAssetList.add(assetGenre.get(randomIndex));
+            genreList[i] = assetGenre.get(randomIndex).getGenre();
+            Log.d("Wille", "Random asset add: " + randomAssetList.get(i).getGenre());
+            Log.d("Wille", "Random asset add: " + randomAssetList.get(i));
+
+        }
+
+        return randomAssetList;
     }
 
     public void setAssetPosList (Point[] posList){

@@ -54,6 +54,7 @@
         <activity
             android:name=".OfflineModeSetupActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".GameLobbyStuff.GameLobbyActivity" />
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait" />

@@ -21,9 +21,8 @@
         android:id="@+id/buttonRollDice"
         android:layout_width="237dp"
         android:layout_height="123dp"
-        android:onClick="onClickRollDice"
+        android:onClick="onClickButtonRollDice"
         android:text="Roll Dice!!!!!!"
-        android:visibility="invisible"
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="217dp" />
 
