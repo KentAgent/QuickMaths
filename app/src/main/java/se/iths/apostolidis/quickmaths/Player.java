@@ -12,9 +12,19 @@ public class Player {
     private String name;
     private int gold;
     private int posX, posY;
+    private int score;
+
+    private int lastThrownDie;
+
     private Bitmap avatar;
 
-    private int score;
+    public int getLastThrownDie() {
+        return lastThrownDie;
+    }
+
+    public void setLastThrownDie(int lastThrownDie) {
+        this.lastThrownDie = lastThrownDie;
+    }
 
     public int getScore() {
         return score;
