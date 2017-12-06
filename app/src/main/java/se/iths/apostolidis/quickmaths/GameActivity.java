@@ -50,7 +50,7 @@ GameActivity extends AppCompatActivity {
     private Paint paint = new Paint();
     private ImageView drawView;
     GameEngineSinglePlayer engine;
-    private int numberOfPlayer = 3;
+    private int numberOfPlayer = 2;
     Canvas canvas;
     Canvas tempCanvas;
     Bundle extras;
@@ -143,6 +143,7 @@ GameActivity extends AppCompatActivity {
         }
     }
 
+
     public void gameSetUp (MPhotoView view){
 
         playerTurnIndex = 0;
@@ -169,10 +170,8 @@ GameActivity extends AppCompatActivity {
     }
 
     public void onClickButtonRollDice (View view){
-        if (playerTurnIndex == players.size()){
-            playerTurnIndex = 0;
 
-        }
+
         playerTurn(players.get(playerTurnIndex));
     }
 
@@ -199,24 +198,31 @@ GameActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
             if(requestCode == 1 ){
                 if(resultCode == Activity.RESULT_OK){
+
+
                  players.get(playerTurnIndex).addScore(3);
                  updateScoreBoard();
-                    turnTracker.setVisibility(View.VISIBLE);
 
-                    turnTracker.setText("Player " + (playerTurnIndex +2) + " turn to play");
-                    turnTracker.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            turnTracker.setVisibility(View.INVISIBLE);
-
-                        }
-                    },3000);
                 }
                 if (resultCode == Activity.RESULT_CANCELED){
-
+                    //move back
                 }
             }
               playerTurnIndex ++;
+        if (playerTurnIndex == numberOfPlayer){
+            playerTurnIndex = 0;
+        }
+
+        turnTracker.setVisibility(View.VISIBLE);
+
+        turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
+        turnTracker.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                turnTracker.setVisibility(View.INVISIBLE);
+
+            }
+        },3000);
 
 
     }
