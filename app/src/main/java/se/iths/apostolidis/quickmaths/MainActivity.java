@@ -101,11 +101,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSinglePlayer(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, OfflineModeSetupActivity.class);
         muteBtn.setVisibility(View.INVISIBLE);
         infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
+
+
 
     public void onClickMultiplayer(View view) {
         Intent intent = new Intent(this, MultiplayerActivity.class);
