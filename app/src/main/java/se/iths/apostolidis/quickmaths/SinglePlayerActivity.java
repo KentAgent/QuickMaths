@@ -9,8 +9,6 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
-
 import java.util.ArrayList;
 
 public class SinglePlayerActivity extends AppCompatActivity {
@@ -28,7 +26,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     boolean[] booleanArrayCategories;
     String[] stringArrayCategories;
-    ArrayList<String> choosenCategories;
+    ArrayList<String> chosenCategories;
+
+    ArrayList<String> playerNames;
 
     Button buttonSelectAll;
     Button buttonSelectNone;
@@ -37,7 +37,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     ImageButton buttonGoForward;
 
 
-
+    int setUpPlayers;
     int xTrue;
     int count;
 
@@ -46,9 +46,17 @@ public class SinglePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
+        Bundle bundle = getIntent().getExtras();
+
+        setUpPlayers = bundle.getInt("setUpPlayers");
+
+        playerNames = new ArrayList<String>(setUpPlayers);
+
+        playerNames = bundle.getStringArrayList("playerNames");
+
+
         booleanArrayCategories = new boolean[9];
         stringArrayCategories = new String[9];
-
 
 
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
@@ -135,20 +143,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
      */
     public void onClickForward(View view) {
 
-        importCategories();
-
-
-        if (xTrue > 0) {
-            Intent intent = new Intent(this, GameActivity.class);
-            intent.putExtra("numberOfPlayers", numberOfPlayers);
-            intent.putExtra("xTrue", xTrue);
-            intent.putExtra("choosenCategories", choosenCategories);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
-        }
-
-
         /*
         snp.setListener(new ScrollableNumberPickerListener() {
             @Override
@@ -157,9 +151,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         });
 */
-    }
-
-    private void importCategories() {
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
         booleanArrayCategories[2] = cFilm.isChecked();
@@ -171,12 +162,13 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[8] = cMath.isChecked();
 
 
+
         stringArrayCategories[0] = "Humor";
         stringArrayCategories[1] = "Sport";
         stringArrayCategories[2] = "Film";
         stringArrayCategories[3] = "Music";
         stringArrayCategories[4] = "History";
-        stringArrayCategories[5] = "Vetenskap";
+        stringArrayCategories[5] = "Geography";
         stringArrayCategories[6] = "E-sport";
         stringArrayCategories[7] = "Random";
         stringArrayCategories[8] = "Math";
@@ -190,30 +182,26 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         }
 
-        choosenCategories = new ArrayList<>();
+        chosenCategories = new ArrayList<String>(xTrue);
 
-
-        count = 0;
 
         for(int i = 0; i < booleanArrayCategories.length; i++){
             if(booleanArrayCategories[i]){
-                choosenCategories.add(stringArrayCategories[i]);
-                count++;
+                chosenCategories.add(stringArrayCategories[i]);
             }
-<<<<<<< HEAD
-=======
 
         }
 
 
         if (xTrue > 0) {
-            Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("playerNames", playerNames);
+            intent.putExtra("setUpPlayers", setUpPlayers);
             intent.putExtra("xTrue", xTrue);
-            intent.putExtra("choosenCategories", choosenCategories);
+            intent.putExtra("chosenCategories", chosenCategories);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
->>>>>>> 1998dcb5f4d1996b61399762d676810ca4d6ab63
         }
     }
 
