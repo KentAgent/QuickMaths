@@ -93,13 +93,13 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
 
 
-    public void onClickForward(){
+    public void onClickForward(View view){
         setUpPlayers = snp.getValue();
+
         playerNames = new String[setUpPlayers];
 
         for(int i = 0; i < setUpPlayers; i++){
-            String temp = editTextsPN[i].toString();
-            temp = playerNames[i];
+           playerNames[i] = editTextsPN[i].getText().toString();
         }
 
 
@@ -139,43 +139,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 }
 
 
-        /* tar fram info från bundle från SinglePlayerActivity
-        Bundle extras = getIntent().getExtras();
 
-        xTrue = extras.getInt("xTrue");
-
-        //här instansieras stringarray som sätts till storleken av antalet valda kategorier;
-        choosenCategories = new String[xTrue];
-
-        choosenCategories = extras.getStringArray("choosenCategories");
-
-
-         gömmer antalet textviews och editexts baserat på antalet spelare
-
-        emptyPlayers = 8 - numberOfPlayers;
-
-        for (int i = 0; i < emptyPlayers; i++) {
-            hide = numberOfPlayers + i;
-            editTextsPN[hide].setVisibility(View.INVISIBLE);
-            textViewsPN[hide].setVisibility(View.INVISIBLE);
-
-        }
-        */
-
-              /*
-        Skriver ut valda kategorier i textviews
-         */
-              /*
-        if(choosenCategories != null){
-                int index = 0;
-                for (String n: choosenCategories){
-                textViews.get(index).setText(n);
-                index++;
-                }
-
-                }
-
-                */
 
 
 
