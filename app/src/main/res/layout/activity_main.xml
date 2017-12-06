@@ -179,7 +179,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/text_view_background"
         android:elevation="20dp"
-        android:fontFamily="@font/indie_flower"
+        android:fontFamily="@font/finger_paint"
         android:padding="15dp"
         android:text="@string/credits"
         android:textAlignment="center"
