@@ -59,7 +59,7 @@ GameActivity extends AppCompatActivity {
 
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<RandomAssetObject> randomAssets = new ArrayList<>();
-
+    List<String> chosenCategories;
     private boolean someoneWon;
     private int playerTurnIndex;
     private TextView turnTracker;
@@ -76,13 +76,24 @@ GameActivity extends AppCompatActivity {
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
 
+        Bundle bundle = getIntent().getExtras();
+
+        chosenCategories = bundle.getStringArrayList("choosenCategories");
+
+        for (int i = 0; i < chosenCategories.size(); i++) {
+            Log.d("Wille", chosenCategories.get(i));
+        }
 
 
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
+
+
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
+
+
 
         //randomAssets = setRandomAssets();
 
@@ -324,8 +335,8 @@ GameActivity extends AppCompatActivity {
 
             //Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
             //Bitmap coordinateAsset = randomAssets.get(i).getAsset().copy(randomAssets.get(i).getAsset().getConfig(), true);
-
-            Bitmap coordinateAsset = hashMapAssets.get(listOfGenres().get(i).toString());
+            Log.d("Wille", "Setmap Loop");
+            Bitmap coordinateAsset = hashMapAssets.get(randomCategoryStrings.get(i));
 
 
             //coordinateAsset = randomAssets.get(i).getAsset();
@@ -360,15 +371,23 @@ GameActivity extends AppCompatActivity {
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
 
+        HashMap<String, Bitmap> chosenHashMapAssets = new HashMap<>();
+
+        for (int i = 0; i < chosenCategories.size(); i++) {
+                if (!chosenCategories.get(i).equals(hashMapAssets.get(chosenCategories.get(i)).toString())){
+                    hashMapAssets.remove(hashMapAssets.get(chosenCategories.get(i)).toString());
+                }
+
+        }
+
         return hashMapAssets;
 
-        //TODO FIX getting points when wrong answer
-        //TODO SHow whose turn it is
     }
 
 
     public List<String> listOfGenres(){
         List<String> stringGenres = new ArrayList<>();
+
         stringGenres.add("E-Sport");
         stringGenres.add("Musik");
         stringGenres.add("Sport");
@@ -377,15 +396,22 @@ GameActivity extends AppCompatActivity {
         stringGenres.add("Vetenskap");
         stringGenres.add("Humor");
 
+//        for (int i = 0; i < chosenCategories.size(); i++) {
+//
+//            for (int j = 0; j < stringGenres.size(); j++) {
+//                if (chosenCategories.get(i).equals(stringGenres.get(j))){
+//                    stringGenres.add(chosenCategories.get(i));
+//                }
+//            }
+//        }
+
         //stringGenres.add("Humor");
 
         List<String> stringHashmapPairs = new ArrayList<>();
 
         for (int i = 0; i < numOfCoordinates; i++){
-            stringHashmapPairs.add(stringGenres.get(randomHelper.randomBoundedIndex(stringGenres.size())));
-
+            stringHashmapPairs.add(chosenCategories.get(randomHelper.randomBoundedIndex(chosenCategories.size())));
         }
-
         return stringHashmapPairs;
     }
 

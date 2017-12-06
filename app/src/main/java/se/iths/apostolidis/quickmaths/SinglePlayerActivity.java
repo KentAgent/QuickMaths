@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
+import java.util.ArrayList;
+
 public class SinglePlayerActivity extends AppCompatActivity {
 
     CheckBox cHumor;
@@ -26,7 +28,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     boolean[] booleanArrayCategories;
     String[] stringArrayCategories;
-    String[] choosenCategories;
+    ArrayList<String> choosenCategories;
 
     Button buttonSelectAll;
     Button buttonSelectNone;
@@ -136,6 +138,20 @@ public class SinglePlayerActivity extends AppCompatActivity {
      */
     public void onClickForward(View view) {
 
+        importCategories();
+
+
+        if (xTrue > 0) {
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("numberOfPlayers", numberOfPlayers);
+            intent.putExtra("xTrue", xTrue);
+            intent.putExtra("choosenCategories", choosenCategories);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
+        }
+
+
         /*
         snp.setListener(new ScrollableNumberPickerListener() {
             @Override
@@ -144,6 +160,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         });
 */
+    }
+
+    private void importCategories() {
         booleanArrayCategories[0] = cHumor.isChecked();
         booleanArrayCategories[1] = cSport.isChecked();
         booleanArrayCategories[2] = cFilm.isChecked();
@@ -155,13 +174,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[8] = cMath.isChecked();
 
 
-
         stringArrayCategories[0] = "Humor";
         stringArrayCategories[1] = "Sport";
         stringArrayCategories[2] = "Film";
         stringArrayCategories[3] = "Music";
         stringArrayCategories[4] = "History";
-        stringArrayCategories[5] = "Geography";
+        stringArrayCategories[5] = "Vetenskap";
         stringArrayCategories[6] = "E-sport";
         stringArrayCategories[7] = "Random";
         stringArrayCategories[8] = "Math";
@@ -175,27 +193,16 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         }
 
-        choosenCategories = new String[xTrue];
+        choosenCategories = new ArrayList<>();
+
 
         count = 0;
 
         for(int i = 0; i < booleanArrayCategories.length; i++){
             if(booleanArrayCategories[i]){
-                choosenCategories[count] = stringArrayCategories[i];
+                choosenCategories.add(stringArrayCategories[i]);
                 count++;
             }
-
-        }
-
-
-        if (xTrue > 0) {
-            Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-            intent.putExtra("numberOfPlayers", numberOfPlayers);
-            intent.putExtra("xTrue", xTrue);
-            intent.putExtra("choosenCategories", choosenCategories);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
         }
     }
 

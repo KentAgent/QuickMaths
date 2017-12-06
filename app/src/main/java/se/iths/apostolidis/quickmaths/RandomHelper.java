@@ -11,6 +11,7 @@ public class RandomHelper {
 
     public int randomBoundedIndex (int bound){
         int index = random.nextInt(bound);
+
         return index;
     }
 }

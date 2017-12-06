@@ -149,7 +149,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
         }
     }
-    public void onClickForward(){
+    public void onClickForward(View view){
 
         playerNames = new String[setUpPlayers];
 
