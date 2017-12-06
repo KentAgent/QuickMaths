@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
+import java.util.ArrayList;
 
 public class SinglePlayerActivity extends AppCompatActivity {
 
@@ -26,7 +26,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     boolean[] booleanArrayCategories;
     String[] stringArrayCategories;
-    String[] choosenCategories;
+    ArrayList<String> chosenCategories;
+
+    ArrayList<String> playerNames;
 
     Button buttonSelectAll;
     Button buttonSelectNone;
@@ -35,7 +37,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     ImageButton buttonGoForward;
 
 
-
+    int setUpPlayers;
     int xTrue;
     int count;
 
@@ -44,9 +46,17 @@ public class SinglePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
+        Bundle bundle = getIntent().getExtras();
+
+        setUpPlayers = bundle.getInt("setUpPlayers");
+
+        playerNames = new ArrayList<String>(setUpPlayers);
+
+        playerNames = bundle.getStringArrayList("playerNames");
+
+
         booleanArrayCategories = new boolean[9];
         stringArrayCategories = new String[9];
-
 
 
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
@@ -172,14 +182,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         }
 
-        choosenCategories = new String[xTrue];
+        chosenCategories = new ArrayList<String>(xTrue);
 
-        count = 0;
 
         for(int i = 0; i < booleanArrayCategories.length; i++){
             if(booleanArrayCategories[i]){
-                choosenCategories[count] = stringArrayCategories[i];
-                count++;
+                chosenCategories.add(stringArrayCategories[i]);
             }
 
         }
@@ -187,8 +195,10 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         if (xTrue > 0) {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+            intent.putExtra("playerNames", playerNames);
+            intent.putExtra("setUpPlayers", setUpPlayers);
             intent.putExtra("xTrue", xTrue);
-            intent.putExtra("choosenCategories", choosenCategories);
+            intent.putExtra("chosenCategories", chosenCategories);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Choose at least one category", Toast.LENGTH_SHORT).show();
