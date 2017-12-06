@@ -163,7 +163,8 @@ GameActivity extends AppCompatActivity {
     }
 
     public void playerTurn(Player player) {
-        movePlayer(player, rollDice());
+        player.setLastThrownDie(rollDice());
+        movePlayer(player, player.getLastThrownDie());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
         getQuestion(category);
@@ -198,14 +199,11 @@ GameActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
             if(requestCode == 1 ){
                 if(resultCode == Activity.RESULT_OK){
-
-
                  players.get(playerTurnIndex).addScore(3);
                  updateScoreBoard();
-
                 }
                 if (resultCode == Activity.RESULT_CANCELED){
-                    //move back
+                    moveBackPlayer();
                 }
             }
               playerTurnIndex ++;
@@ -225,6 +223,21 @@ GameActivity extends AppCompatActivity {
         },3000);
 
 
+    }
+
+    private void moveBackPlayer() {
+
+        for(int i = 0; i < players.get(playerTurnIndex).getLastThrownDie(); i ++) {
+
+            players.get(playerTurnIndex).setPos(assetCoordinates[players.get(playerTurnIndex).getCoordinateIndex() - 1].x, assetCoordinates[players.get(playerTurnIndex).getCoordinateIndex() - 1 ].y);
+            players.get(playerTurnIndex).setCoordinateIndex(players.get(playerTurnIndex).getCoordinateIndex() - 1);
+
+            Log.d("Wille", "Player Coordinate X :" + players.get(playerTurnIndex).getPosX());
+
+
+        }
+
+        upDate(players);
     }
 
 
@@ -337,7 +350,7 @@ GameActivity extends AppCompatActivity {
     public HashMap pairHashmapWithKey (){
         HashMap<String, Bitmap> hashMapAssets = new HashMap();
         hashMapAssets.put("E-Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_games));
-        hashMapAssets.put("Music", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_culture_music));
+        hashMapAssets.put("Musik", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_culture_music));
         hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
         hashMapAssets.put("Random", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random));
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
@@ -357,7 +370,7 @@ GameActivity extends AppCompatActivity {
     public List<String> listOfGenres(){
         List<String> stringGenres = new ArrayList<>();
         stringGenres.add("E-Sport");
-        stringGenres.add("Music");
+        stringGenres.add("Musik");
         stringGenres.add("Sport");
         stringGenres.add("Random");
         stringGenres.add("Film");

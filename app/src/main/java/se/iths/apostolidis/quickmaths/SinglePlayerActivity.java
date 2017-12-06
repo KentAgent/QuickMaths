@@ -38,9 +38,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     int xTrue;
     int count;
-    int numberOfPlayers = 1;
-
-    ScrollableNumberPicker snp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +47,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories = new boolean[9];
         stringArrayCategories = new String[9];
 
-        snp = findViewById(R.id.number_picker_horizontal);
+
 
         buttonSelectAll = findViewById(R.id.buttonSelectAll);
         buttonSelectNone = findViewById(R.id.buttonSelectNone);
@@ -190,7 +187,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         if (xTrue > 0) {
             Intent intent = new Intent(this, OfflineModeSetupActivity.class);
-            intent.putExtra("numberOfPlayers", numberOfPlayers);
             intent.putExtra("xTrue", xTrue);
             intent.putExtra("choosenCategories", choosenCategories);
             startActivity(intent);
