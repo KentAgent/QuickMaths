@@ -22,6 +22,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".QuestionActivity"
@@ -55,7 +56,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".OfflineModeSetupActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".GameLobbyStuff.GameLobbyActivity" />
         <activity
             android:name=".ProfileActivity"

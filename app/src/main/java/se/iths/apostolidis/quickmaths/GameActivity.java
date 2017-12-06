@@ -316,7 +316,9 @@ GameActivity extends AppCompatActivity {
     public String scoreBoardSetup(){
         String scoreBoard = "";
         for (int i = 0; i <players.size() ; i++) {
-            scoreBoard += "Player " + (i+1) + " Score: "  + players.get(i).getScore() + "\n";
+            scoreBoard += "Player " + (i+1) + " Score: "  + players.get(i).getScore();
+            if (i < players.size() -1)
+                scoreBoard += "\n";
         } return scoreBoard;
     }
     public Bitmap setMap (Point[] assetCoordinates){
