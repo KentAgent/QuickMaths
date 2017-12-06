@@ -29,6 +29,7 @@ public class QuestionActivity extends AppCompatActivity {
     private String genre;
     private DBHelper dbHelper;
     private boolean result = false;
+    private Quiz quiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class QuestionActivity extends AppCompatActivity {
         importViewElemets();
         setQuestion();
 
-        Quiz quiz = new Quiz();
     }
     public void setQuestion (){
 
@@ -81,13 +81,22 @@ public class QuestionActivity extends AppCompatActivity {
         }
         TODO://Fixa randomHelper classen!
         //int index = randomHelper.randomBoundedIndex(database.getQuizCategory(genre).size());
+        quiz = new Quiz();
+        quiz = database.getQuizCategory(genre).get(index);
 
-        textViewQuestion.setText(database.getQuizCategory(genre).get(index).getQuestion());
-        btnAnswer1.setText(database.getQuizCategory(genre).get(index).getAnswer1());
-        btnAnswer2.setText(database.getQuizCategory(genre).get(index).getAnswer2());
-        btnAnswer3.setText(database.getQuizCategory(genre).get(index).getAnswer3());
-        btnAnswer4.setText(database.getQuizCategory(genre).get(index).getAnswer4());
-        correctAnswer = database.getQuizCategory(genre).get(index).getCorrectAnswer();
+        textViewQuestion.setText(quiz.getQuestion());
+        btnAnswer1.setText(quiz.getAnswer1());
+        btnAnswer2.setText(quiz.getAnswer2());
+        btnAnswer3.setText(quiz.getAnswer3());
+        btnAnswer4.setText(quiz.getAnswer4());
+        correctAnswer = quiz.getCorrectAnswer();
+
+//        textViewQuestion.setText(database.getQuizCategory(genre).get(index).getQuestion());
+//        btnAnswer1.setText(database.getQuizCategory(genre).get(index).getAnswer1());
+//        btnAnswer2.setText(database.getQuizCategory(genre).get(index).getAnswer2());
+//        btnAnswer3.setText(database.getQuizCategory(genre).get(index).getAnswer3());
+//        btnAnswer4.setText(database.getQuizCategory(genre).get(index).getAnswer4());
+//        correctAnswer = database.getQuizCategory(genre).get(index).getCorrectAnswer();
 
         //Log.d(TAG, "adding to usedQuestions");
         usedQuestions.add(database.getQuizCategory(genre).get(index).getQuestion());
@@ -95,14 +104,7 @@ public class QuestionActivity extends AppCompatActivity {
         /**
          * Sets a random question from the database
          **/
-//        Random random = new Random();
-//        int index = random.nextInt(database.getAllQuizzes().size());
-//        textViewQuestion.setText(database.getAllQuizzes().get(index).getQuestion());
-//        btnAnswer1.setText(database.getAllQuizzes().get(index).getAnswer1());
-//        btnAnswer2.setText(database.getAllQuizzes().get(index).getAnswer2());
-//        btnAnswer3.setText(database.getAllQuizzes().get(index).getAnswer3());
-//        btnAnswer4.setText(database.getAllQuizzes().get(index).getAnswer4());
-//        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
+
     }
 
     public void getQuestionIntent(Boolean b){
