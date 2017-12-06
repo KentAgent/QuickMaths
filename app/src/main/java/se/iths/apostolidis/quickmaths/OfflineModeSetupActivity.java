@@ -12,9 +12,6 @@ import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
 
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
-    int numberOfPlayers = 0;
-
-
     EditText[] editTextsPN = new EditText[4];
     EditText etP1Name;
     EditText etP2Name;
@@ -31,7 +28,9 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
     String[] playerNames;
 
-    ScrollableNumberPicker snp;
+    private ScrollableNumberPicker snp;
+    private int tempo = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         //TODO skapa flera intents, en som sparar vid bak och en som sparar vid framåt knapparna
 
 
-
+        //Initerierar variabler med xml-referenser.
         etP1Name = findViewById(R.id.editTextNamePlayer1);
         etP2Name = findViewById(R.id.editTextNamePlayer2);
         etP3Name = findViewById(R.id.editTextNamePlayer3);
@@ -53,7 +52,9 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         tvP3Name = findViewById(R.id.textViewPlayer3Name);
         tvP4Name = findViewById(R.id.textViewPlayer4Name);
 
+        snp = findViewById(R.id.number_picker_horizontal);
 
+        //Skapar arrayer för Player-widgets
         textViewsPN[0] = tvP1Name;
         textViewsPN[1] = tvP2Name;
         textViewsPN[2] = tvP3Name;
@@ -66,31 +67,76 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[3] = etP4Name;
 
 
-        snp = findViewById(R.id.number_picker_horizontal);
-        int nrOfPlayers = 1;
+        //Gör alla spelare utan första osynliga
+        makeAllInvisable();
 
-        ScrollableNumberPickerListener nrPlayersListener = new ScrollableNumberPickerListener() {
+        //Lyssnar efter förändringar på antalet spelare
+        snp.setListener(new ScrollableNumberPickerListener() {
             @Override
             public void onNumberPicked(int value) {
-                setUpPlayers = snp.getValue();
 
+                if (tempo < value) {
+                    addPlayers(value);
+
+                } else if (tempo > value) {
+                    removePlayers(value, tempo);
+                }
+                tempo = value;
             }
-        };
-        snp.setListener(nrPlayersListener);
-        makeAllInvisable();
-        Intent intent = new Intent();
-        //Bundle extras = getIntent().getExtras();
+        });
 
-        //numberOfPlayers = extras.getInt("numberOfPlayers");
-        if(numberOfPlayers != 0) {
-            for (int i = 0; i < nrOfPlayers; i++) {
+
+    }
+
+
+
+
+
+
+    public void onClickForward(){
+        setUpPlayers = snp.getValue();
+        playerNames = new String[setUpPlayers];
+
+        for(int i = 0; i < setUpPlayers; i++){
+            String temp = editTextsPN[i].toString();
+            temp = playerNames[i];
+        }
+
+
+        Intent intent = new Intent(this, SinglePlayerActivity.class);
+        intent.putExtra("numberOfPlayers", setUpPlayers);
+        intent.putExtra("playerNames", playerNames);
+        startActivity(intent);
+    }
+
+    public void makeAllInvisable(){
+        for (int i = 1; i < editTextsPN.length; i++) {
+            editTextsPN[i].setVisibility(View.INVISIBLE);
+            textViewsPN[i].setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void addPlayers(int nrOfPlayers){
+        if(nrOfPlayers != 0) {
+            for (int i = 0; i < snp.getValue(); i++) {
                 editTextsPN[i].setVisibility(View.VISIBLE);
                 textViewsPN[i].setVisibility(View.VISIBLE);
 
             }
         }
 
+    }
 
+    public void removePlayers(int nrOfPlayers, int temp){
+        if(nrOfPlayers != 0){
+            for (int i = temp ; i > nrOfPlayers  ; i--) {
+                editTextsPN[i-1].setVisibility(View.INVISIBLE);
+                textViewsPN[i-1].setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+}
 
 
         /* tar fram info från bundle från SinglePlayerActivity
@@ -130,49 +176,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
                 }
 
                 */
-    }
 
-    public void makeAllInvisable(){
-            for (EditText n: editTextsPN){
-                n.setVisibility(View.INVISIBLE);
-            }
-            for (TextView n: textViewsPN){
-                n.setVisibility(View.INVISIBLE);
-            }
-    }
-
-    public void makePlayersVisable(View view){
-        int players = snp.getValue();
-        for (int i = 0; i < setUpPlayers; i++) {
-            editTextsPN[i].setVisibility(View.VISIBLE);
-            textViewsPN[i].setVisibility(View.VISIBLE);
-
-        }
-    }
-    public void onClickForward(){
-
-        playerNames = new String[setUpPlayers];
-
-        for(int i = 0; i < setUpPlayers; i++){
-            String temp = editTextsPN[i].toString();
-            temp = playerNames[i];
-        }
-
-        ScrollableNumberPickerListener nrPlayersListener = new ScrollableNumberPickerListener() {
-            @Override
-            public void onNumberPicked(int value) {
-                setUpPlayers = snp.getValue();
-
-            }
-        };
-
-        Intent intent = new Intent(this, SinglePlayerActivity.class);
-        intent.putExtra("numberOfPlayers", setUpPlayers);
-        intent.putExtra("playerNames", playerNames);
-        startActivity(intent);
-    }
-
-}
 
 
 
