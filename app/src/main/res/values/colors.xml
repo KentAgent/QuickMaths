@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="scrollNumberPickerColor">#b9ebc2</color>
     <color name="checkboxColor">#93accc</color>
+    <color name="textShadowColor">#5e5e5e</color>
+    <color name="white">#99ffffff</color>
 </resources>
