@@ -1,13 +1,10 @@
 package se.iths.apostolidis.quickmaths;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
@@ -32,6 +29,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP4Name;
     int setUpPlayers = 0;
 
+    String[] playerNames;
 
     ScrollableNumberPicker snp;
 
@@ -71,14 +69,14 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         snp = findViewById(R.id.number_picker_horizontal);
         int nrOfPlayers = 1;
 
-        ScrollableNumberPickerListener nrPlayersListerner = new ScrollableNumberPickerListener() {
+        ScrollableNumberPickerListener nrPlayersListener = new ScrollableNumberPickerListener() {
             @Override
             public void onNumberPicked(int value) {
                 setUpPlayers = snp.getValue();
 
             }
         };
-        snp.setListener(nrPlayersListerner);
+        snp.setListener(nrPlayersListener);
         makeAllInvisable();
         Intent intent = new Intent();
         //Bundle extras = getIntent().getExtras();
@@ -151,7 +149,28 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
         }
     }
+    public void onClickForward(){
 
+        playerNames = new String[setUpPlayers];
+
+        for(int i = 0; i < setUpPlayers; i++){
+            String temp = editTextsPN[i].toString();
+            temp = playerNames[i];
+        }
+
+        ScrollableNumberPickerListener nrPlayersListener = new ScrollableNumberPickerListener() {
+            @Override
+            public void onNumberPicked(int value) {
+                setUpPlayers = snp.getValue();
+
+            }
+        };
+
+        Intent intent = new Intent(this, SinglePlayerActivity.class);
+        intent.putExtra("numberOfPlayers", setUpPlayers);
+        intent.putExtra("playerNames", playerNames);
+        startActivity(intent);
+    }
 
 }
 

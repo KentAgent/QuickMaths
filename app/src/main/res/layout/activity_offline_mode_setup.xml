@@ -9,17 +9,17 @@
 
     <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
         android:id="@+id/number_picker_horizontal"
-        android:layout_width="43dp"
-        android:layout_height="41dp"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-
+        android:onClick="onClickChangePlayers"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
         app:layout_constraintStart_toEndOf="@+id/textViewNumberOfPlayers"
         app:layout_constraintTop_toTopOf="@+id/textViewNumberOfPlayers"
-        app:snp_maxValue="8"
+        app:snp_maxValue="4"
         app:snp_minValue="1"
         app:snp_stepSize="1"
         app:snp_value="1" />
