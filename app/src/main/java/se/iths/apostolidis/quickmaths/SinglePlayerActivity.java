@@ -194,7 +194,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
 
         if (xTrue > 0) {
-            Intent intent = new Intent(this, OfflineModeSetupActivity.class);
+            Intent intent = new Intent(this, GameActivity.class);
             intent.putExtra("playerNames", playerNames);
             intent.putExtra("setUpPlayers", setUpPlayers);
             intent.putExtra("xTrue", xTrue);
