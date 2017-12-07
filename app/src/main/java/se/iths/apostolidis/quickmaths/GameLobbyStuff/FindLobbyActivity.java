@@ -2,6 +2,7 @@ package se.iths.apostolidis.quickmaths.GameLobbyStuff;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -32,18 +34,60 @@ public class FindLobbyActivity extends AppCompatActivity {
     private Button searchButton;
     private ArrayList<String> playerIds = new ArrayList<>();
     private String lobbyID;
+    private boolean success;
+    private String snapShot = "";
+    private ArrayList<Player> players = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_lobby);
         editText = findViewById(R.id.editTextSeachLobby);
-        textView = findViewById(R.id.textViewShowOnlinePlayers);
+        textView = findViewById(R.id.textViewPlayerIDs);
         searchButton = findViewById(R.id.buttonSearchLobby);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
         player.setUid(user.getUid());
+
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("LobbyID").child("Players");
+
+
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Player player = new Player();
+                player.setUid(dataSnapshot.toString());
+                players.add(player);
+                snapShot += "/n" + dataSnapshot.getValue().toString();
+                textView.setText(snapShot);
+             Log.d("Hund", dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
+
+        for(int i = 0; i < players.size(); i++) {
+            Log.d("Hund", players.get(i).getUid());
+        }
 
         attachDatabaseReadListener();
 
@@ -57,9 +101,30 @@ public class FindLobbyActivity extends AppCompatActivity {
 
         String lobbySearch = editText.getText().toString();
 
-            if (lobbySearch.equals("LobbyID")){
-                mMessagesDatabaseRefrence.setValue(player.getUid());
+
+            if (!success) {
+                if (lobbySearch.equals("Players")) {
+
+                    mMessagesDatabaseRefrence.push().setValue(player.getUid());
+                    success = true;
+                }
             }
+            printPlayers();
+
+    }
+
+    private void printPlayers() {
+        mMessagesDatabaseRefrence.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //textView.setText(dataSnapshot.getValue().toString() + "\n");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("Hund", "Failed ", databaseError.toException());
+            }
+        });
     }
 
 
