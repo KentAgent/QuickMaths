@@ -2,6 +2,8 @@ package se.iths.apostolidis.quickmaths;
 
 import android.graphics.Bitmap;
 
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by mrx on 2017-11-28.
  */
@@ -14,9 +16,28 @@ public class Player {
     private int posX, posY;
     private int score;
 
+    public Player(){
+
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    private String uid;
+
     private int lastThrownDie;
 
     private Bitmap avatar;
+
+    public Player(FirebaseUser user){
+        super();
+
+    }
 
     public int getLastThrownDie() {
         return lastThrownDie;

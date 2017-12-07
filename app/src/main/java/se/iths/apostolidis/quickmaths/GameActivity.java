@@ -1,6 +1,6 @@
 package se.iths.apostolidis.quickmaths;
+
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,19 +8,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,39 +31,30 @@ public class GameActivity extends AppCompatActivity {
     TextView textViewScoreBoard;
     TextView textViewScoreBoardExtra;
     private static int numOfCoordinates = 37;
-    private int maxX;
-    private int maxY;
     // private View view = new View(this);
     //private Bitmap bitmap = Bitmap.createBitmap(maxX, maxY, Bitmap.Config.ARGB_8888);
     private static RandomHelper randomHelper = new RandomHelper();
     FirebaseAuth mAuth;
-    SurfaceView surfaceView;
     private Bitmap gridBitmap;
     private Bitmap originalMapBitmap;
     private Point[] assetCoordinates = new Point[numOfCoordinates];
     private String[] genreList = new String[numOfCoordinates];
-    private Drawable d;
-    private SurfaceHolder surfaceHolder;
-    private Context context;
     private Paint paint = new Paint();
     private ImageView drawView;
     GameEngineSinglePlayer engine;
     private int numberOfPlayer = 4;
     Canvas canvas;
-    Canvas tempCanvas;
-    Bundle extras;
     List<String> randomCategoryStrings;
     HashMap<String, Bitmap> hashMapAssets;
-
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<RandomAssetObject> randomAssets = new ArrayList<>();
     List<String> chosenCategories;
     private boolean someoneWon;
     private int playerTurnIndex;
     private TextView turnTracker;
-
     private String scoreBoard1;
     private String scoreBoard2;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,7 +291,21 @@ public class GameActivity extends AppCompatActivity {
     private Player setPlayer(ArrayList<Player> players, int i) {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.player1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 100, false);
-        Player player = new Player();
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+
+
+
+        Player player = new Player(user);
+
+        if (user ==  null){
+            player.setUid("Player ");
+        } else {
+            player.setUid(user.getUid());
+        }
+
         //player.setId();
         player.setCoordinateIndex(0);
         player.setName("Nisse");
@@ -334,7 +337,7 @@ public class GameActivity extends AppCompatActivity {
         scoreBoard2 = "";
         for (int i = 0; i < players.size(); i++) {
             if (i < 2) {
-                scoreBoard1 += "Player " + (i + 1) + " Score: " + players.get(i).getScore();
+                scoreBoard1 += " " + players.get(0).getUid() + (i + 1) + " Score: " + players.get(i).getScore();
                 if (i < 1)
                     scoreBoard1 += "\n";
             }

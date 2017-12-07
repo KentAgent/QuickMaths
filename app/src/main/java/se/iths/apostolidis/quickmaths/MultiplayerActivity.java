@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import se.iths.apostolidis.quickmaths.GameLobbyStuff.FindLobbyActivity;
 import se.iths.apostolidis.quickmaths.GameLobbyStuff.GameLobbyActivity;
 import se.iths.apostolidis.quickmaths.service.network.RemoteDataManager;
 
@@ -71,6 +72,10 @@ public class MultiplayerActivity extends AppCompatActivity {
     }
 
 
+    public void onClickFindLobby (View view ){
+        Intent intent = new Intent(this, FindLobbyActivity.class);
+        startActivity(intent);
+    }
     public void startLobby(View view){
         Intent myIntent = new Intent(getApplicationContext(), GameLobbyActivity.class);
         startActivity(myIntent);

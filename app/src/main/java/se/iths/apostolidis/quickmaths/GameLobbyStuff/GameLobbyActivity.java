@@ -41,6 +41,7 @@ public class GameLobbyActivity extends AppCompatActivity {
     public static final String ANONYMOUS = "KakashiDota";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
 
+    private Button checkUsers;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseRefrence;
@@ -65,7 +66,7 @@ public class GameLobbyActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-
+        checkUsers = findViewById(R.id.ButtonCheckUsers);
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
@@ -247,9 +248,13 @@ public class GameLobbyActivity extends AppCompatActivity {
 
     public void onClickSignOut(View view){
         Log.d("bror", "" + mFirebaseAuth.getCurrentUser().getUid());
-       FirebaseAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut();
 
+    }
 
+    public void onClickCheckOnline(View view){
+        Intent myIntent = new Intent (getApplicationContext(), ShowOnlineActivity.class);
+        startActivity(myIntent);
     }
 
 }
