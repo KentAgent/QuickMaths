@@ -1,68 +1,63 @@
 package se.iths.apostolidis.quickmaths;
+
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class
-GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     Button buttonRollDice;
     MPhotoView gridMPhotoView;
     MPhotoView map;
     TextView textViewScoreBoard;
+    TextView textViewScoreBoardExtra;
     private static int numOfCoordinates = 37;
-    private int maxX;
-    private int maxY;
     // private View view = new View(this);
     //private Bitmap bitmap = Bitmap.createBitmap(maxX, maxY, Bitmap.Config.ARGB_8888);
     private static RandomHelper randomHelper = new RandomHelper();
     FirebaseAuth mAuth;
-    SurfaceView surfaceView;
     private Bitmap gridBitmap;
     private Bitmap originalMapBitmap;
     private Point[] assetCoordinates = new Point[numOfCoordinates];
     private String[] genreList = new String[numOfCoordinates];
-    private Drawable d;
-    private SurfaceHolder surfaceHolder;
-    private Context context;
     private Paint paint = new Paint();
     private ImageView drawView;
+    private ImageView die;
+    private TypedArray diePictures;
     GameEngineSinglePlayer engine;
-    private int numberOfPlayer = 2;
+    private int numberOfPlayer = 4;
     Canvas canvas;
-    Canvas tempCanvas;
-    Bundle extras;
     List<String> randomCategoryStrings;
     HashMap<String, Bitmap> hashMapAssets;
-
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<RandomAssetObject> randomAssets = new ArrayList<>();
-
+    List<String> chosenCategories;
     private boolean someoneWon;
     private int playerTurnIndex;
     private TextView turnTracker;
+    private String scoreBoard1;
+    private String scoreBoard2;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +70,27 @@ GameActivity extends AppCompatActivity {
         turnTracker = findViewById(R.id.textViewTurnTracker);
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
+        textViewScoreBoardExtra = findViewById(R.id.textViewScoreBoardExtra);
 
+        Bundle bundle = getIntent().getExtras();
+
+        chosenCategories = bundle.getStringArrayList("chosenCategories");
+
+        for (int i = 0; i < chosenCategories.size(); i++) {
+            Log.d("Wille", chosenCategories.get(i));
+        }
 
 
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
+        die = findViewById(R.id.imageViewDie);
+        die.setVisibility(View.INVISIBLE);
+
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
+
+
 
         //randomAssets = setRandomAssets();
 
@@ -164,6 +172,7 @@ GameActivity extends AppCompatActivity {
 
     public void playerTurn(Player player) {
         player.setLastThrownDie(rollDice());
+        rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
@@ -210,7 +219,7 @@ GameActivity extends AppCompatActivity {
         if (playerTurnIndex == numberOfPlayer){
             playerTurnIndex = 0;
         }
-
+        die.setVisibility(View.INVISIBLE);
         turnTracker.setVisibility(View.VISIBLE);
 
         turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
@@ -287,7 +296,21 @@ GameActivity extends AppCompatActivity {
     private Player setPlayer(ArrayList<Player> players, int i) {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.player1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 100, false);
-        Player player = new Player();
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+
+
+
+        Player player = new Player(user);
+
+        if (user ==  null){
+            player.setUid("Player ");
+        } else {
+            player.setUid(user.getUid());
+        }
+
         //player.setId();
         player.setCoordinateIndex(0);
         player.setName("Nisse");
@@ -299,17 +322,41 @@ GameActivity extends AppCompatActivity {
 
 
     public void updateScoreBoard(){
-        textViewScoreBoard.setText(scoreBoardSetup());
+        //textViewScoreBoard.setText(scoreBoardSetup());
+        scoreBoards();
+        textViewScoreBoard.setText(scoreBoard1);
+        textViewScoreBoardExtra.setText(scoreBoard2);
     }
 
-    public String scoreBoardSetup(){
+    /*public String scoreBoardSetup(){
         String scoreBoard = "";
         for (int i = 0; i <players.size() ; i++) {
             scoreBoard += "Player " + (i+1) + " Score: "  + players.get(i).getScore();
             if (i < players.size() -1)
                 scoreBoard += "\n";
         } return scoreBoard;
+    }*/
+
+    public void scoreBoards() {
+        scoreBoard1 = "";
+        scoreBoard2 = "";
+        for (int i = 0; i < players.size(); i++) {
+            if (i < 2) {
+                scoreBoard1 += " " + players.get(0).getUid() + (i + 1) + " Score: " + players.get(i).getScore();
+                if (i < 1)
+                    scoreBoard1 += "\n";
+            }
+            else if (i >= 2) {
+                textViewScoreBoardExtra.setVisibility(View.VISIBLE);
+                scoreBoard2 += "Player " + (i + 1) + " Score: " + players.get(i).getScore();
+                if (i < 3)
+                    scoreBoard2 += "\n";
+            }
+
+        }
     }
+
+
     public Bitmap setMap (Point[] assetCoordinates){
 
         Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gameboard_transparent);
@@ -326,8 +373,8 @@ GameActivity extends AppCompatActivity {
 
             //Bitmap coordinateAsset = BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport);
             //Bitmap coordinateAsset = randomAssets.get(i).getAsset().copy(randomAssets.get(i).getAsset().getConfig(), true);
-
-            Bitmap coordinateAsset = hashMapAssets.get(listOfGenres().get(i).toString());
+            Log.d("Wille", "Setmap Loop");
+            Bitmap coordinateAsset = hashMapAssets.get(randomCategoryStrings.get(i));
 
 
             //coordinateAsset = randomAssets.get(i).getAsset();
@@ -362,15 +409,23 @@ GameActivity extends AppCompatActivity {
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
 
+        HashMap<String, Bitmap> chosenHashMapAssets = new HashMap<>();
+
+        for (int i = 0; i < chosenCategories.size(); i++) {
+                if (!chosenCategories.get(i).equals(hashMapAssets.get(chosenCategories.get(i)).toString())){
+                    hashMapAssets.remove(hashMapAssets.get(chosenCategories.get(i)).toString());
+                }
+
+        }
+
         return hashMapAssets;
 
-        //TODO FIX getting points when wrong answer
-        //TODO SHow whose turn it is
     }
 
 
     public List<String> listOfGenres(){
         List<String> stringGenres = new ArrayList<>();
+
         stringGenres.add("E-Sport");
         stringGenres.add("Musik");
         stringGenres.add("Sport");
@@ -379,16 +434,39 @@ GameActivity extends AppCompatActivity {
         stringGenres.add("Vetenskap");
         stringGenres.add("Humor");
 
+//        for (int i = 0; i < chosenCategories.size(); i++) {
+//
+//            for (int j = 0; j < stringGenres.size(); j++) {
+//                if (chosenCategories.get(i).equals(stringGenres.get(j))){
+//                    stringGenres.add(chosenCategories.get(i));
+//                }
+//            }
+//        }
+
         //stringGenres.add("Humor");
 
         List<String> stringHashmapPairs = new ArrayList<>();
 
         for (int i = 0; i < numOfCoordinates; i++){
-            stringHashmapPairs.add(stringGenres.get(randomHelper.randomBoundedIndex(stringGenres.size())));
-
+            stringHashmapPairs.add(chosenCategories.get(randomHelper.randomBoundedIndex(chosenCategories.size())));
         }
-
         return stringHashmapPairs;
+    }
+
+    public void rollDieAnimation(){
+        
+        die.setVisibility(View.VISIBLE);
+        if (rollDice() == 1) {
+            die.setImageResource(R.drawable.die1);
+        } else if (rollDice() == 2) {
+            die.setImageResource(R.drawable.die2);
+        } else if (rollDice() == 3) {
+            die.setImageResource(R.drawable.die3);
+        } else if (rollDice() == 4) {
+            die.setImageResource(R.drawable.die4);
+        } else {
+            die.setImageResource(R.drawable.die5);
+        }
     }
 
     /*public ArrayList<RandomAssetObject> setRandomAssets(){

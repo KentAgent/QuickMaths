@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -41,15 +41,15 @@ public class GameLobbyActivity extends AppCompatActivity {
     public static final String ANONYMOUS = "KakashiDota";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
 
+    private Button checkUsers;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseRefrence;
-
+    Button signOutButton;
     private static final int RC_SIGN_IN = 1;
     private ListView mMessageListView;
     private MessageAdapter mMessageAdapter;
     private ProgressBar mProgressBar;
-    private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
     private Button mSendButton;
     private ChildEventListener mChildEventListener;
@@ -61,39 +61,29 @@ public class GameLobbyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_lobby);
+        setContentView(R.layout.activity_yolo);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-
-
+        checkUsers = findViewById(R.id.ButtonCheckUsers);
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
-
-        // Initialize references to views
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mMessageListView = (ListView) findViewById(R.id.messageListView);
-        mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
-        mMessageEditText = (EditText) findViewById(R.id.messageEditText);
-        mSendButton = (Button) findViewById(R.id.sendButton);
+        signOutButton = findViewById(R.id.ButtonSignOut);
+        mProgressBar =  findViewById(R.id.progressBar);
+        mMessageListView =  findViewById(R.id.messageListView);
+        mMessageEditText =  findViewById(R.id.messageEditText);
+        mSendButton =  findViewById(R.id.sendButton);
 
         // Initialize message ListView and its adapter
         List<FriendlyMessage> friendlyMessages = new ArrayList<>();
         mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
 
-        // Initialize progress bar
         mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+        mMessageEditText.setBackgroundColor(0x50FFFFFF);
 
-        // ImagePickerButton shows an image picker to upload a image for a message
-        mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO: Fire an intent to show an image picker
-            }
-        });
 
         // Enable Send button when there's text to send
         mMessageEditText.addTextChangedListener(new TextWatcher() {
@@ -251,6 +241,20 @@ public class GameLobbyActivity extends AppCompatActivity {
             mMessagesDatabaseRefrence.removeEventListener(mChildEventListener);
             mChildEventListener = null;
         }
+    }
+
+
+
+
+    public void onClickSignOut(View view){
+        Log.d("bror", "" + mFirebaseAuth.getCurrentUser().getUid());
+        FirebaseAuth.getInstance().signOut();
+
+    }
+
+    public void onClickCheckOnline(View view){
+        Intent myIntent = new Intent (getApplicationContext(), ShowOnlineActivity.class);
+        startActivity(myIntent);
     }
 
 }

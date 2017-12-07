@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     public void onClickMultiplayer(View view) {
         Intent intent = new Intent(this, MultiplayerActivity.class);
         muteBtn.setVisibility(View.INVISIBLE);
