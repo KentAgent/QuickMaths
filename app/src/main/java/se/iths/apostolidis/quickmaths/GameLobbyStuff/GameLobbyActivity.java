@@ -81,7 +81,7 @@ public class GameLobbyActivity extends AppCompatActivity {
         mMessageListView.setAdapter(mMessageAdapter);
 
         mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-
+        mMessageEditText.setBackgroundColor(0x50FFFFFF);
 
 
         // Enable Send button when there's text to send
