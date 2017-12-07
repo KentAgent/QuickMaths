@@ -84,7 +84,7 @@ public class GameActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
-        die = findViewById(R.id.imageViewDie);
+       // die = findViewById(R.id.imageViewDie);
         die.setVisibility(View.INVISIBLE);
 
         randomCategoryStrings = listOfGenres();
@@ -172,7 +172,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void playerTurn(Player player) {
         player.setLastThrownDie(rollDice());
-        rollDieAnimation();
+       // rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
@@ -453,21 +453,21 @@ public class GameActivity extends AppCompatActivity {
         return stringHashmapPairs;
     }
 
-    public void rollDieAnimation(){
-        
-        die.setVisibility(View.VISIBLE);
-        if (rollDice() == 1) {
-            die.setImageResource(R.drawable.die1);
-        } else if (rollDice() == 2) {
-            die.setImageResource(R.drawable.die2);
-        } else if (rollDice() == 3) {
-            die.setImageResource(R.drawable.die3);
-        } else if (rollDice() == 4) {
-            die.setImageResource(R.drawable.die4);
-        } else {
-            die.setImageResource(R.drawable.die5);
-        }
-    }
+//    public void rollDieAnimation(){
+//
+//        die.setVisibility(View.VISIBLE);
+//        if (rollDice() == 1) {
+//            die.setImageResource(R.drawable.die1);
+//        } else if (rollDice() == 2) {
+//            die.setImageResource(R.drawable.die2);
+//        } else if (rollDice() == 3) {
+//            die.setImageResource(R.drawable.die3);
+//        } else if (rollDice() == 4) {
+//            die.setImageResource(R.drawable.die4);
+//        } else {
+//            die.setImageResource(R.drawable.die5);
+//        }
+//    }
 
     /*public ArrayList<RandomAssetObject> setRandomAssets(){
         ArrayList<RandomAssetObject> randomAssetList = new ArrayList<>();

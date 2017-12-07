@@ -57,9 +57,15 @@ public class FindLobbyActivity extends AppCompatActivity {
 
         String lobbySearch = editText.getText().toString();
 
-            if (lobbySearch.equals("LobbyID")){
-                mMessagesDatabaseRefrence.setValue(player.getUid());
+            if (lobbySearch.equals("Players")){
+                mMessagesDatabaseRefrence.push().setValue(player.getUid());
             }
+
+            showPlayers();
+    }
+
+    private void showPlayers() {
+
     }
 
 
