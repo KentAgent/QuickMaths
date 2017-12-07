@@ -42,7 +42,7 @@ public class GameActivity extends AppCompatActivity {
     private String[] genreList = new String[numOfCoordinates];
     private Paint paint = new Paint();
     private ImageView drawView;
-    private ImageView die;
+    public ImageView die;
     private TypedArray diePictures;
     GameEngineSinglePlayer engine;
     private int numberOfPlayer = 4;
@@ -219,7 +219,7 @@ public class GameActivity extends AppCompatActivity {
         if (playerTurnIndex == numberOfPlayer){
             playerTurnIndex = 0;
         }
-        die.setVisibility(View.INVISIBLE);
+//        die.setVisibility(View.INVISIBLE);
         turnTracker.setVisibility(View.VISIBLE);
 
         turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
