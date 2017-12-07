@@ -32,6 +32,7 @@ GameActivity extends AppCompatActivity {
     MPhotoView gridMPhotoView;
     MPhotoView map;
     TextView textViewScoreBoard;
+    TextView textViewScoreBoardExtra;
     private static int numOfCoordinates = 37;
     private int maxX;
     private int maxY;
@@ -50,7 +51,7 @@ GameActivity extends AppCompatActivity {
     private Paint paint = new Paint();
     private ImageView drawView;
     GameEngineSinglePlayer engine;
-    private int numberOfPlayer = 2;
+    private int numberOfPlayer = 4;
     Canvas canvas;
     Canvas tempCanvas;
     Bundle extras;
@@ -64,6 +65,9 @@ GameActivity extends AppCompatActivity {
     private int playerTurnIndex;
     private TextView turnTracker;
 
+    private String scoreBoard1;
+    private String scoreBoard2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,7 @@ GameActivity extends AppCompatActivity {
         turnTracker = findViewById(R.id.textViewTurnTracker);
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
+        textViewScoreBoardExtra = findViewById(R.id.textViewScoreBoardExtra);
 
 
 
@@ -299,17 +304,41 @@ GameActivity extends AppCompatActivity {
 
 
     public void updateScoreBoard(){
-        textViewScoreBoard.setText(scoreBoardSetup());
+        //textViewScoreBoard.setText(scoreBoardSetup());
+        scoreBoards();
+        textViewScoreBoard.setText(scoreBoard1);
+        textViewScoreBoardExtra.setText(scoreBoard2);
     }
 
-    public String scoreBoardSetup(){
+    /*public String scoreBoardSetup(){
         String scoreBoard = "";
         for (int i = 0; i <players.size() ; i++) {
             scoreBoard += "Player " + (i+1) + " Score: "  + players.get(i).getScore();
             if (i < players.size() -1)
                 scoreBoard += "\n";
         } return scoreBoard;
+    }*/
+
+    public void scoreBoards() {
+        scoreBoard1 = "";
+        scoreBoard2 = "";
+        for (int i = 0; i < players.size(); i++) {
+            if (i < 2) {
+                scoreBoard1 += "Player " + (i + 1) + " Score: " + players.get(i).getScore();
+                if (i < 1)
+                    scoreBoard1 += "\n";
+            }
+            else if (i >= 2) {
+                textViewScoreBoardExtra.setVisibility(View.VISIBLE);
+                scoreBoard2 += "Player " + (i + 1) + " Score: " + players.get(i).getScore();
+                if (i < 3)
+                    scoreBoard2 += "\n";
+            }
+
+        }
     }
+
+
     public Bitmap setMap (Point[] assetCoordinates){
 
         Bitmap backgroundImage = BitmapFactory.decodeResource(getResources(), R.mipmap.gameboard_transparent);

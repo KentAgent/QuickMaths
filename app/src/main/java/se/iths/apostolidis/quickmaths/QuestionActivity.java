@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,10 @@ public class QuestionActivity extends AppCompatActivity {
     private String genre;
     private DBHelper dbHelper;
     private boolean result = false;
+    private Handler handler;
+    private long timeLeft = 10000;
+    private TextView countdown;
+    private int displayCountdown = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +43,30 @@ public class QuestionActivity extends AppCompatActivity {
         Log.d("Wille", genre);
         importViewElemets();
         setQuestion();
+        countdown = findViewById(R.id.textViewCountdown);
 
         Quiz quiz = new Quiz();
+
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.d("Grekolas", "Countdown");
+
+                timeLeft -= 1000;
+
+                //countdown.setText(displayCountdown--);
+
+                if (timeLeft >= 0)
+                handler.postDelayed(this, 1000);
+            }
+        };
+
+        handler.postDelayed(runnable, 1000);
+
     }
+
+
     public void setQuestion (){
 
         //Importera ett quiz objekt istället för database.getQuiz
@@ -143,6 +169,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 
+
     public void importViewElemets(){
         textViewQuestion = findViewById(R.id.textViewQuestion);
         database = DBHelper.getInstance(this);
@@ -158,7 +185,4 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-    public void onClickBack(View view) {
-        finish();
-    }
 }
