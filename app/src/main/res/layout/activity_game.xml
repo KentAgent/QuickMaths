@@ -93,6 +93,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/photo_viewGrid" />
 
+    <ImageView
+        android:id="@+id/imageViewDie"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRollDice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/die1" />
+
 
 </android.support.constraint.ConstraintLayout>
 
