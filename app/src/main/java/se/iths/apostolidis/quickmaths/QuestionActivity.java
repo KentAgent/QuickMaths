@@ -48,21 +48,14 @@ public class QuestionActivity extends AppCompatActivity {
         Quiz quiz = new Quiz();
 
         handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
+        handler.postDelayed(new Runnable() {
             public void run() {
                 Log.d("Grekolas", "Countdown");
-
-                timeLeft -= 1000;
-
-                //countdown.setText(displayCountdown--);
-
-                if (timeLeft >= 0)
-                handler.postDelayed(this, 1000);
+                finish();
             }
-        };
+        }, 10000);
 
-        handler.postDelayed(runnable, 1000);
+
 
     }
 

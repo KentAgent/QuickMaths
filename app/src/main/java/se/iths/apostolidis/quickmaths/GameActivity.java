@@ -2,6 +2,7 @@ package se.iths.apostolidis.quickmaths;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -41,6 +42,8 @@ public class GameActivity extends AppCompatActivity {
     private String[] genreList = new String[numOfCoordinates];
     private Paint paint = new Paint();
     private ImageView drawView;
+    private ImageView die;
+    private TypedArray diePictures;
     GameEngineSinglePlayer engine;
     private int numberOfPlayer = 4;
     Canvas canvas;
@@ -81,7 +84,8 @@ public class GameActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
-
+        die = findViewById(R.id.imageViewDie);
+        die.setVisibility(View.INVISIBLE);
 
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
@@ -168,6 +172,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void playerTurn(Player player) {
         player.setLastThrownDie(rollDice());
+        rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
@@ -214,7 +219,7 @@ public class GameActivity extends AppCompatActivity {
         if (playerTurnIndex == numberOfPlayer){
             playerTurnIndex = 0;
         }
-
+        die.setVisibility(View.INVISIBLE);
         turnTracker.setVisibility(View.VISIBLE);
 
         turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
@@ -446,6 +451,22 @@ public class GameActivity extends AppCompatActivity {
             stringHashmapPairs.add(chosenCategories.get(randomHelper.randomBoundedIndex(chosenCategories.size())));
         }
         return stringHashmapPairs;
+    }
+
+    public void rollDieAnimation(){
+        
+        die.setVisibility(View.VISIBLE);
+        if (rollDice() == 1) {
+            die.setImageResource(R.drawable.die1);
+        } else if (rollDice() == 2) {
+            die.setImageResource(R.drawable.die2);
+        } else if (rollDice() == 3) {
+            die.setImageResource(R.drawable.die3);
+        } else if (rollDice() == 4) {
+            die.setImageResource(R.drawable.die4);
+        } else {
+            die.setImageResource(R.drawable.die5);
+        }
     }
 
     /*public ArrayList<RandomAssetObject> setRandomAssets(){
