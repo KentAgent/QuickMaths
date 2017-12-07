@@ -166,10 +166,10 @@ public class SinglePlayerActivity extends AppCompatActivity {
         stringArrayCategories[0] = "Humor";
         stringArrayCategories[1] = "Sport";
         stringArrayCategories[2] = "Film";
-        stringArrayCategories[3] = "Music";
+        stringArrayCategories[3] = "Musik";
         stringArrayCategories[4] = "History";
         stringArrayCategories[5] = "Geography";
-        stringArrayCategories[6] = "E-sport";
+        stringArrayCategories[6] = "E-Sport";
         stringArrayCategories[7] = "Random";
         stringArrayCategories[8] = "Math";
 

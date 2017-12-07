@@ -26,8 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class
-GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     Button buttonRollDice;
     MPhotoView gridMPhotoView;
     MPhotoView map;
@@ -78,7 +77,7 @@ GameActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        chosenCategories = bundle.getStringArrayList("choosenCategories");
+        chosenCategories = bundle.getStringArrayList("chosenCategories");
 
         for (int i = 0; i < chosenCategories.size(); i++) {
             Log.d("Wille", chosenCategories.get(i));

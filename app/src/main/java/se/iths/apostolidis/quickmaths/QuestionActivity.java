@@ -161,4 +161,9 @@ public class QuestionActivity extends AppCompatActivity {
     public void onClickBack(View view) {
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
