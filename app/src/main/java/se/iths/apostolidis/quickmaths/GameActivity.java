@@ -84,8 +84,8 @@ public class GameActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);
 
-       // die = findViewById(R.id.imageViewDie);
-        die.setVisibility(View.INVISIBLE);
+        //die = findViewById(R.id.imageViewDie);
+      //  die.setVisibility(View.INVISIBLE);
 
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
