@@ -49,7 +49,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         setUpPlayers = bundle.getInt("setUpPlayers");
 
-        //playerNames = new ArrayList<String>(setUpPlayers);
+        playerNames = new ArrayList<String>(setUpPlayers);
 
         playerNames = bundle.getStringArrayList("playerNames");
 
