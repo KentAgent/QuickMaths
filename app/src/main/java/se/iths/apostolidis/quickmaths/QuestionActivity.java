@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +30,10 @@ public class QuestionActivity extends AppCompatActivity {
     private String genre;
     private DBHelper dbHelper;
     private boolean result = false;
-    private Quiz quiz;
+    private Handler handler;
+    private long timeLeft = 10000;
+    private TextView countdown;
+    private int displayCountdown = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +43,23 @@ public class QuestionActivity extends AppCompatActivity {
         Log.d("Wille", genre);
         importViewElemets();
         setQuestion();
+        countdown = findViewById(R.id.textViewCountdown);
+
+        Quiz quiz = new Quiz();
+
+//        handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            public void run() {
+//                Log.d("Grekolas", "Countdown");
+//                finish();
+//            }
+//        }, 10000);
+//
+//
 
     }
+
+
     public void setQuestion (){
 
         //Importera ett quiz objekt istället för database.getQuiz
@@ -81,22 +100,13 @@ public class QuestionActivity extends AppCompatActivity {
         }
         TODO://Fixa randomHelper classen!
         //int index = randomHelper.randomBoundedIndex(database.getQuizCategory(genre).size());
-        quiz = new Quiz();
-        quiz = database.getQuizCategory(genre).get(index);
 
-        textViewQuestion.setText(quiz.getQuestion());
-        btnAnswer1.setText(quiz.getAnswer1());
-        btnAnswer2.setText(quiz.getAnswer2());
-        btnAnswer3.setText(quiz.getAnswer3());
-        btnAnswer4.setText(quiz.getAnswer4());
-        correctAnswer = quiz.getCorrectAnswer();
-
-//        textViewQuestion.setText(database.getQuizCategory(genre).get(index).getQuestion());
-//        btnAnswer1.setText(database.getQuizCategory(genre).get(index).getAnswer1());
-//        btnAnswer2.setText(database.getQuizCategory(genre).get(index).getAnswer2());
-//        btnAnswer3.setText(database.getQuizCategory(genre).get(index).getAnswer3());
-//        btnAnswer4.setText(database.getQuizCategory(genre).get(index).getAnswer4());
-//        correctAnswer = database.getQuizCategory(genre).get(index).getCorrectAnswer();
+        textViewQuestion.setText(database.getQuizCategory(genre).get(index).getQuestion());
+        btnAnswer1.setText(database.getQuizCategory(genre).get(index).getAnswer1());
+        btnAnswer2.setText(database.getQuizCategory(genre).get(index).getAnswer2());
+        btnAnswer3.setText(database.getQuizCategory(genre).get(index).getAnswer3());
+        btnAnswer4.setText(database.getQuizCategory(genre).get(index).getAnswer4());
+        correctAnswer = database.getQuizCategory(genre).get(index).getCorrectAnswer();
 
         //Log.d(TAG, "adding to usedQuestions");
         usedQuestions.add(database.getQuizCategory(genre).get(index).getQuestion());
@@ -104,7 +114,14 @@ public class QuestionActivity extends AppCompatActivity {
         /**
          * Sets a random question from the database
          **/
-
+//        Random random = new Random();
+//        int index = random.nextInt(database.getAllQuizzes().size());
+//        textViewQuestion.setText(database.getAllQuizzes().get(index).getQuestion());
+//        btnAnswer1.setText(database.getAllQuizzes().get(index).getAnswer1());
+//        btnAnswer2.setText(database.getAllQuizzes().get(index).getAnswer2());
+//        btnAnswer3.setText(database.getAllQuizzes().get(index).getAnswer3());
+//        btnAnswer4.setText(database.getAllQuizzes().get(index).getAnswer4());
+//        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
     }
 
     public void getQuestionIntent(Boolean b){
@@ -145,6 +162,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 
+
     public void importViewElemets(){
         textViewQuestion = findViewById(R.id.textViewQuestion);
         database = DBHelper.getInstance(this);
@@ -160,7 +178,4 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-    public void onClickBack(View view) {
-        finish();
-    }
 }
