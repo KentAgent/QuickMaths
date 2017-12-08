@@ -62,21 +62,22 @@ public class FindLobbyActivity extends AppCompatActivity {
 
     }
     public void searchLobby(View view){
-        lobbyID = "" + editText.getText();
+        mMessagesDatabaseRefrence.child("Players");
+
+
 
     }
 
     public void onClickSearchLobby (View view){
-
+        //CREATE LOBBY!
         lobbySearch = editText.getText().toString();
-
-
         Map<String, Map<String,Boolean>> lobby = new HashMap<>();
-        Map<String,Boolean> users = new HashMap<>();
+        Map<String,Object> users = new HashMap<>();
         users.put(player.getUid(),true);
 
-        lobby.put(lobbySearch, users);
-        mMessagesDatabaseRefrence.setValue(lobby);
+        //lobby.put(lobbySearch, users);
+        mMessagesDatabaseRefrence.child(lobbySearch).updateChildren(users);
+
 
 
 
