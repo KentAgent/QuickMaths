@@ -47,15 +47,15 @@ public class QuestionActivity extends AppCompatActivity {
 
         Quiz quiz = new Quiz();
 
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                Log.d("Grekolas", "Countdown");
-                finish();
-            }
-        }, 10000);
-
-
+//        handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            public void run() {
+//                Log.d("Grekolas", "Countdown");
+//                finish();
+//            }
+//        }, 10000);
+//
+//
 
     }
 

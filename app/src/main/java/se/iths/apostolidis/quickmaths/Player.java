@@ -10,33 +10,28 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Player {
 
-    private String id;
-    private String name;
-    private int gold;
+    private String id, name, uid;
+    private int gold, score;
     private int posX, posY;
-    private int score;
+    private int lastThrownDie;
+    private int coordinateIndex;
+    private Bitmap avatar;
+    private FirebaseUser fbUser;
 
     public Player(){
-
     }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    private String uid;
-
-    private int lastThrownDie;
-
-    private Bitmap avatar;
 
     public Player(FirebaseUser user){
-        super();
+        this.fbUser = user;
 
+    }
+
+    public FirebaseUser getFbUser() {
+        return fbUser;
+    }
+
+    public void setFbUser(FirebaseUser fbUser) {
+        this.fbUser = fbUser;
     }
 
     public int getLastThrownDie() {
@@ -67,7 +62,13 @@ public class Player {
         this.coordinateIndex = coordinateIndex;
     }
 
-    private int coordinateIndex;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
 
     public String getId() {

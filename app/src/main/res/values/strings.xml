@@ -33,11 +33,9 @@
     <string name="c_sport">SPORT</string>
     <string name="c_film">FILM</string>
     <string name="c_music">MUSIC</string>
-    <string name="c_history">HISTORY</string>
-    <string name="c_geography">GEOGRAPHY</string>
     <string name="c_random">RANDOM</string>
     <string name="c_esport">E-SPORT</string>
-    <string name="c_math">MATH</string>
+    <string name="c_science">SCIENCE</string>
     <string name="done">Done</string>
     <string name="face">Face</string>
     <string name="eye">Eye</string>
