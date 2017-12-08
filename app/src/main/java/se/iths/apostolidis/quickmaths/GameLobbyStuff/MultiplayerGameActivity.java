@@ -77,7 +77,6 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             buttonRollDice = findViewById(R.id.buttonRollDice);
             textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
             textViewScoreBoardExtra = findViewById(R.id.textViewScoreBoardExtra);
-
             Bundle bundle = getIntent().getExtras();
 
             chosenCategories = bundle.getStringArrayList("chosenCategories");

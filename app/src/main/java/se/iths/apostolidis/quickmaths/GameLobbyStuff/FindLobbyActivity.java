@@ -39,6 +39,7 @@ public class FindLobbyActivity extends AppCompatActivity {
     private String lobbyID;
     private boolean success;
     private String snapShot = "";
+    private Button removeUser;
     private ArrayList<Player> players = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,8 @@ public class FindLobbyActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
         player.setUid(user.getUid());
-        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("Lobbies");
-
+        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
+        removeUser =findViewById(R.id.button2);
 
 
 
@@ -67,6 +68,10 @@ public class FindLobbyActivity extends AppCompatActivity {
 
 
     }
+    public void onClickleaveLobby(View view){
+        Log.d("bror", "onClickleaveLobby: " );
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).child(player.getUid()).removeValue();
+    }
 
     public void onClickSearchLobby (View view){
         //CREATE LOBBY!
@@ -76,9 +81,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         users.put(player.getUid(),true);
 
         //lobby.put(lobbySearch, users);
-        mMessagesDatabaseRefrence.child(lobbySearch).updateChildren(users);
-
-
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).updateChildren(users);
 
 
         mChildEventListener = new ChildEventListener() {
@@ -150,6 +153,8 @@ public class FindLobbyActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     private void attachDatabaseReadListener() {
