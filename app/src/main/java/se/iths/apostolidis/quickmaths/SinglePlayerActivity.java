@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,14 +29,14 @@ public class SinglePlayerActivity extends AppCompatActivity {
     String[] stringArrayCategories;
     ArrayList<String> chosenCategories;
 
-    ArrayList<String> playerNames;
+    private String[] playerNames;
 
     Button buttonSelectAll;
     Button buttonSelectNone;
 
     ImageButton buttonGoBack;
     ImageButton buttonGoForward;
-
+    private Bundle bundle;
 
     int setUpPlayers;
     int xTrue;
@@ -46,13 +47,13 @@ public class SinglePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
 
         setUpPlayers = bundle.getInt("setUpPlayers");
 
-        playerNames = new ArrayList<String>(setUpPlayers);
+        //playerNames = new ArrayList<String>(setUpPlayers);
 
-        playerNames = bundle.getStringArrayList("playerNames");
+        playerNames = bundle.getStringArray("playerNames");
 
 
         booleanArrayCategories = new boolean[9];
@@ -197,6 +198,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
             Intent intent = new Intent(this, GameActivity.class);
             intent.putExtra("playerNames", playerNames);
             intent.putExtra("setUpPlayers", setUpPlayers);
+            Log.d("SING", "onClickForward: " + setUpPlayers);
             intent.putExtra("xTrue", xTrue);
             intent.putExtra("chosenCategories", chosenCategories);
             startActivity(intent);

@@ -15,7 +15,6 @@ public class Player {
     private int gold;
     private int posX, posY;
     private int score;
-
     public Player(){
 
     }
@@ -29,7 +28,6 @@ public class Player {
     }
 
     private String uid;
-
     private int lastThrownDie;
 
     private Bitmap avatar;

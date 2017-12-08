@@ -104,7 +104,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, SinglePlayerActivity.class);
-        intent.putExtra("numberOfPlayers", setUpPlayers);
+        intent.putExtra("setUpPlayers", setUpPlayers);
         intent.putExtra("playerNames", playerNames);
         startActivity(intent);
     }
@@ -121,7 +121,6 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
             for (int i = 0; i < snp.getValue(); i++) {
                 editTextsPN[i].setVisibility(View.VISIBLE);
                 textViewsPN[i].setVisibility(View.VISIBLE);
-
             }
         }
 
