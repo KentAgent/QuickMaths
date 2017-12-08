@@ -2,30 +2,26 @@ package se.iths.apostolidis.quickmaths;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Bundle;
-
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-
-import android.graphics.Color;
-import android.graphics.Paint;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class GameActivity extends AppCompatActivity {
 
