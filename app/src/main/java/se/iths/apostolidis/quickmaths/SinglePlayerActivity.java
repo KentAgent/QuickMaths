@@ -49,7 +49,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         setUpPlayers = bundle.getInt("setUpPlayers");
 
-        playerNames = new ArrayList<String>(setUpPlayers);
+
 
         playerNames = bundle.getStringArrayList("playerNames");
 
@@ -64,11 +64,11 @@ public class SinglePlayerActivity extends AppCompatActivity {
         buttonGoBack= findViewById(R.id.imageButtonGoBack);
 
         cEsport = findViewById(R.id.checkboxEsport);
-        cMusik = findViewById(R.id.checkboxMusik);
+        cMusik = findViewById(R.id.checkboxMusic);
         cSport = findViewById(R.id.checkboxSport);
         cRandom = findViewById(R.id.checkboxRandom);
         cFilm = findViewById(R.id.checkboxFilm);
-        cVetenskap = findViewById(R.id.checkboxVetenskap);
+        cVetenskap = findViewById(R.id.checkboxGeography);
         cHumor = findViewById(R.id.checkboxHumor);
         //cEsport = findViewById(R.id.checkboxFilm);
         //cMath = findViewById(R.id.checkboxHumor);
