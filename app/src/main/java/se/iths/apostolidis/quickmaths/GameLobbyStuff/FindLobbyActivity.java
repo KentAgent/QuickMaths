@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import se.iths.apostolidis.quickmaths.Player;
 import se.iths.apostolidis.quickmaths.R;
@@ -29,6 +31,7 @@ public class FindLobbyActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
     private FirebaseUser user;
     private Player player = new Player();
+    private String lobbySearch;
     private EditText editText;
     private TextView textView;
     private Button searchButton;
@@ -36,6 +39,7 @@ public class FindLobbyActivity extends AppCompatActivity {
     private String lobbyID;
     private boolean success;
     private String snapShot = "";
+    private Button removeUser;
     private ArrayList<Player> players = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,19 +52,58 @@ public class FindLobbyActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
         player.setUid(user.getUid());
+        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
+        removeUser =findViewById(R.id.button2);
 
-        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("LobbyID").child("Players");
+
+
+
+
+        attachDatabaseReadListener();
+
+    }
+    public void searchLobby(View view){
+        mMessagesDatabaseRefrence.child("Players");
+
+
+
+    }
+    public void onClickleaveLobby(View view){
+        Log.d("bror", "onClickleaveLobby: " );
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).child(player.getUid()).removeValue();
+    }
+
+    public void onClickSearchLobby (View view){
+        //CREATE LOBBY!
+        lobbySearch = editText.getText().toString();
+        Map<String, Map<String,Boolean>> lobby = new HashMap<>();
+        Map<String,Object> users = new HashMap<>();
+        users.put(player.getUid(),true);
+
+        //lobby.put(lobbySearch, users);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).updateChildren(users);
 
 
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Player player = new Player();
-                player.setUid(dataSnapshot.toString());
-                players.add(player);
-                snapShot += "/n" + dataSnapshot.getValue().toString();
-                textView.setText(snapShot);
-             Log.d("Hund", dataSnapshot.getValue().toString());
+
+
+
+            //    Player player = new Player();
+            //    player.setUid(dataSnapshot.toString());
+            //    players.add(player);
+            //    snapShot += "\n" + dataSnapshot.getValue().toString();
+            //    textView.setText(snapShot);
+
+
+
+
+
+              //  mMessagesDatabaseRefrence.child(s).
+
+              //  dataSnapshot.getRef().setValue(null);
+
             }
 
             @Override
@@ -82,31 +125,15 @@ public class FindLobbyActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         };
         mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
-
-        for(int i = 0; i < players.size(); i++) {
-            Log.d("Hund", players.get(i).getUid());
-        }
-
-        attachDatabaseReadListener();
-
-    }
-    public void searchLobby(View view){
-        lobbyID = "" + editText.getText();
-
-    }
-
-    public void onClickSearchLobby (View view){
-
-        String lobbySearch = editText.getText().toString();
-
 
             if (!success) {
                 if (lobbySearch.equals("Players")) {
 
-                    mMessagesDatabaseRefrence.push().setValue(player.getUid());
-                    success = true;
+                   // mMessagesDatabaseRefrence.push().setValue(player.getUid());
+                   // success = true;
                 }
             }
             printPlayers();
@@ -126,6 +153,8 @@ public class FindLobbyActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     private void attachDatabaseReadListener() {
