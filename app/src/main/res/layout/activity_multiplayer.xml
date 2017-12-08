@@ -4,37 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.MultiplayerActivity">
+    tools:context="se.iths.apostolidis.quickmaths.MultiplayerActivity"
+    android:background="@drawable/backgroundlogin">
 
     <ImageButton
-        android:id="@+id/imageButtonSettingsMultiplayer"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/circle_background"
-        android:elevation="15dp"
-        android:onClick="onClickImageButtonSettingsMultiplayer"
-        android:padding="9dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_build_black_24dp" />
-
-    <ImageButton
-        android:id="@+id/imageButtonSoundMultiplayer"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:id="@+id/imageButtonBack"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/circle_background"
-        android:elevation="15dp"
-        android:onClick="onClickImageButtonSoundMultiplayer"
+        android:contentDescription="@string/move_backwards"
+        android:elevation="5dp"
         android:padding="9dp"
-        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_volume_off_black_24dp" />
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <Button
         android:id="@+id/ButtonCreateLobby"
@@ -42,13 +27,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edges_button"
+        android:fontFamily="@font/indie_flower"
         android:onClick="startLobby"
-        android:text="create_lobby"
+        android:text="@string/login"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLobby"
+        tools:text="wip" />
 
     <Button
         android:id="@+id/ButtonFindLobby"
@@ -57,10 +46,89 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
         android:onClick="onClickFindLobby"
-        android:text="find_lobby"
+        android:text="@string/find_game"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ButtonCreateLobby" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/player1" />
+
+    <TextView
+        android:id="@+id/textViewYourStats"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="TextView"
+        android:textColor="@color/fui_errorColor"
+        android:textSize="30sp"
+        android:background="@color/greyTint"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLobby"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/create_lobby"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="No function/ LOBBY" />
+
+    <Button
+        android:id="@+id/buttonInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/Information"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonFindLobby"
+        tools:text="No fnctin/ INFO" />
+
+    <Button
+        android:id="@+id/buttonAddQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
+        android:text="@string/add_question"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonInfo"
+        tools:text="No Fucntion/ add The Q" />
+
 </android.support.constraint.ConstraintLayout>

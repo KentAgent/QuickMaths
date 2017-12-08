@@ -62,4 +62,9 @@
 
     <string name="name">Name</string>
     <string name="title_activity_show_online">ShowOnlineActivity</string>
+    <string name="login">Login</string>
+    <string name="find_game">Find game</string>
+    <string name="create_lobby">Create lobby</string>
+    <string name="Information">Information</string>
+    />
 </resources>

@@ -99,6 +99,7 @@
         android:id="@+id/editTextNamePlayer1"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/rounded_edges_button"
         android:ems="10"
@@ -107,48 +108,55 @@
         android:inputType="textPersonName"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer1Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer1Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="@string/name"
         android:background="@drawable/rounded_edges_button"
+        android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:padding="8dp"
+        android:hint="@string/name"
         android:inputType="textPersonName"
+        android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer2Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer2Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="@string/name"
         android:background="@drawable/rounded_edges_button"
+        android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:padding="8dp"
+        android:hint="@string/name"
         android:inputType="textPersonName"
+        android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer3Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer3Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="@string/name"
         android:background="@drawable/rounded_edges_button"
+        android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:padding="8dp"
+        android:hint="@string/name"
         android:inputType="textPersonName"
+        android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer4Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer4Name" />
 
     <ImageButton
