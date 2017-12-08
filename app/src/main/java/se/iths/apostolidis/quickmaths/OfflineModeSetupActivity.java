@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPickerListener;
 
+import java.util.ArrayList;
+
 public class OfflineModeSetupActivity extends AppCompatActivity {
 
     EditText[] editTextsPN = new EditText[4];
@@ -26,7 +28,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP4Name;
     int setUpPlayers = 0;
 
-    String[] playerNames;
+    ArrayList<String> playerNames;
 
     private ScrollableNumberPicker snp;
     private int tempo = 1;
@@ -96,10 +98,10 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     public void onClickForward(View view){
         setUpPlayers = snp.getValue();
 
-        playerNames = new String[setUpPlayers];
+        playerNames = new ArrayList<>();
 
         for(int i = 0; i < setUpPlayers; i++){
-           playerNames[i] = editTextsPN[i].getText().toString();
+           playerNames.add(editTextsPN[i].getText().toString());
         }
 
 
