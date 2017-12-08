@@ -69,7 +69,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".GameLobbyStuff.ShowOnlineActivity" />
-        <activity android:name=".GameLobbyStuff.FindLobbyActivity"></activity>
+        <activity android:name=".GameLobbyStuff.FindLobbyActivity" />
+        <activity android:name=".GameLobbyStuff.MultiplayerGameActivity"></activity>
     </application>
 
 </manifest>

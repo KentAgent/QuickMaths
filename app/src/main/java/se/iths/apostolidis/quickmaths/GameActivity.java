@@ -219,7 +219,7 @@ public class GameActivity extends AppCompatActivity {
         if (playerTurnIndex == numberOfPlayer){
             playerTurnIndex = 0;
         }
-//        die.setVisibility(View.INVISIBLE);
+//          die.setVisibility(View.INVISIBLE);
         turnTracker.setVisibility(View.VISIBLE);
 
         turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
