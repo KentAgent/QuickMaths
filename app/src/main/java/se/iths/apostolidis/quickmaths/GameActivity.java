@@ -39,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Player> players = new ArrayList<>();
     private FirebaseUser user;
     FirebaseAuth mAuth;
-    private int numberOfPlayer = 4;
+    private int numberOfPlayer = 2;
     private String scoreBoard1;
     private String scoreBoard2;
     TextView textViewScoreBoard;
