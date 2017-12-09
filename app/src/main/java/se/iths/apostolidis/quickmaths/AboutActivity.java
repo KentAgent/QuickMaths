@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -13,7 +12,7 @@ import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 import se.iths.apostolidis.quickmaths.service.network.RemoteDataManager;
 
 public class AboutActivity extends AppCompatActivity {
-    private TextView textView;
+    //private TextView textView;
     private DBHelper database;
     private Button questionButton;
     private RemoteDataManager remoteDataManager;
@@ -24,9 +23,9 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         questionButton = findViewById(R.id.button123);
-        textView = findViewById(R.id.textView);
+        //textView = findViewById(R.id.textView);
         database = DBHelper.getInstance(this);
-       textView.setText(database.getAllQuizzes().get(10).getQuestion());
+       //textView.setText(database.getAllQuizzes().get(10).getQuestion());
        gameView = findViewById(R.id.buttonGameView);
     }
 
@@ -44,7 +43,7 @@ public class AboutActivity extends AppCompatActivity {
         //textView.setText(database.getAllQuizzes().get(index).getQuestion());
 
         int index = random.nextInt(database.getQuizCategory("Humor").size());
-        textView.setText(database.getQuizCategory("Humor").get(index).getGenre());
+        //textView.setText(database.getQuizCategory("Humor").get(index).getGenre());
     }
 
     public void testDatabase(View view){

@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.iths.apostolidis.quickmaths.AboutActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="384dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonBackAbout" />
+    tools:context="se.iths.apostolidis.quickmaths.AboutActivity"
+    android:background="@drawable/backgroundmain">
 
     <Button
         android:id="@+id/button123"
@@ -23,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="176dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:onClick="onClickExpandTextView"
@@ -32,8 +22,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/testPopUp"
@@ -91,25 +82,27 @@
         app:layout_constraintTop_toBottomOf="@+id/testPopUp" />
 
     <ImageButton
-        android:id="@+id/imageButtonBackAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonBack"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/circle_background"
         android:onClick="onClickBack"
         android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <Button
         android:id="@+id/buttonGameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onClickButtonGameView"
         android:text="Button"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="616dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
