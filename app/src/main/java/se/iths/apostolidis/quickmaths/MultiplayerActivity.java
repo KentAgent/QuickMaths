@@ -54,8 +54,7 @@ public class MultiplayerActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        player.setUid(user.getUid());
-        player.setName(user.getDisplayName());
+
         signoutBtn = findViewById(R.id.buttonLog_Out);
         userInfo = findViewById(R.id.textViewYourStats);
 
@@ -64,6 +63,9 @@ public class MultiplayerActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user !=null){
+                    player.setName(user.getDisplayName());
+
+                    player.setUid(user.getUid());
                     userInfo.setText("Name: " + player.getName() + "\n" + user.getEmail() + "\n" + player.getUid());
 
                     //         onSignedInInitialize(user.getDisplayName());
