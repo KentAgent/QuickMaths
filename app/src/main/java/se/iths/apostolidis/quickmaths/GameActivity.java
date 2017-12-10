@@ -298,6 +298,10 @@ public class GameActivity extends AppCompatActivity {
 
 
     private void wonGame() {
+        //Intent myIntent = new Intent(this, WinnerActiv7ity.class);
+       // startActivity(myIntent);
+
+        finish();
 
     }
 

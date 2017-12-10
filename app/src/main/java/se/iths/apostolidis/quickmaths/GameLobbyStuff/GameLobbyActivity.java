@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,7 +43,7 @@ public class GameLobbyActivity extends AppCompatActivity {
     private Button checkUsers;
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mMessagesDatabaseRefrence;
+    private DatabaseReference mMessagesDatabaseReference;
     Button signOutButton;
     private static final int RC_SIGN_IN = 1;
     private ListView mMessageListView;
@@ -67,7 +66,7 @@ public class GameLobbyActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         checkUsers = findViewById(R.id.ButtonCheckUsers);
-        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
+        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
         signOutButton = findViewById(R.id.ButtonSignOut);
@@ -114,7 +113,7 @@ public class GameLobbyActivity extends AppCompatActivity {
                 // Clear input box
              //   mMessageEditText.setText("");
                 FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(),mUsername,null);
-                mMessagesDatabaseRefrence.push().setValue(friendlyMessage);
+                mMessagesDatabaseReference.push().setValue(friendlyMessage);
                 mMessageEditText.setText((""));
             }
         });
@@ -166,10 +165,6 @@ public class GameLobbyActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onPause() {
@@ -232,13 +227,13 @@ public class GameLobbyActivity extends AppCompatActivity {
             };
 
             //defines what we are listening to .addChild defies what will happen when the event occurs
-            mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
+            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
 
         }
     }
     private void detachDatabaseReadListener(){
         if(mChildEventListener != null){
-            mMessagesDatabaseRefrence.removeEventListener(mChildEventListener);
+            mMessagesDatabaseReference.removeEventListener(mChildEventListener);
             mChildEventListener = null;
         }
     }

@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAccountButton(View view) {
-        Intent intent = new Intent(this, SettingsActivty.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 

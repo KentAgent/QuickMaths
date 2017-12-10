@@ -67,5 +67,7 @@
     <string name="create_lobby">Create lobby</string>
     <string name="Information">Information</string>
     <string name="correct_answer">Correct Answer</string>
+    <string name="logout">Log out</string>
+    <string name="chat">Chat</string>
     />
 </resources>
