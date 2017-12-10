@@ -48,7 +48,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_lobby);
         editText = findViewById(R.id.editTextSeachLobby);
         textView = findViewById(R.id.textViewPlayerIDs);
-        searchButton = findViewById(R.id.buttonSearchLobby);
+        searchButton = findViewById(R.id.buttonCreateLobby);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();

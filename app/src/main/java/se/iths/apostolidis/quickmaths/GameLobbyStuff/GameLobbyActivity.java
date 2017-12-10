@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,7 +70,7 @@ public class GameLobbyActivity extends AppCompatActivity {
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
-        mProgressBar =  findViewById(R.id.progressBar);
+      //  mProgressBar =  findViewById(R.id.progressBar);
         mMessageListView =  findViewById(R.id.messageListView);
         mMessageEditText =  findViewById(R.id.messageEditText);
         mSendButton =  findViewById(R.id.sendButton);
@@ -79,8 +80,8 @@ public class GameLobbyActivity extends AppCompatActivity {
         mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
 
-        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-        mMessageEditText.setBackgroundColor(0x50FFFFFF);
+//        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+        //mMessageEditText.setBackgroundColor(0x50FFFFFF);
 
 
         // Enable Send button when there's text to send
@@ -164,6 +165,10 @@ public class GameLobbyActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onPause() {
