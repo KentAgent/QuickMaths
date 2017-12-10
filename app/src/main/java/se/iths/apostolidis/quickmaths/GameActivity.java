@@ -59,7 +59,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         map = findViewById(R.id.photo_view);
         gridMPhotoView = findViewById(R.id.photo_viewGrid);
         //map.setImageResource(R.mipmap.gamemap);

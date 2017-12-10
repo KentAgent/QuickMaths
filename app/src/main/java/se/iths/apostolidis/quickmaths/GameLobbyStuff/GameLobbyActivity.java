@@ -65,11 +65,10 @@ public class GameLobbyActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        checkUsers = findViewById(R.id.ButtonCheckUsers);
+
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
-        signOutButton = findViewById(R.id.ButtonSignOut);
         mProgressBar =  findViewById(R.id.progressBar);
         mMessageListView =  findViewById(R.id.messageListView);
         mMessageEditText =  findViewById(R.id.messageEditText);

@@ -19,13 +19,15 @@
 
     <EditText
         android:id="@+id/messageEditText"
-        android:layout_width="248dp"
-        android:layout_height="38dp"
+        android:layout_width="314dp"
+        android:layout_height="56dp"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageListView" />
 
     <Button
@@ -35,6 +37,7 @@
         android:layout_gravity="bottom"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edges_button"
         android:enabled="false"
         android:text="Send"
         android:textColor="@color/black"
@@ -51,17 +54,6 @@
         android:layout_marginTop="288dp"
         app:layout_constraintEnd_toEndOf="@+id/messageListView"
         app:layout_constraintTop_toTopOf="@+id/messageListView" />
-
-    <Button
-        android:id="@+id/ButtonSignOut"
-        android:layout_width="52dp"
-        android:layout_height="34dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="16dp"
-        android:onClick="onClickSignOut"
-        android:text="Ciao"
-        app:layout_constraintEnd_toStartOf="@+id/messageEditText"
-        app:layout_constraintTop_toBottomOf="@+id/messageListView" />
 
     <Button
         android:id="@+id/ButtonCheckUsers"
