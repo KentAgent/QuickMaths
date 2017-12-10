@@ -122,7 +122,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         //booleanArrayCategories[7] = cRandom.isChecked();
         //booleanArrayCategories[8] = cMath.isChecked();
 
-        stringArrayCategories[0] = "E-sport";
+        stringArrayCategories[0] = "E-Sport";
         stringArrayCategories[1] = "Musik";
         stringArrayCategories[2] = "Sport";
         stringArrayCategories[3] = "Random";
