@@ -285,8 +285,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
     public void onClickButtonRollDice(View view) {
         upDate(players);
-
-        //playerTurn(players.get(playerTurnIndex));
+        playerTurn(players.get(playerTurnIndex));
     }
 
 
