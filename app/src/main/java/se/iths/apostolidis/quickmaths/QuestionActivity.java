@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,6 +36,7 @@ public class QuestionActivity extends AppCompatActivity {
     private int displayCountdown = 10;
     private Button newQuestion;
     private Quiz quiz = new Quiz();
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +49,19 @@ public class QuestionActivity extends AppCompatActivity {
         setQuestion();
         countdown = findViewById(R.id.textViewCountdown);
 
+        countDownTimer = new CountDownTimer(10000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.d("Grekolas", "Countdown" + displayCountdown);
+                countdown.setText("" + displayCountdown--);
+            }
 
-
-//        handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            public void run() {
-//                Log.d("Grekolas", "Countdown");
-//                finish();
-//            }
-//        }, 10000);
-//
-//
+            @Override
+            public void onFinish() {
+                finish();
+            }
+        };
+        countDownTimer.start();
 
     }
 
