@@ -56,10 +56,19 @@
     <string name="player2">P2</string>
     <string name="player3">P3</string>
     <string name="player4">P4</string>
+    <string name="player1_whole">Player 1</string>
+    <string name="player2_whole">Player 2</string>
+    <string name="player3_whole">Player 3</string>
+    <string name="player4_whole">Player 4</string>
+
     <string name="number_of_players">Number of players</string>
     <string name="move_forward">Move forward</string>
     <string name="move_backwards">Move backwards</string>
-
+    
+    <string name="player_1_avatar">Player 1 avatar</string>
+    <string name="player_2_avatar">Player 2 avatar</string>
+    <string name="player_3_avatar">Player 3 avatar</string>
+    <string name="player_4_avatar">Player 4 avatar</string>
     <string name="name">Name</string>
     <string name="title_activity_show_online">ShowOnlineActivity</string>
     <string name="login">Login</string>
@@ -71,5 +80,7 @@
     <string name="chat">Chat</string>
     <string name="worldchat">World Chat</string>
     <string name="how_to_play">How to play</string>
+
+
     />
 </resources>
