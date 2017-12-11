@@ -30,7 +30,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP4Name;
     int setUpPlayers = 0;
 
-    ImageView[] avatarForPlayers = new ImageView[4];
+    ImageView[] imageViewAvatarPlayers = new ImageView[4];
     ImageView avatar1;
     ImageView avatar2;
     ImageView avatar3;
@@ -82,7 +82,12 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[2] = etP3Name;
         editTextsPN[3] = etP4Name;
 
-        
+        imageViewAvatarPlayers[0] = avatar1;
+        imageViewAvatarPlayers[1] = avatar2;
+        imageViewAvatarPlayers[2] = avatar3;
+        imageViewAvatarPlayers[3] = avatar4;
+
+
 
         //Gör alla spelare utan första osynliga
         makeAllInvisable();
@@ -133,6 +138,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         for (int i = 1; i < editTextsPN.length; i++) {
             editTextsPN[i].setVisibility(View.INVISIBLE);
             textViewsPN[i].setVisibility(View.INVISIBLE);
+            imageViewAvatarPlayers[i].setVisibility(View.INVISIBLE);
         }
     }
 
@@ -141,6 +147,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
             for (int i = 0; i < snp.getValue(); i++) {
                 editTextsPN[i].setVisibility(View.VISIBLE);
                 textViewsPN[i].setVisibility(View.VISIBLE);
+                imageViewAvatarPlayers[i].setVisibility(View.VISIBLE);
             }
         }
 
@@ -151,6 +158,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
             for (int i = temp ; i > nrOfPlayers  ; i--) {
                 editTextsPN[i-1].setVisibility(View.INVISIBLE);
                 textViewsPN[i-1].setVisibility(View.INVISIBLE);
+                imageViewAvatarPlayers[i-1].setVisibility(View.INVISIBLE);
             }
         }
     }
