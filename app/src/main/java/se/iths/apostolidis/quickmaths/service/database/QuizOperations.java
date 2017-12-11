@@ -8,6 +8,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.iths.apostolidis.quickmaths.Player;
 import se.iths.apostolidis.quickmaths.containers.Quiz;
 
 /**
@@ -50,6 +51,15 @@ class QuizOperations {
         writableDatabase = dbHelper.getWritableDatabase();
     }
 
+
+
+    List<Player> getAllPlayers(String lobbyID){
+        List<Player> players = null;
+        String selectQuery = "SELECT * FROM " + TABLE_QUIZ;
+        Cursor cursor = reableDatabase.rawQuery(selectQuery, null);
+
+        return players;
+    }
 
     List<Quiz> getAllQuizzes() {
         List<Quiz> quizzes = null;

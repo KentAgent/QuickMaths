@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import se.iths.apostolidis.quickmaths.GameEngineSinglePlayer;
 import se.iths.apostolidis.quickmaths.MPhotoView;
@@ -73,6 +74,8 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     String lobbyID;
+    private FirebaseDatabase mFirebaseDatabase;
+
     public MultiplayerGameActivity(){
 
 
@@ -89,6 +92,13 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
         textViewScoreBoardExtra = findViewById(R.id.textViewScoreBoardExtra);
+
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        Map<String, Object> users = new HashMap<>();
+        databaseReference.child("Lobbies").child(lobbyID).updateChildren(users);
 
         assetCoordinates = new Point[numOfCoordinates];
         setAssetPosList(assetCoordinates);
