@@ -37,7 +37,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     ImageView avatar4;
 
 
-    ArrayList<String> playerNames;
+    ArrayList<String> playerNames = new ArrayList<>();
 
     private ScrollableNumberPicker snp;
     private int tempo = 1;
@@ -121,11 +121,10 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     public void onClickForward(View view){
         setUpPlayers = snp.getValue();
 
-        playerNames = new ArrayList<>();
+        addNamesOrDefaultNames();
 
-        for(int i = 0; i < setUpPlayers; i++){
-           playerNames.add(editTextsPN[i].getText().toString());
-        }
+
+
 
 
         Intent intent = new Intent(this, SinglePlayerActivity.class);
@@ -161,6 +160,16 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
                 imageViewAvatarPlayers[i-1].setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    public void addNamesOrDefaultNames(){
+        for(int i = 0; i < setUpPlayers; i++){
+            playerNames.add(editTextsPN[i].getText().toString());
+            if (playerNames.get(i).isEmpty()){
+                playerNames.set(i, editTextsPN[i].getHint().toString());
+            }
+        }
+
     }
 
 }
