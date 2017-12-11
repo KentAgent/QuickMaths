@@ -10,8 +10,6 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.os.Bundle;
 
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
