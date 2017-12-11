@@ -33,6 +33,10 @@ public class FindLobbyActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private ChildEventListener mChildEventListener;
     private FirebaseUser user;
+
+
+
+
     private Player player = new Player();
     private String lobbySearch;
     private EditText editText;
@@ -125,8 +129,8 @@ public class FindLobbyActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
 
-                Log.d("Hund", dataSnapshot.child("name").getValue().toString());
-
+                playerNames.add(dataSnapshot.child("name").getValue().toString());
+                Log.d("hund", "Player name in Lobby: " + dataSnapshot.child("name").getValue());
                 playerUIds.add(dataSnapshot.getRef().getKey());
                 mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch);
 

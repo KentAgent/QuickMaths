@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import se.iths.apostolidis.quickmaths.GameEngineSinglePlayer;
 import se.iths.apostolidis.quickmaths.MPhotoView;
@@ -50,9 +51,8 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     List<String> randomCategoryStrings;
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<String> playerUids = new ArrayList<>();
-    ArrayList<String> playerNames = new ArrayList<>();
-    FirebaseAuth mAuth;
-    private int numberOfPlayer = 0;
+    private ArrayList<String> playerNames = new ArrayList<>();
+    private int numberOfPlayer;
     private String scoreBoard1;
     private String scoreBoard2;
     TextView textViewScoreBoard;
@@ -67,11 +67,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     private String TAG = "Wille";
 
 
-    ChildEventListener childEventListener;
-    FirebaseDatabase firebaseDatabase;
-    FirebaseUser user;
-    DatabaseReference databaseReference;
-    FirebaseAuth firebaseAuth;
+    ChildEventListener mChildEventListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseUser user;
+    private DatabaseReference mMessagesDatabaseRefrence;
+    private FirebaseAuth mFirebaseAuth;
     String lobbyID;
     public MultiplayerGameActivity(){
 
@@ -89,11 +89,16 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         buttonRollDice = findViewById(R.id.buttonRollDice);
         textViewScoreBoard = findViewById(R.id.textViewScoreBoard);
         textViewScoreBoardExtra = findViewById(R.id.textViewScoreBoardExtra);
-
         assetCoordinates = new Point[numOfCoordinates];
         setAssetPosList(assetCoordinates);
-
         chosenCategories = new ArrayList<>();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
+        user = mFirebaseAuth.getCurrentUser();
+      //  mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
+
 
 
 
@@ -111,7 +116,6 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
 
-        mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);  //TODO Använda i offline?
 
         die = findViewById(R.id.imageViewDie);
@@ -147,6 +151,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         Log.d("hund", "Lobby id: " + lobbyID);
         playerUids = bundle.getStringArrayList("PlayerUids");
         playerNames = bundle.getStringArrayList("PlayerNames");
+
+        for (int i = 0; i < playerNames.size(); i++) {
+            Log.d("Hund", "player " + i + ": " + playerNames.get(i));
+
+        }
         for (int i = 0; i < playerUids.size(); i++) {
             Log.d("Hund", "player " + i + ": " + playerUids.get(i));
 
@@ -195,10 +204,15 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
     public void upDate(ArrayList<Player> players) {
-        childEventListener = new ChildEventListener() {
+        Map<String, Object> users = new HashMap<>();
+        users.put(String.valueOf(players.get(0).getCoordinateIndex()), players.get(0));
+
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("posX");
+        mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
+                Log.d("yo", "onChildAdded: " + dataSnapshot);
+                Player player = new Player();
             }
 
             @Override
@@ -221,7 +235,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             }
         };
-        databaseReference.child("Lobbies").child(lobbyID).addChildEventListener(childEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).addChildEventListener(mChildEventListener);
 
         draw(players);
     }
@@ -254,7 +268,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             canvas.restore();
             Log.d("Wille", "Player id: " + String.valueOf(player.getId()));
         }
-
+        playerTurnIndex = 0;
         //startGame(players);
     }
 
@@ -270,9 +284,9 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
     public void onClickButtonRollDice(View view) {
+        upDate(players);
 
-
-        playerTurn(players.get(playerTurnIndex));
+        //playerTurn(players.get(playerTurnIndex));
     }
 
 
@@ -399,21 +413,20 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.player1);
         Bitmap scaledAvatar = Bitmap.createScaledBitmap(avatar, 200, 100, false);
 
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        user = mFirebaseAuth.getCurrentUser();
 
 
         Player player = new Player();
 
         player.setUid(playerUids.get(playerTurnIndex));
-
-
+        player.setName(playerNames.get(playerTurnIndex));
         //player.setId();
         player.setCoordinateIndex(0);
-        player.setName(user.getDisplayName());
         player.setPos(assetCoordinates[0].x, assetCoordinates[0].y);
         player.setAvatar(scaledAvatar);
         players.add(player);
+        playerTurnIndex++;
         return player;
     }
 
@@ -421,7 +434,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     public void updateScoreBoard() {
         //textViewScoreBoard.setText(scoreBoardSetup());
         scoreBoards();
-        textViewScoreBoard.setText(players.get(0).getName());
+        //textViewScoreBoard.setText(players.get(0).getName());
         //textViewScoreBoardExtra.setText(players.get(1).getName());
     }
 
@@ -437,20 +450,22 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
     public void scoreBoards() {
-        scoreBoard1 = players.get(0).getName();
-        scoreBoard2 = "";
+        scoreBoard1 = players.get(0).getName() + " " + players.get(1).getName();
+
+        //scoreBoard2 = players.get(1).getName();
         for (int i = 0; i < players.size(); i++) {
-            if (i < 2) {
-                scoreBoard1 += " " + players.get(0).getUid() + (i + 1) + " Score: " + players.get(i).getScore();
-                if (i < 1)
-                    scoreBoard1 += "\n";
-            } else if (i >= 2) {
+
+
+            scoreBoard1 += " " + players.get(i).getName() + " Score: " + players.get(i).getScore();
+            textViewScoreBoard.setText(scoreBoard1);
+            if (i < 1)
+                scoreBoard1 += "\n";
+            if (i >= 1) {
                 textViewScoreBoardExtra.setVisibility(View.VISIBLE);
                 scoreBoard2 += "Player " + (i + 1) + " Score: " + players.get(i).getScore();
                 if (i < 3)
                     scoreBoard2 += "\n";
             }
-
         }
     }
 
