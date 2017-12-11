@@ -50,7 +50,7 @@ public class MultiplayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer);
-            lobbyBtn = findViewById(R.id.ButtonCreateLobby);
+        lobbyBtn = findViewById(R.id.ButtonCreateLobby);
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -62,7 +62,7 @@ public class MultiplayerActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user !=null){
+                if (user != null) {
                     player.setName(user.getDisplayName());
 
                     player.setUid(user.getUid());
@@ -71,7 +71,7 @@ public class MultiplayerActivity extends AppCompatActivity {
                     //         onSignedInInitialize(user.getDisplayName());
                 } else {
                     //user is signed out
-             //       onSignedOutCleanUp();
+                    //       onSignedOutCleanUp();
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
@@ -96,10 +96,10 @@ public class MultiplayerActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN){
-            if (requestCode == RESULT_OK){
+        if (requestCode == RC_SIGN_IN) {
+            if (requestCode == RESULT_OK) {
                 Toast.makeText(this, "Signed in brov!", Toast.LENGTH_SHORT).show();
-            } else if (requestCode == RESULT_CANCELED){
+            } else if (requestCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Signed in canceled!", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -109,7 +109,7 @@ public class MultiplayerActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(mAuthStateListener != null){
+        if (mAuthStateListener != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
 
         }
@@ -122,27 +122,29 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     }
 
-    public void onClickSignout(View view){
+    public void onClickSignout(View view) {
         FirebaseAuth.getInstance().signOut();
         finish();
     }
 
 
-    public void onClickFindLobby (View view ){
+    public void onClickFindLobby(View view) {
         Intent intent = new Intent(this, FindLobbyActivity.class);
         startActivity(intent);
     }
-    public void startLobby(View view){
+
+    public void startLobby(View view) {
         Intent myIntent = new Intent(getApplicationContext(), GameLobbyActivity.class);
         startActivity(myIntent);
     }
 
-    public void onClickGoBack(View view){
+    public void onClickGoBack(View view) {
         finish();
     }
+
+
+
 }
-
-
 
 
 

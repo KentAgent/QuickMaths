@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import se.iths.apostolidis.quickmaths.GameActivity;
 import se.iths.apostolidis.quickmaths.Player;
 import se.iths.apostolidis.quickmaths.R;
 
@@ -41,6 +42,7 @@ public class FindLobbyActivity extends AppCompatActivity {
     private boolean success;
     private String snapShot = "";
     private Button removeUser;
+    private GameActivity gameActivity;
     private ArrayList<Player> players = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         lobbySearch = editText.getText().toString();
         Map<String, Map<String, Player>> lobby = new HashMap<>();
         Map<String,Object> users = new HashMap<>();
+        
         users.put(player.getUid(),player);
         users.put("Player2", new Player());
         users.put("Player3", new Player());
@@ -207,5 +210,11 @@ public class FindLobbyActivity extends AppCompatActivity {
 
         }
     }
+    public void onClickStartGame(View view) {
+        gameActivity = new GameActivity();
+        gameActivity.gameSetUp(gameActivity.gridMPhotoView);
+    }
+
+
 
 }

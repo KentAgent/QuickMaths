@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageView die;
     Button buttonRollDice;
     private TextView turnTracker;
-    MPhotoView gridMPhotoView;
+  public  MPhotoView gridMPhotoView;
     MPhotoView map;
     private static int numOfCoordinates = 37;
     private Point[] assetCoordinates = new Point[numOfCoordinates];
