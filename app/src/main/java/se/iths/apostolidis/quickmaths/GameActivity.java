@@ -451,14 +451,15 @@ public class GameActivity extends AppCompatActivity {
 
      public void rollDieAnimation(){
 
+        int dieValue = rollDice();
      die.setVisibility(View.VISIBLE);
-     if (rollDice() == 1) {
+     if (dieValue == 1) {
          die.setImageResource(R.drawable.die1);
-     } else if (rollDice() == 2) {
+     } else if (dieValue == 2) {
          die.setImageResource(R.drawable.die2);
-     } else if (rollDice() == 3) {
+     } else if (dieValue == 3) {
          die.setImageResource(R.drawable.die3);
-     } else if (rollDice() == 4) {
+     } else if (dieValue == 4) {
          die.setImageResource(R.drawable.die4);
      } else {
          die.setImageResource(R.drawable.die5);
@@ -469,7 +470,8 @@ public class GameActivity extends AppCompatActivity {
 
 
     private int rollDice() {
-        return engineOffline.rollDice();
+        int dieValue = engineOffline.rollDice();
+        return dieValue;
     }
 
 
