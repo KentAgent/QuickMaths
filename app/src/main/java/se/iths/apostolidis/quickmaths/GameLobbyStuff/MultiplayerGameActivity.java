@@ -73,10 +73,15 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     private DatabaseReference mMessagesDatabaseRefrence;
     private FirebaseAuth mFirebaseAuth;
     String lobbyID;
+
+
     public MultiplayerGameActivity(){
 
 
     }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,7 +217,6 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Log.d("yo", "onChildAdded: " + dataSnapshot);
-                Player player = new Player();
             }
 
             @Override
@@ -236,7 +240,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             }
         };
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).addChildEventListener(mChildEventListener);
-
+      //  mMessagesDatabaseRefrence.child("Lobbies").child("gg").child(user.getUid()).child("coordinateIndex").setValue("hejhejhje");
         draw(players);
     }
 
@@ -315,6 +319,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 players.get(playerTurnIndex).addScore(3);
+                mMessagesDatabaseRefrence.child("Lobbies").child("hh").child(user.getUid()).child("coordinateIndex").setValue(players.get(0).getCoordinateIndex());
                 updateScoreBoard();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
