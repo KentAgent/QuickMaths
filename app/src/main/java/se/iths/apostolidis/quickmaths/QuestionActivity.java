@@ -31,6 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private boolean result = false;
     private Handler handler;
+    private Player player = new Player();
     private long timeLeft = 10000;
     private TextView countdown;
     private int displayCountdown = 10;
@@ -116,6 +117,7 @@ public class QuestionActivity extends AppCompatActivity {
             result = true;
             getQuestionIntent(result);
             textViewCorrectAnswer.setText("You're right, bastard");
+            player.addScore(3);
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
         } else {
             setResult(Activity.RESULT_CANCELED, returnIntent);
