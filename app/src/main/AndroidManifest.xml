@@ -30,7 +30,7 @@
             android:name=".AboutActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SettingsActivty"
+            android:name=".SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
@@ -71,7 +71,7 @@
         <activity android:name=".GameLobbyStuff.ShowOnlineActivity" />
         <activity android:name=".GameLobbyStuff.FindLobbyActivity" />
         <activity android:name=".GameLobbyStuff.MultiplayerGameActivity" />
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".WinnerActivity"></activity>
     </application>
 
 </manifest>

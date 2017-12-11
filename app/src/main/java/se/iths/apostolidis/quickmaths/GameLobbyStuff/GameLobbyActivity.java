@@ -44,7 +44,7 @@ public class GameLobbyActivity extends AppCompatActivity {
     private Button checkUsers;
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mMessagesDatabaseRefrence;
+    private DatabaseReference mMessagesDatabaseReference;
     Button signOutButton;
     private static final int RC_SIGN_IN = 1;
     private ListView mMessageListView;
@@ -66,12 +66,11 @@ public class GameLobbyActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance("https://quizapp-5e35c-727f6.firebaseio.com/");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        checkUsers = findViewById(R.id.ButtonCheckUsers);
-        mMessagesDatabaseRefrence = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
+
+        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("chatfönster").child("Room id");
 
         mUsername = ANONYMOUS;
-        signOutButton = findViewById(R.id.ButtonSignOut);
-        mProgressBar =  findViewById(R.id.progressBar);
+      //  mProgressBar =  findViewById(R.id.progressBar);
         mMessageListView =  findViewById(R.id.messageListView);
         mMessageEditText =  findViewById(R.id.messageEditText);
         mSendButton =  findViewById(R.id.sendButton);
@@ -81,8 +80,8 @@ public class GameLobbyActivity extends AppCompatActivity {
         mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
 
-        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-        mMessageEditText.setBackgroundColor(0x50FFFFFF);
+//        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+        //mMessageEditText.setBackgroundColor(0x50FFFFFF);
 
 
         // Enable Send button when there's text to send
@@ -114,7 +113,7 @@ public class GameLobbyActivity extends AppCompatActivity {
                 // Clear input box
              //   mMessageEditText.setText("");
                 FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(),mUsername,null);
-                mMessagesDatabaseRefrence.push().setValue(friendlyMessage);
+                mMessagesDatabaseReference.push().setValue(friendlyMessage);
                 mMessageEditText.setText((""));
             }
         });
@@ -232,13 +231,13 @@ public class GameLobbyActivity extends AppCompatActivity {
             };
 
             //defines what we are listening to .addChild defies what will happen when the event occurs
-            mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
+            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
 
         }
     }
     private void detachDatabaseReadListener(){
         if(mChildEventListener != null){
-            mMessagesDatabaseRefrence.removeEventListener(mChildEventListener);
+            mMessagesDatabaseReference.removeEventListener(mChildEventListener);
             mChildEventListener = null;
         }
     }

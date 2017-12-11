@@ -10,7 +10,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Player {
 
-    private String id, name, uid;
+    private String id;
+    private String name;
+    private String uid;
     private int gold, score;
     private int posX, posY;
     private int lastThrownDie;
@@ -18,10 +20,10 @@ public class Player {
     private Bitmap avatar;
     private FirebaseUser fbUser;
 
-    public Player(){
+    public Player() {
     }
 
-    public Player(FirebaseUser user){
+    public Player(FirebaseUser user) {
         this.fbUser = user;
 
     }
@@ -46,9 +48,10 @@ public class Player {
         return score;
     }
 
-    public void addScore (int points){
+    public void addScore(int points) {
         score += points;
     }
+
     public void setScore(int score) {
         this.score = score;
     }

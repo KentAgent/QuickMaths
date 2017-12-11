@@ -13,11 +13,10 @@ import java.util.ArrayList;
 
 import se.iths.apostolidis.quickmaths.service.database.DBHelper;
 
-public class SettingsActivty extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Button changeName;
     private Button changeAvatar;
-    private Button connectToFacebook;
     private Button changeNameOk;
     private EditText writeName;
     private TextView textViewTest; //testwidget
@@ -34,7 +33,6 @@ public class SettingsActivty extends AppCompatActivity {
 
         changeName = findViewById(R.id.buttonChangeName);
         changeAvatar = findViewById(R.id.buttonChangeAvatar);
-        connectToFacebook = findViewById(R.id.buttonConnectToFacebook);
         changeNameOk = findViewById(R.id.buttonChangeNameOk);
         writeName = findViewById(R.id.editTextChangeName);
         textViewTest = findViewById(R.id.textViewTest);

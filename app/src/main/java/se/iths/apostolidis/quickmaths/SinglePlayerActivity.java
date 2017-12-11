@@ -164,8 +164,5 @@ public class SinglePlayerActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickGoBack(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+    public void onClickGoBack(View view){finish();}
 }

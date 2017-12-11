@@ -16,6 +16,7 @@
         android:background="@drawable/circle_background"
         android:contentDescription="@string/move_backwards"
         android:elevation="5dp"
+        android:onClick="onClickGoBack"
         android:padding="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +32,12 @@
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:onClick="startLobby"
-        android:text="@string/login"
+        android:text="@string/worldchat"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLobby"
-        tools:text="wip Chatt" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLobby" />
 
     <Button
         android:id="@+id/ButtonFindLobby"
@@ -73,11 +73,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/greyTint"
         android:backgroundTint="@color/colorAccent"
+        android:fontFamily="@font/indie_flower"
         android:text="TextView"
-        android:textColor="@color/fui_errorColor"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewAvatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
@@ -131,5 +132,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonInfo"
         tools:text="No Function/ add The Q" />
+
+    <Button
+        android:id="@+id/buttonLog_Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
+        android:onClick="onClickSignout"
+        android:text="@string/logout"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

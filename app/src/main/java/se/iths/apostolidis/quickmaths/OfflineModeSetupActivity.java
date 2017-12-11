@@ -90,6 +90,9 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
     }
 
+    public void onClickGoBack(View view){
+        finish();
+    }
 
 
 

@@ -59,7 +59,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         map = findViewById(R.id.photo_view);
         gridMPhotoView = findViewById(R.id.photo_viewGrid);
         //map.setImageResource(R.mipmap.gamemap);
@@ -299,6 +298,10 @@ public class GameActivity extends AppCompatActivity {
 
 
     private void wonGame() {
+        //Intent myIntent = new Intent(this, WinnerActiv7ity.class);
+       // startActivity(myIntent);
+
+        finish();
 
         Intent intent = new Intent(this, ResultActivity.class);
 
