@@ -48,7 +48,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_lobby);
         editText = findViewById(R.id.editTextSeachLobby);
         textView = findViewById(R.id.textViewPlayerIDs);
-        searchButton = findViewById(R.id.buttonSearchLobby);
+        searchButton = findViewById(R.id.buttonCreateLobby);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
@@ -99,6 +99,11 @@ public class FindLobbyActivity extends AppCompatActivity {
         Map<String, Map<String, Player>> lobby = new HashMap<>();
         Map<String,Object> users = new HashMap<>();
         users.put(player.getUid(),player);
+        users.put("Player2", new Player());
+        users.put("Player3", new Player());
+        users.put("Player4", new Player());
+
+
 
         //lobby.put(lobbySearch, users);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).updateChildren(users);
@@ -106,8 +111,11 @@ public class FindLobbyActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+                String firebaseId = dataSnapshot.toString();
 
-                textView.setText(dataSnapshot.getKey().toString());
+                textView.setText(dataSnapshot.getChildren().toString());
+
+
 
 
 
