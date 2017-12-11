@@ -1,10 +1,12 @@
 package se.iths.apostolidis.quickmaths;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
@@ -27,6 +29,13 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
     TextView tvP3Name;
     TextView tvP4Name;
     int setUpPlayers = 0;
+
+    ImageView[] avatarForPlayers = new ImageView[4];
+    ImageView avatar1;
+    ImageView avatar2;
+    ImageView avatar3;
+    ImageView avatar4;
+
 
     ArrayList<String> playerNames;
 
@@ -54,6 +63,11 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         tvP3Name = findViewById(R.id.textViewPlayer3Name);
         tvP4Name = findViewById(R.id.textViewPlayer4Name);
 
+        avatar1 = findViewById(R.id.imageViewP1OfflineAvatar);
+        avatar2 = findViewById(R.id.imageViewP2OfflineAvatar);
+        avatar3 = findViewById(R.id.imageViewP3OfflineAvatar);
+        avatar4 = findViewById(R.id.imageViewP4OfflineAvatar);
+
         snp = findViewById(R.id.number_picker_horizontal);
 
         //Skapar arrayer för Player-widgets
@@ -68,6 +82,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         editTextsPN[2] = etP3Name;
         editTextsPN[3] = etP4Name;
 
+        
 
         //Gör alla spelare utan första osynliga
         makeAllInvisable();
