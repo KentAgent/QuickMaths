@@ -20,36 +20,39 @@ android:background="@drawable/backgroundsky">
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="52dp" />
 
-<TextView
-    android:id="@+id/textViewScoreBoard"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/rounded_edges_scoreboard"
-    android:fontFamily="@font/indie_flower"
-    android:lineSpacingMultiplier="0.7"
-    android:padding="10dp"
-    android:text="Scoreboard"
-    android:textAlignment="viewStart"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textViewScoreBoard"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edges_scoreboard"
+        android:fontFamily="@font/indie_flower"
+        android:lineSpacingMultiplier="0.7"
+        android:padding="10dp"
+        android:text="Scoreboard"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-    android:id="@+id/textViewScoreBoardExtra"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/rounded_edges_scoreboard"
-    android:fontFamily="@font/indie_flower"
-    android:lineSpacingMultiplier="0.7"
-    android:padding="10dp"
-    android:text="Scoreboard"
-    android:textAlignment="viewStart"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:visibility="invisible"
-    app:layout_constraintStart_toEndOf="@+id/textViewScoreBoard"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textViewScoreBoardExtra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/rounded_edges_scoreboard"
+        android:fontFamily="@font/indie_flower"
+        android:lineSpacingMultiplier="0.7"
+        android:padding="10dp"
+        android:text="Scoreboard"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textViewScoreBoard"
+        app:layout_constraintTop_toTopOf="parent" />
 
 <Button
     android:id="@+id/buttonRollDice"

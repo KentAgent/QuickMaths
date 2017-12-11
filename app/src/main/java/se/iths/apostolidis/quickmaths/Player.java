@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Player {
 
     private String id;
-    public String name = "KakashiDota";
+    public String name = "Hej";
     private String uid;
     private int gold, score;
     private int posX, posY;
