@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
-
+    private ImageView die;
     Button buttonRollDice;
     private TextView turnTracker;
     MPhotoView gridMPhotoView;
@@ -38,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Player> players = new ArrayList<>();
     private FirebaseUser user;
     FirebaseAuth mAuth;
-    private int numberOfPlayer = 4;
+    private int numberOfPlayer = 2;
     private String scoreBoard1;
     private String scoreBoard2;
     TextView textViewScoreBoard;
@@ -84,8 +85,8 @@ public class GameActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         paint.setColor(Color.BLACK);  //TODO Använda i offline?
 
-        //die = findViewById(R.id.imageViewDie);
-        //  die.setVisibility(View.INVISIBLE);
+        die = findViewById(R.id.imageViewDie);
+          die.setVisibility(View.INVISIBLE);
 
         randomCategoryStrings = listOfGenres();
         hashMapAssets = pairHashmapWithKey();
@@ -172,7 +173,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void playerTurn(Player player) {
         player.setLastThrownDie(rollDice());
-        // rollDieAnimation();
+         rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
@@ -224,7 +225,7 @@ public class GameActivity extends AppCompatActivity {
             playerTurnIndex = 0;
         }
 
-//        die.setVisibility(View.INVISIBLE);
+        die.setVisibility(View.INVISIBLE);
         turnTracker.setVisibility(View.VISIBLE);
 
         turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
@@ -287,6 +288,7 @@ public class GameActivity extends AppCompatActivity {
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
             if (player.getCoordinateIndex() >= assetCoordinates.length) {
+
                 wonGame();
                 break;
             }
@@ -298,8 +300,12 @@ public class GameActivity extends AppCompatActivity {
 
     private void wonGame() {
 
-    }
+        Intent intent = new Intent(this, ResultActivity.class);
 
+        startActivity(intent);
+
+
+    }
 
     @NonNull
     private Player setPlayer(ArrayList<Player> players, int i) {
@@ -464,21 +470,21 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-//    public void rollDieAnimation(){
-//
-//        die.setVisibility(View.VISIBLE);
-//        if (rollDice() == 1) {
-//            die.setImageResource(R.drawable.die1);
-//        } else if (rollDice() == 2) {
-//            die.setImageResource(R.drawable.die2);
-//        } else if (rollDice() == 3) {
-//            die.setImageResource(R.drawable.die3);
-//        } else if (rollDice() == 4) {
-//            die.setImageResource(R.drawable.die4);
-//        } else {
-//            die.setImageResource(R.drawable.die5);
-//        }
-//    }
+    public void rollDieAnimation(){
+
+        die.setVisibility(View.VISIBLE);
+        if (rollDice() == 1) {
+            die.setImageResource(R.drawable.die1);
+        } else if (rollDice() == 2) {
+            die.setImageResource(R.drawable.die2);
+        } else if (rollDice() == 3) {
+            die.setImageResource(R.drawable.die3);
+        } else if (rollDice() == 4) {
+            die.setImageResource(R.drawable.die4);
+        } else {
+            die.setImageResource(R.drawable.die5);
+        }
+    }
 
 
     public void setAssetPosList(Point[] posList) {
@@ -779,7 +785,7 @@ import java.util.List;
                 playerTurnIndexOffline = 0;
             }
 
-//        die.setVisibility(View.INVISIBLE);
+        die.setVisibility(View.INVISIBLE);
             turnTrackerOffline.setVisibility(View.VISIBLE);
 
             turnTrackerOffline.setText("Player " + (playerTurnIndexOffline + 1) + " turn to play");

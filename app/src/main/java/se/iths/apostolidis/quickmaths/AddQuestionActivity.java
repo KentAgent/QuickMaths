@@ -26,7 +26,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_question);
 
         question = findViewById(R.id.editTextQuestion);
-        answer_1 = findViewById(R.id.editTextFirstAnswer);
+        answer_1 = findViewById(R.id.editTextCorrectAnswer);
         answer_2 = findViewById(R.id.editTextSecondAnswer);
         answer_3 = findViewById(R.id.editTextThirdAnswer);
         answer_4 = findViewById(R.id.editTextFourthAnswer);
@@ -38,4 +38,6 @@ public class AddQuestionActivity extends AppCompatActivity {
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(myIntent);
     }
+
+    public void onClickBack(View view){finish();}
 }

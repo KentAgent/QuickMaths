@@ -35,11 +35,13 @@ public class QuestionActivity extends AppCompatActivity {
     private TextView countdown;
     private int displayCountdown = 10;
     private Quiz quiz = new Quiz();
+    private Button newQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        newQuestion = findViewById(R.id.buttonNewQuestion);
         genre = getIntent().getExtras().getString("Category");
         Log.d("Wille", genre);
         importViewElemets();
@@ -177,9 +179,10 @@ public class QuestionActivity extends AppCompatActivity {
         btnAnswer4 = findViewById(R.id.buttonAnswer4);
         textViewCorrectAnswer = findViewById(R.id.textViewIfCorrectAnswer);
     }
-    public void onClickbtnTestPopUp(View v){
+    public void onClickNewQuestion(View v){
         setQuestion();
         textViewCorrectAnswer.setVisibility(TextView.INVISIBLE);
+        newQuestion.setVisibility(View.INVISIBLE);
 
     }
 

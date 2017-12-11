@@ -70,7 +70,8 @@
 
         <activity android:name=".GameLobbyStuff.ShowOnlineActivity" />
         <activity android:name=".GameLobbyStuff.FindLobbyActivity" />
-        <activity android:name=".GameLobbyStuff.MultiplayerGameActivity"></activity>
+        <activity android:name=".GameLobbyStuff.MultiplayerGameActivity" />
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>
