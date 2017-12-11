@@ -50,6 +50,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     List<String> randomCategoryStrings;
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<String> playerUids = new ArrayList<>();
+    ArrayList<String> playerNames = new ArrayList<>();
     FirebaseAuth mAuth;
     private int numberOfPlayer = 0;
     private String scoreBoard1;
@@ -145,6 +146,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         lobbyID = bundle.getString("LobbyID");
         Log.d("hund", "Lobby id: " + lobbyID);
         playerUids = bundle.getStringArrayList("PlayerUids");
+        playerNames = bundle.getStringArrayList("PlayerNames");
         for (int i = 0; i < playerUids.size(); i++) {
             Log.d("Hund", "player " + i + ": " + playerUids.get(i));
 

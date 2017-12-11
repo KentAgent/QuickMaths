@@ -624,12 +624,20 @@ public class GameActivity extends AppCompatActivity {
     private int playerTurnIndex;
     private String TAG = "Wille";
 
+    public GameActivity (){
+//        Bundle bundle = getIntent().getExtras();
+//
+//        players = (ArrayList<Player>) bundle.get("PlayerUids");
+//        for (int i = 0; i < players.size(); i++) {
+//            Log.d("Hund", "player " + i + ": " + players.get(i).getUid());
+//
+//        }
 
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-//
         map = findViewById(R.id.photo_view);
         gridMPhotoView = findViewById(R.id.photo_viewGrid);
         //map.setImageResource(R.mipmap.gamemap);
@@ -642,14 +650,17 @@ public class GameActivity extends AppCompatActivity {
         assetCoordinates = new Point[numOfCoordinates];
         setAssetPosList(assetCoordinates);
 
-        Bundle bundle = getIntent().getExtras();
+        chosenCategories = new ArrayList<>();
+        //Bundle bundle = getIntent().getExtras();
 
+        //if (bundle.getStringArrayList(("chosenCategories")) != null) {
+            //chosenCategories = bundle.getStringArrayList("chosenCategories");
+        //} else
 
-        chosenCategories = bundle.getStringArrayList("chosenCategories");
+            setOnlineCateGories();
 
         for (int i = 0; i < chosenCategories.size(); i++) {
-            Log.d("Wille", chosenCategories.get(i));
-            ;
+            Log.d("Hund", chosenCategories.get(i));
         }
 
         mAuth = FirebaseAuth.getInstance();
@@ -677,6 +688,16 @@ public class GameActivity extends AppCompatActivity {
         gameSetUp(gridMPhotoView);
         updateScoreBoard();
 
+    }
+
+    private void setOnlineCateGories() {
+        chosenCategories.add("E-Sport");
+        chosenCategories.add("Musik");
+        chosenCategories.add("Sport");
+        chosenCategories.add("Random");
+        chosenCategories.add("Film");
+        chosenCategories.add("Vetenskap");
+        chosenCategories.add("Humor");
     }
 
 

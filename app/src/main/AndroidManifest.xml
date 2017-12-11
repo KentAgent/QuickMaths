@@ -45,6 +45,9 @@
             android:name=".SinglePlayerActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".FriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".GameActivity"
             android:screenOrientation="portrait" />
         <activity
