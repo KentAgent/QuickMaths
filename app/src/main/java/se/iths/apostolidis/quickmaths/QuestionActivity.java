@@ -23,7 +23,7 @@ public class QuestionActivity extends AppCompatActivity {
     private TextView textViewCorrectAnswer;
     private DBHelper database;
     private String correctAnswer;
-    private RandomHelper randomHelper;
+    private RandomHelper randomHelper = new RandomHelper();
     private ArrayList<String> usedQuestions= new ArrayList<>();
     private String TAG = "questionLogTag";
     private String genre;
@@ -66,6 +66,7 @@ public class QuestionActivity extends AppCompatActivity {
          * Sets a random question based on category input
          */
     public void setQuestion () {
+
 
         int index = randomHelper.randomBoundedIndex(database.getQuizCategory(genre).size());
         quiz = database.getQuizCategory(genre).get(index);
