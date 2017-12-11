@@ -1,5 +1,6 @@
 package se.iths.apostolidis.quickmaths.GameLobbyStuff;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import se.iths.apostolidis.quickmaths.GameActivity;
 import se.iths.apostolidis.quickmaths.Player;
 import se.iths.apostolidis.quickmaths.R;
 
@@ -37,11 +39,13 @@ public class FindLobbyActivity extends AppCompatActivity {
     private TextView textView;
     private Button searchButton;
     private ArrayList<String> playerIds = new ArrayList<>();
+    private ArrayList<String> playerNames = new ArrayList<>();
     private String lobbyID;
     private boolean success;
     private String snapShot = "";
     private Button removeUser;
-    private ArrayList<Player> players = new ArrayList<>();
+    private GameActivity gameActivity;
+    private ArrayList<String> playerUIds = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,14 +98,23 @@ public class FindLobbyActivity extends AppCompatActivity {
     }
 
     public void onClickSearchLobby (View view){
+
+
+
+
+
         //CREATE LOBBY!
         lobbySearch = editText.getText().toString();
+
         Map<String, Map<String, Player>> lobby = new HashMap<>();
-        Map<String,Object> users = new HashMap<>();
-        users.put(player.getUid(),player);
-        users.put("Player2", new Player());
-        users.put("Player3", new Player());
-        users.put("Player4", new Player());
+
+        Map<String, Object> users = new HashMap<>();
+        users.put(player.getUid(), player);
+
+        //player.setName(user.getDisplayName());
+        //users.put(player.getName(), player);
+
+        
 
 
 
@@ -111,10 +124,14 @@ public class FindLobbyActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                String firebaseId = dataSnapshot.toString();
 
-                textView.setText(dataSnapshot.getChildren().toString());
+                Log.d("Hund", dataSnapshot.child("name").getValue().toString());
 
+                playerUIds.add(dataSnapshot.getRef().getKey());
+                mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch);
+
+
+                textView.setText(dataSnapshot.getRef().getKey());
 
 
 
@@ -206,6 +223,15 @@ public class FindLobbyActivity extends AppCompatActivity {
             mMessagesDatabaseRefrence.addChildEventListener(mChildEventListener);
 
         }
+    }
+    public void onClickStartGame(View view) {
+        Intent intent = new Intent(this, MultiplayerGameActivity.class);
+        Log.d("Hund", "Lobby ID: " + lobbySearch);
+        intent.putExtra("LobbyID", lobbySearch);
+        intent.putStringArrayListExtra("PlayerUids", playerUIds);
+        intent.putStringArrayListExtra("PlayerNames", playerNames);
+
+        startActivity(intent);
     }
 
 }

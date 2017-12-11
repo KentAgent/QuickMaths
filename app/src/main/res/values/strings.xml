@@ -70,5 +70,6 @@
     <string name="logout">Log out</string>
     <string name="chat">Chat</string>
     <string name="worldchat">World Chat</string>
+    <string name="how_to_play">How to play</string>
     />
 </resources>

@@ -3,6 +3,7 @@ package se.iths.apostolidis.quickmaths;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import se.iths.apostolidis.quickmaths.containers.Quiz;
 import se.iths.apostolidis.quickmaths.service.database.DBHelper;
@@ -24,7 +24,7 @@ public class QuestionActivity extends AppCompatActivity {
     private TextView textViewCorrectAnswer;
     private DBHelper database;
     private String correctAnswer;
-    private RandomHelper randomHelper;
+    private RandomHelper randomHelper = new RandomHelper();
     private ArrayList<String> usedQuestions= new ArrayList<>();
     private String TAG = "questionLogTag";
     private String genre;
@@ -34,8 +34,9 @@ public class QuestionActivity extends AppCompatActivity {
     private long timeLeft = 10000;
     private TextView countdown;
     private int displayCountdown = 10;
-    private Quiz quiz = new Quiz();
     private Button newQuestion;
+    private Quiz quiz = new Quiz();
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,85 +49,41 @@ public class QuestionActivity extends AppCompatActivity {
         setQuestion();
         countdown = findViewById(R.id.textViewCountdown);
 
-        Quiz quiz = new Quiz();
+        countDownTimer = new CountDownTimer(10000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.d("Grekolas", "Countdown" + displayCountdown);
+                countdown.setText("" + displayCountdown--);
+            }
 
-//        handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            public void run() {
-//                Log.d("Grekolas", "Countdown");
-//                finish();
-//            }
-//        }, 10000);
-//
-//
+            @Override
+            public void onFinish() {
+                finish();
+            }
+        };
+        countDownTimer.start();
 
     }
 
 
-    public void setQuestion (){
-
-        //Importera ett quiz objekt istället för database.getQuiz
-
         /**
          * Sets a random question based on category input
          */
-        int index = 1;
-        boolean isUsed;
-        Random random = new Random();
+    public void setQuestion () {
 
-//        Log.d(TAG, "startup");
-        if (usedQuestions.size() == (int)database.getQuizCategory(genre).size() * 0.8){
-            for(int i = usedQuestions.size() - 1; i >= 0; i--){
-//                Log.d(TAG, "Removing object from usedQuestions");
-                usedQuestions.remove(i);
-            }
-        }
-
-        if(!usedQuestions.isEmpty()) {
-            do {
-                isUsed = false;
-                index = random.nextInt(database.getQuizCategory(genre).size());
-                //Log.d(TAG, "random index before loop");
-                //Log.d(TAG, String.valueOf(index));
-                for (int i = 0; i < usedQuestions.size(); i++) {
-                    //Log.d(TAG, "inside the for loop");
-                    if (database.getQuizCategory(genre).get(index).getQuestion().equals(usedQuestions.get(i))) {
-                        //Log.d(TAG, "isUsed is set to true");
-                        isUsed = true;
-                    }
-                }
-            }
-            while (isUsed);
-        } else {
-            //Log.d(TAG, "Else statement");
-            index = random.nextInt(database.getQuizCategory(genre).size());
-        }
-        TODO://Fixa randomHelper classen!
-        //int index = randomHelper.randomBoundedIndex(database.getQuizCategory(genre).size());
-
-
+        int index = randomHelper.randomBoundedIndex(database.getQuizCategory(genre).size());
+        quiz = database.getQuizCategory(genre).get(index);
         textViewQuestion.setText(quiz.getQuestion());
         btnAnswer1.setText(quiz.getAnswer1());
         btnAnswer2.setText(quiz.getAnswer2());
         btnAnswer3.setText(quiz.getAnswer3());
         btnAnswer4.setText(quiz.getAnswer4());
+
         correctAnswer = quiz.getCorrectAnswer();
 
 
-        //Log.d(TAG, "adding to usedQuestions");
         usedQuestions.add(database.getQuizCategory(genre).get(index).getQuestion());
-        //Log.d(TAG, "Used questions size: " + String.valueOf(usedQuestions.size()));
-        /**
-         * Sets a random question from the database
-         **/
-//        Random random = new Random();
-//        int index = random.nextInt(database.getAllQuizzes().size());
-//        textViewQuestion.setText(database.getAllQuizzes().get(index).getQuestion());
-//        btnAnswer1.setText(database.getAllQuizzes().get(index).getAnswer1());
-//        btnAnswer2.setText(database.getAllQuizzes().get(index).getAnswer2());
-//        btnAnswer3.setText(database.getAllQuizzes().get(index).getAnswer3());
-//        btnAnswer4.setText(database.getAllQuizzes().get(index).getAnswer4());
-//        correctAnswer = database.getAllQuizzes().get(index).getCorrectAnswer();
+
     }
 
     public void getQuestionIntent(Boolean b){

@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonSinglePlayer" />
 
     <Button
-        android:id="@+id/buttonFriends"
+        android:id="@+id/buttonHowToPlay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
@@ -74,10 +74,10 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
-        android:onClick="onClickFriends"
+        android:onClick="onClickHowToPlay"
         android:padding="5dp"
-        android:text="@string/friends"
-        android:textSize="20sp"
+        android:text="@string/how_to_play"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,12 +96,12 @@
         android:onClick="onClickAddQuestion"
         android:padding="5dp"
         android:text="@string/add_question"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFriends" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonHowToPlay" />
 
     <ImageButton
         android:id="@+id/imageButtonSettings"
