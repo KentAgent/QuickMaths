@@ -70,6 +70,8 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
 
         snp = findViewById(R.id.number_picker_horizontal);
 
+
+
         //Skapar arrayer för Player-widgets
         textViewsPN[0] = tvP1Name;
         textViewsPN[1] = tvP2Name;
@@ -93,6 +95,7 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         makeAllInvisable();
 
         //Lyssnar efter förändringar på antalet spelare
+
         snp.setListener(new ScrollableNumberPickerListener() {
             @Override
             public void onNumberPicked(int value) {
