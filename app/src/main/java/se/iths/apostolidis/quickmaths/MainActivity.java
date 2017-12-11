@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         aboutUs = findViewById(R.id.textViewAboutUs);
         singlePlayerButton = findViewById(R.id.buttonSinglePlayer);
         multiplayerButton = findViewById(R.id.buttonMultiplayer);
-        friendsButton = findViewById(R.id.buttonFriends);
+        friendsButton = findViewById(R.id.buttonHowToPlay);
         addQuestionButton = findViewById(R.id.buttonAddQuestion);
         aboutButton = findViewById(R.id.buttonAbout);
         start = findViewById(R.id.textViewStart);
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickFriends(View view) {
-        Intent intent = new Intent(this, FriendsActivity.class);
+    public void onClickHowToPlay(View view) {
+        Intent intent = new Intent(this, HowToPlayActivity.class);
         muteBtn.setVisibility(View.INVISIBLE);
         infoButton.setVisibility(View.INVISIBLE);
         startActivity(intent);
