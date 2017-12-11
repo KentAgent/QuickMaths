@@ -19,16 +19,16 @@ public class HowToPlayActivity extends AppCompatActivity {
         singleplayer = findViewById(R.id.textViewHowToSingle);
         multiplayer = findViewById(R.id.textViewHowToMulti);
 
-        singleplayer.setText("Roll the die and get \nmoved the amount of dots\n\n" +
+        singleplayer.setText("\nRoll the die and get moved the amount of dots\n\n" +
                 "Answer the question and if you get it wrong you get moved back to your original position " +
                 "\n\n After each succesfull answer you get gold equal to your current placement on the map" +
-                "\n\nWin the game by \nreaching the finishline");
+                "\n\nWin the game by reaching the finishline\n");
 
-        multiplayer.setText("Create your avatar" + "\n\nCreate or join a lobby" +
-                "\n\nRoll the die and get \nmoved the amount of dots\n\n" +
+        multiplayer.setText("\nCreate your avatar" + "\n\nCreate or join a lobby" +
+                "\n\nRoll the die and get moved the amount of dots\n\n" +
                 "Answer the question and if you get it wrong you get moved back to your original position " +
                 "\n\n After each succesfull answer you get gold equal to your current placement on the map" +
-                "\n\n Win the game by reaching the finishline and your personal score gets updated");
+                "\n\n Win the game by reaching the finishline and your personal score gets updated\n");
     }
 
     public void onClickSingle (View view) {
