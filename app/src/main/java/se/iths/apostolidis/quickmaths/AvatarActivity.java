@@ -88,8 +88,6 @@ public void onClickSaveAvatar(View view) {
     RoundedBitmapDrawable roundAvatarImage = RoundedBitmapDrawableFactory.create(getResources(), avatarImage);
     roundAvatarImage.setCircular(true);
     saveAvatar.setImageDrawable(roundAvatarImage);
-
-
 }
 
 public int getSquareCropDimensionForBitmap(Bitmap bitmap){
@@ -182,9 +180,7 @@ public int getSquareCropDimensionForBitmap(Bitmap bitmap){
         nose.setImageResource(nosePictures.getResourceId(noseCount, 0));
     }
 
-    public void onClickBack(View view) {
-        finish();
-    }
+    public void onClickBack(View view) {finish();}
 
     public void onClickPreview(View view) {
         if (hairLeft.getVisibility() == View.VISIBLE) {

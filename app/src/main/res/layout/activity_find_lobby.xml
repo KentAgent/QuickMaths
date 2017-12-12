@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundsky"
     tools:context="se.iths.apostolidis.quickmaths.GameLobbyStuff.FindLobbyActivity">
 
     <EditText
@@ -12,14 +13,15 @@
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="SearchForLobby"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCreateLobby"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/buttonCreateLobby" />
 
     <TextView
         android:id="@+id/textViewPlayerIDs"
@@ -27,48 +29,57 @@
         android:layout_height="186dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="132dp"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSeachLobby"
+        tools:text="Här kommer det texr" />
 
     <Button
         android:id="@+id/buttonCreateLobby"
         android:layout_width="105dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
         android:onClick="onClickSearchLobby"
-        android:text="Create"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/join"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="164dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
         android:onClick="onClickleaveLobby"
         android:text="Button"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ButtonStartGame"
         app:layout_constraintTop_toBottomOf="@+id/textViewPlayerIDs" />
 
     <Button
         android:id="@+id/ButtonStartGame"
         android:layout_width="82dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
         android:onClick="onClickStartGame"
         android:text="Button"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 </android.support.constraint.ConstraintLayout>
