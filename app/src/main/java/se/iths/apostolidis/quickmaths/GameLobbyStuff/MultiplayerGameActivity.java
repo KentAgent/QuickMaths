@@ -268,6 +268,8 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         }
     }
+
+
     public void attachDB() {
 
 
@@ -286,13 +288,17 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                dataSnapshot.getRef().getKey();
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                if (dataSnapshot.getKey().equals("ammountOfTurns")){
+                    players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
+                    Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                } else if (dataSnapshot.getKey().equals("coordinateIndex")){
+                    players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                    players.get(1).setScore(players.get(1).getScore() + 3);
+                    Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+                }
 
-                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
-                players.get(1).setScore(players.get(1).getScore() + 3);
                 draw(players);
-
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
                 Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
             }
 
@@ -340,8 +346,12 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
+
+
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
         getQuestion(category);
+        players.get(0).setAmmountOfTurns((players.get(0).getAmmountOfTurns()) + 1);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(user.getUid()).child("ammountOfTurns").setValue(players.get(0).getAmmountOfTurns());
     }
 
 
