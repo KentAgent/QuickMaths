@@ -256,7 +256,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         Log.d("kakan", "robin :"+ playerUids.get(0));
         Log.d("kakan", "wille :" + playerUids.get(1));
-        Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("xpFrFG3RYigTGCZihA8vlfNAZJu2").getKey());
+        Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).getKey());
 
         for (int i = 0; i < players.size(); i++) {
 
@@ -290,26 +290,27 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
                 for (int i = 0; i < playerUids.size(); i++) {
-                    if (playerUids.get(i).equals(mMessagesDatabaseRefrence.child(lobbyID).getRef())) {
-                        Log.d("bror", "Random player UID: " + mMessagesDatabaseRefrence.child(lobbyID).getRef());
+
+                    if (playerUids.get(i).equals(mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey())) {
+                        Log.d("bror", "Random player UID: " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey());
+                        if (dataSnapshot.getKey().equals("ammountOfTurns")) {
+                                players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
+                                Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                            } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
+                                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                                players.get(1).setScore(players.get(1).getScore() + 3);
+                                Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+                            }
+
+                            draw(players);
+                            Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                            Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
+                        }
                     }
 
-                    Log.d("bror", "Random player UID ON THE OUTSIDE: " + mMessagesDatabaseRefrence.child(lobbyID).getRef());
+                    //Log.d("bror", "Random player UID ON THE OUTSIDE: " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey());
                 }
 
-                if (dataSnapshot.getKey().equals("ammountOfTurns")) {
-                        players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
-                        Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
-                    } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
-                        players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
-                        players.get(1).setScore(players.get(1).getScore() + 3);
-                        Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
-                    }
-
-                    draw(players);
-                    Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
-                    Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
-                }
 
 
             @Override
@@ -605,6 +606,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
+        hashMapAssets.put("Iths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
         //hashMapAssets.put("Maths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
@@ -633,6 +635,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         stringGenres.add("Film");
         stringGenres.add("Vetenskap");
         stringGenres.add("Humor");
+        stringGenres.add("Iths");
 
 //        for (int i = 0; i < chosenCategories.size(); i++) {
 //
