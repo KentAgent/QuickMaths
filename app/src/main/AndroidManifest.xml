@@ -63,6 +63,9 @@
         <activity
             android:name=".AvatarActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"

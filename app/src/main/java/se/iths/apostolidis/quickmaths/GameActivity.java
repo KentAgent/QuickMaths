@@ -174,8 +174,6 @@ public class GameActivity extends AppCompatActivity {
         String category = randomCategoryStringsOffline.get(player.getCoordinateIndex());
         getQuestionOffline(category);
 
-
-
     }
 
 
@@ -289,7 +287,18 @@ public class GameActivity extends AppCompatActivity {
 
     //OFFLINE ------
     private void wonGameOffline() {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+
+        for (int i = 0; i < playersOffline.size(); i++) {
+            scoreList.add(playersOffline.get(i).getScore());
+        }
+
         Log.d("Wille", "WONGAME!!!");
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("listOfPlayers", playersNamesOffline);
+        Log.d("Grekolas", "Before put playersNamesOffline: " + playersNamesOffline);
+        intent.putExtra("scoreList", scoreList);
+        startActivity(intent);
     }
 
 
