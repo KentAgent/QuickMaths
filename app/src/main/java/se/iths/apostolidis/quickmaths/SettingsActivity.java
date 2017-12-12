@@ -86,9 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickBack(View view) {
-        finish();
-    }
+    public void onClickBack(View view) {finish();}
 
 
 
