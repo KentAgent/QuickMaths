@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ActionMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -288,7 +288,15 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                if (dataSnapshot.getKey().equals("ammountOfTurns")){
+
+
+
+                if(dataSnapshot.getKey().equals("ammountOfTurns"))
+                {
+                    Query query = mMessagesDatabaseRefrence.child(lobbyID).orderByChild(s);
+                    Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                }
+                if (dataSnapshot.getKey().equals(player.getUid())){
                     players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
                     Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
                 } else if (dataSnapshot.getKey().equals("coordinateIndex")){
@@ -298,8 +306,8 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 }
 
                 draw(players);
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
-                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot);
+                Log.d("Bror2", "Player 1 pos :" + players.get(0).getCoordinateIndex());
             }
 
             @Override
@@ -319,7 +327,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
-
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).child("ammountOfTurns").addChildEventListener(mChildEventListener);
     }
 
     public void gameSetUp(MPhotoView view) {
