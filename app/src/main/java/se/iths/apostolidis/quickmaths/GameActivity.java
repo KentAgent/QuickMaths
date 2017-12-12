@@ -167,8 +167,9 @@ public class GameActivity extends AppCompatActivity {
 
     // OFFLINE
     public void playerTurnOffline(Player player) {
-        player.setLastThrownDie(rollDiceOffline());
-        rollDieAnimation();
+        int dieValue = rollDice();
+        player.setLastThrownDie(dieValue);
+        rollDieAnimation(dieValue);
         movePlayerOffline(player, player.getLastThrownDie());
         String category = randomCategoryStringsOffline.get(player.getCoordinateIndex());
         getQuestionOffline(category);
@@ -460,9 +461,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-     public void rollDieAnimation(){
+     public void rollDieAnimation(int dieValue){
 
-        int dieValue = rollDice();
      die.setVisibility(View.VISIBLE);
      if (dieValue == 1) {
          die.setImageResource(R.drawable.die1);
