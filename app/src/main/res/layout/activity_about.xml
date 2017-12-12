@@ -7,80 +7,6 @@
     tools:context="se.iths.apostolidis.quickmaths.AboutActivity"
     android:background="@drawable/backgroundmain">
 
-    <Button
-        android:id="@+id/button123"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="176dp"
-        android:background="@drawable/rounded_edges_button"
-        android:fontFamily="@font/indie_flower"
-        android:onClick="onClickExpandTextView"
-        android:padding="5dp"
-        android:text="Test Questions"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/testPopUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/indie_flower"
-        android:background="@drawable/rounded_edges_button"
-        android:padding="5dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:onClick="onClickTestQuestion"
-        android:text="Test PopUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button123" />
-
-    <Button
-        android:id="@+id/buttonGameActivity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/indie_flower"
-        android:background="@drawable/rounded_edges_button"
-        android:padding="5dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:onClick="onClickGameActivity"
-        android:text="GameActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAvatarActivity" />
-
-    <Button
-        android:id="@+id/buttonAvatarActivity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/indie_flower"
-        android:background="@drawable/rounded_edges_button"
-        android:padding="5dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:onClick="avatarButton"
-        android:text="Avatar"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testPopUp" />
-
     <ImageButton
         android:id="@+id/imageButtonBack"
         android:layout_width="54dp"
@@ -94,15 +20,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
-    <Button
-        android:id="@+id/buttonGameView"
+    <TextView
+        android:id="@+id/textViewAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="onClickButtonGameView"
-        android:text="Button"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_view_background"
+        android:fontFamily="@font/indie_flower"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Här är about" />
 
 </android.support.constraint.ConstraintLayout>
