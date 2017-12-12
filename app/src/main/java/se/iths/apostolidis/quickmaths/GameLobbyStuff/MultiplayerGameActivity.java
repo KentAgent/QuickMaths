@@ -249,6 +249,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         Map<String, Object> users = new HashMap<>();
        // users.put(player.getUid(), player);
         clearPlayers();
+        scoreBoards();
 
 
 
@@ -288,6 +289,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
 
                 players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                players.get(1).setScore(players.get(1).getScore() + 3);
                 draw(players);
 
                 Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
@@ -509,13 +511,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
     public void scoreBoards() {
-        scoreBoard1 = players.get(0).getName() + " " + players.get(0).getName();
-
         //scoreBoard2 = players.get(1).getName();
+        String scoreBoard1 = " ";
         for (int i = 0; i < players.size(); i++) {
 
-
-            scoreBoard1 += " " + players.get(i).getName() + " Score: " + players.get(i).getScore();
+            scoreBoard1 += " " + players.get(i).getName() + " " + players.get(i).getScore();
             textViewScoreBoard.setText(scoreBoard1);
             if (i < 1)
                 scoreBoard1 += "\n";
