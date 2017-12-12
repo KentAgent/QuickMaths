@@ -61,6 +61,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
         player.setUid(user.getUid());
+        player.setName(user.getDisplayName());
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
         removeUser =findViewById(R.id.button2);
 
@@ -117,11 +118,6 @@ public class FindLobbyActivity extends AppCompatActivity {
 
         //player.setName(user.getDisplayName());
         //users.put(player.getName(), player);
-
-        
-
-
-
         //lobby.put(lobbySearch, users);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).updateChildren(users);
         mChildEventListener = new ChildEventListener() {

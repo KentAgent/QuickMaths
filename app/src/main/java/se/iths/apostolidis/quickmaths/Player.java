@@ -10,9 +10,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Player {
 
-    private String id;
-    public String name = "Hej";
+    public String name = "";
     private String uid;
+    private int ammountOfTurns;
+
+    public int getAmmountOfTurns() {
+        return ammountOfTurns;
+    }
+
+    public void setAmmountOfTurns(int ammountOfTurns) {
+        this.ammountOfTurns = ammountOfTurns;
+    }
+
     private int gold, score;
     private int posX, posY;
     private int lastThrownDie;
@@ -20,12 +29,33 @@ public class Player {
     private Bitmap avatar;
     private FirebaseUser fbUser;
 
-    public Player() {
+
+    public Player(){
+
     }
 
     public Player(FirebaseUser user) {
         this.fbUser = user;
 
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+    public Player(int coordinateIndex, int gold, int lastThrownDie, String name, int posX, int posY, int score, String uid) {
+        this.name = name;
+        this.uid = uid;
+        this.gold = gold;
+        this.score = score;
+        this.posX = posX;
+        this.posY = posY;
+        this.lastThrownDie = lastThrownDie;
+        this.coordinateIndex = coordinateIndex;
     }
 
     public FirebaseUser getFbUser() {
@@ -71,15 +101,6 @@ public class Player {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
