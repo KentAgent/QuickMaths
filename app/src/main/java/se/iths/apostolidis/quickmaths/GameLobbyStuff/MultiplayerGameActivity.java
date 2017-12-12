@@ -259,15 +259,18 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
 
-                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getRef().getKey());
+                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getKey());
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 dataSnapshot.getRef().getKey();
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot);
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
 
+                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+
+                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
             }
 
             @Override
@@ -286,7 +289,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
 
 
 
