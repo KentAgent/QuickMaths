@@ -173,6 +173,8 @@ public class GameActivity extends AppCompatActivity {
         String category = randomCategoryStringsOffline.get(player.getCoordinateIndex());
         getQuestionOffline(category);
 
+
+
     }
 
 
@@ -203,6 +205,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
+    public void checkIfWinner(){
+        if (playersOffline.get(playerTurnIndexOffline).getCoordinateIndex() >= (assetCoordinatesOffline.length - 1)) {
+            wonGameOffline();
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -231,8 +238,7 @@ public class GameActivity extends AppCompatActivity {
 
             }
         }, 3000);
-
-
+        checkIfWinner();
     }
 
 
@@ -241,8 +247,8 @@ public class GameActivity extends AppCompatActivity {
 
         for (int i = 0; i < playersOffline.get(playerTurnIndexOffline).getLastThrownDie(); i++) {
 
-            playersOffline.get(playerTurnIndexOffline).setPos(assetCoordinatesOffline[playersOffline.
-                            get(playerTurnIndexOffline).getCoordinateIndex() - 1].x,
+            playersOffline.get(playerTurnIndexOffline).setPos(assetCoordinatesOffline
+                            [playersOffline.get(playerTurnIndexOffline).getCoordinateIndex() - 1].x,
                     assetCoordinatesOffline[playersOffline.get(playerTurnIndexOffline).getCoordinateIndex() - 1].y);
             playersOffline.get(playerTurnIndexOffline).setCoordinateIndex(playersOffline.get(playerTurnIndexOffline).getCoordinateIndex() - 1);
 
@@ -257,6 +263,15 @@ public class GameActivity extends AppCompatActivity {
 
     // OFFLINE
     private void movePlayerOffline(Player player, int steps) {
+        Log.d("Wille", "movePlayerOffline Steps: " + steps);
+        if ((steps + player.getCoordinateIndex()) >= assetCoordinatesOffline.length){
+            steps = (assetCoordinatesOffline.length - player.getCoordinateIndex() - 1);
+            player.setLastThrownDie(steps);
+
+            Log.d("Wille", "movePlayerOffline assetCoordinate len: " + assetCoordinatesOffline.length);
+            Log.d("Wille", "movePlayerOffline coordinateindex: " + player.getCoordinateIndex());
+            Log.d("Wille", "movePlayerOffline Steps: " + steps);
+        }
 
         for (int i = 0; i < steps; i++) {
 
@@ -265,10 +280,6 @@ public class GameActivity extends AppCompatActivity {
             player.setCoordinateIndex(player.getCoordinateIndex() + 1);
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
-            if (player.getCoordinateIndex() >= assetCoordinatesOffline.length) {
-                wonGameOffline();
-                break;
-            }
         }
 
         upDateOffline(playersOffline);
@@ -277,7 +288,7 @@ public class GameActivity extends AppCompatActivity {
 
     //OFFLINE ------
     private void wonGameOffline() {
-
+        Log.d("Wille", "WONGAME!!!");
     }
 
 
