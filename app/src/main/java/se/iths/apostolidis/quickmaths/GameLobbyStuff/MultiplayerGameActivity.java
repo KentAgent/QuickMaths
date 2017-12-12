@@ -290,9 +290,10 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
                 players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
                 players.get(1).setScore(players.get(1).getScore() + 3);
+                players.get(1).setAmmountOfTurns((((Long) dataSnapshot.getValue()).intValue()));
                 draw(players);
 
-                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
+                Log.d("Bror2", "Player 1 Ammount of turns :" + players.get(1).getAmmountOfTurns());
             }
 
             @Override
@@ -339,8 +340,13 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
+
+
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
         getQuestion(category);
+        players.get(0).setAmmountOfTurns((players.get(0).getAmmountOfTurns()) + 1);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(user.getUid()).child("ammountOfTurns").setValue(players.get(0).getAmmountOfTurns());
+
     }
 
 
