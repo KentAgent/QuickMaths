@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class QuestionActivity extends AppCompatActivity {
     Intent returnIntent;
     private Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
     private TextView textViewQuestion;
-    private TextView textViewCorrectAnswer;
+    private ImageView viewCorrectAnswer;
+    private ImageView viewWrongAnswer;
     private DBHelper database;
     private String correctAnswer;
     private RandomHelper randomHelper = new RandomHelper();
@@ -123,9 +125,8 @@ public class QuestionActivity extends AppCompatActivity {
         if (guess.equals(correctAnswer)){
             result = true;
 
-            textViewCorrectAnswer.setText("You're right, bastard");
             player.addScore(3);
-            textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+            viewCorrectAnswer.setVisibility(TextView.VISIBLE);
             if (potentialWinner)
                 setWinner = true;
             Log.d("Grekolas", "Potential Winner: " + potentialWinner);
@@ -133,6 +134,7 @@ public class QuestionActivity extends AppCompatActivity {
             getQuestionIntent(result, setWinner);
         } else {
             setResult(Activity.RESULT_CANCELED, returnIntent);
+            viewWrongAnswer.setVisibility(View.VISIBLE);
             finish();
 
         }
@@ -146,11 +148,13 @@ public class QuestionActivity extends AppCompatActivity {
         btnAnswer2 = findViewById(R.id.buttonAnswer2);
         btnAnswer3 = findViewById(R.id.buttonAnswer3);
         btnAnswer4 = findViewById(R.id.buttonAnswer4);
-        textViewCorrectAnswer = findViewById(R.id.textViewIfCorrectAnswer);
+        viewCorrectAnswer = findViewById(R.id.imageViewCorrectAnswer);
+        viewWrongAnswer = findViewById(R.id.imageViewWrongAnswer);
     }
     public void onClickNewQuestion(View v){
         setQuestion();
-        textViewCorrectAnswer.setVisibility(TextView.INVISIBLE);
+        viewCorrectAnswer.setVisibility(TextView.INVISIBLE);
+        viewWrongAnswer.setVisibility(View.INVISIBLE);
         newQuestion.setVisibility(View.INVISIBLE);
 
     }

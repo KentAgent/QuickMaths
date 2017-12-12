@@ -9,35 +9,43 @@
     tools:layout_editor_absoluteY="25dp">
 
     <CheckBox
-        android:id="@+id/checkboxHistory"
+        android:id="@+id/checkboxIths"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
+        android:text="@string/iths"
+        android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkboxMusic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/checkboxMusic" />
 
     <CheckBox
-        android:id="@+id/checkboxGeography"
+        android:id="@+id/checkboxScience"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
+        android:text="@string/c_science"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkboxMath"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/checkboxMath" />
 
     <CheckBox
         android:id="@+id/checkboxEsport"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
@@ -45,14 +53,16 @@
         android:text="@string/c_esport"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/checkboxMusic"
+        app:layout_constraintEnd_toStartOf="@+id/checkboxRandom"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxMusic" />
 
     <CheckBox
         android:id="@+id/checkboxRandom"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
@@ -60,13 +70,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkboxEsport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/checkboxEsport" />
 
     <CheckBox
         android:id="@+id/checkboxSport"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
@@ -74,12 +86,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkboxHumor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/checkboxHumor" />
 
     <CheckBox
         android:id="@+id/checkboxFilm"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
@@ -87,14 +102,16 @@
         android:text="@string/c_film"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/checkboxMath"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxMath" />
 
     <CheckBox
         android:id="@+id/checkboxHumor"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
@@ -102,6 +119,8 @@
         android:text="@string/c_humor"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/checkboxSport"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,19 +128,25 @@
         android:id="@+id/checkboxMath"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_edges_button"
+        android:background="@drawable/rounded_edges_scoreboard"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
+        android:text="TBA"
+        android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/checkboxEsport"
+        app:layout_constraintEnd_toStartOf="@+id/checkboxScience"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxEsport" />
 
     <CheckBox
         android:id="@+id/checkboxMusic"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
@@ -129,7 +154,9 @@
         android:text="@string/c_music"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/checkboxHumor"
+        app:layout_constraintEnd_toStartOf="@+id/checkboxIths"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxHumor" />
 
 
@@ -137,6 +164,7 @@
         android:id="@+id/buttonSelectAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
@@ -145,14 +173,16 @@
         android:text="@string/button_select_all"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/checkboxFilm"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSelectNone"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxFilm" />
 
     <Button
         android:id="@+id/buttonSelectNone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:onClick="onClickSelectNone"
@@ -161,6 +191,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelectAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonSelectAll" />
 
     <ImageButton
@@ -170,10 +202,10 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/circle_background"
+        android:contentDescription="@string/move_forward"
         android:onClick="onClickForward"
         android:padding="15dp"
         android:rotation="180"
-        android:contentDescription="@string/move_forward"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
@@ -185,8 +217,8 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/circle_background"
-        android:onClick="onClickGoBack"
         android:contentDescription="@string/move_backwards"
+        android:onClick="onClickGoBack"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
