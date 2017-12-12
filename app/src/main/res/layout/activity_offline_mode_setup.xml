@@ -9,13 +9,12 @@
 
     <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
         android:id="@+id/number_picker_horizontal"
-        android:layout_width="64dp"
-        android:layout_height="37dp"
+        android:layout_width="78dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickChangePlayers"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
+
         android:padding="8dp"
         app:layout_constraintStart_toEndOf="@+id/textViewNumberOfPlayers"
         app:layout_constraintTop_toTopOf="@+id/textViewNumberOfPlayers"
@@ -45,12 +44,12 @@
         android:id="@+id/textViewPlayer1Name"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="176dp"
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
-        android:text="@string/player1"
+        android:hint="@string/player1"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +63,7 @@
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
-        android:text="@string/player2"
+        android:hint="@string/player2"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/textViewPlayer1Name"
         app:layout_constraintTop_toBottomOf="@+id/textViewPlayer1Name" />
@@ -77,7 +76,7 @@
         android:background="@drawable/rounded_edges_button"
         android:fontFamily="@font/indie_flower"
         android:padding="8dp"
-        android:text="@string/player4"
+        android:hint="@string/player4"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/textViewPlayer3Name"
         app:layout_constraintTop_toBottomOf="@+id/textViewPlayer3Name" />
@@ -97,66 +96,66 @@
 
     <EditText
         android:id="@+id/editTextNamePlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/rounded_edges_button"
         android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:hint="@string/name"
+        android:hint="@string/player1_whole"
         android:inputType="textPersonName"
+        android:maxLength="15"
+        android:maxLines="1"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer1Name"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer1Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/rounded_edges_button"
         android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:hint="@string/name"
+        android:hint="@string/player2_whole"
         android:inputType="textPersonName"
+        android:maxLength="15"
+        android:maxLines="1"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer2Name"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer2Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/rounded_edges_button"
         android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:hint="@string/name"
+        android:hint="@string/player3_whole"
         android:inputType="textPersonName"
+        android:maxLength="15"
+        android:maxLines="1"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer3Name"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer3Name" />
 
     <EditText
         android:id="@+id/editTextNamePlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/rounded_edges_button"
         android:ems="10"
         android:fontFamily="@font/indie_flower"
-        android:hint="@string/name"
+        android:hint="@string/player4_whole"
         android:inputType="textPersonName"
+        android:maxLength="15"
+        android:maxLines="1"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPlayer4Name"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlayer4Name" />
 
     <ImageButton
@@ -187,5 +186,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageViewP1OfflineAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/player_1_avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNamePlayer1"
+        app:layout_constraintStart_toEndOf="@+id/editTextNamePlayer1"
+        app:srcCompat="@drawable/player1" />
+
+    <ImageView
+        android:id="@+id/imageViewP2OfflineAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/player_2_avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNamePlayer2"
+        app:layout_constraintStart_toEndOf="@+id/editTextNamePlayer2"
+        app:srcCompat="@drawable/player2" />
+
+    <ImageView
+        android:id="@+id/imageViewP3OfflineAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/player_3_avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNamePlayer3"
+        app:layout_constraintStart_toEndOf="@+id/editTextNamePlayer3"
+        app:srcCompat="@drawable/player3" />
+
+    <ImageView
+        android:id="@+id/imageViewP4OfflineAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/player_4_avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNamePlayer4"
+        app:layout_constraintStart_toEndOf="@+id/editTextNamePlayer4"
+        app:srcCompat="@drawable/player4" />
 
 </android.support.constraint.ConstraintLayout>

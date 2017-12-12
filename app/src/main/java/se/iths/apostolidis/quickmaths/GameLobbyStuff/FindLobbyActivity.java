@@ -117,11 +117,6 @@ public class FindLobbyActivity extends AppCompatActivity {
 
         //player.setName(user.getDisplayName());
         //users.put(player.getName(), player);
-
-        
-
-
-
         //lobby.put(lobbySearch, users);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbySearch).updateChildren(users);
         mChildEventListener = new ChildEventListener() {

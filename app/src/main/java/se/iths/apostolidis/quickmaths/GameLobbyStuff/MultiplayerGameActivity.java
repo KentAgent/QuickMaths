@@ -65,7 +65,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     Canvas canvas;
     private int playerTurnIndex;
     private String TAG = "Wille";
-
+    private Player player = new Player();
 
     ChildEventListener mChildEventListener;
     private FirebaseDatabase mFirebaseDatabase;
@@ -212,7 +212,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         Map<String, Object> users = new HashMap<>();
         users.put(String.valueOf(players.get(0).getCoordinateIndex()), players.get(0));
 
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("posX");
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0));
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -245,9 +245,54 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
 
-    public void draw(ArrayList<Player> players) {
-        //clearMap();
+    public void draw(final ArrayList<Player> players) {
+        Map<String, Object> users = new HashMap<>();
+       // users.put(player.getUid(), player);
         clearPlayers();
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                dataSnapshot.getValue();
+
+                dataSnapshot.child("coordinateIndex").getRef().getKey().equals(player.getCoordinateIndex());
+
+
+
+                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getRef().getKey());
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                dataSnapshot.getRef().getKey();
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+
+        };
+        //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
+
+
+
+        Log.d("kakan", "robin :"+ playerUids.get(0));
+        Log.d("kakan", "wille :" + playerUids.get(1));
+        Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("xpFrFG3RYigTGCZihA8vlfNAZJu2").getKey());
 
         for (int i = 0; i < players.size(); i++) {
 
@@ -270,9 +315,10 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             canvas.save();
             canvas.drawBitmap(player.getAvatar(), player.getPosX(), player.getPosY(), null);
             canvas.restore();
-            Log.d("Wille", "Player id: " + String.valueOf(player.getId()));
+          //  Log.d("Wille", "Player id: " + String.valueOf(player.getId()));
         }
         playerTurnIndex = 0;
+        players.get(0).setName(user.getDisplayName());
         //startGame(players);
     }
 
