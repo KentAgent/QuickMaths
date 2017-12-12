@@ -511,11 +511,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
     public void scoreBoards() {
-        //scoreBoard2 = players.get(1).getName();
+        scoreBoard2 = players.get(1).getName();
         String scoreBoard1 = " ";
         for (int i = 0; i < players.size(); i++) {
 
-            scoreBoard1 += " " + players.get(i).getName() + " " + players.get(i).getScore();
+            scoreBoard1 += " " + playerNames.get(i) + " " + players.get(i).getScore();
             textViewScoreBoard.setText(scoreBoard1);
             if (i < 1)
                 scoreBoard1 += "\n";

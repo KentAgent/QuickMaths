@@ -10,8 +10,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Player {
 
-    public String name = "Hej";
+    public String name = "";
     private String uid;
+    private int ammountOfTurns;
+
+    public int getAmmountOfTurns() {
+        return ammountOfTurns;
+    }
+
+    public void setAmmountOfTurns(int ammountOfTurns) {
+        this.ammountOfTurns = ammountOfTurns;
+    }
+
     private int gold, score;
     private int posX, posY;
     private int lastThrownDie;

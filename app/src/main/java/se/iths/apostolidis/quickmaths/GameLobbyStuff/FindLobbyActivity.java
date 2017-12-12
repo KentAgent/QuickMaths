@@ -61,6 +61,7 @@ public class FindLobbyActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
         player.setUid(user.getUid());
+        player.setName(user.getDisplayName());
         mMessagesDatabaseRefrence = mFirebaseDatabase.getReference();
         removeUser =findViewById(R.id.button2);
 
