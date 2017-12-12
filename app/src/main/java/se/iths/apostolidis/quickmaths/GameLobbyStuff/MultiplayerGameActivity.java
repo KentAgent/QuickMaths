@@ -245,7 +245,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
 
-    public void draw(ArrayList<Player> players) {
+    public void draw(final ArrayList<Player> players) {
         Map<String, Object> users = new HashMap<>();
        // users.put(player.getUid(), player);
         clearPlayers();
@@ -255,23 +255,18 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
                 dataSnapshot.getValue();
 
-                dataSnapshot.child("coordinateIndex").getRef().getKey();
+                dataSnapshot.child("coordinateIndex").getRef().getKey().equals(player.getCoordinateIndex());
 
 
 
-
-                Log.d("kille", "123: " + dataSnapshot.child("coordinateIndex").getValue());
-                List<Player> list = new ArrayList<>();
-
-
-
+                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getRef().getKey());
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 dataSnapshot.getRef().getKey();
-                Log.d("kakan", "124: " + dataSnapshot.getRef().getKey());
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot);
 
             }
 
@@ -291,7 +286,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("xpFrFG3RYigTGCZihA8vlfNAZJu2").addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
 
 
 
