@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Player {
 
-    public String name = "Hej";
+    public String name = "Wille";
     private String uid;
     private int gold, score;
     private int posX, posY;
