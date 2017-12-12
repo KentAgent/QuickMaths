@@ -411,7 +411,7 @@ public class GameActivity extends AppCompatActivity {
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
-        //hashMapAssets.put("Maths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
+        hashMapAssets.put("Iths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
 
@@ -440,6 +440,7 @@ public class GameActivity extends AppCompatActivity {
         stringGenres.add("Film");
         stringGenres.add("Vetenskap");
         stringGenres.add("Humor");
+        stringGenres.add("Iths");
 
 //        for (int i = 0; i < chosenCategories.size(); i++) {
 //
