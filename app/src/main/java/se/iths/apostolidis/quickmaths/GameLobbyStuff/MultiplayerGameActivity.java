@@ -517,7 +517,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
     public void scoreBoards() {
-        //scoreBoard2 = players.get(1).getName();
+        scoreBoard2 = players.get(1).getName();
         String scoreBoard1 = " ";
         for (int i = 0; i < players.size(); i++) {
 
