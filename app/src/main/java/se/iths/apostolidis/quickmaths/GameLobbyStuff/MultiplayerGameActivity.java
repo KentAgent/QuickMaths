@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -267,6 +268,8 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         }
     }
+
+
     public void attachDB() {
 
 
@@ -285,15 +288,18 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                dataSnapshot.getRef().getKey();
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                if (dataSnapshot.getKey().equals("ammountOfTurns")){
+                    players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
+                    Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                } else if (dataSnapshot.getKey().equals("coordinateIndex")){
+                    players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                    players.get(1).setScore(players.get(1).getScore() + 3);
+                    Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+                }
 
-                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
-                players.get(1).setScore(players.get(1).getScore() + 3);
-                players.get(1).setAmmountOfTurns((((Long) dataSnapshot.getValue()).intValue()));
                 draw(players);
-
-                Log.d("Bror2", "Player 1 Ammount of turns :" + players.get(1).getAmmountOfTurns());
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
             }
 
             @Override
@@ -312,7 +318,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
 
     }
 
@@ -346,7 +352,6 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         getQuestion(category);
         players.get(0).setAmmountOfTurns((players.get(0).getAmmountOfTurns()) + 1);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(user.getUid()).child("ammountOfTurns").setValue(players.get(0).getAmmountOfTurns());
-
     }
 
 
@@ -449,6 +454,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
     private void movePlayer(Player player, int steps) {
+
+        if ((steps + player.getCoordinateIndex()) > assetCoordinates.length){
+            steps = assetCoordinates.length - player.getCoordinateIndex();
+            player.setLastThrownDie(steps);
+        }
 
         for (int i = 0; i < steps; i++) {
 

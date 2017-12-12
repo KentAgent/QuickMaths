@@ -879,6 +879,7 @@ public class GameActivity extends AppCompatActivity {
             Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
 
             if (player.getCoordinateIndex() >= assetCoordinates.length) {
+
                 wonGame();
                 break;
             }
@@ -894,8 +895,12 @@ public class GameActivity extends AppCompatActivity {
 
         finish();
 
-    }
+        Intent intent = new Intent(this, ResultActivity.class);
 
+        startActivity(intent);
+
+
+    }
 
     @NonNull
     private Player setPlayer(ArrayList<Player> players, int i) {
