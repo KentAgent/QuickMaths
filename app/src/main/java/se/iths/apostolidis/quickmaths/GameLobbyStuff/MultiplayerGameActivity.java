@@ -288,19 +288,29 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                if (dataSnapshot.getKey().equals("ammountOfTurns")){
-                    players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
-                    Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
-                } else if (dataSnapshot.getKey().equals("coordinateIndex")){
-                    players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
-                    players.get(1).setScore(players.get(1).getScore() + 3);
-                    Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+
+                for (int i = 0; i < playerUids.size(); i++) {
+                    if (playerUids.get(i).equals(mMessagesDatabaseRefrence.child(lobbyID).getRef())) {
+                        Log.d("bror", "Random player UID: " + mMessagesDatabaseRefrence.child(lobbyID).getRef());
+                    }
+
+                    Log.d("bror", "Random player UID ON THE OUTSIDE: " + mMessagesDatabaseRefrence.child(lobbyID).getRef());
                 }
 
-                draw(players);
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
-                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
-            }
+                if (dataSnapshot.getKey().equals("ammountOfTurns")) {
+                        players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
+                        Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                    } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
+                        players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                        players.get(1).setScore(players.get(1).getScore() + 3);
+                        Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+                    }
+
+                    draw(players);
+                    Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                    Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
+                }
+
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
