@@ -319,7 +319,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 players.get(playerTurnIndex).addScore(3);
-                mMessagesDatabaseRefrence.child("Lobbies").child("hh").child(user.getUid()).child("coordinateIndex").setValue(players.get(0).getCoordinateIndex());
+                mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(user.getUid()).child("coordinateIndex").setValue(players.get(0).getCoordinateIndex());
                 updateScoreBoard();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -454,7 +454,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     }
 
     public void scoreBoards() {
-        scoreBoard1 = players.get(0).getName() + " " + players.get(1).getName();
+        scoreBoard1 = players.get(0).getName() + " " + players.get(0).getName();
 
         //scoreBoard2 = players.get(1).getName();
         for (int i = 0; i < players.size(); i++) {
