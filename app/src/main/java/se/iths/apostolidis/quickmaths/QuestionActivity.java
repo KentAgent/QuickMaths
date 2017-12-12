@@ -38,6 +38,8 @@ public class QuestionActivity extends AppCompatActivity {
     private Button newQuestion;
     private Quiz quiz = new Quiz();
     private CountDownTimer countDownTimer;
+    private boolean potentialWinner;
+    private boolean setWinner = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,9 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
         newQuestion = findViewById(R.id.buttonNewQuestion);
         genre = getIntent().getExtras().getString("Category");
+        potentialWinner = getIntent().getExtras().getBoolean("PotentialWinner");
         Log.d("Wille", genre);
+        Log.d("Grekolas", "Potential Winner: " + potentialWinner);
         importViewElemets();
         setQuestion();
         countdown = findViewById(R.id.textViewCountdown);
@@ -82,14 +86,15 @@ public class QuestionActivity extends AppCompatActivity {
 
         correctAnswer = quiz.getCorrectAnswer();
 
-
         usedQuestions.add(database.getQuizCategory(genre).get(index).getQuestion());
 
     }
 
-    public void getQuestionIntent(Boolean b){
+    public void getQuestionIntent(Boolean result, Boolean setWinner){
         returnIntent = new Intent();
-        returnIntent.putExtra("result", b);
+        returnIntent.putExtra("result", result);
+        returnIntent.putExtra("setWinner", setWinner);
+        Log.d("Grekolas", "setWinner returnIntent: " + setWinner);
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
 
@@ -115,10 +120,15 @@ public class QuestionActivity extends AppCompatActivity {
     public void rightOrWrongAnswer (String guess){
         if (guess.equals(correctAnswer)){
             result = true;
-            getQuestionIntent(result);
+
             textViewCorrectAnswer.setText("You're right, bastard");
             player.addScore(3);
             textViewCorrectAnswer.setVisibility(TextView.VISIBLE);
+            if (potentialWinner)
+                setWinner = true;
+            Log.d("Grekolas", "Potential Winner: " + potentialWinner);
+            Log.d("Grekolas", "Set Winner: " + setWinner);
+            getQuestionIntent(result, setWinner);
         } else {
             setResult(Activity.RESULT_CANCELED, returnIntent);
             finish();

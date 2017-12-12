@@ -102,6 +102,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/die1" />
 
+    <TextView
+        android:id="@+id/textViewWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/finger_paint"
+        android:text="You're A Winner MF!"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
 

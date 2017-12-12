@@ -39,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView turnTrackerOffline;
     private MPhotoView gridMPhotoViewOffline;
     private MPhotoView mapOffline;
-    private static int numOfCoordinatesOffline = 37;
+    private static int numOfCoordinatesOffline = 41;
     private Point[] assetCoordinatesOffline = new Point[numOfCoordinatesOffline];
     private GameEngineSinglePlayer engineOffline;
     private HashMap<String, Bitmap> hashMapAssetsOffline;
@@ -55,8 +55,9 @@ public class GameActivity extends AppCompatActivity {
     private Bundle bundleOffline;
     private List<String> chosenCategoriesOffline;
     private ImageView die;
-
-
+    private boolean wonTheGame = false;
+    private boolean potentialWinner = false;
+    private TextView displayWinner;
 
 
 
@@ -74,6 +75,7 @@ public class GameActivity extends AppCompatActivity {
         buttonRollDiceOffline = findViewById(R.id.buttonRollDice);
         textViewScoreBoardOffline = findViewById(R.id.textViewScoreBoard);
         textViewScoreBoardExtraOffline = findViewById(R.id.textViewScoreBoardExtra);
+        displayWinner = findViewById(R.id.textViewWinner);
 
         die = findViewById(R.id.imageViewDie);
         die.setVisibility(View.INVISIBLE);
@@ -197,6 +199,7 @@ public class GameActivity extends AppCompatActivity {
         //startActivityForResult(intent, 1);
         Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra("Category", category);
+        intent.putExtra("PotentialWinner", potentialWinner);
         startActivityForResult(intent, 1);
 
 
@@ -211,6 +214,8 @@ public class GameActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 playersOffline.get(playerTurnIndexOffline).addScore(3);
                 updateScoreBoardOffline();
+                if (bundleOffline.getBoolean("setWinner") == true);
+                wonGameOffline();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 moveBackPlayerOffline();
@@ -259,17 +264,32 @@ public class GameActivity extends AppCompatActivity {
     // OFFLINE
     private void movePlayerOffline(Player player, int steps) {
 
+
+
         for (int i = 0; i < steps; i++) {
 
-            player.setPos(assetCoordinatesOffline[player.getCoordinateIndex() + 1].x,
-                    assetCoordinatesOffline[player.getCoordinateIndex() + 1].y);
-            player.setCoordinateIndex(player.getCoordinateIndex() + 1);
-            Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
+            /*if ((steps + player.getCoordinateIndex()) > assetCoordinatesOffline.length){
+                steps = assetCoordinatesOffline.length - player.getCoordinateIndex();
+                player.setLastThrownDie(steps);
+            }*/
 
-            if (player.getCoordinateIndex() >= assetCoordinatesOffline.length) {
+            if (player.getCoordinateIndex() < 36) {
+                player.setPos(assetCoordinatesOffline[player.getCoordinateIndex() + 1].x,
+                        assetCoordinatesOffline[player.getCoordinateIndex() + 1].y);
+                player.setCoordinateIndex(player.getCoordinateIndex() + 1);
+                Log.d("Wille", "Player Coordinate X :" + player.getPosX() + " Y : " + player.getPosY());
+            }
+
+            /*if (player.getCoordinateIndex() >= 36)
+                player.setCoordinateIndex(37);*/
+
+            if (player.getCoordinateIndex() >= 36)
+                potentialWinner = true;
+
+            /*if (player.getCoordinateIndex() >= assetCoordinatesOffline.length && wonTheGame) {
                 wonGameOffline();
                 break;
-            }
+            }*/
         }
 
         upDateOffline(playersOffline);
@@ -278,7 +298,8 @@ public class GameActivity extends AppCompatActivity {
 
     //OFFLINE ------
     private void wonGameOffline() {
-
+        displayWinner.setVisibility(View.VISIBLE);
+        displayWinner.setText(playersNamesOffline.get(playerTurnIndexOffline) + " IS THE SUPREME LEADER!");
     }
 
 
@@ -544,6 +565,12 @@ public class GameActivity extends AppCompatActivity {
             posList[34] = (new Point(600, 1680));
             posList[35] = (new Point(480, 1660));
             posList[36] = (new Point(380, 1600));
+
+            //Extra pos if you get out of bounds
+            posList[37] = (new Point(0,0));
+            posList[38] = (new Point(0, 10));
+            posList[39] = (new Point(0, 20));
+            posList[40] = (new Point(0, 30));
 
         }
 
