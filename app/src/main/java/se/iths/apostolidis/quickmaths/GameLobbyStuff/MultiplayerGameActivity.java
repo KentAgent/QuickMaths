@@ -144,7 +144,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         clearMap();
         gameSetUp(gridMPhotoView);
         updateScoreBoard();
-
+        attachDB();
     }
 
 
@@ -249,6 +249,26 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         Map<String, Object> users = new HashMap<>();
        // users.put(player.getUid(), player);
         clearPlayers();
+
+
+
+        Log.d("kakan", "robin :"+ playerUids.get(0));
+        Log.d("kakan", "wille :" + playerUids.get(1));
+        Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("xpFrFG3RYigTGCZihA8vlfNAZJu2").getKey());
+
+        for (int i = 0; i < players.size(); i++) {
+
+            players.get(i).setPos(assetCoordinates[players.get(i).getCoordinateIndex()].x, assetCoordinates[players.get(i).getCoordinateIndex()].y);
+
+            canvas.save();
+            canvas.drawBitmap(players.get(i).getAvatar(), players.get(i).getPosX() + (i * 50), players.get(i).getPosY(), null);
+            canvas.restore();
+
+        }
+    }
+    public void attachDB() {
+
+
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -258,16 +278,19 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 dataSnapshot.child("coordinateIndex").getRef().getKey().equals(player.getCoordinateIndex());
 
 
-
-                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getRef().getKey());
+                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getKey());
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 dataSnapshot.getRef().getKey();
-                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot);
+                Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
 
+                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                draw(players);
+
+                Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
             }
 
             @Override
@@ -286,23 +309,9 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
 
-
-
-        Log.d("kakan", "robin :"+ playerUids.get(0));
-        Log.d("kakan", "wille :" + playerUids.get(1));
-        Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child("xpFrFG3RYigTGCZihA8vlfNAZJu2").getKey());
-
-        for (int i = 0; i < players.size(); i++) {
-
-            canvas.save();
-            canvas.drawBitmap(players.get(i).getAvatar(), players.get(i).getPosX() + (i * 50), players.get(i).getPosY(), null);
-            canvas.restore();
-
-        }
     }
-
 
     public void gameSetUp(MPhotoView view) {
 
@@ -372,7 +381,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 moveBackPlayer();
             }
         }
-        playerTurnIndex++;
+        //playerTurnIndex++;
         if (playerTurnIndex == numberOfPlayer) {
             playerTurnIndex = 0;
         }
