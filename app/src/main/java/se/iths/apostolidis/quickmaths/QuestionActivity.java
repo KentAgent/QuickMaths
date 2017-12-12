@@ -48,6 +48,8 @@ public class QuestionActivity extends AppCompatActivity {
         newQuestion = findViewById(R.id.buttonNewQuestion);
         genre = getIntent().getExtras().getString("Category");
         potentialWinner = getIntent().getExtras().getBoolean("PotentialWinner");
+        potentialWinner = false;
+        setWinner = false;
         Log.d("Wille", genre);
         Log.d("Grekolas", "Potential Winner: " + potentialWinner);
         importViewElemets();

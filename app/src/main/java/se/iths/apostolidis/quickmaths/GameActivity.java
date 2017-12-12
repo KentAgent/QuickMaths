@@ -214,6 +214,7 @@ public class GameActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 playersOffline.get(playerTurnIndexOffline).addScore(3);
                 updateScoreBoardOffline();
+                Log.d("Grekolas", "Bundle Value setWinner: " + bundleOffline.getBoolean("setWinner"));
                 if (bundleOffline.getBoolean("setWinner") == true);
                 wonGameOffline();
             }
