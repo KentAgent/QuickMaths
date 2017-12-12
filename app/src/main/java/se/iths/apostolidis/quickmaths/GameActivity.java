@@ -167,13 +167,12 @@ public class GameActivity extends AppCompatActivity {
 
     // OFFLINE
     public void playerTurnOffline(Player player) {
-        player.setLastThrownDie(rollDiceOffline());
-        rollDieAnimation();
+        int dieValue = rollDice();
+        player.setLastThrownDie(dieValue);
+        rollDieAnimation(dieValue);
         movePlayerOffline(player, player.getLastThrownDie());
         String category = randomCategoryStringsOffline.get(player.getCoordinateIndex());
         getQuestionOffline(category);
-
-
 
     }
 
@@ -288,7 +287,18 @@ public class GameActivity extends AppCompatActivity {
 
     //OFFLINE ------
     private void wonGameOffline() {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+
+        for (int i = 0; i < playersOffline.size(); i++) {
+            scoreList.add(playersOffline.get(i).getScore());
+        }
+
         Log.d("Wille", "WONGAME!!!");
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("listOfPlayers", playersNamesOffline);
+        Log.d("Grekolas", "Before put playersNamesOffline: " + playersNamesOffline);
+        intent.putExtra("scoreList", scoreList);
+        startActivity(intent);
     }
 
 
@@ -410,7 +420,7 @@ public class GameActivity extends AppCompatActivity {
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
-        //hashMapAssets.put("Maths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
+        hashMapAssets.put("Iths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         //hashMapAssets.put("Geography", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_geography));
 
@@ -439,6 +449,7 @@ public class GameActivity extends AppCompatActivity {
         stringGenres.add("Film");
         stringGenres.add("Vetenskap");
         stringGenres.add("Humor");
+        stringGenres.add("Iths");
 
 //        for (int i = 0; i < chosenCategories.size(); i++) {
 //
@@ -460,9 +471,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-     public void rollDieAnimation(){
+     public void rollDieAnimation(int dieValue){
 
-        int dieValue = rollDice();
      die.setVisibility(View.VISIBLE);
      if (dieValue == 1) {
          die.setImageResource(R.drawable.die1);

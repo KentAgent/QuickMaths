@@ -1,7 +1,6 @@
 package se.iths.apostolidis.quickmaths;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -71,6 +70,11 @@ public class OfflineModeSetupActivity extends AppCompatActivity {
         snp = findViewById(R.id.number_picker_horizontal);
 
 
+        //Set default value names for players
+        etP1Name.setText("Player1");
+        etP2Name.setText("Player2");
+        etP3Name.setText("Player3");
+        etP4Name.setText("Player4");
 
         //Skapar arrayer för Player-widgets
         textViewsPN[0] = tvP1Name;

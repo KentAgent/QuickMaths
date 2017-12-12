@@ -21,6 +21,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     CheckBox cFilm;
     CheckBox cVetenskap;
     CheckBox cHumor;
+    CheckBox cITHS;
     //CheckBox cEsport;
     //CheckBox cMath;
 
@@ -70,6 +71,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cFilm = findViewById(R.id.checkboxFilm);
         cVetenskap = findViewById(R.id.checkboxGeography);
         cHumor = findViewById(R.id.checkboxHumor);
+        cITHS = findViewById(R.id.checkboxHistory);
         //cEsport = findViewById(R.id.checkboxFilm);
         //cMath = findViewById(R.id.checkboxHumor);
     }
@@ -86,8 +88,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cFilm.setChecked(true);
         cVetenskap.setChecked(true);
         cHumor.setChecked(true);
-        //cRandom.setChecked(true);
+        cITHS.setChecked(true);
         //cMath.setChecked(true);
+        //cRandom.setChecked(true);
     }
     /**
      *  Unchecks all category boxes
@@ -102,6 +105,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         cFilm.setChecked(false);
         cVetenskap.setChecked(false);
         cHumor.setChecked(false);
+        cITHS.setChecked(false);
         //cRandom.setChecked(false);
         //cMath.setChecked(false);
     }
@@ -119,6 +123,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         booleanArrayCategories[4] = cFilm.isChecked();
         booleanArrayCategories[5] = cVetenskap.isChecked();
         booleanArrayCategories[6] = cHumor.isChecked();
+        booleanArrayCategories[7] = cITHS.isChecked();
         //booleanArrayCategories[7] = cRandom.isChecked();
         //booleanArrayCategories[8] = cMath.isChecked();
 
@@ -129,6 +134,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         stringArrayCategories[4] = "Film";
         stringArrayCategories[5] = "Vetenskap";
         stringArrayCategories[6] = "Humor";
+        stringArrayCategories[7] = "Iths";
         //stringArrayCategories[7] = "Random";
         //stringArrayCategories[8] = "Math";
 
