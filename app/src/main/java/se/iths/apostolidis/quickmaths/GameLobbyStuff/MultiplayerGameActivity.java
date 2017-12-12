@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -311,7 +312,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
 
     }
 
@@ -444,6 +445,11 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
     private void movePlayer(Player player, int steps) {
 
+        if ((steps + player.getCoordinateIndex()) > assetCoordinates.length){
+            steps = assetCoordinates.length - player.getCoordinateIndex();
+            player.setLastThrownDie(steps);
+        }
+
         for (int i = 0; i < steps; i++) {
 
             player.setPos(assetCoordinates[player.getCoordinateIndex() + 1].x, assetCoordinates[player.getCoordinateIndex() + 1].y);
@@ -515,7 +521,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         String scoreBoard1 = " ";
         for (int i = 0; i < players.size(); i++) {
 
-            scoreBoard1 += " " + players.get(i).getName() + " " + players.get(i).getScore();
+            scoreBoard1 += " " + playerNames.get(i) + " " + players.get(i).getScore();
             textViewScoreBoard.setText(scoreBoard1);
             if (i < 1)
                 scoreBoard1 += "\n";
