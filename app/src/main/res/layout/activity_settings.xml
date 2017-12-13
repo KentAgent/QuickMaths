@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.SettingsActivity"
-    android:background="@drawable/backgroundtrees">
+    android:background="@drawable/background4">
 
     <Button
         android:id="@+id/buttonChangeName"
