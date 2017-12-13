@@ -36,7 +36,7 @@ public class QuestionActivity extends AppCompatActivity {
     private Player player = new Player();
     private long timeLeft = 10000;
     private TextView countdown;
-    private int displayCountdown = 10;
+    private int displayCountdown = 15;
     private Button newQuestion;
     private Quiz quiz = new Quiz();
     private CountDownTimer countDownTimer;
@@ -58,7 +58,7 @@ public class QuestionActivity extends AppCompatActivity {
         setQuestion();
         countdown = findViewById(R.id.textViewCountdown);
 
-        countDownTimer = new CountDownTimer(10000,1000) {
+        countDownTimer = new CountDownTimer(15000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.d("Grekolas", "Countdown" + displayCountdown);
