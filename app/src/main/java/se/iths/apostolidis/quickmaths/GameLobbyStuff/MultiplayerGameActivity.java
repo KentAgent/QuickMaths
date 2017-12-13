@@ -282,33 +282,43 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 dataSnapshot.child("coordinateIndex").getRef().getKey().equals(player.getCoordinateIndex());
 
 
-                Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getKey());
+                //Log.d("bror", "DATASNAPSHOT!: " + dataSnapshot.getKey());
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                for (int i = 0; i < playerUids.size(); i++) {
+                            //Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
 
-                    if (playerUids.get(i).equals(mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey())) {
-                        Log.d("bror", "Random player UID: " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey());
+                    if (mMessagesDatabaseRefrence.child(lobbyID).child(players.get(1).getUid()).getKey().equals(playerUids.get(1))) {
+                        Log.d("bror", "Player UID if(1): " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(1).getUid()).getKey());
+
+
                         if (dataSnapshot.getKey().equals("ammountOfTurns")) {
+
+
                                 players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
-                                Log.d("bror", "Player AMOUNTOFTURNS: " + players.get(1).getAmmountOfTurns());
+                                Log.d("bror", "Player AMOUNTOFTURNS if (2): " + players.get(1).getAmmountOfTurns());
+
+
                             } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
+
+
                                 players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
                                 players.get(1).setScore(players.get(1).getScore() + 3);
-                                Log.d("Wille", "Player coordinateIndex: " + players.get(1).getCoordinateIndex());
+                                Log.d("bror", "Player coordinateIndex if (3): " + players.get(1).getCoordinateIndex());
+
+
                             }
 
                             draw(players);
-                            Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
-                            Log.d("Bror2", "Player 1 pos :" + players.get(1).getCoordinateIndex());
                         }
-                    }
+                            //Log.d("Bror", "Player pos :" + players.get(i).getCoordinateIndex());
 
-                    //Log.d("bror", "Random player UID ON THE OUTSIDE: " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(i).getUid()).getKey());
+                    Log.d("bror", "Player 1 index: " + players.get(0).getCoordinateIndex());
+                    Log.d("bror", "Player 2 index: " + players.get(1).getCoordinateIndex());
+
                 }
 
 
@@ -329,7 +339,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
 
     }
 
