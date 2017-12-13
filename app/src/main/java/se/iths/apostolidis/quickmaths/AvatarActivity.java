@@ -88,6 +88,7 @@ public void onClickSaveAvatar(View view) {
     RoundedBitmapDrawable roundAvatarImage = RoundedBitmapDrawableFactory.create(getResources(), avatarImage);
     roundAvatarImage.setCircular(true);
     saveAvatar.setImageDrawable(roundAvatarImage);
+    finish();
 }
 
 public int getSquareCropDimensionForBitmap(Bitmap bitmap){
