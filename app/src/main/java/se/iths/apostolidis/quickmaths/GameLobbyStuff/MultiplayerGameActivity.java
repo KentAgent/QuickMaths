@@ -326,15 +326,19 @@ public class MultiplayerGameActivity extends AppCompatActivity {
                 Log.d("bror", "Player 2 index: " + players.get(1).getCoordinateIndex());
 
 
-                if (players.get(0).getAmmountOfTurns() < players.get(1).getAmmountOfTurns()) {
+                if (players.get(0).getAmmountOfTurns() <= players.get(1).getAmmountOfTurns()) {
+                        Log.d("hund", "HEJHEJHEJHEJHEJ");
+                        turnTracker.setText("Your turn to play");
+                        turnTracker.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                turnTracker.setVisibility(View.INVISIBLE);
 
-                    buttonRollDice.setVisibility(View.VISIBLE);
-
-                }
+                            }
+                        }, 3000);
+                        buttonRollDice.setVisibility(View.VISIBLE);
+                    }
             }
-
-
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
@@ -381,10 +385,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         Log.d("hund", "player1 CI: " + players.get(0).getAmmountOfTurns());
         Log.d("hund", "player2 CI: " + players.get(1).getAmmountOfTurns());
-        if (players.get(0).getAmmountOfTurns() > players.get(1).getAmmountOfTurns()){
-            Log.d("hund", "HEJHEJHEJHEJHEJ");
-            buttonRollDice.setVisibility(View.INVISIBLE);
-        }
+
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
         getQuestion(category);
@@ -437,10 +438,9 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             playerTurnIndex = 0;
         }
 
-        die.setVisibility(View.INVISIBLE);
-        turnTracker.setVisibility(View.VISIBLE);
-
-        turnTracker.setText("Player " + (playerTurnIndex + 1) + " turn to play");
+        if (players.get(0).getAmmountOfTurns() > players.get(1).getAmmountOfTurns()){
+            Log.d("hund", "HEJHEJHEJHEJHEJ");
+        turnTracker.setText("Opponents turn to play");
         turnTracker.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -448,6 +448,13 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
             }
         }, 3000);
+
+            buttonRollDice.setVisibility(View.INVISIBLE);
+        }
+
+        die.setVisibility(View.INVISIBLE);
+        turnTracker.setVisibility(View.VISIBLE);
+
 
 
     }
