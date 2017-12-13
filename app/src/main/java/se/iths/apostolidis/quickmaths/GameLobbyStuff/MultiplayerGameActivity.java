@@ -178,8 +178,9 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         chosenCategories.add("Sport");
         chosenCategories.add("Random");
         chosenCategories.add("Film");
-        chosenCategories.add("Vetenskap");
+        chosenCategories.add("Science");
         chosenCategories.add("Humor");
+        chosenCategories.add("Iths");
     }
 
 
@@ -339,6 +340,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
+        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
 
     }
@@ -614,7 +616,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
         hashMapAssets.put("Random", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random));
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
-        hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
+        hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
         hashMapAssets.put("Iths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
         //hashMapAssets.put("Maths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
@@ -643,7 +645,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         stringGenres.add("Sport");
         stringGenres.add("Random");
         stringGenres.add("Film");
-        stringGenres.add("Vetenskap");
+        stringGenres.add("Science");
         stringGenres.add("Humor");
         stringGenres.add("Iths");
 
