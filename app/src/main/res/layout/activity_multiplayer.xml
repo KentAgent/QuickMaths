@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.MultiplayerActivity"
-    android:background="@drawable/backgroundlogin">
+    android:background="@drawable/background4">
 
     <ImageButton
         android:id="@+id/imageButtonBack"

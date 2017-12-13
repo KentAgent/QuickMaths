@@ -418,7 +418,7 @@ public class GameActivity extends AppCompatActivity {
         hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
         hashMapAssets.put("Random", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random));
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
-        hashMapAssets.put("Vetenskap", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
+        hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
         hashMapAssets.put("Humor", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_nature));
         hashMapAssets.put("Iths", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         //hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));

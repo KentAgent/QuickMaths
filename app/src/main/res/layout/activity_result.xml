@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="se.iths.apostolidis.quickmaths.ResultActivity"
-    android:background="@drawable/backgroundlogin75">
+    android:background="@drawable/background1">
 
     <TextView
         android:id="@+id/textViewScoreboardBanner"
