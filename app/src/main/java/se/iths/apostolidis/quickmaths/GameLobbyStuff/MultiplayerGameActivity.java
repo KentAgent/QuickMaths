@@ -175,7 +175,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
     private void setOnlineCateGories() {
         chosenCategories.add("E-Sport");
         chosenCategories.add("Musik");
-        chosenCategories.add("Sport");
+        //chosenCategories.add("Sport");
         chosenCategories.add("Random");
         chosenCategories.add("Film");
         chosenCategories.add("Science");
@@ -255,19 +255,21 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
 
 
+
         Log.d("kakan", "robin :"+ playerUids.get(0));
         Log.d("kakan", "wille :" + playerUids.get(1));
         Log.d("kakan", "3: " +mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).getKey());
 
-        for (int i = 0; i < players.size(); i++) {
 
+
+        for (int i = 0; i < players.size(); i++) {
             players.get(i).setPos(assetCoordinates[players.get(i).getCoordinateIndex()].x, assetCoordinates[players.get(i).getCoordinateIndex()].y);
 
             canvas.save();
             canvas.drawBitmap(players.get(i).getAvatar(), players.get(i).getPosX() + (i * 50), players.get(i).getPosY(), null);
             canvas.restore();
-
         }
+
     }
 
 
@@ -290,37 +292,46 @@ public class MultiplayerGameActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                            //Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
+                //Log.d("bror1", "ChildChanged Datasnapshot " + dataSnapshot.getValue());
 
-                    if (mMessagesDatabaseRefrence.child(lobbyID).child(players.get(1).getUid()).getKey().equals(playerUids.get(1))) {
-                        Log.d("bror", "Player UID if(1): " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(1).getUid()).getKey());
-
-
-                        if (dataSnapshot.getKey().equals("ammountOfTurns")) {
+                if (mMessagesDatabaseRefrence.child(lobbyID).child(players.get(0).getUid()).getKey().equals(playerUids.get(0))) {
+                    Log.d("bror", "Player UID if(1): " + mMessagesDatabaseRefrence.child(lobbyID).child(players.get(1).getUid()).getKey());
 
 
-                                players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
-                                Log.d("bror", "Player AMOUNTOFTURNS if (2): " + players.get(1).getAmmountOfTurns());
+                    if (dataSnapshot.getKey().equals("ammountOfTurns")) {
 
 
-                            } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
+                        players.get(1).setAmmountOfTurns(((Long) dataSnapshot.getValue()).intValue());
+                        Log.d("bror", "Player AMOUNTOFTURNS if (2): " + players.get(1).getAmmountOfTurns());
 
 
-                                players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
-                                players.get(1).setScore(players.get(1).getScore() + 3);
-                                Log.d("bror", "Player coordinateIndex if (3): " + players.get(1).getCoordinateIndex());
+                    } else if (dataSnapshot.getKey().equals("coordinateIndex")) {
 
 
-                            }
+                        players.get(1).setCoordinateIndex(((Long) dataSnapshot.getValue()).intValue());
+                        players.get(1).setScore(players.get(1).getScore() + 3);
+                        Log.d("bror", "Player coordinateIndex if (3): " + players.get(1).getCoordinateIndex());
 
-                            draw(players);
-                        }
-                            //Log.d("Bror", "Player pos :" + players.get(i).getCoordinateIndex());
 
-                    Log.d("bror", "Player 1 index: " + players.get(0).getCoordinateIndex());
-                    Log.d("bror", "Player 2 index: " + players.get(1).getCoordinateIndex());
+                    }
+
+                    draw(players);
+                }
+                //Log.d("Bror", "Player pos :" + players.get(i).getCoordinateIndex());
+
+                Log.d("bror", "Player 1 ID: " + players.get(0).getUid());
+                Log.d("bror", "Player 2 ID: " + players.get(1).getUid());
+
+                Log.d("bror", "Player 1 index: " + players.get(0).getCoordinateIndex());
+                Log.d("bror", "Player 2 index: " + players.get(1).getCoordinateIndex());
+
+
+                if (players.get(0).getAmmountOfTurns() < players.get(1).getAmmountOfTurns()) {
+
+                    buttonRollDice.setVisibility(View.VISIBLE);
 
                 }
+            }
 
 
 
@@ -341,7 +352,6 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         };
         //mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerNames.get(1)).child("coordinateIndex").addChildEventListener(mChildEventListener);
         mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(0)).addChildEventListener(mChildEventListener);
-        mMessagesDatabaseRefrence.child("Lobbies").child(lobbyID).child(playerUids.get(1)).addChildEventListener(mChildEventListener);
 
     }
 
@@ -369,7 +379,12 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         rollDieAnimation();
         movePlayer(player, player.getLastThrownDie());
 
-
+        Log.d("hund", "player1 CI: " + players.get(0).getAmmountOfTurns());
+        Log.d("hund", "player2 CI: " + players.get(1).getAmmountOfTurns());
+        if (players.get(0).getAmmountOfTurns() > players.get(1).getAmmountOfTurns()){
+            Log.d("hund", "HEJHEJHEJHEJHEJ");
+            buttonRollDice.setVisibility(View.INVISIBLE);
+        }
 
         String category = randomCategoryStrings.get(player.getCoordinateIndex());
         getQuestion(category);
@@ -613,7 +628,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
         HashMap<String, Bitmap> hashMapAssets = new HashMap();
         hashMapAssets.put("E-Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_games));
         hashMapAssets.put("Musik", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_culture_music));
-        hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
+        //hashMapAssets.put("Sport", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sport));
         hashMapAssets.put("Random", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_random));
         hashMapAssets.put("Film", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_maths));
         hashMapAssets.put("Science", BitmapFactory.decodeResource(getResources(), R.drawable.gameboardassets_sience));
@@ -642,7 +657,7 @@ public class MultiplayerGameActivity extends AppCompatActivity {
 
         stringGenres.add("E-Sport");
         stringGenres.add("Musik");
-        stringGenres.add("Sport");
+        //stringGenres.add("Sport");
         stringGenres.add("Random");
         stringGenres.add("Film");
         stringGenres.add("Science");
