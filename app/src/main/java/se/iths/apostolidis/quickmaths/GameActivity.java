@@ -447,7 +447,7 @@ public class GameActivity extends AppCompatActivity {
         stringGenres.add("Sport");
         stringGenres.add("Random");
         stringGenres.add("Film");
-        stringGenres.add("Vetenskap");
+        stringGenres.add("Science");
         stringGenres.add("Humor");
         stringGenres.add("Iths");
 
